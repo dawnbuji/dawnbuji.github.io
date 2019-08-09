@@ -346,18 +346,20 @@
             <h1 id="线性规划问题"><a href="#线性规划问题" class="headerlink" title="线性规划问题"></a>线性规划问题</h1><hr>
 <h2 id="线性规划的实例与定义"><a href="#线性规划的实例与定义" class="headerlink" title="线性规划的实例与定义"></a>线性规划的实例与定义</h2><ul>
 <li>例1.1 某机床厂生产甲、乙两种机床，每台销售后的利润分别为4000元与3000元。生产甲机床需用A、B机器加工，加工时间分别为每台2h和1h；生产乙机床需用A、B、C三种机器加工，加工时间为每台各1h。若每天可用于加工的机器实数分别为A机器10h、B机器8h和C机器7h，问该厂应生产甲、乙机床各几台，才能使总利润最大？<br>上述问题的数学模型：设该厂生产x_1台甲机床和x_2乙机床时总利润z最大，则x_1,x_2应满足<center>max z = 4x_1 + 3x_2(1.1)
-<center>s.t. 2x_1 + x_2 \leq 10
-<center> x_1+x_2 \leq 8
-<center> x_1,x_2 \geq 0
+<center>s.t. 2x_1 + x_2 <= 10 <center> x_1+x_2 <= 8 <center> x_1,x_2 >= 0
 
-</center></center></center></center></li>
+</=></=></center></center></li>
 </ul>
 <p>式中：变量 x_1, x_2为决策变量</p>
 <p>式（1.1）称为问题的目标函数，式（1.2）中的几个不等式是问题的约束条件，记为s.t.（即subject to）。由于上面的目标函数及约束条件均为线性函数，故称为线性规划问题。</p>
 <p>总之，线性规划问题是在一组线性约束条件的限制下，求一线性目标函数最大或最小的问题。</p>
 <p>在解决实际问题时，把问题归结成一个线性规划数学模型是很重要的一步，往往也是很困难的一步，模型建立得是否得当，直接影响到求解。而选择适当的决策变量，是建立有效模型的关键之一。</p>
 <hr>
-<h2 id="线性规划问题的解的概念"><a href="#线性规划问题的解的概念" class="headerlink" title="线性规划问题的解的概念"></a>线性规划问题的解的概念</h2>
+<h2 id="线性规划问题的解的概念"><a href="#线性规划问题的解的概念" class="headerlink" title="线性规划问题的解的概念"></a>线性规划问题的解的概念</h2><p>一般线性规划问题的（数学）标准型为<center>max z = \sum_{j=1}^{n}c_jx_j </center></p>
+<ol>
+<li>\frac{d}{dx}e^{ax}=ae^{ax}\quad \sum_{i=1}^{n}{(X_i - \overline{X})^2}                                                                       </li>
+</ol>
+
           
         
       
@@ -498,16 +500,46 @@
       
         
           
-            <pre><code>一直想着搭建一个自己的博客，但一直也没动手搭起了。放假回家，打算休息休息，结果连着睡了好几天，果然还是吃了睡、睡了吃舒服。（这句没用）</code></pre><h1 id="hexo-github-pages搭建个人博客步骤"><a href="#hexo-github-pages搭建个人博客步骤" class="headerlink" title="hexo+github pages搭建个人博客步骤"></a>hexo+github pages搭建个人博客步骤</h1><ol>
-<li>GitHub搭建个人仓库</li>
-<li>安装Git</li>
-<li>安装Node.js</li>
-<li>安装Hexo</li>
-<li>获得个人网站域名</li>
-</ol>
-<h1 id="GitHub创建个人仓库"><a href="#GitHub创建个人仓库" class="headerlink" title="GitHub创建个人仓库"></a>GitHub创建个人仓库</h1><p>登录GitHub，点击GitHub中的New repository创建新仓库，仓库名为GitHub账号名称.github.io,为固定写法。</p>
-<h1 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h1><p>Git官网下载：<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">Git-Downloading Package</a><br>安装成功后，将你的Git与GitHub账号绑定，鼠标右击打开Git Bash,设置user.name和user.email配置信息：<br>    git config –global user.name “你的GitHub用户名”<br>    git config –global user.email “你的GitHub注册邮箱”</p>
-
+            <script src="/js/crypto-js.js"></script>
+<script>
+function doDecrypt (pwd, onError) {
+	console.log('in doDecrypt');
+	const txt = document.getElementById('enc_content').innerHTML;
+	let plantext;
+	try {
+		const bytes = CryptoJS.AES.decrypt(txt, pwd);
+		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
+	} catch(err) {
+		if(onError) {
+			onError(err);
+		}
+		return;
+	}
+	document.getElementById('enc_content').innerHTML = plaintext;
+	document.getElementById('enc_content').style.display = 'block';
+	document.getElementById('enc_passwd').style.display = 'none';
+	if(typeof MathJax !== 'undefined') {
+		MathJax.Hub.Queue(
+			['resetEquationNumbers', MathJax.InputJax.TeX],
+			['PreProcess', MathJax.Hub],
+			['Reprocess', MathJax.Hub]
+		);
+	}
+}
+</script>
+<div id="enc_content" style="display:none">U2FsdGVkX19hUfnNt5DXXqyWT+df0nAkXcueROWCZ+J7u1XXUceqIixR22FBBbxh8LLP/Iuqt0LW1cyyYqf7RpfUi82DN96HP8Lde1w9pJBLL7xWZ+INGkYJOi6o37SMx4ZYi5iMx5dg3om6VGbNYSDVhSZN9OafYuzEojxb3a2BYC9sqeDJ6Qj/SpJ7l/i+R4YSSkVjToDz6svqPxdMEMzm2/gHS9Oc5G7vLHBqrTCo9QFTNvsgNJ+CXy5GSHomeMpdw/kl0jwwc3FOnCU3iQMS+yPNcv4y7FmqXcBh1ATjeNXkX5Hikmq0VDrZZN/UTj8RRPR39Zl5DpOmXdEbNnsp++sedvvpctdZufVOXSWdnSq3mrOc4etpV7L2fopML7lkhPIvOJIpORPWGq/M050HU+4KSgzpywag8oa2emWe3f/HjL1qL/fwYl5v9pUi0tkBwvcQRO6u+o9cqgOnoV+PfTc/yIEbH6aLxykTG4abspfLkhJDdFAV3o8dhaF2EkGjRjA7xJPkHTGXnrLYOGyhXhGiN4oLK5PmCLDH0uZcl/zkTqA3xeBbfLJk/evlj0LnhjxZSflYDuZRgMw0N/TQjqrudINUJ17QXtxrnvSABaBzFgrJfn5+LufrHVj/O4sQRx+y9rLZpmQI2g2n0rduQJt/4UjmlgFgxBJhLoxLLSH1D4+QtdxKCzurg0CNr4a7lJvhEhDlBY8nDq4s8W7gC8Ogip1o4MSGQcroQqTHvefHtiWiQNZoOuwlwMRRAyDEUCUprz5rgA6nsZhwOINrinvNLwmm+10EUV1vHJlWPozomjzSuZMQ7R3TBH1nlx7Y2CPFE3+fSDEF02CbjY2TJzUqa36XzUbjU4i5ELpAf6WXipplXpv80LXlmgcT/+K8M+k3/MEx5kNmc+MaDxbxsivu99L0bV3XZllKqinWApURo/D4PdHCKvjpb5lHy+FUJBR3QgeHG7jiFVqiKkb9jzP84LLPRZ4bMNv+qav0VTc0NuvavY5g9nwn9O9RxO1CqVOtKSuxgHu+AcUs6NtVUNsohzyuqG1zE2E+MgiXBaP+rM+bDk5GIEMLL+0GC4XN97/nLzRm36Mzko1zsmPjDvoP7CrVf1jdk51UakZ7XOtuVNXUyphD9DhvKhXSLjwOhIh6QTB4b/NYYrQqwdUeeBzTkhPwwfv/FDg1dYeWb2w3PeRpdqWFDJRj0al64oMzfxfAy2kKKkYdDMBf/wD9NYQRe0RmwS6L9jV7m1UFA050dE6K4TL63nyEALDAVKwXb3L1fUHnYpF2/ClyWP/cON48foxj2F0g26znCtF8j1LsrUsa/jAjePh1LM59FPGtSw65lzQO8xd5m+ga6VmnKeW9fngFfad3r3euhuLSM2v6ea3H7se8kZT4E0cLRbtxVO5uC0pc71cy3Mxrj2yXGebV3Ta3dN3E1U2PcyCuDEyclDxKTjSC8plEifdlUTnRy87OqVG/5xCruVWVhul2qL6Ks7Sb2z8yj0NWLNQeoKoKKt2p1eRN6R8IqnBSXKSP6sSStKRgxz5iWP2VPVSXFyD23q0RMFCsQdXQxR91raqkMKpt7apDQdfPdjth32uLxCE2ZJ3ZqXlg5DVDC6yjgNxZgJD/Wt8NzJATX1J4X7NgqdOsI1yNzxfGDLXA+H5CRADlvTwLANZHNACxUidoXK9Fu+WbQpu4Sg4ox5zP1TPuRKE4nN0+ZdOyKO0sKE4FmZksXCIVqxFAm7O6YF11Ikzyo20j5q3lKQf1RiRtvy/toBYtaw5HKeCkRUOrnfpv/zMN79qAIbyrrzpCsgLf7YNQQlWFvL30FQk3M/RwBAZzC9UjntNbPoGTfd8j</div>
+<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<script>
+var onError = function(error) {
+	document.getElementById("enc_error").innerHTML = "password error!"
+};
+function decrypt() {
+var passwd = document.getElementById("enc_pwd_input").value;
+console.log(passwd);
+doDecrypt(passwd, onError);
+}
+</script>
+</div>
           
         
       
@@ -675,7 +707,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">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</div>
+<div id="enc_content" style="display:none">U2FsdGVkX19jFYiPwhqoVA/o37p/p0CGgWcXU8JxuyFGVLVS5jtRXSu+LelNk29EHAAd9ga74vo8WSZQwyfNMyM7GtNpP3VY7pMzCuw/HhiBLWWCvkoKHSdkhVddiTx8Eoma+TV94raOgIFvGxDjIs8wSqZw2EbMzqXD1+5foaQgUIiGSpJJTrv+N9PMCYLB7CQgm3v2jm1h4zl3Q+ZgAR3CmYTZKVl2B3WYMR/QhHQRIenqclZRqPdjXq8+NUlyWtH0j1xJOvrFQLX2N4dL44O0+AwyQZzhwWNs0ANlDXPhySGuKll1rNe72dmzr3z2Q/jdVQrix1NM2h+PqOIYcqIQCSqd1z4Q3iNQLx3v52xF1kw0xSyFZzmN0QwQbXFSOBL3emy4TRmPR6G/iX3Jg4PA0ppKtbnfPdmb/EF6FMs+an44TmSas34UYqt/omyCneCpz1k1Wt1LZNEqjPuKS/VMwMAYBxujTIEBdzCpOmEWIXv7kJxJG8Gw8QRebbtTPdbyc5/oWIWKcb01uP8lQVb5zaUczMW8ksX+4GZ0OcJrHfJntG/4LLlFrpGH1RBLe667wIfi5aINulHKKpqq7EnfBd1iSXVie8uWIta3t59L+0cahQiZCQCCs6drZkaz2gL4SghVsePVLMIZjq3pbDdv2+7X9sdTLOm5W9Z+Ts4Ba/kBp5TF4UUwevtC46spOpaTzAzPo4mCa3mP9+ECD9KgrCSFEzeE0d6rsHAJdnIum7QIchgc1zVj4KjEjyMrivUAxMxtvE8xlg6/fZej8D2n8e5JocBt2D2fwz5jhSTll18y4qCq2bAABF533QMlBi6H6fz2A1BQwVEVnWFNUylI00Z89w4vN5Ur8ljOpDhCLLDQzM/PoMS/BDwxM2AUzFUxh/INoAMQbhM93My1IZ+Z7szMjrfkGgOLG5dt1NCbH9UxY0KH6acFGFpglA7ChzJv3UsPULNAwncod3Nk4eA1qbtxUby6+O9j7J5JSfoV77wVWj4b2A4e2/HdTw5mIC0NEs7W9C8Y+E8C0+hchh5pQCl3u68OhIGrSUyAu4rrrgdy97PcFU9EU2zXI3OxLJD0SBtHPL7ez46F0maI+opUb81XWvvWELAeZjT0XSWxl567FAYx0jR4xmhCPmltlj/0a06FTP9+WT7sASKvFPdd4z5bKyOwh7URfi0FxE4atMJE7VgqRyRT8l0a01hMXnyQZ3eEKhh9wvHZtjiMkkAqtBg9kMXunSLomY5CHbt4nZ/+yoZJDtPzGd2c9sOYu0HpqgMQMK2yDDc3WRcDn3ibqLxToGQQPriDzcHMChmizuT0jM9PqsEi1A4DKzW5t3C78S5gX7RcP7PA5b0iWzefsEt+1T0p3bMzzvK1DOvG0LbI3IiqB6ndKaEPDkqqQ9H/wUMrJ1/XJBv8sts/gKttYgIUugos7Lf6lciDu5LOx6pgbAVnF+XwAhnqstPl49tLFCDFhmkomPzzC96mTXCvup/m6oPWArtaq3gCSQa8yYQ/fyQ+5j7YDNv/hxoNTHgFVCmkiq8lUtOW/6B6/9EkAO8RidLbx4T1mFQ71wsHaOsPHSoYJpWfPkA+fdcN+JfgSIdUL3anhP+IlOsJKcq7ReiksgchRvO0aZzdFeHhZZ5u609WzLo8fi6ijBJ60Xb+6BLzdGnMIS0OR5DZ+W3lK7F4177jogfN0G2byrrZDGSS0jTlP3fXKAhvmBS6hOTacp+X9DjVLtRdy3KCrguLCtcH1w6FGI7yMurrxsbsTXJi0leOc0I/qsXioUw8aFxnBSSAxWgxUDYttX2KvdZmXCt+y44vWtmFHN3afFHIYHICLXRMWxnRZgLq0It+bubTN3fe4ZosRYNjaTcb6cjwOghQ9FJ6cahFK1eg/pr6KgaKV11FPbsJKs5kbqUMXyCHTYLWUD+PvqKXjULFoyqGsB4EEsP+E5vCymTyWZVAZJZE6X3qWuBTsu6CbwA6Mu30LI5zSKy1PZcWCEViAGKD7YM3MPS1fywnmNsGm/4rphPK1I8eqEzHUi+R1Z/k/9Y2DVWQJ9jqjPsTMNZDfg==</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -925,20 +957,46 @@ doDecrypt(passwd, onError);
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+            <script src="/js/crypto-js.js"></script>
+<script>
+function doDecrypt (pwd, onError) {
+	console.log('in doDecrypt');
+	const txt = document.getElementById('enc_content').innerHTML;
+	let plantext;
+	try {
+		const bytes = CryptoJS.AES.decrypt(txt, pwd);
+		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
+	} catch(err) {
+		if(onError) {
+			onError(err);
+		}
+		return;
+	}
+	document.getElementById('enc_content').innerHTML = plaintext;
+	document.getElementById('enc_content').style.display = 'block';
+	document.getElementById('enc_passwd').style.display = 'none';
+	if(typeof MathJax !== 'undefined') {
+		MathJax.Hub.Queue(
+			['resetEquationNumbers', MathJax.InputJax.TeX],
+			['PreProcess', MathJax.Hub],
+			['Reprocess', MathJax.Hub]
+		);
+	}
+}
+</script>
+<div id="enc_content" style="display:none">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</div>
+<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<script>
+var onError = function(error) {
+	document.getElementById("enc_error").innerHTML = "password error!"
+};
+function decrypt() {
+var passwd = document.getElementById("enc_pwd_input").value;
+console.log(passwd);
+doDecrypt(passwd, onError);
+}
+</script>
+</div>
           
         
       

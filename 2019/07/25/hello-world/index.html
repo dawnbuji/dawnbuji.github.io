@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="function doDecrypt (pwd, onError) { 	console.log(&apos;in doDecrypt&apos;); 	const txt = document.getElementById(&apos;enc_content&apos;).innerHTML; 	let plantext; 	try { 		const bytes = CryptoJS.AES.decrypt(txt, pwd);">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hello World">
 <meta property="og:url" content="https://github.com/dawnbuji/dawnbuji.github.io/2019/07/25/hello-world/index.html">
 <meta property="og:site_name" content="dawn_buji&#39;s Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="function doDecrypt (pwd, onError) { 	console.log(&apos;in doDecrypt&apos;); 	const txt = document.getElementById(&apos;enc_content&apos;).innerHTML; 	let plantext; 	try { 		const bytes = CryptoJS.AES.decrypt(txt, pwd);">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-25T06:06:38.517Z">
+<meta property="og:updated_time" content="2019-08-09T02:34:41.934Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:description" content="function doDecrypt (pwd, onError) { 	console.log(&apos;in doDecrypt&apos;); 	const txt = document.getElementById(&apos;enc_content&apos;).innerHTML; 	let plantext; 	try { 		const bytes = CryptoJS.AES.decrypt(txt, pwd);">
 
 
 
@@ -320,20 +320,46 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+        <script src="/js/crypto-js.js"></script>
+<script>
+function doDecrypt (pwd, onError) {
+	console.log('in doDecrypt');
+	const txt = document.getElementById('enc_content').innerHTML;
+	let plantext;
+	try {
+		const bytes = CryptoJS.AES.decrypt(txt, pwd);
+		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
+	} catch(err) {
+		if(onError) {
+			onError(err);
+		}
+		return;
+	}
+	document.getElementById('enc_content').innerHTML = plaintext;
+	document.getElementById('enc_content').style.display = 'block';
+	document.getElementById('enc_passwd').style.display = 'none';
+	if(typeof MathJax !== 'undefined') {
+		MathJax.Hub.Queue(
+			['resetEquationNumbers', MathJax.InputJax.TeX],
+			['PreProcess', MathJax.Hub],
+			['Reprocess', MathJax.Hub]
+		);
+	}
+}
+</script>
+<div id="enc_content" style="display:none">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</div>
+<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<script>
+var onError = function(error) {
+	document.getElementById("enc_error").innerHTML = "password error!"
+};
+function decrypt() {
+var passwd = document.getElementById("enc_pwd_input").value;
+console.log(passwd);
+doDecrypt(passwd, onError);
+}
+</script>
+</div>
       
     </div>
     
@@ -417,17 +443,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -489,22 +506,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
