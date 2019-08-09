@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="文章访问需要密码">
+<meta name="description" content="function doDecrypt (pwd, onError) { 	console.log(&apos;in doDecrypt&apos;); 	const txt = document.getElementById(&apos;enc_content&apos;).innerHTML; 	let plantext; 	try { 		const bytes = CryptoJS.AES.decrypt(txt, pwd);">
 <meta name="keywords" content="测试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="dawn_buji">
 <meta property="og:url" content="https://github.com/dawnbuji/dawnbuji.github.io/2019/07/25/dawn-buji/index.html">
 <meta property="og:site_name" content="dawn_buji&#39;s Blog">
-<meta property="og:description" content="文章访问需要密码">
+<meta property="og:description" content="function doDecrypt (pwd, onError) { 	console.log(&apos;in doDecrypt&apos;); 	const txt = document.getElementById(&apos;enc_content&apos;).innerHTML; 	let plantext; 	try { 		const bytes = CryptoJS.AES.decrypt(txt, pwd);">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-09T02:05:50.408Z">
+<meta property="og:updated_time" content="2019-08-09T02:21:38.145Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dawn_buji">
-<meta name="twitter:description" content="文章访问需要密码">
+<meta name="twitter:description" content="function doDecrypt (pwd, onError) { 	console.log(&apos;in doDecrypt&apos;); 	const txt = document.getElementById(&apos;enc_content&apos;).innerHTML; 	let plantext; 	try { 		const bytes = CryptoJS.AES.decrypt(txt, pwd);">
 
 
 
@@ -126,16 +126,7 @@
 
 
 
-<script>
-    (function(){
-        if('l@guoyan98'){
-            if (prompt('请输入查看密码') !== 'l@guoyan98'){
-                alert('密码不正确,请询问主编大大');
-                history.back();
-            }
-        }
-    })();
-</script>
+
   <title>dawn_buji | dawn_buji's Blog</title>
   
 
@@ -338,10 +329,6 @@
           
 
           
-              <div class="post-description">
-                  文章访问需要密码
-              </div>
-          
 
         </div>
       </header>
@@ -356,65 +343,46 @@
       
 
       
-        <h1 id="放纵不羁World"><a href="#放纵不羁World" class="headerlink" title="放纵不羁World"></a>放纵不羁World</h1><ol>
-<li>记录生活<ul>
-<li>666</li>
-<li>放暑假的第二十五天</li>
-</ul>
-</li>
-<li>现目标<ul>
-<li>二十天搭建好新小车</li>
-<li>准备数学建模比赛</li>
-<li>温习高数知识，准备数学竞赛</li>
-</ul>
-</li>
-<li>理想<ul>
-<li>不谈理想</li>
-</ul>
-</li>
-</ol>
-<h2 id="记录生活"><a href="#记录生活" class="headerlink" title="记录生活"></a>记录生活</h2><hr>
-<ul>
-<li>人生如梦，一尊还酹江月</li>
-<li>竹杖芒鞋轻胜马，一蓑烟雨任平生</li>
-</ul>
-<hr>
-<h2 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h2><hr>
-<ul>
-<li>学习习惯</li>
-<li>学习专注力</li>
-<li>学习方法</li>
-</ul>
-<hr>
-<p><strong>加粗</strong><br><em>倾斜</em><br><del>删除</del></p>
-<blockquote>
-<p>引用</p>
-<blockquote>
-<p>引用二</p>
-</blockquote>
-</blockquote>
-<p><a href="https://www.buji.org.cn" target="_blank" rel="noopener">dawn_ji</a></p>
-<p><a href="https://www.baidu.com" target="_blank" rel="noopener">百度</a></p>
-<table>
-<thead>
-<tr>
-<th>姓名</th>
-<th>年级</th>
-<th>成绩</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>daw_buji</td>
-<td>二年级</td>
-<td>100</td>
-</tr>
-<tr>
-<td>不羁</td>
-<td>三年级</td>
-<td>85</td>
-</tr>
-</tbody></table>
-<div>Logo通过<a href="https://www.designevo.com/cn/" title="免费在线logo制作软件" target="_blank" rel="noopener">DesignEvo</a>设计制作</div>
+        <script src="/js/crypto-js.js"></script>
+<script>
+function doDecrypt (pwd, onError) {
+	console.log('in doDecrypt');
+	const txt = document.getElementById('enc_content').innerHTML;
+	let plantext;
+	try {
+		const bytes = CryptoJS.AES.decrypt(txt, pwd);
+		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
+	} catch(err) {
+		if(onError) {
+			onError(err);
+		}
+		return;
+	}
+	document.getElementById('enc_content').innerHTML = plaintext;
+	document.getElementById('enc_content').style.display = 'block';
+	document.getElementById('enc_passwd').style.display = 'none';
+	if(typeof MathJax !== 'undefined') {
+		MathJax.Hub.Queue(
+			['resetEquationNumbers', MathJax.InputJax.TeX],
+			['PreProcess', MathJax.Hub],
+			['Reprocess', MathJax.Hub]
+		);
+	}
+}
+</script>
+<div id="enc_content" style="display:none">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</div>
+<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<script>
+var onError = function(error) {
+	document.getElementById("enc_error").innerHTML = "password error!"
+};
+function decrypt() {
+var passwd = document.getElementById("enc_pwd_input").value;
+console.log(passwd);
+doDecrypt(passwd, onError);
+}
+</script>
+</div>
       
     </div>
     
@@ -508,17 +476,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -580,22 +539,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#放纵不羁World"><span class="nav-number">1.</span> <span class="nav-text">放纵不羁World</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#记录生活"><span class="nav-number">1.1.</span> <span class="nav-text">记录生活</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#学习"><span class="nav-number">1.2.</span> <span class="nav-text">学习</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
