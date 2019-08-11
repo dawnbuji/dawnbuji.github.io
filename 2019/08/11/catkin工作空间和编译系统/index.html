@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="测试,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="catkin工作区间 ros工程框架层次最高的概念  catkin是ros定制的编译构建系统，是对CMake的扩展  编译ros程序的   catkin工作空间 组织和管理功能包的文件夹 以catkin工具编译 创建、克隆、修改功能包在这个文件里完成  catkin_make(命令) 编译工作空间  首先，建立工作空间 123$mkdir -p ~/catkin_ws/src$cd ~/catki">
+<meta name="keywords" content="测试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="catkin工作空间和编译系统">
+<meta property="og:url" content="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/11/catkin工作空间和编译系统/index.html">
+<meta property="og:site_name" content="dawn_buji&#39;s Blog">
+<meta property="og:description" content="catkin工作区间 ros工程框架层次最高的概念  catkin是ros定制的编译构建系统，是对CMake的扩展  编译ros程序的   catkin工作空间 组织和管理功能包的文件夹 以catkin工具编译 创建、克隆、修改功能包在这个文件里完成  catkin_make(命令) 编译工作空间  首先，建立工作空间 123$mkdir -p ~/catkin_ws/src$cd ~/catki">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-11T12:59:23.145Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="catkin工作空间和编译系统">
+<meta name="twitter:description" content="catkin工作区间 ros工程框架层次最高的概念  catkin是ros定制的编译构建系统，是对CMake的扩展  编译ros程序的   catkin工作空间 组织和管理功能包的文件夹 以catkin工具编译 创建、克隆、修改功能包在这个文件里完成  catkin_make(命令) 编译工作空间  首先，建立工作空间 123$mkdir -p ~/catkin_ws/src$cd ~/catki">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/11/catkin工作空间和编译系统/">
+
+
+
+
+
+
+  <title>catkin工作空间和编译系统 | dawn_buji's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">dawn_buji's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一蓑烟雨任平生</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/11/catkin工作空间和编译系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dawn_buji">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dawn_buji's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">catkin工作空间和编译系统</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-11T18:12:44+08:00">
+                2019-08-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ROS机器人操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">ROS机器人操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="catkin工作区间"><a href="#catkin工作区间" class="headerlink" title="catkin工作区间"></a>catkin工作区间</h1><ul>
+<li><p>ros工程框架层次最高的概念</p>
+</li>
+<li><p>catkin是ros定制的编译构建系统，是对CMake的扩展</p>
+</li>
+<li><p>编译ros程序的</p>
+</li>
+</ul>
+<h2 id="catkin工作空间"><a href="#catkin工作空间" class="headerlink" title="catkin工作空间"></a>catkin工作空间</h2><ul>
+<li>组织和管理功能包的文件夹</li>
+<li>以catkin工具编译</li>
+<li>创建、克隆、修改功能包在这个文件里完成</li>
+</ul>
+<h2 id="catkin-make-命令"><a href="#catkin-make-命令" class="headerlink" title="catkin_make(命令)"></a>catkin_make(命令)</h2><ul>
+<li>编译工作空间</li>
+</ul>
+<p>首先，建立工作空间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$mkdir -p ~/catkin_ws/src</span><br><span class="line">$cd ~/catkin_ws/</span><br><span class="line">$catkin_make</span><br></pre></td></tr></table></figure>
+
+<p>然后，编译</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$cd ~/catkin_ws	#回到工作空间</span><br><span class="line">$catkin_make</span><br><span class="line">$source ~/catkin_ws/devel/setup.bash</span><br><span class="line">#编译完成后要source刷新环境</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">- 要在catkin_ws目录下catkin_make</span><br><span class="line">- 记得编译完的catkin_ws刷新到环境变量里面去，系统可以知道我们生成的ros可执行文件放在哪里</span><br><span class="line"></span><br><span class="line">- src:package源代码，写代码的地方</span><br><span class="line">- build：cmake&amp;catkin缓存和中间文件</span><br><span class="line">- devel：目标文件（头文件、动态静态的链接库和可执行文件）</span><br><span class="line"></span><br><span class="line">## src</span><br><span class="line">### package</span><br><span class="line">- 是catkin编译的基本单元，catkin系统会递归的查找每一个package</span><br><span class="line">- ros软件的基本组织形式，相当于ros的细胞</span><br><span class="line">- 一个package可以包含多个可执行文件（节点）</span><br><span class="line">- 包含至少CMakeLists.txt和package.xml两个文件夹</span><br><span class="line">#### CMakeLists.txt</span><br><span class="line">- 规定catkin编译的规则（告诉编译系统怎么package里面的代码，要编译哪些文件、需要哪些依赖、生成哪些可执行目标、怎么链接等等）</span><br><span class="line">- 例如：源文件、依赖项、目标文件</span><br><span class="line">- 编译出了什么问题一般跟这个CMakeList.txt这个文件和依赖包有关系</span><br></pre></td></tr></table></figure>
+
+<p>cmake_minimum_required()        #指定catkin最低版本<br>project()                        #指定软件包的名称<br>find_package()                    #指定编译时需要的依赖项<br>add_message_files()/add_service_files()/add_action_files()<br>                                #添加消息文件/服务文件/动作文件</p>
+<p>generate_messages()                #生成消息、服务、动作<br>catkin_package()                #指定catkin信息给编译系统生成Cmake文件<br>add_library()/add_executable()  #指定生成库文件、可执行文件<br>target_link_libraries()          #指定可执行文件去链接哪个库<br>catkin_add_gtest()                #添加测试单元<br>install()                        #生成可安装目标</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#### package.xml</span><br><span class="line">- 定义package的属性，相当于包的自我描述</span><br><span class="line">- 例如：包名、版本号、作者、依赖等</span><br><span class="line">- 模板</span><br></pre></td></tr></table></figure>
+
+<p><package>                <!--根标签--><br>    <name>                    <!--包名--><br>    <version>                <!--版本号--><br>    <description>            <!--包描述--><br>    <maintainer>            <!--维护者--><br>    <license>                <!--软件许可--><br>    <buildtool_depend>        <!--编译工具--><br>    <build_depend>            <!--编译时的依赖--><br>    <run_depend>            <!--运行时的依赖--><br></run_depend></build_depend></buildtool_depend></license></maintainer></description></version></name></package>                <!--根标签--><br>```</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>ros的可执行程序有两种来源</p>
+<ol>
+<li>脚本（Linux的shell、python脚本）</li>
+<li>C++(头文件、源文件)</li>
+<li>通常在package下的scripts放可执行脚本（包括<em>.py、</em>.sh）</li>
+<li>在package下的include放c++的头文件（*.h）</li>
+<li>在package下的src放c++的源文件(*.cpp),可能也有python文件</li>
+</ol>
+<h2 id="自定义通讯格式"><a href="#自定义通讯格式" class="headerlink" title="自定义通讯格式"></a>自定义通讯格式</h2><ol>
+<li>消息（msg）</li>
+<li>服务（srv）</li>
+<li>动作（action）</li>
+</ol>
+<p>比如建一个服务，那么就在package下建一个srv文件（放*.srv文件）</p>
+<h2 id="launch文件以及配置文件"><a href="#launch文件以及配置文件" class="headerlink" title="launch文件以及配置文件"></a>launch文件以及配置文件</h2><ul>
+<li>launch文件（launch）<ol>
+<li>一个package可以有多个可执行文件，要想每个都运行起来，那么就将它们组织到launch文件中，launch文件就是帮助我们一次性运行多个可执行文件</li>
+<li>在package下建一个launch文件（放*.launch）</li>
+</ol>
+</li>
+<li>配置文件（yaml）<ol>
+<li>参数、设置之类的</li>
+<li>一般都在package下config文件下（放*.yaml）</li>
+<li>自由度比较高，什么内容，什么格式一般都由自己来定，常用的就是.yaml格式</li>
+</ol>
+</li>
+</ul>
+<h1 id="常用指令-包管理的指令"><a href="#常用指令-包管理的指令" class="headerlink" title="常用指令(包管理的指令)"></a>常用指令(包管理的指令)</h1><ol>
+<li>rospack<ul>
+<li>查找某个包的地址</li>
+<li><code>$ rospack find package_name</code></li>
+<li>列出本地所有pkg</li>
+<li><code>$ rospack list</code></li>
+</ul>
+</li>
+<li>roscd(相当于Linux下的cd)<ul>
+<li>跳转到某个pkg路径下</li>
+<li><code>$ roscd package_name</code></li>
+</ul>
+</li>
+<li>rosls(相当于Linux下的ls)<ul>
+<li>列举某个pkg下的文件信息</li>
+<li><code>$ rosls packge_name</code></li>
+</ul>
+</li>
+<li>rosed(相当于Linux下的vi(m))<ul>
+<li>编辑pkg中的文件</li>
+<li><code>$ roscd package_name file_name</code></li>
+</ul>
+</li>
+<li>catkin_create_pkg<ul>
+<li>创建一个pkg</li>
+<li><code>catkin_create_pkg &lt;pkg_name&gt; [deps#包所需的依赖]</code></li>
+</ul>
+</li>
+<li>rosdep<ul>
+<li>安装某个pkg所需的依赖</li>
+<li>适用场合，如从GitHub上下载的包</li>
+<li><code>$ rosdep install [pkg_name]</code></li>
+</ul>
+</li>
+</ol>
+<p>e.g<br>    - <code>$ mkdir -p catkin_ws/src</code><br>    - <code>$ cd catkin_ws/</code><br>    - <code>$ catkin_make</code><br>    - <code>cd src</code><br>    - <code>$ catkin_create_pkg test1</code><br>    - <code>catkin_create_pkg test2 roscpp#c++编程的APIrospy std_msgs #通讯nav_msgs#导航</code></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/测试/" rel="tag"># 测试</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/08/线性规划/" rel="next" title="线性规划">
+                <i class="fa fa-chevron-left"></i> 线性规划
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="dawn_buji">
+            
+              <p class="site-author-name" itemprop="name">dawn_buji</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#catkin工作区间"><span class="nav-number">1.</span> <span class="nav-text">catkin工作区间</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#catkin工作空间"><span class="nav-number">1.1.</span> <span class="nav-text">catkin工作空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#catkin-make-命令"><span class="nav-number">1.2.</span> <span class="nav-text">catkin_make(命令)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">1.3.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义通讯格式"><span class="nav-number">1.4.</span> <span class="nav-text">自定义通讯格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#launch文件以及配置文件"><span class="nav-number">1.5.</span> <span class="nav-text">launch文件以及配置文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用指令-包管理的指令"><span class="nav-number">2.</span> <span class="nav-text">常用指令(包管理的指令)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dawn_buji</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
