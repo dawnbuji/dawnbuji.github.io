@@ -88,7 +88,7 @@
 <meta property="og:description" content="线性规划问题 线性规划的实例与定义 例1.1 某机床厂生产甲、乙两种机床，每台销售后的利润分别为4000元与3000元。生产甲机床需用A、B机器加工，加工时间分别为每台2h和1h；生产乙机床需用A、B、C三种机器加工，加工时间为每台各1h。若每天可用于加工的机器实数分别为A机器10h、B机器8h和C机器7h，问该厂应生产甲、乙机床各几台，才能使总利润最大？上述问题的数学模型：设该厂生产x_1台甲机">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://github.com/images/MATLAB%E6%BC%94%E7%A4%BA%E5%9B%BE1.png">
-<meta property="og:updated_time" content="2019-08-09T10:11:59.467Z">
+<meta property="og:updated_time" content="2019-08-11T01:18:03.141Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性规划">
 <meta name="twitter:description" content="线性规划问题 线性规划的实例与定义 例1.1 某机床厂生产甲、乙两种机床，每台销售后的利润分别为4000元与3000元。生产甲机床需用A、B机器加工，加工时间分别为每台2h和1h；生产乙机床需用A、B、C三种机器加工，加工时间为每台各1h。若每天可用于加工的机器实数分别为A机器10h、B机器8h和C机器7h，问该厂应生产甲、乙机床各几台，才能使总利润最大？上述问题的数学模型：设该厂生产x_1台甲机">
@@ -361,9 +361,10 @@
 <li>MATLAB中规定线性规划的标准形式，目标函数是求最小值，约束条件的不等号是小于等于号</li>
 <li>MATLAB中求解线性规划的命令为</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[x,fval] = linprog(f,A,b)</span><br><span class="line">[x,fval] = linprog(f,A,b,Aeq,beq)</span><br><span class="line">[x,fval] = linprog(f,A,b,Aeq,beq,lb,ub)</span><br></pre></td></tr></table></figure>
-
-<hr>
+<pre><code>[x,fval] = linprog(f,A,b)
+[x,fval] = linprog(f,A,b,Aeq,beq)
+[x,fval] = linprog(f,A,b,Aeq,beq,lb,ub)
+</code></pre><hr>
 <h2 id="投资的收益和风险"><a href="#投资的收益和风险" class="headerlink" title="投资的收益和风险"></a>投资的收益和风险</h2><table>
 <thead>
 <tr>
