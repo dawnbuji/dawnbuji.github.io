@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="ros,">
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="dawn_buji&#39;s Blog">
-<meta property="og:url" content="https://github.com/dawnbuji/dawnbuji.github.io/tags/技术博客/index.html">
+<meta name="description" content="代码rosdep install --from-paths src --ignore-src --rosdistro melodic -y作用是添加代码包所需要的依赖，但rosdep怎么知道要添加什么依赖包呢，其实是定义在package下的package.xml文件里面的build_depend和run_depend这两个标签，告诉rosdep编译和运行时一定有这些依赖项，rosdep知道要把这些">
+<meta name="keywords" content="ros">
+<meta property="og:type" content="article">
+<meta property="og:title" content="catkin工作空间探索">
+<meta property="og:url" content="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/12/catkin工作空间探索/index.html">
 <meta property="og:site_name" content="dawn_buji&#39;s Blog">
+<meta property="og:description" content="代码rosdep install --from-paths src --ignore-src --rosdistro melodic -y作用是添加代码包所需要的依赖，但rosdep怎么知道要添加什么依赖包呢，其实是定义在package下的package.xml文件里面的build_depend和run_depend这两个标签，告诉rosdep编译和运行时一定有这些依赖项，rosdep知道要把这些">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-12T00:46:49.031Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dawn_buji&#39;s Blog">
+<meta name="twitter:title" content="catkin工作空间探索">
+<meta name="twitter:description" content="代码rosdep install --from-paths src --ignore-src --rosdistro melodic -y作用是添加代码包所需要的依赖，但rosdep怎么知道要添加什么依赖包呢，其实是定义在package下的package.xml文件里面的build_depend和run_depend这两个标签，告诉rosdep编译和运行时一定有这些依赖项，rosdep知道要把这些">
 
 
 
@@ -115,14 +120,14 @@
 
 
 
-  <link rel="canonical" href="https://github.com/dawnbuji/dawnbuji.github.io/tags/技术博客/">
+  <link rel="canonical" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/12/catkin工作空间探索/">
 
 
 
 
 
 
-  <title>标签: 技术博客 | dawn_buji's Blog</title>
+  <title>catkin工作空间探索 | dawn_buji's Blog</title>
   
 
 
@@ -141,7 +146,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -235,52 +240,169 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>技术博客<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/12/catkin工作空间探索/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dawn_buji">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dawn_buji's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/08/01/hexo-github/" itemprop="url">
-              
-                <span itemprop="name">hexo+github</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">catkin工作空间探索</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-01T18:51:09+08:00" content="2019-08-01">
-          08-01
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-12T08:37:02+08:00">
+                2019-08-12
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ros机器人操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">ros机器人操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>代码<br><code>rosdep install --from-paths src --ignore-src --rosdistro melodic -y</code><br>作用是添加代码包所需要的依赖，但rosdep怎么知道要添加什么依赖包呢，其实是定义在package下的package.xml文件里面的build_depend和run_depend这两个标签，告诉rosdep编译和运行时一定有这些依赖项，rosdep知道要把这些依赖项装好。</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ros/" rel="tag"># ros</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/11/catkin工作空间和编译系统/" rel="next" title="catkin工作空间和编译系统">
+                <i class="fa fa-chevron-left"></i> catkin工作空间和编译系统
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -288,6 +410,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -511,6 +637,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
