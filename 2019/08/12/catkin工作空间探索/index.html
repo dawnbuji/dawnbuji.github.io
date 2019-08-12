@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="dawn_buji&#39;s Blog">
 <meta property="og:description" content="代码rosdep install --from-paths src --ignore-src --rosdistro melodic -y作用是添加代码包所需要的依赖，但rosdep怎么知道要添加什么依赖包呢，其实是定义在package下的package.xml文件里面的build_depend和run_depend这两个标签，告诉rosdep编译和运行时一定有这些依赖项，rosdep知道要把这些">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-12T02:24:49.674Z">
+<meta property="og:updated_time" content="2019-08-12T03:47:46.183Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="catkin工作空间探索及Metapackage">
 <meta name="twitter:description" content="代码rosdep install --from-paths src --ignore-src --rosdistro melodic -y作用是添加代码包所需要的依赖，但rosdep怎么知道要添加什么依赖包呢，其实是定义在package下的package.xml文件里面的build_depend和run_depend这两个标签，告诉rosdep编译和运行时一定有这些依赖项，rosdep知道要把这些">
@@ -345,8 +345,7 @@
       
         <p>代码<br><code>rosdep install --from-paths src --ignore-src --rosdistro melodic -y</code><br>作用是添加代码包所需要的依赖，但rosdep怎么知道要添加什么依赖包呢，其实是定义在package下的package.xml文件里面的build_depend和run_depend这两个标签，告诉rosdep编译和运行时一定有这些依赖项，rosdep知道要把这些依赖项装好。</p>
 <p><code>rospack list | grep catkin_ws</code>ros包在catkin_ws的管道列表</p>
-<p>#Metapackage</p>
-<ul>
+<h1 id="Metapackage"><a href="#Metapackage" class="headerlink" title="Metapackage"></a>Metapackage</h1><ul>
 <li>Linux软件包管理的概念</li>
 <li>虚包，没有什么实质性内容</li>
 <li>依赖很多其他软件包</li>
@@ -479,8 +478,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -542,6 +550,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Metapackage"><span class="nav-number">1.</span> <span class="nav-text">Metapackage</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
