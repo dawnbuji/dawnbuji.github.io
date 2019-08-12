@@ -250,6 +250,191 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/12/Mater和Node/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dawn_buji">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dawn_buji's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/12/Mater和Node/" itemprop="url">Mater和Node</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-12T10:25:44+08:00">
+                2019-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ros机器人操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">ros机器人操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="ROS通信架构（计算图级）"><a href="#ROS通信架构（计算图级）" class="headerlink" title="ROS通信架构（计算图级）"></a>ROS通信架构（计算图级）</h1><ul>
+<li>将程序跑起来会有一个怎样的网络结构，会有一个什么样的框架</li>
+<li>personrobot2简称pr2</li>
+<li>怎样管理进程，它们之间怎样通信</li>
+<li>ros的首要目标就是方便各个模块之间的管理和通信</li>
+<li>启动这些进程，需要一个管家管理这些要启动的进程-master（节点管理器）</li>
+</ul>
+<h2 id="master"><a href="#master" class="headerlink" title="master"></a>master</h2><ul>
+<li>master的作用有两个<ol>
+<li>每个node（节点）启动时都要向master注册</li>
+<li>管理node（节点）之间的通信，node之间点对点的通信</li>
+</ol>
+</li>
+<li>启动ros程序之前，第一步就是启动master</li>
+<li>启动ros master的方法：<code>$ roscore</code></li>
+<li><code>$roscore</code>启动了以下三个东西<ol>
+<li>master：节点管理器</li>
+<li>rosout：日志输出 node 告诉我们系统有什么error、有什么warning，把这些log记录下来</li>
+<li>parameter server：参数服务器 做一些参数的配置</li>
+</ol>
+</li>
+<li>启动了mater之后就可以启动一些具体的进程了，即node（节点）</li>
+</ul>
+<h2 id="node-节点"><a href="#node-节点" class="headerlink" title="node (节点)"></a>node (节点)</h2><ul>
+<li>ros的进程，在ros中叫作节点</li>
+<li>pkg里的可执行文件（c++编译的、.python、.shell）运行的实例。当我们运行这些可执行文件，它们被加载到了内存中就成为了一个node</li>
+<li>可执行文件是静态的，node是动态的，一般来说一个node就做某个特定的功能，就专注做某件事</li>
+<li>node一般都是以功能来划分的，不同的功能放在不同的node里</li>
+</ul>
+<h3 id="node启动的方法-rosrun"><a href="#node启动的方法-rosrun" class="headerlink" title="node启动的方法-rosrun"></a>node启动的方法-rosrun</h3><p>启动一个node<br><code>$ rosrun [pkg_name] [node_name]</code></p>
+<h3 id="rosnode"><a href="#rosnode" class="headerlink" title="rosnode"></a>rosnode</h3><p>用来管理和查看一些node<br>列出当前运行的node信息<br><code>$ rosnode list</code><br>显示某个node的详细信息<br><code>$ rosnode info [node_name]</code><br>结束某个node<br><code>$ rosnode kill [node_name]</code></p>
+<p>多node的话，要怎样解决呢？难道要一个一个地启动进程？<br>像这样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ roscore</span><br><span class="line">$ rosrun ... [node1]</span><br><span class="line">$ rosrun ... [node2]</span><br><span class="line">...</span><br><span class="line">$ rosrun ... [noden]</span><br></pre></td></tr></table></figure>
+
+<p>no no no</p>
+<h3 id="roslaunch"><a href="#roslaunch" class="headerlink" title="roslaunch"></a>roslaunch</h3><p>启动master和多个节点<br><code>$ roslaunch [pck_name] [file_name.launch]</code></p>
+<ul>
+<li>pkg下会建一个launch文件夹，里面放.launch文件</li>
+<li>这个.launch文件就是我们要运行的roslaunch<br>这个.launch文件已经配置好了我要启动的规则，且会自动检测系统是否运行roscore即master在不在。如果没有，就先启动roscore，然后按照launch的规则执行。</li>
+</ul>
+<p>####launch书写规则<br>package.xml书写方式一样的，因为它们都遵循这.xml这种标签语言的规范<br><a href="http://wiki.ros.org/roslaunch/XML" target="_blank" rel="noopener">launch文件</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;launch&gt;			&lt;!--根标签--&gt;</span><br><span class="line">	&lt;node&gt;			&lt;!--需要启动的node及参数--&gt;</span><br><span class="line">	&lt;include&gt;		&lt;!--包含其他launch文件--&gt;</span><br><span class="line">	&lt;machine&gt;		&lt;!--指定运行的机器--&gt;</span><br><span class="line">	&lt;env-loader&gt;	&lt;!--设置环境变量--&gt;	</span><br><span class="line">	&lt;param&gt;			&lt;!--定义参数到参数服务器--&gt;</span><br><span class="line">	&lt;rosparam&gt;		&lt;!--启动yaml文件参数到参数服务器--&gt;</span><br><span class="line">	&lt;arg&gt;			&lt;!--定义参数传入到launch文件中&gt;</span><br><span class="line">	&lt;remap&gt;			&lt;!--设定参数映射--&gt;</span><br><span class="line">	&lt;group&gt;			&lt;!--定义命名空间--&gt;</span><br><span class="line">&lt;/launch&gt;			&lt;!--根标签--&gt;</span><br></pre></td></tr></table></figure>
+
+<p>启动pr2<br><code>$ roslaunch pr2_bringup pr2.launch</code><br>通常我们把启动的包名命名为***_bringup</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/12/catkin工作空间探索/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -269,7 +454,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/08/12/catkin工作空间探索/" itemprop="url">catkin工作空间探索</a></h1>
+                <a class="post-title-link" href="/2019/08/12/catkin工作空间探索/" itemprop="url">catkin工作空间探索及Metapackage</a></h1>
         
 
         <div class="post-meta">
@@ -344,6 +529,47 @@
         
           
             <p>代码<br><code>rosdep install --from-paths src --ignore-src --rosdistro melodic -y</code><br>作用是添加代码包所需要的依赖，但rosdep怎么知道要添加什么依赖包呢，其实是定义在package下的package.xml文件里面的build_depend和run_depend这两个标签，告诉rosdep编译和运行时一定有这些依赖项，rosdep知道要把这些依赖项装好。</p>
+<p><code>rospack list | grep catkin_ws</code>ros包在catkin_ws的管道列表</p>
+<p>#Metapackage</p>
+<ul>
+<li>Linux软件包管理的概念</li>
+<li>虚包，没有什么实质性内容</li>
+<li>依赖很多其他软件包</li>
+<li>如 在<code>sudo apt-get install ros-melodic-desktop-full</code>其实就是安装了一个Metapackage，包含ros的一些组件，ros的编译系统，ros的基本文件系统，一些指令等等。不需要安装这些所有的软件包，只需安装这一个就够了。所以metapackage就是将它依赖的软件包组合起来。stack叫作软件包集，最后废弃了。</li>
+<li>作用：就是安装时更方便，将功能相似的软件包给组织起来</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Metapackage名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>navigation</td>
+<td>导航相关的功能包集</td>
+</tr>
+<tr>
+<td>moveit</td>
+<td>运动规划相关的（主要是机械臂）功能包集</td>
+</tr>
+<tr>
+<td>image_pipeline</td>
+<td>图像获取、处理相关的功能包集</td>
+</tr>
+<tr>
+<td>vision_opencv</td>
+<td>ROS与OpenCV交互的功能包集</td>
+</tr>
+<tr>
+<td>turtlebot</td>
+<td>Turtlebot机器人相关的功能包集</td>
+</tr>
+<tr>
+<td>pr2_robot</td>
+<td>pr2机器人驱动功能包集</td>
+</tr>
+</tbody></table>
 
           
         
@@ -446,8 +672,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/测试/" itemprop="url" rel="index">
-                    <span itemprop="name">测试</span>
+                  <a href="/categories/ros机器人操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">ros机器人操作系统</span>
                   </a>
                 </span>
 
@@ -505,14 +731,14 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$mkdir -p ~/catkin_ws/src</span><br><span class="line">$cd ~/catkin_ws/</span><br><span class="line">$catkin_make</span><br></pre></td></tr></table></figure>
 
 <p>然后，编译</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$cd ~/catkin_ws	#回到工作空间</span><br><span class="line">$catkin_make</span><br><span class="line">$source ~/catkin_ws/devel/setup.bash</span><br><span class="line">#编译完成后要source刷新环境</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">要在catkin_ws目录下catkin_make</span><br><span class="line">记得编译完的catkin_ws刷新到环境变量里面去，系统可以知道我们生成的ros可执行文件放在哪里</span><br><span class="line"></span><br><span class="line">- src:package源代码，写代码的地方</span><br><span class="line">- build：cmake&amp;catkin缓存和中间文件</span><br><span class="line">- devel：目标文件（头文件、动态静态的链接库和可执行文件）</span><br><span class="line"></span><br><span class="line">## src</span><br><span class="line">### package</span><br><span class="line">- 是catkin编译的基本单元，catkin系统会递归的查找每一个package</span><br><span class="line">- ros软件的基本组织形式，相当于ros的细胞</span><br><span class="line">- 一个package可以包含多个可执行文件（节点）</span><br><span class="line">- 包含至少CMakeLists.txt和package.xml两个文件夹</span><br><span class="line">#### CMakeLists.txt</span><br><span class="line">- 规定catkin编译的规则（告诉编译系统怎么package里面的代码，要编译哪些文件、需要哪些依赖、生成哪些可执行目标、怎么链接等等）</span><br><span class="line">- 例如：源文件、依赖项、目标文件</span><br><span class="line">- 编译出了什么问题一般跟这个CMakeList.txt这个文件和依赖包有关系</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$cd ~/catkin_ws	#回到工作空间</span><br><span class="line">$catkin_make</span><br><span class="line">$source ~/catkin_ws/devel/setup.bash #编译完成后要source刷新环境</span><br><span class="line">```  </span><br><span class="line">---</span><br><span class="line">要在catkin_ws目录下catkin_make</span><br><span class="line">记得编译完的catkin_ws刷新到环境变量里面去，系统可以知道我们生成的ros可执行文件放在哪里</span><br><span class="line"></span><br><span class="line">- src:package源代码，写代码的地方</span><br><span class="line">- build：cmake&amp;catkin缓存和中间文件</span><br><span class="line">- devel：目标文件（头文件、动态静态的链接库和可执行文件）</span><br><span class="line"></span><br><span class="line">## src</span><br><span class="line">### package</span><br><span class="line">- 是catkin编译的基本单元，catkin系统会递归的查找每一个package</span><br><span class="line">- ros软件的基本组织形式，相当于ros的细胞</span><br><span class="line">- 一个package可以包含多个可执行文件（节点）</span><br><span class="line">- 包含至少CMakeLists.txt和package.xml两个文件夹</span><br><span class="line">#### CMakeLists.txt</span><br><span class="line">- 规定catkin编译的规则（告诉编译系统怎么package里面的代码，要编译哪些文件、需要哪些依赖、生成哪些可执行目标、怎么链接等等）</span><br><span class="line">- 例如：源文件、依赖项、目标文件</span><br><span class="line">- 编译出了什么问题一般跟这个CMakeList.txt这个文件和依赖包有关系</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 
 <p>cmake_minimum_required()        #指定catkin最低版本<br>project()                        #指定软件包的名称<br>find_package()                    #指定编译时需要的依赖项<br>add_message_files()/add_service_files()/add_action_files()<br>                                #添加消息文件/服务文件/动作文件</p>
 <p>generate_messages()                #生成消息、服务、动作<br>catkin_package()                #指定catkin信息给编译系统生成Cmake文件<br>add_library()/add_executable()  #指定生成库文件、可执行文件<br>target_link_libraries()          #指定可执行文件去链接哪个库<br>catkin_add_gtest()                #添加测试单元<br>install()                        #生成可安装目标</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### package.xml</span><br><span class="line">- 定义package的属性，相当于包的自我描述</span><br><span class="line">- 例如：包名、版本号、作者、依赖等</span><br><span class="line">- 模板</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">#### package.xml</span><br><span class="line">- 定义package的属性，相当于包的自我描述</span><br><span class="line">- 例如：包名、版本号、作者、依赖等</span><br><span class="line">- 模板</span><br></pre></td></tr></table></figure>
 
-<p><package>                <!--根标签--><br>    <name>                    <!--包名--><br>    <version>                <!--版本号--><br>    <description>            <!--包描述--><br>    <maintainer>            <!--维护者--><br>    <license>                <!--软件许可--><br>    <buildtool_depend>        <!--编译工具--><br>    <build_depend>            <!--编译时的依赖--><br>    <run_depend>            <!--运行时的依赖--><br></run_depend></build_depend></buildtool_depend></license></maintainer></description></version></name></package>                <!--根标签--><br>```</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>ros的可执行程序有两种来源</p>
+<p><package>                <!--根标签--><br>    <name>                    <!--包名--><br>    <version>                <!--版本号--><br>    <description>            <!--包描述--><br>    <maintainer>            <!--维护者--><br>    <license>                <!--软件许可--><br>    <buildtool_depend>        <!--编译工具--><br>    <build_depend>            <!--编译时的依赖--><br>    <run_depend>            <!--运行时的依赖--><br></run_depend></build_depend></buildtool_depend></license></maintainer></description></version></name></package>                <!--根标签--></p>
+<h2 id><a href="#" class="headerlink" title="```"></a>```</h2><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>ros的可执行程序有两种来源</p>
 <ol>
 <li>脚本（Linux的shell、python脚本）</li>
 <li>C++(头文件、源文件)</li>
@@ -968,7 +1194,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX1846FSWboVxyCwFWeNYoOk0NmF6kElw/PwDS/Ez6zonS0OacwAHKsGTAEH4j7DYijHPBQMKRP7ZIgrBm1qbCMj8aZf6MZAsSCrp71YzipQVPjff68G/eqzg7gXghB8qMg83tQht2tdNx0EfRDWz+WLLwFSvpyWVJVZd7UtJwr2c0R3SEzvDLcRtfvyQWCg+Is7cDMe2M/TjdhH/ZpOQAIIddEwmQXMGILkiq4XwhwHMDXAKLMWy/cHbzX2V6/xqyD2SOqr7ZbPPCmTGUkyI81xCTu7T6aU2nuQTeewuhkFddsuO7QgFruvKHyaHD5aeXyI7pMsZQHPsl/K2VEEpKAFsU+bLHEjie98RboYEMEAYOpSfuPPj3dykA20ZXDsIxGiPaPa4n7BZcnN778ODrrIdLOhcnpHjVkO2PftE+2urs9+0dg23YOLXoq09FciJ9zTLd0Gox+3tKWAzVRspYGHhEKoeeRznPSu08llKgJGQVFaRB1yNGF3L6mqj+V1880gL+IFXeVLTAc0kSThmOZWPlMmWfPvPi7/L/7/gsqzpTxWMcyXNLyApQXDESgdpTeTGckXFkpRUqjO7Yq7j6hfFNpg/f8yTij/6owyceMg3ETMKsKhS1nuNViWEt8WSC4ehspm9iXyqHY789Z8FHDusskmD3nXXFsYWKEKukmjrToejq/BQjRzYDQmfd8D3+ROeMibRLTJn3J4+z563e/OgC7VcSOPzRp4n+3sY6RbL5w+FBxaZEwJ1KZ5JW1KGvxRFWvFZrWAVYecRW/I9isUTquVXGDU50wOTJkQ+5Jgrnxd8vDtGY9y5lWeuVq4Nd1XIYoWGAr6ucboviqX0tdQPDR4/pv5FaUmXQsKVQsW5zHpdAcFMbc+3Z/LhTLXYEIADqhF35gzUZt1mKlolwoFxwC4P7UvYgB6taHX/DTRNLkbBAdrJR6XfMalK9mUsZcBXkSMpjZIYVUxjFZqhUsx6VYjK+uKp7O7ijJcckfR9ZvYayBQPpYZyVP/4ezNX7ZzQhnIeMVB+f9Uq5szo+m4dePuKY4L4MPeoEUiCmqKtyt68zf6UGv5AJ7+krP3zgL7da87PbiS2uX7KKcyrhvYe4HFR4QwDL2Cl8IE1dRaJRIgVorBYQMKT7o0k8hgLSIQlyI/V5RodAJqI1F0NGoeGOXGhAcNd53aCATQBUdvvH59fA4VtP36Y++iniwfn2Lemw5bj/meMOChPXJxYrCU/ioeBWJfvLe2QdCJXG2OJ/SrFeJwUk7zCEw4g4yzpVYZtr5Kg8sYAkGSar0/DXuiUepHdyGkGhuRxrYbBV5HvAXpvpH7uvjsh3SWO3O/Q69bGlcYtvYI7Em95j4gPjgSK4dzQ8j7iGnVxQ3ONOGvFeIOcEqywXxsfra+qEJDhotIpNSQVpKQJt+tXUPRR34F1F5rWeDrYTlVXiXx+lNpeoqZVnxKW+lZonG9XXmFoujrkEA7rn5Ea+oQFlGmy147mygk2D2MA87KrQ2iBtkEHGhsyLrLalIZLj2aT4qVRCM/nn3oYZCV/zsN4FaCZ531W5oahD43E7UJ/5dHRJzvK9RC5WT+p3LteeFGqTLtddjiEbIOAKSLvfW478JQhVjUY43zUhedMn/uJ7RtJqsnvy8vtdX3YEYnA9R2blRgpYxRoIPRAhahdPtXkUOIUhVOFct0o96dyUW7J5FuYkP1OrMLRasNvo9LX1NlM7tRJbGTlrdUeVsxLsZcsK4UPixqNZ7n/f/RWlx8mi4yY5akmyRVDaPfOo+wyHfBF5t50EnnU+x4sODAUkBJHiUo807E5wOph2BgLN3Qrf1MXOwBmAcbZzQSJ0QSd</div>
+<div id="enc_content" style="display:none">U2FsdGVkX19Mhd+IVbTnHJIIhhgk1XgCLUtoTY2Jl+Ocav54zykyEyby5b2Qg23SfOpvMhmq0uGhI84RwCZ/6otz7ndV2OLEVVrFpFRgicT1RbwcmNAbw33WlqYzkWCqwjgV0q/l1LugcyMGhqPQhffEK319ukIPAKHx0OTbJnVLCAz83KdeUi7TaVB9msk/sdvZqd7z+o14wFpu7TS8sess7zdekGbr1UiWcuIfDYy6mGJbEkEIM3XsOABZbytG2/ZqoAUMmww82hM2pa8AXov1xM7cfN/rmxHN5Nn0Zpp8JgfqD6HM0klcoxFkDYnJARsS3NIYGwm9OzDf+8KSysr8Yp+wUD2njUOV5FfdJXYYgMg8Eay9Nll2SgmgWd3czc1yDLMbNAo1or0T6ofiXYgvWZ7VYd71mu/pwWjr1vMUtUTPiShQHlpMLGUdQXk1G86Ewan5UxHcj2vOEMdmtp42zIBAlfKxDu04M2JFOOjOsQNPYMhUNkHUczYK8pELOgStmQyOZog5ufHqQ4tqE0+bzaTE/va8u9n0vtR5waTWUnl5tJo6CweASEcK+tdgNUpU8WmkZCiqgCkaPha8+O7TO98Qotx6ydRVVTATETRWoNf6beaRDvPwUtpSY8CnbbiaVSEPonQi/qjqgxyLFRGekvKslXsTjET65T3197ievcZkSFEEZviFhU+U5RLRg0XL1Q3WBM/x4kjTDNzRlAzKm5SV7DEr8U35qkAEcequhmXt9NZTl2ilZToFdUWATxcevy6vRthySqkuLCmcKdKIkIwCG7ebISzv3Nxz4NWWf3Sd3evFfLuNbCZLQ4tdC5SXjvUWejAnKrnOgHa8ZOBVKWKO6L70KW15NVcgQktd/DqTSvdGG2iHgh2fhJhGLcXiFDoenUJ4Hr3Y46+oDIc9XThoukbETJYKDBw8XzExBeAXl4lkD5XR3cyYyAolJl5mNOi+rluwEdaTpORxD5nU9gUUvzwjboply8qqhDtNrysNAovnoaYzt3Xk6mupNmu8mQu2WnTjAVrvE/JBbqDnx+2wGHiGeXfvD4biHihId24IYLI0ZTjNEGSh0l5HpPDHkFAk4pOmbAu8bPVhw9DAYx2tkOtyrDxEzYhYZXGv0Bf/rD6vrCpNbCMfZOWHx77wMz0pdtd+I84ACbbl0Dp0UF9spFzzjMUCAMaZNKTNdAE0WjetGajQBvCkGfrvfVnqDUJ+VenP6S5q/hsgLCFPoyqBzdkBINqCfumYII8iRr3mcyBAxi+KNt+Jg3zAvtTyADACc37jXxKvjXVujeuefsAzUDuErOjZv7B4gW5D41NGLC4KzwUALRm33DxeS7np94mFmLOymz6Q0Ol1AA1OLe437OTZSs49/a6v3cors33dl2mKklf+RHoG07xXq2QiwzXVJR011JSy0CmlWBHLP2DILaViCWzgc8zsPYV/j7KQ2WeWFncsYDOLSSj2hSqfZn/0ey0CsWgw3SQnqyQudKMAO/5e9VVcdjQ8SpKxXfvCiLTHFG/CJ5DhOfw2ztgfmJeDch5Noz0cLFq2zK+1qZ/NGa9VG6I3J9tmtoIPpZsjgk2qIFFm3XGFpYtxeI2HiC/LfnsfMxwTjJV3HjXJ0j9OmCoipcJy8Mm8lNEgRpoSFkgB+FALPVCaa8ZxT74mK9T918lexhUaM3ATqpAMMUsZypvrJ920dKu9tCg3jvJ8xppU5A4mhUZw6Spj0j0NHW5voRvH0JEVY7yFleG8wrd0eiGeZY7dJey63v3tboEVbsiNvOOiO1xjR4MOmeI9TRICrjobXddRznXC7XbO7QJpm3zEyuEbFLJ/SOnAGOLk/VVm2mKg867p3dr7</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1148,7 +1374,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">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</div>
+<div id="enc_content" style="display:none">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</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1425,7 +1651,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">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</div>
+<div id="enc_content" style="display:none">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</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1520,7 +1746,7 @@ doDecrypt(passwd, onError);
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

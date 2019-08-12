@@ -82,14 +82,14 @@
 <meta name="description" content="代码rosdep install --from-paths src --ignore-src --rosdistro melodic -y作用是添加代码包所需要的依赖，但rosdep怎么知道要添加什么依赖包呢，其实是定义在package下的package.xml文件里面的build_depend和run_depend这两个标签，告诉rosdep编译和运行时一定有这些依赖项，rosdep知道要把这些">
 <meta name="keywords" content="ros">
 <meta property="og:type" content="article">
-<meta property="og:title" content="catkin工作空间探索">
+<meta property="og:title" content="catkin工作空间探索及Metapackage">
 <meta property="og:url" content="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/12/catkin工作空间探索/index.html">
 <meta property="og:site_name" content="dawn_buji&#39;s Blog">
 <meta property="og:description" content="代码rosdep install --from-paths src --ignore-src --rosdistro melodic -y作用是添加代码包所需要的依赖，但rosdep怎么知道要添加什么依赖包呢，其实是定义在package下的package.xml文件里面的build_depend和run_depend这两个标签，告诉rosdep编译和运行时一定有这些依赖项，rosdep知道要把这些">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-12T00:46:49.031Z">
+<meta property="og:updated_time" content="2019-08-12T02:24:49.674Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="catkin工作空间探索">
+<meta name="twitter:title" content="catkin工作空间探索及Metapackage">
 <meta name="twitter:description" content="代码rosdep install --from-paths src --ignore-src --rosdistro melodic -y作用是添加代码包所需要的依赖，但rosdep怎么知道要添加什么依赖包呢，其实是定义在package下的package.xml文件里面的build_depend和run_depend这两个标签，告诉rosdep编译和运行时一定有这些依赖项，rosdep知道要把这些">
 
 
@@ -127,7 +127,7 @@
 
 
 
-  <title>catkin工作空间探索 | dawn_buji's Blog</title>
+  <title>catkin工作空间探索及Metapackage | dawn_buji's Blog</title>
   
 
 
@@ -271,7 +271,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">catkin工作空间探索</h1>
+          <h1 class="post-title" itemprop="name headline">catkin工作空间探索及Metapackage</h1>
         
 
         <div class="post-meta">
@@ -344,6 +344,47 @@
 
       
         <p>代码<br><code>rosdep install --from-paths src --ignore-src --rosdistro melodic -y</code><br>作用是添加代码包所需要的依赖，但rosdep怎么知道要添加什么依赖包呢，其实是定义在package下的package.xml文件里面的build_depend和run_depend这两个标签，告诉rosdep编译和运行时一定有这些依赖项，rosdep知道要把这些依赖项装好。</p>
+<p><code>rospack list | grep catkin_ws</code>ros包在catkin_ws的管道列表</p>
+<p>#Metapackage</p>
+<ul>
+<li>Linux软件包管理的概念</li>
+<li>虚包，没有什么实质性内容</li>
+<li>依赖很多其他软件包</li>
+<li>如 在<code>sudo apt-get install ros-melodic-desktop-full</code>其实就是安装了一个Metapackage，包含ros的一些组件，ros的编译系统，ros的基本文件系统，一些指令等等。不需要安装这些所有的软件包，只需安装这一个就够了。所以metapackage就是将它依赖的软件包组合起来。stack叫作软件包集，最后废弃了。</li>
+<li>作用：就是安装时更方便，将功能相似的软件包给组织起来</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Metapackage名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>navigation</td>
+<td>导航相关的功能包集</td>
+</tr>
+<tr>
+<td>moveit</td>
+<td>运动规划相关的（主要是机械臂）功能包集</td>
+</tr>
+<tr>
+<td>image_pipeline</td>
+<td>图像获取、处理相关的功能包集</td>
+</tr>
+<tr>
+<td>vision_opencv</td>
+<td>ROS与OpenCV交互的功能包集</td>
+</tr>
+<tr>
+<td>turtlebot</td>
+<td>Turtlebot机器人相关的功能包集</td>
+</tr>
+<tr>
+<td>pr2_robot</td>
+<td>pr2机器人驱动功能包集</td>
+</tr>
+</tbody></table>
 
       
     </div>
@@ -383,6 +424,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/12/Mater和Node/" rel="prev" title="Mater和Node">
+                Mater和Node <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -452,7 +497,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

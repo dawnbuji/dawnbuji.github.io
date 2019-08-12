@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="测试,">
+  <meta name="keywords" content="ros,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="function doDecrypt (pwd, onError) { 	console.log(&apos;in doDecrypt&apos;); 	const txt = document.getElementById(&apos;enc_content&apos;).innerHTML; 	let plantext; 	try { 		const bytes = CryptoJS.AES.decrypt(txt, pwd);">
-<meta name="keywords" content="测试">
+<meta name="description" content="ROS通信架构（计算图级） 将程序跑起来会有一个怎样的网络结构，会有一个什么样的框架 personrobot2简称pr2 怎样管理进程，它们之间怎样通信 ros的首要目标就是方便各个模块之间的管理和通信 启动这些进程，需要一个管家管理这些要启动的进程-master（节点管理器）  master master的作用有两个 每个node（节点）启动时都要向master注册 管理node（节点）之间的通">
+<meta name="keywords" content="ros">
 <meta property="og:type" content="article">
-<meta property="og:title" content="dawn_buji">
-<meta property="og:url" content="https://github.com/dawnbuji/dawnbuji.github.io/2019/07/25/dawn-buji/index.html">
+<meta property="og:title" content="Mater和Node">
+<meta property="og:url" content="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/12/Mater和Node/index.html">
 <meta property="og:site_name" content="dawn_buji&#39;s Blog">
-<meta property="og:description" content="function doDecrypt (pwd, onError) { 	console.log(&apos;in doDecrypt&apos;); 	const txt = document.getElementById(&apos;enc_content&apos;).innerHTML; 	let plantext; 	try { 		const bytes = CryptoJS.AES.decrypt(txt, pwd);">
+<meta property="og:description" content="ROS通信架构（计算图级） 将程序跑起来会有一个怎样的网络结构，会有一个什么样的框架 personrobot2简称pr2 怎样管理进程，它们之间怎样通信 ros的首要目标就是方便各个模块之间的管理和通信 启动这些进程，需要一个管家管理这些要启动的进程-master（节点管理器）  master master的作用有两个 每个node（节点）启动时都要向master注册 管理node（节点）之间的通">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-09T02:21:38.145Z">
+<meta property="og:updated_time" content="2019-08-12T03:23:57.952Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dawn_buji">
-<meta name="twitter:description" content="function doDecrypt (pwd, onError) { 	console.log(&apos;in doDecrypt&apos;); 	const txt = document.getElementById(&apos;enc_content&apos;).innerHTML; 	let plantext; 	try { 		const bytes = CryptoJS.AES.decrypt(txt, pwd);">
+<meta name="twitter:title" content="Mater和Node">
+<meta name="twitter:description" content="ROS通信架构（计算图级） 将程序跑起来会有一个怎样的网络结构，会有一个什么样的框架 personrobot2简称pr2 怎样管理进程，它们之间怎样通信 ros的首要目标就是方便各个模块之间的管理和通信 启动这些进程，需要一个管家管理这些要启动的进程-master（节点管理器）  master master的作用有两个 每个node（节点）启动时都要向master注册 管理node（节点）之间的通">
 
 
 
@@ -120,14 +120,14 @@
 
 
 
-  <link rel="canonical" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/07/25/dawn-buji/">
+  <link rel="canonical" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/12/Mater和Node/">
 
 
 
 
 
 
-  <title>dawn_buji | dawn_buji's Blog</title>
+  <title>Mater和Node | dawn_buji's Blog</title>
   
 
 
@@ -254,7 +254,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/07/25/dawn-buji/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/12/Mater和Node/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dawn_buji">
@@ -271,7 +271,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">dawn_buji</h1>
+          <h1 class="post-title" itemprop="name headline">Mater和Node</h1>
         
 
         <div class="post-meta">
@@ -283,8 +283,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-25T15:08:51+08:00">
-                2019-07-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-12T10:25:44+08:00">
+                2019-08-12
               </time>
             
 
@@ -306,8 +306,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/测试/" itemprop="url" rel="index">
-                    <span itemprop="name">测试</span>
+                  <a href="/categories/ros机器人操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">ros机器人操作系统</span>
                   </a>
                 </span>
 
@@ -343,46 +343,51 @@
       
 
       
-        <script src="/js/crypto-js.js"></script>
-<script>
-function doDecrypt (pwd, onError) {
-	console.log('in doDecrypt');
-	const txt = document.getElementById('enc_content').innerHTML;
-	let plantext;
-	try {
-		const bytes = CryptoJS.AES.decrypt(txt, pwd);
-		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {
-			onError(err);
-		}
-		return;
-	}
-	document.getElementById('enc_content').innerHTML = plaintext;
-	document.getElementById('enc_content').style.display = 'block';
-	document.getElementById('enc_passwd').style.display = 'none';
-	if(typeof MathJax !== 'undefined') {
-		MathJax.Hub.Queue(
-			['resetEquationNumbers', MathJax.InputJax.TeX],
-			['PreProcess', MathJax.Hub],
-			['Reprocess', MathJax.Hub]
-		);
-	}
-}
-</script>
-<div id="enc_content" style="display:none">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</div>
-<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>
+        <h1 id="ROS通信架构（计算图级）"><a href="#ROS通信架构（计算图级）" class="headerlink" title="ROS通信架构（计算图级）"></a>ROS通信架构（计算图级）</h1><ul>
+<li>将程序跑起来会有一个怎样的网络结构，会有一个什么样的框架</li>
+<li>personrobot2简称pr2</li>
+<li>怎样管理进程，它们之间怎样通信</li>
+<li>ros的首要目标就是方便各个模块之间的管理和通信</li>
+<li>启动这些进程，需要一个管家管理这些要启动的进程-master（节点管理器）</li>
+</ul>
+<h2 id="master"><a href="#master" class="headerlink" title="master"></a>master</h2><ul>
+<li>master的作用有两个<ol>
+<li>每个node（节点）启动时都要向master注册</li>
+<li>管理node（节点）之间的通信，node之间点对点的通信</li>
+</ol>
+</li>
+<li>启动ros程序之前，第一步就是启动master</li>
+<li>启动ros master的方法：<code>$ roscore</code></li>
+<li><code>$roscore</code>启动了以下三个东西<ol>
+<li>master：节点管理器</li>
+<li>rosout：日志输出 node 告诉我们系统有什么error、有什么warning，把这些log记录下来</li>
+<li>parameter server：参数服务器 做一些参数的配置</li>
+</ol>
+</li>
+<li>启动了mater之后就可以启动一些具体的进程了，即node（节点）</li>
+</ul>
+<h2 id="node-节点"><a href="#node-节点" class="headerlink" title="node (节点)"></a>node (节点)</h2><ul>
+<li>ros的进程，在ros中叫作节点</li>
+<li>pkg里的可执行文件（c++编译的、.python、.shell）运行的实例。当我们运行这些可执行文件，它们被加载到了内存中就成为了一个node</li>
+<li>可执行文件是静态的，node是动态的，一般来说一个node就做某个特定的功能，就专注做某件事</li>
+<li>node一般都是以功能来划分的，不同的功能放在不同的node里</li>
+</ul>
+<h3 id="node启动的方法-rosrun"><a href="#node启动的方法-rosrun" class="headerlink" title="node启动的方法-rosrun"></a>node启动的方法-rosrun</h3><p>启动一个node<br><code>$ rosrun [pkg_name] [node_name]</code></p>
+<h3 id="rosnode"><a href="#rosnode" class="headerlink" title="rosnode"></a>rosnode</h3><p>用来管理和查看一些node<br>列出当前运行的node信息<br><code>$ rosnode list</code><br>显示某个node的详细信息<br><code>$ rosnode info [node_name]</code><br>结束某个node<br><code>$ rosnode kill [node_name]</code></p>
+<p>多node的话，要怎样解决呢？难道要一个一个地启动进程？<br>像这样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ roscore</span><br><span class="line">$ rosrun ... [node1]</span><br><span class="line">$ rosrun ... [node2]</span><br><span class="line">...</span><br><span class="line">$ rosrun ... [noden]</span><br></pre></td></tr></table></figure>
+
+<p>no no no</p>
+<h3 id="roslaunch"><a href="#roslaunch" class="headerlink" title="roslaunch"></a>roslaunch</h3><p>启动master和多个节点<br><code>$ roslaunch [pck_name] [file_name.launch]</code></p>
+<ul>
+<li>pkg下会建一个launch文件夹，里面放.launch文件</li>
+<li>这个.launch文件就是我们要运行的roslaunch<br>这个.launch文件已经配置好了我要启动的规则，且会自动检测系统是否运行roscore即master在不在。如果没有，就先启动roscore，然后按照launch的规则执行。</li>
+</ul>
+<p>####launch书写规则<br>package.xml书写方式一样的，因为它们都遵循这.xml这种标签语言的规范<br><a href="http://wiki.ros.org/roslaunch/XML" target="_blank" rel="noopener">launch文件</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;launch&gt;			&lt;!--根标签--&gt;</span><br><span class="line">	&lt;node&gt;			&lt;!--需要启动的node及参数--&gt;</span><br><span class="line">	&lt;include&gt;		&lt;!--包含其他launch文件--&gt;</span><br><span class="line">	&lt;machine&gt;		&lt;!--指定运行的机器--&gt;</span><br><span class="line">	&lt;env-loader&gt;	&lt;!--设置环境变量--&gt;	</span><br><span class="line">	&lt;param&gt;			&lt;!--定义参数到参数服务器--&gt;</span><br><span class="line">	&lt;rosparam&gt;		&lt;!--启动yaml文件参数到参数服务器--&gt;</span><br><span class="line">	&lt;arg&gt;			&lt;!--定义参数传入到launch文件中&gt;</span><br><span class="line">	&lt;remap&gt;			&lt;!--设定参数映射--&gt;</span><br><span class="line">	&lt;group&gt;			&lt;!--定义命名空间--&gt;</span><br><span class="line">&lt;/launch&gt;			&lt;!--根标签--&gt;</span><br></pre></td></tr></table></figure>
+
+<p>启动pr2<br><code>$ roslaunch pr2_bringup pr2.launch</code><br>通常我们把启动的包名命名为***_bringup</p>
+
       
     </div>
     
@@ -399,7 +404,7 @@ doDecrypt(passwd, onError);
       
         <div class="post-tags">
           
-            <a href="/tags/测试/" rel="tag"># 测试</a>
+            <a href="/tags/ros/" rel="tag"># ros</a>
           
         </div>
       
@@ -412,8 +417,8 @@ doDecrypt(passwd, onError);
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/25/test-my-blog/" rel="next" title="test_my_blog">
-                <i class="fa fa-chevron-left"></i> test_my_blog
+              <a href="/2019/08/12/catkin工作空间探索/" rel="next" title="catkin工作空间探索及Metapackage">
+                <i class="fa fa-chevron-left"></i> catkin工作空间探索及Metapackage
               </a>
             
           </div>
@@ -421,10 +426,6 @@ doDecrypt(passwd, onError);
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/01/hexo-github/" rel="prev" title="hexo+github">
-                hexo+github <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -476,8 +477,17 @@ doDecrypt(passwd, onError);
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -539,6 +549,22 @@ doDecrypt(passwd, onError);
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ROS通信架构（计算图级）"><span class="nav-number">1.</span> <span class="nav-text">ROS通信架构（计算图级）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#master"><span class="nav-number">1.1.</span> <span class="nav-text">master</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#node-节点"><span class="nav-number">1.2.</span> <span class="nav-text">node (节点)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#node启动的方法-rosrun"><span class="nav-number">1.2.1.</span> <span class="nav-text">node启动的方法-rosrun</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rosnode"><span class="nav-number">1.2.2.</span> <span class="nav-text">rosnode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#roslaunch"><span class="nav-number">1.2.3.</span> <span class="nav-text">roslaunch</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
