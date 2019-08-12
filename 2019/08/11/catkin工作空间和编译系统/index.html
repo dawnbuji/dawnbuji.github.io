@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="dawn_buji&#39;s Blog">
 <meta property="og:description" content="catkin工作区间 ros工程框架层次最高的概念  catkin是ros定制的编译构建系统，是对CMake的扩展  编译ros程序的   catkin工作空间 组织和管理功能包的文件夹 以catkin工具编译 创建、克隆、修改功能包在这个文件里完成  catkin_make(命令) 编译工作空间  首先，建立工作空间 123$mkdir -p ~/catkin_ws/src$cd ~/catki">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-12T03:58:18.619Z">
+<meta property="og:updated_time" content="2019-08-12T04:01:22.778Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="catkin工作空间和编译系统">
 <meta name="twitter:description" content="catkin工作区间 ros工程框架层次最高的概念  catkin是ros定制的编译构建系统，是对CMake的扩展  编译ros程序的   catkin工作空间 组织和管理功能包的文件夹 以catkin工具编译 创建、克隆、修改功能包在这个文件里完成  catkin_make(命令) 编译工作空间  首先，建立工作空间 123$mkdir -p ~/catkin_ws/src$cd ~/catki">
@@ -378,10 +378,10 @@
 <li>包含至少CMakeLists.txt和package.xml两个文件夹<h4 id="CMakeLists-txt"><a href="#CMakeLists-txt" class="headerlink" title="CMakeLists.txt"></a>CMakeLists.txt</h4></li>
 <li>规定catkin编译的规则（告诉编译系统怎么package里面的代码，要编译哪些文件、需要哪些依赖、生成哪些可执行目标、怎么链接等等）</li>
 <li>例如：源文件、依赖项、目标文件</li>
-<li>编译出了什么问题一般跟这个CMakeList.txt这个文件和依赖包有关系</li>
+<li>编译出了什么问题一般跟这个CMakeList.txt这个文件和依赖包有关系  </li>
 </ul>
-<p>cmake_minimum_required()        #指定catkin最低版本<br>project()                        #指定软件包的名称<br>find_package()                    #指定编译时需要的依赖项<br>add_message_files()/add_service_files()/add_action_files()<br>                                #添加消息文件/服务文件/动作文件</p>
-<p>generate_messages()                #生成消息、服务、动作<br>catkin_package()                #指定catkin信息给编译系统生成Cmake文件<br>add_library()/add_executable()  #指定生成库文件、可执行文件<br>target_link_libraries()          #指定可执行文件去链接哪个库<br>catkin_add_gtest()                #添加测试单元<br>install()                        #生成可安装目标</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">cmake_minimum_required()		#指定catkin最低版本</span><br><span class="line">project()					    #指定软件包的名称</span><br><span class="line">find_package()			    	#指定编译时需要的依赖项</span><br><span class="line">add_message_files()/add_service_files()/add_action_files()</span><br><span class="line">								#添加消息文件/服务文件/动作文件</span><br><span class="line">generate_messages()				#生成消息、服务、动作</span><br><span class="line">catkin_package()				#指定catkin信息给编译系统生成Cmake文件</span><br><span class="line">add_library()/add_executable()  #指定生成库文件、可执行文件</span><br><span class="line">target_link_libraries()  		#指定可执行文件去链接哪个库</span><br><span class="line">catkin_add_gtest()				#添加测试单元</span><br><span class="line">install()						#生成可安装目标</span><br></pre></td></tr></table></figure>
+
 <h4 id="package-xml"><a href="#package-xml" class="headerlink" title="package.xml"></a>package.xml</h4><ul>
 <li>定义package的属性，相当于包的自我描述</li>
 <li>例如：包名、版本号、作者、依赖等</li>
