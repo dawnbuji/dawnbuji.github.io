@@ -250,6 +250,305 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/07/25/dawn-buji/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dawn_buji">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dawn_buji's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/25/dawn-buji/" itemprop="url">dawn_buji</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-25T15:08:51+08:00">
+                2019-07-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/测试/" itemprop="url" rel="index">
+                    <span itemprop="name">测试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/js/crypto-js.js"></script>
+<script>
+function doDecrypt (pwd, onError) {
+	console.log('in doDecrypt');
+	const txt = document.getElementById('enc_content').innerHTML;
+	let plantext;
+	try {
+		const bytes = CryptoJS.AES.decrypt(txt, pwd);
+		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
+	} catch(err) {
+		if(onError) {
+			onError(err);
+		}
+		return;
+	}
+	document.getElementById('enc_content').innerHTML = plaintext;
+	document.getElementById('enc_content').style.display = 'block';
+	document.getElementById('enc_passwd').style.display = 'none';
+	if(typeof MathJax !== 'undefined') {
+		MathJax.Hub.Queue(
+			['resetEquationNumbers', MathJax.InputJax.TeX],
+			['PreProcess', MathJax.Hub],
+			['Reprocess', MathJax.Hub]
+		);
+	}
+}
+</script>
+<div id="enc_content" style="display:none">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</div>
+<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<script>
+var onError = function(error) {
+	document.getElementById("enc_error").innerHTML = "password error!"
+};
+function decrypt() {
+var passwd = document.getElementById("enc_pwd_input").value;
+console.log(passwd);
+doDecrypt(passwd, onError);
+}
+</script>
+</div>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/07/25/test-my-blog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dawn_buji">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dawn_buji's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/25/test-my-blog/" itemprop="url">test_my_blog</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-25T14:09:10+08:00">
+                2019-07-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/07/25/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -348,7 +647,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX1+p7wp7PXgDdJlfzkcM3+8ys7VcOFcoV4nwGEXEvzSwghwZareriv6UkMKvRQQibwoWZlGNume8c4lkYV3xCJPsh2yZEkvcINaMkIPNMUjnv/vV0xvRcgcax9nMV4GuTARsSFz4VwwSxqUdDPkaitQTyJgWfYWAnyk9YhXdnre4iL917gONwKg89Qk6PPAeGCkDxiC9YR322pSellJFgVslh88NLsE48n6wWXsUZ1TBy/pa8CwvrjK3pMBa/GnCwXdZKf0XnRu43eCD4FNM9iCqVXmkEcToASBv+9htZHxofBAwC4KFKMT4frQZBIKX9g7U2yed7GNCC3DjVR80VHZbtBcw/ndttClbGwd4LnFyoLbOAuSZtzur9M6v6S24mnkcwGM+dvlLKH4j3BZ++ES6c+DO1wBSAdHtXp0EC+HfILd9XZjW+5ptbaqoBJHM0wuXSsdgPH5SP0V4hw3VIYk0pzVyYJVJdNYnyFqHx47Z58bc7stPyS1+LH+Xc2UpY+GfBTGhUfj4GNBFpr8yyB80yj+Hflz3xqwbxywF28yVCTgYc/fI7fT0SUgJgBJRXKvFBWppNNQAEnCJhsWFTCzmo7pygG8b42YDqf7xcS4a/+LkUo2pimrWsjQe0qf1IKA92lwAbf2TXP8SOBzQwhYcVWHb+W4TqOo5iBV0L69IVGpXFO/g7j1meUTtFBHXkNPFRbY0wNqmchyXtsws8gu1Wwhu05Vo2oncbY44F67Zz9DrfA19LHSM1qZ12DKJDn9FjQApUgK6BuW04oyVdNUDtfcy2vi0cdrohXPyLu658GHUigFBJznWZEwNAZEOQ7e5a6F/XR2roicV0j/khFm426XXYgmRbJKys3xMtfmmBVfKQDzGOKGRo58OJ857tjgmT3mL+FyOZYEoDzG0HcAULfeGNfqnJAbao5hD0ZIdHbYHJFwZmptgZiCKjxrTfMLVrbU0ZMTBfBVz6nFyK92Jsiv3Up9MkVnVp2oSeYL/BNqtU5shR8D5mX3Mp1HV/afg66CC6VSe2Ql0oRR+SOo6Trl137Y7HZIKa4uOplC0oTWipwFWM53AsT6JpaOVmZWrDHfCNCjyVpQNTnDrXs3vQ3yW2S0W/yHS3q8+9AjNuHoz7jejRQQ87Z+w4taniUMYHvypzxXGqVfMDNs8R/Maz9RmagvEAUEyQaT0DmPuwh/OFnriNUYGU7Jr5BfVci99wRK/6om2gfENkucopZJ6tl/ZyKhSQomGUIRfKK5pvzC4bgzGRjHG7FX4zN8xQDHdkPGJvSW/m5axI1bfLSps3IrqjB44qzdYggrOIWddp+SVDbH3ZMBwkQpz4II6GGX+F0JaLYkVn9nfRUxv6ktgsyjjMBRbqkM7oj4Iu91Z5abGa/mI+z4EY5KFbcKYnrrnMGGaowRCk2DETp9/nlWdKEnX3F0Jt+PnwQWSEeF12HJzim5UJ0w3re0ED6b7zFVl4ZdxG73A+MQ7OJAyMzwYNKDrFpvqrmUNQ07lggLBatKbv/1abNuWvMUyJ50g1NGoMSenHq2ZDwBmgGKB4AvodDE+BGd8bWEzQQf13JTlXBfKuAMiUQD+NnXO0Yi5X6QfZAnjXJzvf/MWmw1yTbjNPyZWZ68gypT7WGLmTegogpU2hwJp/z4W7f0YUJsiG3ar/grS+5KP8t4fEy+prPe4tlQ2XScWCtI12e6KzXDHjk6pT549ym78ODESFwgRnAVkNh2qW3Wf7vSwa/A9hpuweWiHs3mAaz0D8zSOs8cPy8dgCKjDpuBE48yxYg565KxjZSksmcQbXGpG8pv2jEfXzW2zHxTh+ZFy55OO+FRd7FfwseKs51YClZWzk6I2CtLhuhADaIL/VW/OH0HJVk83o8wSIcD+PCvwPFzpuuoaUVsCSEA9mcxNAAc7lvr0mqmVhE4LNfZvYXQlbEDmj0vhhlgHYi1sUPvU5IRXl2lc0prw0HiHgEdqN+c+OJL24lDG4LETUkl2F+wTlWX/eEea21l/mTbv5UsEuwBkzUPfQzj6BsEuIGdU0dobHzw/RWbRIlwhuJ0qVxDBCJwodVnRwyctuejgKJvyeBQvhqdbZqWOQyPlzOVrEJuLtBi98eCcn8CAXCD3OjnUyl7LK5BbrGMT0a4PFvRxNiuaRO6BuLndx37GrXoDeLeVsBLp9QlW1TLcQmQM/dWHUvDA7MP5G0G6cEXLLj4OQgYl1EfYC0qjNk6KBJttNd4A5icrydd055vuhF/l6qRsz0H444Cb934ja5yS8B1TH35t9ymC5q1UJLftzElXPIIh+mq4KKbQR4dL7ISXxcHN2A6pNWY7L+ywEiFC6QYfivPyfXhXGbjzoJOWgtC32uL4UtdqH1v9iGzywCCP7o245tZQiNf54vO4F5LxaZRKG9uI+Hq86nAiiEteIDyhzOdOam63UBsZAOqVZ5C1nPkTi/NcUlytZ7ofuczXsu7h1xO6VBCrtacaPKhreNWtt2ml/WdrlO4x5P6I0PIuN1E+gkot4uZdhj6nHE3QmLxdtDV7SruK53ytRcQNfDiXdIo5SSxLjv5JN2oKTbtyuwHvDzV853zxC0Fu9MtbpNi/7isMBNprNVkQ25LcOFf7bCgvN6JVK6JmNDHJrwQm8SBFA3iUtOSBrn7XzhBHcZT9hFhXYi5IPcnCCOzv6mG7Lr8VjGOT/cxJf0L9jybCypfIo5Ckke9zfNt8CPd3jwIVVSynTobn/AGWYGVfQU0NSga5sOEVDQHHdC43KMf2bHvTn2UuKoJpb69FgO5YSc96Z4BmagfDR5xUUvFcyEcc/1EfSjxEBd+EN76Q7i8xxRJdg6wzSbM5u/YC6kvwiJQyr/9az6W/KBWa4nFf7+a31yIIJLlvmI1oR7hfC/bvZNB5HntiJBzEA9uQgWxPKf9HIWXT/9oGDgxG3RekkOtuFPImPelQL6n6Uu2hUv5PEa8umKXhWqIP4uPnRQG53Msy92B4EtHyABq3hyBG7ivefBI2aVpXNa9lOMbXIhOvX+NTW7aca/UPUzu6W4YIvEQyhuLovNznhKChNYlk175eWUcaiz9m9H54sdPtRpHU2dBWlbpoT3W12srHMbdsq8SzwN9Rv3QMOEySnwbz8ZT+bsAV7xfl3MbeCH0Uwvzfo/8PRtOjtYerMbI6StwXvEEFVHykfyYCOANI4OXSwfZhmGgnubCywW96x6nYvlvOPQ==</div>
+<div id="enc_content" style="display:none">U2FsdGVkX1/KTOopXEch/XG7KIj4Vv4Ncmt24DJs+AvUQxiG+obcJs6Z5jnkrJg5+zjGwJuclGhd2aBmA9g0UEL0AUAaduKIQE0WtFf3fhq20vZY356esqOIHgHyGUABJvN4Se6qloU57+4lfhxmtvb7UoaTN+T0oSd+XJVbbbtBwr4GH8mZ/7bPBsqDdV+YTwmTP3qCBHEGLb4VAiq0K+GBJdZixWPIA72GZMjtYei7stCvXiFhFAP7LZDepd+ItjKtjRBeJgkcy/PyUM3DxorkSBxgpOvPQSPRvARUleuTzAiDRfXnyTIeYyjpaoPC6DYM9LxyXZ4ynoPAkQ2EpoE4ryKsgMyYeT1oaHdshMuUGJZ/UYmdmD7XPMV+ssP6YPelPzR4SmKQ6oN6EVayCx/Ij6HgPwKoRmZuA2AD6xBbqtOjGhoW7RvLIevEAupDqFcfU+ORH4glK6w+a1qJDmIqGjEE6l55mhYrHWPUUtSnC7FM5BORcwNEDSCsv24UvqYtJv1gek5BpHWZGaw8HB8N5JgWwZbEUbUpKib+S7wzrTe5mMwzRX/MmxCkAPZH83hq74FcZ6u9ffCurt3Y1NuTLuI3t7LYvD5JG9SEo+bwqiAnVHzI5sLDVwB7jnBbMqhPv1/yZxZppjV1XchTWhLmJJtjcZpKmnBkllvt+0d+FKSbbBCuFYOm72T79s2jdHSZyDfn8zJHCN7kcpIEnKe/D3DQlIBa2urY0tbYi2It0kaP/lFJg6PfUk4jZyUPExmLpNcPhyZFWr8dL0Z1VEQ6ppcZCqXNlaPPcigR2uApuSycl0hEE0eKlVQhO2+LnooeCAyOEcMmimIneJM3lqupHO4xJ5KdZ5vd7QOjnWzXtcZAEcfXEgxIJ5j/B7YoiLw3sU7f6pxtHCQVQhY+ZR9YRmzJ4UT+KTZlaPfVKIv66kbQgthABT4199x+wYIDhHjsMtLLPWpDSbeTADLgFkwQ5myXcO0xM4EtHRPtoE1aYwEED7VxPukb5G/HYuSkX4hH8bgNKgiGDPiVmM4tm/QpKcxp9R5pjq16xAm4Ok9t1BDTfsEbFop2D796Se6YQ3lxqMQfIwoB21u6/iIrIfZcighWI8EvXyRid4lupGdFL8WEEdxOelSrToK7pjvx3HfbJh5CzdICR08OnFEqg93UbOX9kWgbjxb2ajgceyPkqNCn0PnE9N9Au8gfE6XccZvq8d8TCY3/vorm5uFycyFMopIJB9keUxVs8tS7wOhvHmPaNOpUiOSbABTdCjK+9+BxVkSUxbMgx6cgU2HheNIjcByMX4kyu+Be4BjnvZff/WUayO7RuwLA1WZf+xkYKFCmfbb2vsOKBKLv+AW2KETBnSE/3iiVKNkTjxLPsx6rTzOQpudTAeENw+EKR+cuAQh0Xi2oO/PsZDjpwuLjdDAYIwKQgR5ctMzy7pujv0vBbyt6ge3+daLn0OawgppBiXxiyHdTswHrQZM6xRGLhf9YErgXWnKTUkK+bjSxvgVbbbdHkiSH6of/GZINPDMKQrBkfkMX7VM6fBIJonKUSjU4syW77e8O/Y84zfhIG6bHEUwBhbl4KPY4USB+iBfpiu/nsO2LM9VE5gpZ4oLlHvxcp8znX31egpf7VaHCO6h8b9T99zLr4wZXWj6v8p0hrx9s6qHZt/bbV7j12Y7evVSK81c0WU1tsgB60hlly3XsxWWyY62zq5y4bgP14Aih2eNmoGWFucciPn6ApwwrKgpXlYGnFWZG41tNsRynRS66Xdi6ixeaMQh/eaJrOPnNzld//gZ4UkDfqxDNAiA5HZPRqGBLyu5YbqHH9hV27D+4f/B1EJTwcoYD5fmcTmIEZKizDl3Zny2OLUafs5/kWuXia1NAIzRN/uhkkUWkL6GbTXIklMzA2OpdWOvfO8M8MdL551MHMSOeKi6a1it7clc/vUdD3fe58ZqTvWA46GMkd0VsyOq7wkHPrTnR+/sJlf7YkDPRTt6m8IdLH/AKlrm9BurGxFsqgM6jVvn3ZB6dkaQ3txGWUqog+UJ1NJjokg1b8UIk8uPduTdVvQTibKOHHIjw4M9XhhcA90/HVoF0IDpMebKMbjQBDtkgdPPsG/e11pXW1KeoG1lp/9B2QYP9nPhVrTUWaiWrgYkJTl5mYCSEK/uscmkP+JPuZtA44c1y6A+46NRstoU14JD3TqJZlywvECvVNUWg0oEirPif/Ef1lYF4ZaYqpsDi4FuyLyhTorIBr7jTA/I6sVkX4SnN88/kj10BJnqZosrAkHzLt+EoAvPp7rXPD9+mYdJM+AFrSdRkNWN7+ChJUJrEesE/Xl1WsxJyW9Y8ayei0j07V+DMU/HEXWV5J7sZIYys4SZp4w+VDlxF6kJcjod3j++wdNCqYhkum++Vj6D5DQQJaogVXFv2WMZmlKmCpIg6EkHXrySMOctnIqRTh2bNRo/BLcoqsX7rnB1G1ChNoILOSAvr4vsHqOXeUAafgXLxKZneokGlUaU0Wa1WVDNStAy8wUgyfKcZXLGrZhxF16/bRhSNSJSC3UhqeKJBWXpjYm2I1Irpcg6sqQovrTR9mzGCfiuoJY5V3DxfqbTC8ZKUBzWZRzW6l5jL6H2UMJ0JhqwcvgXusPr9xxLsW2KBvnP5PnX2q9n7IvrTadKy48CregDx1tUH/Z8XMrlbKxP6/s36zfDPfjaHNvcL//Y7BYen/fntLyc0cLE7BQZERprqnkSFqwq9ZZCvOvd6LAiVE5Av7m0NnXECdtVfDqt0usnZaZfjZtFwcVxkNTszy9p0dO6M1CyvrNuncn//jPT5b1gT2Ii3DvPTc4+owvT+GrO/IdpF/xajwxO7/M0cifj05OkQpPC0rPI2D8Dz9Fih//z+LR4oN1hTGnMKlBvexWyaV/e1oBgWd7eb967CuCGaG/MGgFN5dfgntpmBifrXVE6AXUwt/hHhJV36qlnTz7dG0d0k0moos2E+V52TMZaE1pY4SQS8xiC+yLWsEjistnqrCcpk/keku1/Hr7+0+yX4H79DEjxLO1R+5qVmGuRRjKIbjvBlRsgyPBIlRfwAX2e4h7YwxbqdT+xvbnkDA3555lPuPtz8yj0oinFO231k9i2+cAu77z8yTdgrOXyrWVjKJ8n/MUF9eRQDVuPaPx8LPe6Y+Iy2aU8UtuqN488XeiJefRUuxSJYtLjSF/8d4W6zinCJbKoZQ8LT8gArFQ==</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -447,7 +746,7 @@ doDecrypt(passwd, onError);
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

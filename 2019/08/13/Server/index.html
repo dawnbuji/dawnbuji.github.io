@@ -88,7 +88,7 @@
 <meta property="og:description" content="parameter server（参数服务器） 用roscore命令时已经把参数服务器启动好了 有别于ros里面同步通信和异步通信的通信方式 更加静态 存储着各种参数和配置的字典 可用命令行，launch文件和node（API（在ros的源代码里））读写（维护方便） 字典就是一个个的键值对，字典里面的key不能重复，都是唯一的，每一个key对应着一个value 字典就是一个映射关系，在实际的项目里">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://github.com/images/rosparam.jpg">
-<meta property="og:updated_time" content="2019-08-13T02:59:14.605Z">
+<meta property="og:updated_time" content="2019-08-13T08:20:47.924Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Server">
 <meta name="twitter:description" content="parameter server（参数服务器） 用roscore命令时已经把参数服务器启动好了 有别于ros里面同步通信和异步通信的通信方式 更加静态 存储着各种参数和配置的字典 可用命令行，launch文件和node（API（在ros的源代码里））读写（维护方便） 字典就是一个个的键值对，字典里面的key不能重复，都是唯一的，每一个key对应着一个value 字典就是一个映射关系，在实际的项目里">
@@ -369,6 +369,7 @@
 <h2 id="在launch文件中"><a href="#在launch文件中" class="headerlink" title="在launch文件中"></a>在launch文件中</h2><ul>
 <li>在launch文件中与参数服务器相关的标签是<param>与<rosparam>标签<br>形如<br><img src="/images/rosparam.jpg" alt="rosparam"><br>注：其中的name就是key<br>  第一个value就是xacro.py这个脚本去执行robot.xacro文件得到的结果作为value<br>  第二个标签就相当于从xbot2_control.yaml文件读取参数到字典里</rosparam></li>
 </ul>
+<p>一般在开发中，习惯把一些算法的一些参数写在yaml文件中，在roslaunch启动时把它读取并启动起来<br>有了param就将参数和代码分离开了，要是调参的话，就直接在yaml文件里修改参数，每次加载时启动</p>
 
       
     </div>
@@ -408,6 +409,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/13/action/" rel="prev" title="action">
+                action <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -486,7 +491,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
