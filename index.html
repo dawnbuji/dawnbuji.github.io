@@ -250,6 +250,579 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/13/Server/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dawn_buji">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dawn_buji's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/13/Server/" itemprop="url">Server</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-13T09:41:17+08:00">
+                2019-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ros机器人操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">ros机器人操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="parameter-server（参数服务器）"><a href="#parameter-server（参数服务器）" class="headerlink" title="parameter server（参数服务器）"></a>parameter server（参数服务器）</h1><ul>
+<li>用roscore命令时已经把参数服务器启动好了</li>
+<li>有别于ros里面同步通信和异步通信的通信方式</li>
+<li>更加静态</li>
+<li>存储着各种参数和配置的字典</li>
+<li>可用命令行，launch文件和node（API（在ros的源代码里））读写（维护方便）</li>
+<li>字典就是一个个的键值对，字典里面的key不能重复，都是唯一的，每一个key对应着一个value</li>
+<li>字典就是一个映射关系，在实际的项目里，我们往往把一些不常改变的参数、配置放到参数服务器里即字典里</li>
+<li>这样对它进行读写都非常方便</li>
+<li>字典形如<br>Key|/rosdistro|/rosversion|/use_sim_time|…</li>
+<li>|-|-|-|-<br>Value|’kinetic’|’1.12.7’|true|…</li>
+</ul>
+<h2 id="常用命令rosparam"><a href="#常用命令rosparam" class="headerlink" title="常用命令rosparam"></a>常用命令rosparam</h2><ol>
+<li>列出当前所有参数<br> <code>$ rosparam list</code></li>
+<li>显示某个参数的值<br> <code>$ rosparam get param_key</code></li>
+<li>设置某个参数的值<br> <code>$ rosparam set param_key param_value</code></li>
+<li>保存参数到文件<br> <code>$ rosparam dump file_name</code></li>
+<li>从文件读取参数<br> <code>$ rosparam load file_name</code>#从文件读取参数到字典里</li>
+<li>删除参数参数<br> <code>$ rosparam delete param_key</code><br>注：dump或者load的文件要遵从YAML格式<br>形如<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name:&apos;Zhangsan&apos;</span><br><span class="line">age:20</span><br><span class="line">gender:&apos;M&apos;</span><br><span class="line">score:&#123;Chinese:80,Math:90&#125;</span><br><span class="line">score_history:[85,82,88,90]</span><br><span class="line">#格式 key：value 也是键值对的形式，相当于字典</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="在launch文件中"><a href="#在launch文件中" class="headerlink" title="在launch文件中"></a>在launch文件中</h2><ul>
+<li>在launch文件中与参数服务器相关的标签是<param>与<rosparam>标签<br>形如<br><a href="/image/rosparam.jpg">rosparam</a><br>注：其中的name就是key<br>  第一个value就是xacro.py这个脚本去执行robot.xacro文件得到的结果作为value<br>  第二个标签就相当于从xbot2_control.yaml文件读取参数到字典里</rosparam></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/13/Service与srv/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dawn_buji">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dawn_buji's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/13/Service与srv/" itemprop="url">Service与srv</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-13T08:32:53+08:00">
+                2019-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ros机器人操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">ros机器人操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h1><ul>
+<li>ros中的同步通信方式<br>  同步通信是client发送一个请求会一直在原地等着，会阻塞，直到服务器端返回来结果，node A才会继续执行</li>
+<li>node间可以通过request-reply方式通信（请求和响应）<br>  node A（client）客服端 node B（Server）服务器 node B会给外界提供一个/Service（服务），别的node来请求node B来调用这个服务，即node A会把Service需要的参数传给Service也就是请求它，node B收到请求就会做处理，处理完了就会回复给node A</li>
+</ul>
+<h2 id="Topic-VS-Service"><a href="#Topic-VS-Service" class="headerlink" title="Topic VS Service"></a>Topic VS Service</h2><table>
+<thead>
+<tr>
+<th>对象</th>
+<th>Topic</th>
+<th>Service</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>通信方式</td>
+<td>异步通信</td>
+<td>同步通信</td>
+</tr>
+<tr>
+<td>实现原理</td>
+<td>TCP/IP</td>
+<td>TCP/IP</td>
+</tr>
+<tr>
+<td>通信模型</td>
+<td>Publish-Subscribe</td>
+<td>Request-Reply</td>
+</tr>
+<tr>
+<td></td>
+<td>publish-subscribe（多对多）</td>
+<td>client-server（多对一）</td>
+</tr>
+<tr>
+<td></td>
+<td>接收者收到数据会回调（callback）</td>
+<td>远程过程调用（RPC）服务器端的服务</td>
+</tr>
+<tr>
+<td>应用场景</td>
+<td>连续、高频的数据发布</td>
+<td>偶尔调用的功能/具体的任务</td>
+</tr>
+<tr>
+<td>举例</td>
+<td>激光雷达、里程计发布数据</td>
+<td>开关传感器、拍照、逆解计算</td>
+</tr>
+<tr>
+<td>注：</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1. 回调函数来做一个处理</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2. rpc就是在一个进程（node）里面去调用另一个进程（node）里面的函数</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3. 远程过程调用是和本地函数调用这个概念是相对的</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="常用命令rosservice"><a href="#常用命令rosservice" class="headerlink" title="常用命令rosservice"></a>常用命令rosservice</h2><ol>
+<li>列出当前所有活跃的service<br> <code>$ rosservice list</code></li>
+<li>显示某个service的属性信息<br> <code>$ rosservice info service_name</code></li>
+<li>调用某个service<br> <code>$ rosservice call service_name args(希望传入的参数)</code></li>
+</ol>
+<h1 id="srv"><a href="#srv" class="headerlink" title="srv"></a>srv</h1><ul>
+<li>service的简写</li>
+<li>service通信的数据格式</li>
+<li>定义在*.srv文件中</li>
+<li>*.srv文件一定要放在srv这个文件下</li>
+<li>形如<br>my_pkg/srv/DetectHuman.srv<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bool	start_detect#请求这个服务要遵守的格式，可以 比较简单，就用一个bool型</span><br><span class="line">					#当它是ture的时候，就开始检测，检测完了之后就回传一个HumanPose[]这个数组</span><br><span class="line">---</span><br><span class="line">my_pkg/HumanPose[]	pose_data#这个服务应答、返回的格式，回传定义为数组，就是说可能不止一个人，</span><br><span class="line">							 #这个数组是自定义的了,定义在msg文件中，srv可以嵌套msg但不能嵌套srv</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>my_pkg/msg/HumanPose.msg    #msg一种自定义的数据类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">std_msgs/Header header</span><br><span class="line">string uuid</span><br><span class="line">int32 number_of_joints</span><br><span class="line">my_pkg/JointPos[] joint_data</span><br></pre></td></tr></table></figure>
+
+<p>my_pkg/msg/JointPos.msg       #定义JointPos[]数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string joint_name</span><br><span class="line">geometry_msgs/Pose pose</span><br><span class="line">floar32 confidence</span><br></pre></td></tr></table></figure>
+
+<p>定义了srv或者msg，要修改package.xml和CMakeList.txt，具体就是添加一些条目，指定了srv和msg编译运行时所需要的依赖<br>只有自定义了srv或者msg就要把这几条添进去<br><a href="/image/rosdepend.jpg">rosdepend</a></p>
+<h2 id="常用命令rossrv"><a href="#常用命令rossrv" class="headerlink" title="常用命令rossrv"></a>常用命令rossrv</h2><ol>
+<li>列出系统上所有的srv<br> <code>$ rossrv list</code></li>
+<li>显示某个srv内容<br> <code>$ rossrv show srv_name</code></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/12/Topic和Msg/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dawn_buji">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dawn_buji's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/12/Topic和Msg/" itemprop="url">Topic和Msg</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-12T21:06:46+08:00">
+                2019-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ros机器人操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">ros机器人操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="通信方式"><a href="#通信方式" class="headerlink" title="通信方式"></a>通信方式</h1><ol>
+<li>Topic(主题)</li>
+<li>Service(服务)</li>
+<li>Parameter Service(参数服务器)</li>
+<li>Actionlib(动作库)</li>
+</ol>
+<h2 id="Topic"><a href="#Topic" class="headerlink" title="Topic"></a>Topic</h2><ul>
+<li>ros中用的最多的一种通信方式</li>
+<li>ros中的异步通信方式</li>
+<li>Node间通过publish-subscribe机制通信<br>node A向Topic发送消息，node B向Topic订阅消息，topic就像是一个频道，node A向这个频道发，node B向这个频道收听</li>
+<li>是一个字符串string<h3 id="什么是异步？"><a href="#什么是异步？" class="headerlink" title="什么是异步？"></a>什么是异步？</h3>例：node1（camera）-&gt;publish(发布)-&gt;/camera_rgb、/camera_depth(Topic)<br>这个node只管发布topic，不管有没有人接收和处理<br>node2(image process)-&gt;sub（订阅）-&gt;/camera_rgb、/camera_depth(Topic)<br>这个node只管消息来了 接收、处理 不管谁发布的<br>对于发布者来说，当它发布了这个消息，它不用等待这个消息返回的状态<br>对于接受者来说，有消息到了就去处理，没有消息就可以做别的事情<br>这就是一种异步的通信方式<br>node3（display）:也可以同时订阅/camera_rgb等topic</li>
+</ul>
+<ol>
+<li>topic的通信方式是异步的，在发送的时候会调用这个publish（）这个方法，调用完这个函数，就可以立即返回了，不用等待发送之后的处理的结果</li>
+<li>topic可以有多个subscribers（接收者），同样地，一个topic也可以有多个publishers（发送者）</li>
+</ol>
+<h3 id="Topic相关命令"><a href="#Topic相关命令" class="headerlink" title="Topic相关命令"></a>Topic相关命令</h3><ol>
+<li>列出当前所有topic<br> <code>$ rostopic list</code></li>
+<li>显示某个topic的属性信息<br> <code>$ rostopic info /topic_name</code></li>
+<li>显示某个topic的内容<br> <code>$ rostopic echo /topic_name</code></li>
+<li>向某个topic发布内容<br>  <code>$ rostopic pub /topic_name ...</code></li>
+</ol>
+<h2 id="Message"><a href="#Message" class="headerlink" title="Message"></a>Message</h2><ul>
+<li>是topic内容的数据类型，topic的格式标准。message是一种数据格式，信息要遵守的规范。相当于类这个概念。</li>
+<li>定义在<em>.msg文件中 `pkg/msg/</em>.msg`</li>
+<li>基本的msg包括<br>  bool,int8,int16,int64(以及uint)<br>  float32,float64,sting<br>  time,duration,header<br>  可变长数组array[],固定长度数组array[C]<br>message就相当于一个结构体或者说是类</li>
+</ul>
+<h3 id="Message相关命令"><a href="#Message相关命令" class="headerlink" title="Message相关命令"></a>Message相关命令</h3><ol>
+<li>列出系统上所有msg<br> <code>$ rosmsg list</code></li>
+<li>显示某个msg内容<br> <code>$ rosmsg show /msg_name</code></li>
+</ol>
+<p>其中一些topic如/camera/rgb … 和/camera/depth …,即图像的色彩和深度，两者信息融合后就可以构成点云（pointcloud），这个数据，用于定位、建图、识别这些功能上。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/12/Mater和Node/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1212,7 +1785,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX18syU+WRifrWrkPbhlZDU20n64Zsc4BcqoVpIy4eb5h+NMIDVUxq3+F63F00nT62F+Vm39UZXOa5a26xdveZ3Wt54Xso8DuX15Ut1+ITWrR4lYB9UCWE4hZu0H7mGiTO2U8WfPW7pCnQfYofo+AP46Gly9Sx+tovpbVvv1ZyefwCp1URGae15vTBYJgRYnuUh1dyYreN05Lz0Q4aCK71JSKiGFJcvlqGyjAOzV316+CoBfDkEt77XinJfmrirsBK9HVtzEd6gC41quJ33c5oyqUjUsx9/QQ1QjIyVmycgvJLrEB8+afNa2MddQAUG36cyd+JEQmXLOOZCSc4PLpQAZ5S+9AKyd5oH4d/dG4rfMJgebqulKx8hymXTNYht4kyEEVcDVtcZu1uxSNh8gcLUxaKWi8cyqpxzsSixjJZcHixRj8vSTP3eQAOXAeVD5OZNgwsWirMcFOxxLQU2FkCuR/g6w7uYeHizex7K9tjN9NU+FgEmXipbu71ejiPrvcJoc/QYuLM/aekl7ftifXXVAvtLT0K67wQrCeyCrvIRTWbzQj44dq5eT+224e+lJ4Aqq718310rVZWImwkjnhYU17EYbC22HD8mFAPNhKS6msIITHBsd46oaSp7HU05DixQvOr0DONnlqRI42iW/g9xeUcodvyrgj6GcSRASf1Yv5xOoGcQ54sC+JateY1g2MpcBmFN0dq8JIF+TCYWd8UwJyPZgEHmpXlIOQ+1cAy/3plMPDTpYGaKCJOgZ6Kl4nRB1gRQR3di77xys3ikPaYQZtJFnJCuwmUoDKmaumBH3SVbeUDis7GzoS5BO40J2xab/NMRijYm45n5XcHJ4y2NoQ43IUxRg4i0a9sN/O+6FQRkGvkRjbyEy++6csbeWPQe3DnKX+ktSAYPNsk0E/fH2wfGRMvO5jjrDJIqsLy5w6XY568SufSkzP0A2fgUQH8/N5JAdOrQmlSUA4JtrBsDqfg4xHbXBLt/K8tNJoWux9T2oENOd15FRaNyQZw0+TciYpHzTqz0x0W+TT5EyZAgnfpkyT6ljWCVsvdcHonRwYq9nT0Lkq5yWsFlZh7a/Uaop0Qz44I2psG84zLAQ35Gvz6Xd24OYOlqctBYkLm27ZO7v/OFoxddhMSK1AuqxP49nA4mWnKHv2BOON8bFgAhb9ssZzT27VphCKVtAJ97NraI5eab6QIngFtDxQryF4KjR5cq8C5ozHb4VPBEyIZ4mRUYNgn3oDSmqqjZIzR6KnHLhgoC78zDjn6FxWdhWRpL9iwDFAqqPiTpfUSpvDyTKVvL4SdQN895Eu84zwupS9FnoVR8VwXs8G96wE8sGncVUoc8texBvzdvH75jE61wdDYcnJSmUomqJAF+1W87jpgPn9RduGQ17eEDYavHYZbGDBS0c4f5/mbfusIaoiG1onvY20i96rSoDpM8ymXTIPVNwOcUT+QhO5MKfxb2SFQaaenb+9830c8CdOMLXHSAa8SMV+H8afq5wbh+R6y5tImkygC2WCmtvxQqiW/VBC9VrszRk60JG/yADsKZp431C8AV8vf9Uhmibkq4sqksCWhrgrPPYh0H7mNEHb+ljTkj9/upnweTU6UUADVhhYbX2RZO0ff/wfGoLpygtWXk4lLRXwg9HU91OoghOp/pbj45mGAaO7CyIDE+Jw6ZGHC1ma/j1cknsqUeMaolAXDtRvyQ3ldB7bG7u0ijDmZlq0ZPRYM099kIGjzZZn75vzswS1WciLR/5QwJVxE8f4SCUY7+bsZQqLVkjAFtbygYp0RQheRNVLBUvKoq+ltU+BZ8wvDqXT8x1+izgdZ56R2X8hkH+KLesy4lEm</div>
+<div id="enc_content" style="display:none">U2FsdGVkX1+zcQ6PVBHgVGihGEoBxiipbxvVRgVRj2tZ8F0Vq8lzsJxhHr54IIYID3yip1zYLMWsrQEhKJq0uvE9sGcWL/IeM3vhqD4VoUq3yAb389TDPBgTGuHy+BjxNeE1DWCRsqNKxfQ8A5LffcZbC7ir0nhGh6S+00NnnHQeaGhbW5uWSI9yCvjJDL12bgXCiPUJRaGukfR17pndGU2FGIhKSSjxxSfomAxiyilE6LxXABhPD1OaRVpGMgK37lQtvHvVOe6+zrKmcI3RDIGYJxZ0x/uL0o2oKtGzEgcjpCBZXe8xnIvfuIc39XLIggF84ScQtxfAQjpF6FJ6MKLdopq4dCUnGJUHUK89jAJRRcXj7kAg4O1e15ROeLg78FHxxrMP/FQ7QV3ccfei+qJGfG/pwFUZhjyq4Gzc5cTeJu5rSM77/Xiq8darByoUDd+r23dq7iGzuRuv89OyyXRhtX5LJBqcPiymk92YgHx+qzUpTh0wTmbJBLOwSI1YeKGiF3nKHAsXgOWA/KWsM8EKIg+G2R/L3IkVbRxv5rj1zp0aynKp6JNKnQc4bR1qBfIHV1lMKeE/nokmR6thfa1OmhYXSyfQDFlgFPi/JVDB6D+UA8+HBguzcxEu5Q/tOWHDIcRKvLwkTYUi4kKxtwZi+pUEoYxftVvOrHOxvUVPqaYmOb/lLFZphClAIcvyLb7im3b/PbZzMqj0rdDJ41z8hHTHbMng77o3Mp3PSetQTAFDmOnA6BcDlSW/R1fQMBPOQsjJF/hNviqRZLuBKr80DCpQz53u8YoJTwJWY9X6x7CfWdNVAyRJ9DUpXEArouZ3BXESDfF4Z2cuwbGDNt/9PZwmQKagcJELv+5xy9Q6Yy0f1fEwbsjRWK4p9Gk1DwViw2b1/7vz/w+dC9J6WQ7Du0ANN9+lh/BUJhuvUxkqYVYXHfEkx5xiWzmqqY+0peSXakunJvrx3en5KPDtQTuMIyXygdZTkuRMW3BCQHDcHI0Uw9pl4Y7wIGYMjA59ghmiQ6HbnnQkte6ECXAaqzd+05V+oE44Jn87ShmkLxkP7S/8UkFi29yfzMi8zl1snId1KJk2dsTWvIYrMiLG/kXPvk1kFfhvWOituyi6CMyVloDIL5FYlhgvg4WC0mreRfD+B8PKKgNecSpi5MZ/mJpBF3M5y8at3nZn4fT84xCyOc8w9huExpfFqbzHzd1rW3D1wsX5aBBNKYOqOdu34PGjZMitDEweIwsanJiTUASklvAb8xfpv5/8s+ZoauN5uqGN935raRh7dTPmEzYuJyV7D6FaoZVObHpKZ24jr8XWzHXYQEjEvajToT33fHQsvYrQ8SWPV1uVmMgNb5nCkxhCE5hifkBLWMn9xQfFVZ8QeOHC2L9bsq6FtdFYcNZvrUTfXuyGhM7ltAJF5EZLptNLfu8oBzJSsyeVJHaRuMy8oQ86sG/WxfvnBwvmJC8xuvuwgR40JEL6ouip5tCN7aJt/MoYeT4mY2MRyON1HdSkhwKhPlo6pwanaCHTWPkD0e6FijsOcMnyWJ6KXSoqtG8mSIdQXAjCLLR9FE6Sn83xQ2Nqn9PTNuMluwe2h4i+yWX/nuWz6aYDIROt47LL7E9c4Yz1p0ETAd3EBsJGY/6NMXkndwjb8Wqcb1el49JUHwQTQ1bqaP/KkNl3r0ZspNtiQhZ+u77RpGUcAsfXsHbiQIm7rX49xOg2P2Kx7+DJA3d/DANskv3d8SPTzv5VnYB9b/1WfBswm4csVV+9N+lHPLH+pCw23n9zRKFkCY1D+4fQRp+vhZcgRh2Dycy74nxHFju4/wNJlQVzT0anbFTT80EAWYVrkEHXIzI9mJiy</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1392,7 +1965,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">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</div>
+<div id="enc_content" style="display:none">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</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1558,167 +2131,13 @@ doDecrypt(passwd, onError);
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/07/25/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dawn_buji">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dawn_buji's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/25/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-25T14:06:38+08:00">
-                2019-07-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="/js/crypto-js.js"></script>
-<script>
-function doDecrypt (pwd, onError) {
-	console.log('in doDecrypt');
-	const txt = document.getElementById('enc_content').innerHTML;
-	let plantext;
-	try {
-		const bytes = CryptoJS.AES.decrypt(txt, pwd);
-		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {
-			onError(err);
-		}
-		return;
-	}
-	document.getElementById('enc_content').innerHTML = plaintext;
-	document.getElementById('enc_content').style.display = 'block';
-	document.getElementById('enc_passwd').style.display = 'none';
-	if(typeof MathJax !== 'undefined') {
-		MathJax.Hub.Queue(
-			['resetEquationNumbers', MathJax.InputJax.TeX],
-			['PreProcess', MathJax.Hub],
-			['Reprocess', MathJax.Hub]
-		);
-	}
-}
-</script>
-<div id="enc_content" style="display:none">U2FsdGVkX1/FCuLjuOqoTDTw2W3Kx7joLvIOZJVgGNej+CXPTddcTMJ7+vyKIS/klJUo9bTlUBFn/mNZi35VZLbUJqTOtthtS5BfyfmlirNi2GEapbKuEemgRaWtR5sbYRfiFMVRluAsqjSdi+PcXnx7FkUuf7OAmo99DgKbC77sy1jGQ+W99ggeeqR/ZcC4vYeYMGDVWlsSWCCLd35Ea/DtMbn8lye9LneR1IE3oO/SP7upJXYvBdKXVelb1TGDlMbvqUCwGYJtoJnXa8l2zcIVCyGBRznppOP8GmEGCWcrDhWPQyLCSCTqqtnWvFAEiR/PidXYNAeNn6IkPjBNnZ72bbXkVr48cX0MRm3K6XI2ZBr0g3ZUt3/XMnZ9DFkzwPAeo+xuTnKQK7jcV4/nvR7gC5bMv+yX2QhVkwxemI/UkhFd0SKUpvBWFLVB8uOtgrFAkB5ZYmlGRwf6wJyCoYQyoGmJ3SrnbMrOVVIKMTdZTr3QDfZIKiEJ8XgHjF6j+GWiPk1oG3CSg6Y7B0VBCwVJTDX/1ai6XFNQqK7mo6zG9dHYj1O5XNVNjZaJPymPzqmRzOr34w9FgaOeNzNuxrpemA8oITiIUrR9G7edaxnu0Rt8gyVGPwsM7XJw/EZRHl2DdL0zG42p5KlAnJSjP7NWbmFepiY90zlrPsFT/anau0P/VTk/eUVSzvQrogGYHHCar8/l0ajFU2U3fa5LJ2ar4/cNoHKgOcU2EDgI62SSakeBGi1kL1zsSntpXYm+U5oJ7eQ7QqTn5ZnI6SAdoaJticfvRkeL6e4tzgZ2ZDCmLshnc4Sen4V8yOkXfM8ksxrL4hSEHSv3+HeQtM///2rTt1nGm4ZrnoC7hSV1dpD6OENVReXyJqutme3QwjSPiwj7FKoZecetD4vy1j6sGs9ga9BJH4ZL2dXufwd5pOsSXC19Kzdes78o3X192dzQ/XLktRJJQZdNfcXxtpoovYhrtC+k2A+MVBKsyw1hqJbkXGaOEPY0DZdnvlccwMidKlwf303RXBwyJEanqAJbaKSMYs2cyC182prP6BBj7GWeCgHRuT4Xqgw6sZcn/uQwmg6j7JWkiy9iAWrVS46UK7QWn6aqZT7z7QutwZg/4SDFvt8vtHud0ONXQi7NChHh9RpYSPKePSDuBYvKb1tbXy5KKmjcggsagR4VqAbmsivBwljLViLD8tP5RJ/E8CJJWu/0ylEzH4X3+mGnFHLIoGxSIhgLcPjRWp2mhk1Ha8GhTdQZlY8cyHHcKZYeZhtpiWTYMT3Gd727hTZjBKFwxs3CNpptRR2iLMnKxUHtssPEv7PqgUAsuDPzQcCGSS+THZZImD5+Fbb/R/nl3QTk8jpFU+KNEeTIuNpiS46DZKWyyHFTY/VQ9VIO5YQKRAGejcY6aozYBWojcgfakN7cdCwHmcnFGUQtykruUSMWGJrNl/JUtxrJEDCl/T5W5RFCy1zQLNx+wba6pPDFtRg0BDA2RmRjJIhdukA97c1S33rZjH/71qWLE9fzN6gd+jhxeNiWp6SkIXI6pYSxpIUCm7FODQFt70IFRKslwFsQbywI0HWbCWhXu0IuQqmsslGu+FcV6FU+SJCyCfLj3Q4pQs5thX2balhR4hfjDLV8B21SP17q1I/RW3abaHSSh4CUy5jTAzqTIZZ5cxCYDKMtXkNVBgS/B/cApRQWyfc6jlcCloc4jU/mTjpK9GKsMiTdlf8Y9/J5spZG6+Hcmbsz80rIz9Um7ZzRTEBNCZ4fTURgaV+TN5ktE0JZby92r8rd/DgglS6K9ks04ae/FEI0xcvAMbM2uBinZyUPpO/zi0teJsUKSYFjSuDc+gt4AdXB9rGLimMXGUvO00uM/m6mAmaLcuWuqyUVRIrMoXlkDI0akZeN/5veM7hXiBDWA8gtGrKp5hywT2TTdYd9XYkvUUsGZdqE4wtSDZRpxzR8E4dXzi3bkbOQiO9ea/YkYDV3gj3VONi/PqoPBiX6gcCteo0f9X0l4CH/n9H2jFmX5IuQ+Sd84u7kWT7KOmTRYwPrpDiRMvEJ27WApCiHycoiA9iuKzy1+kEvq1NEAG7nq21WExkJJFV9NHgIklG0zC8Sp4d6iNqmZPrjQBKDNzE4fu90Cikq3T7rOkwpT/LezIwSKWBSZT96wqoXr9dP1YywDZ5ctuvPPkM91TvR/qcZUkYUQQZayMzkaL8l85rKSySOcMNjK6ClPU/bDtiDNRPPBhixTE8v7Ou6n60NqM0ydhoB9kUwee1iPUkS/bME7p1SAsq64KPllMtdtc2MN8dsDmMCNQA8Tj5yqgiWjItRenBiCgO0q++dmXkpQX56PsdVbbXhBZjF4vcD5gZQ878K/sDhYrGsxJf43xsxippjvC5y9ALBoiDmeLCAcy3U9KIvOPlG3Tyln5G0fTJEc4lPTkBS8TU4coP7PsQ2OCu/f9yolt9xRCMfppp5oPqtm22CqYn2A4/WOHocChk8qSM6AIpGTgBtegSongUqcHCLIOJ1BfzjupyrxveiREdXWqxROMIScBh0UtZHpW/mVMerwZzZpb5M87AEFMjWvnNIlfQqHfm6q5N7nh8Q4/yWie8UnqjENb11z/4cA8Q1AEgpses/mRLRFDSBexCeEgEO9D74BigzfAfyFwJuNrTvOM+b5nvG4VifLrp2hshEWeDUP1Sb2mwEeNbFZxeREKpShJ8K25HWhEGLUZ5nTsDTNvJi+c5WRzrctieWkiHi69lHlG+eoM9paI740SqeFvzLOhVV0VujOcZ4u6w/zcWY24brfnylslzzJlaJSKMPts6OjaN4A8XT6iuvnhd9XC/Hg9eMTuLLzWMXJRgiwJ1eK3ooJV+1BohTSJglDqnc3LBNzKLbqeyGMGKG12aMF4rWWBk3Vj6FUmx78sdzKI0G/ywadv/hsvp23UUEFnCeNQBEJ37XDwEugebCZ0/uQWtlI/9lhMwpb6CPvOxeAUPgodcgCxviNPJKp4ahA5Ib93F7Cq6GmlF3yCwwcavNCpUW1kyrr6ZcsXHcbg8NqO4ttWkufXsOpxGq3iJ+Xn1qveRUla0cJURF0FJCgj6aj3ZzYuidlZfBIPi1a/fhCVd6U0Hgdn2/js/wSl7Q1vVXukatz0IsIrpFpugd9K4zZ5rvNpcwaJhws1yWq7mw2eAKjbTiQHM/1xPGdOcFM2uEr6pzxHD7CDiAnDvBtQv1XfXPEg==</div>
-<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1764,7 +2183,7 @@ doDecrypt(passwd, onError);
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
