@@ -351,8 +351,7 @@
 <li>可用命令行，launch文件和node（API（在ros的源代码里））读写（维护方便）</li>
 <li>字典就是一个个的键值对，字典里面的key不能重复，都是唯一的，每一个key对应着一个value</li>
 <li>字典就是一个映射关系，在实际的项目里，我们往往把一些不常改变的参数、配置放到参数服务器里即字典里</li>
-<li>这样对它进行读写都非常方便</li>
-<li>字典形如<br>Key|/rosdistro|/rosversion|/use_sim_time|…</li>
+<li>这样对它进行读写都非常方便<br>字典形如<br>Key|/rosdistro|/rosversion|/use_sim_time|…</li>
 <li>|-|-|-|-<br>Value|’kinetic’|’1.12.7’|true|…</li>
 </ul>
 <h2 id="常用命令rosparam"><a href="#常用命令rosparam" class="headerlink" title="常用命令rosparam"></a>常用命令rosparam</h2><ol>
@@ -366,7 +365,7 @@
 </li>
 </ol>
 <h2 id="在launch文件中"><a href="#在launch文件中" class="headerlink" title="在launch文件中"></a>在launch文件中</h2><ul>
-<li>在launch文件中与参数服务器相关的标签是<param>与<rosparam>标签<br>形如<br><a href="/image/rosparam.jpg">rosparam</a><br>注：其中的name就是key<br>  第一个value就是xacro.py这个脚本去执行robot.xacro文件得到的结果作为value<br>  第二个标签就相当于从xbot2_control.yaml文件读取参数到字典里</rosparam></li>
+<li>在launch文件中与参数服务器相关的标签是<param>与<rosparam>标签<br>形如<br><img src="/images/rosparam.jpg" alt="rosparam"><br>注：其中的name就是key<br>  第一个value就是xacro.py这个脚本去执行robot.xacro文件得到的结果作为value<br>  第二个标签就相当于从xbot2_control.yaml文件读取参数到字典里</rosparam></li>
 </ul>
 
           
@@ -556,27 +555,13 @@
 <td>激光雷达、里程计发布数据</td>
 <td>开关传感器、拍照、逆解计算</td>
 </tr>
-<tr>
-<td>注：</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>1. 回调函数来做一个处理</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>2. rpc就是在一个进程（node）里面去调用另一个进程（node）里面的函数</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>3. 远程过程调用是和本地函数调用这个概念是相对的</td>
-<td></td>
-<td></td>
-</tr>
 </tbody></table>
+<p>注：</p>
+<ol>
+<li>回调函数来做一个处理</li>
+<li>rpc就是在一个进程（node）里面去调用另一个进程（node）里面的函数</li>
+<li>远程过程调用是和本地函数调用这个概念是相对的</li>
+</ol>
 <h2 id="常用命令rosservice"><a href="#常用命令rosservice" class="headerlink" title="常用命令rosservice"></a>常用命令rosservice</h2><ol>
 <li>列出当前所有活跃的service<br> <code>$ rosservice list</code></li>
 <li>显示某个service的属性信息<br> <code>$ rosservice info service_name</code></li>
@@ -597,7 +582,7 @@
 <p>my_pkg/msg/JointPos.msg       #定义JointPos[]数组</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string joint_name</span><br><span class="line">geometry_msgs/Pose pose</span><br><span class="line">floar32 confidence</span><br></pre></td></tr></table></figure>
 
-<p>定义了srv或者msg，要修改package.xml和CMakeList.txt，具体就是添加一些条目，指定了srv和msg编译运行时所需要的依赖<br>只有自定义了srv或者msg就要把这几条添进去<br><a href="/image/rosdepend.jpg">rosdepend</a></p>
+<p>定义了srv或者msg，要修改package.xml和CMakeList.txt，具体就是添加一些条目，指定了srv和msg编译运行时所需要的依赖<br>只有自定义了srv或者msg就要把这几条添进去<br><img src="/images/rosdepend.jpg" alt="rosdepend"></p>
 <h2 id="常用命令rossrv"><a href="#常用命令rossrv" class="headerlink" title="常用命令rossrv"></a>常用命令rossrv</h2><ol>
 <li>列出系统上所有的srv<br> <code>$ rossrv list</code></li>
 <li>显示某个srv内容<br> <code>$ rossrv show srv_name</code></li>
@@ -1785,7 +1770,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX1+zcQ6PVBHgVGihGEoBxiipbxvVRgVRj2tZ8F0Vq8lzsJxhHr54IIYID3yip1zYLMWsrQEhKJq0uvE9sGcWL/IeM3vhqD4VoUq3yAb389TDPBgTGuHy+BjxNeE1DWCRsqNKxfQ8A5LffcZbC7ir0nhGh6S+00NnnHQeaGhbW5uWSI9yCvjJDL12bgXCiPUJRaGukfR17pndGU2FGIhKSSjxxSfomAxiyilE6LxXABhPD1OaRVpGMgK37lQtvHvVOe6+zrKmcI3RDIGYJxZ0x/uL0o2oKtGzEgcjpCBZXe8xnIvfuIc39XLIggF84ScQtxfAQjpF6FJ6MKLdopq4dCUnGJUHUK89jAJRRcXj7kAg4O1e15ROeLg78FHxxrMP/FQ7QV3ccfei+qJGfG/pwFUZhjyq4Gzc5cTeJu5rSM77/Xiq8darByoUDd+r23dq7iGzuRuv89OyyXRhtX5LJBqcPiymk92YgHx+qzUpTh0wTmbJBLOwSI1YeKGiF3nKHAsXgOWA/KWsM8EKIg+G2R/L3IkVbRxv5rj1zp0aynKp6JNKnQc4bR1qBfIHV1lMKeE/nokmR6thfa1OmhYXSyfQDFlgFPi/JVDB6D+UA8+HBguzcxEu5Q/tOWHDIcRKvLwkTYUi4kKxtwZi+pUEoYxftVvOrHOxvUVPqaYmOb/lLFZphClAIcvyLb7im3b/PbZzMqj0rdDJ41z8hHTHbMng77o3Mp3PSetQTAFDmOnA6BcDlSW/R1fQMBPOQsjJF/hNviqRZLuBKr80DCpQz53u8YoJTwJWY9X6x7CfWdNVAyRJ9DUpXEArouZ3BXESDfF4Z2cuwbGDNt/9PZwmQKagcJELv+5xy9Q6Yy0f1fEwbsjRWK4p9Gk1DwViw2b1/7vz/w+dC9J6WQ7Du0ANN9+lh/BUJhuvUxkqYVYXHfEkx5xiWzmqqY+0peSXakunJvrx3en5KPDtQTuMIyXygdZTkuRMW3BCQHDcHI0Uw9pl4Y7wIGYMjA59ghmiQ6HbnnQkte6ECXAaqzd+05V+oE44Jn87ShmkLxkP7S/8UkFi29yfzMi8zl1snId1KJk2dsTWvIYrMiLG/kXPvk1kFfhvWOituyi6CMyVloDIL5FYlhgvg4WC0mreRfD+B8PKKgNecSpi5MZ/mJpBF3M5y8at3nZn4fT84xCyOc8w9huExpfFqbzHzd1rW3D1wsX5aBBNKYOqOdu34PGjZMitDEweIwsanJiTUASklvAb8xfpv5/8s+ZoauN5uqGN935raRh7dTPmEzYuJyV7D6FaoZVObHpKZ24jr8XWzHXYQEjEvajToT33fHQsvYrQ8SWPV1uVmMgNb5nCkxhCE5hifkBLWMn9xQfFVZ8QeOHC2L9bsq6FtdFYcNZvrUTfXuyGhM7ltAJF5EZLptNLfu8oBzJSsyeVJHaRuMy8oQ86sG/WxfvnBwvmJC8xuvuwgR40JEL6ouip5tCN7aJt/MoYeT4mY2MRyON1HdSkhwKhPlo6pwanaCHTWPkD0e6FijsOcMnyWJ6KXSoqtG8mSIdQXAjCLLR9FE6Sn83xQ2Nqn9PTNuMluwe2h4i+yWX/nuWz6aYDIROt47LL7E9c4Yz1p0ETAd3EBsJGY/6NMXkndwjb8Wqcb1el49JUHwQTQ1bqaP/KkNl3r0ZspNtiQhZ+u77RpGUcAsfXsHbiQIm7rX49xOg2P2Kx7+DJA3d/DANskv3d8SPTzv5VnYB9b/1WfBswm4csVV+9N+lHPLH+pCw23n9zRKFkCY1D+4fQRp+vhZcgRh2Dycy74nxHFju4/wNJlQVzT0anbFTT80EAWYVrkEHXIzI9mJiy</div>
+<div id="enc_content" style="display:none">U2FsdGVkX19F0oztl98ZVOct97Yui3GMZmpF7ZzFlAMzRUaXW8vTEDfYmTs3+CbvTQySSSx0MGI5XuzRcqrYEMsITowW14f5fgcvhIanMHf2PZ4iUz9Cs2QcMHFbFWIz9tHPTfRfAE2pV+rfY1vmWadwRHqV9uGjzIKO47leT8aZ4lNBwUF6hS6FDsTWentihg5z/1QmfDkiHd+7mw4U4aB8SLWCGRWr11Cv1CmzkC/2UM/wdmuyW+BFwoTfc2aoL2d9GAXcWyWS02RHmiuKWCQGpJaXucELnndi1YJdDWx+4v5Z4wKv9hQR9q2Qe7cuyoFB52GmOyPC1WHHTqtR8PYg49hFQR/1rmZCNdFbGt067t9j4qhBbGH8GB1oQbeEmcycvmsNYiY+p8TXWbOlAdW9XL537rpRzIz3APquAGe3XUlAjhqjDxvc51nA/LieYenFwqPrFqT3bsM52xE5jNjKK39DpKh8tvGTGyFV+Eb5ZMReyHhAVbTaD4xMgEv28GI045+3bAYmJ/ENFcdYz98ckV3SsCkmp2sAJT2xj92DqIsKvfsE0/PAqZacGvCHHbxt8TU/cZN7nw3qxM/RqctKDdZmuhh3yoBFVKwYZ3Eb2WA5S6RPIOg8fmhzyEkr2SDUwX8Bvb2hoVHUwmYJhGIzjNCExyEngrBDxvmv3oCiAW7norhJp7S7isUYBlFsc+L1NTba+oc2s+QG6VUndnxKw3gxWyVV6pbip2c1Kgurx8JjnjxFj8+9SSSxMh4n/07pn/yz6VsU7VMuU/qQpQw0cLj9KCqLfBeU58yGY5RIy6Q/j/SgUuwAiuelM/oCi7Nqvef6Tg4rhKs4IjDU1iqHnjmCDVg7Ev3jDiR46RiiDV6TT6wjd63ifW7JoyUWfGJyEySrjNchEsAyMNf0+LnS6vmshhHSD20lCtn0bPC3toBpknuT0cnKV8pupG5SXdD6+bCN/YxgeDgkcyixuHsaz+elWoQmctqB6DFYUkBoiWtmQta6v4GcwXwUqonNlvtwmycST8chCj7eoHVKhEyjO/DkdJGOWEE0UncuohkvEzPKMpcZPVOvktVYJcixxZp6u4CSDUbXdSKeB+5z0F4LYI4CMVMWyoX99IjtbLTSzXC/Uwn3/BefcM4hmcfUAi4OghHpBP82VcSqcAlv0n2JqYTVESX05Ftgy9xjlnLwCTKbKmiS5/nmzYlg5qGW+W8+TQ+7Xfgg00TpwxxxRO7oHCdbFpGsbsQygDwXVRZ6lOmddFH1VrXznaeJ0tWxMercdvWR/wrpkKliKH20eO/2fc0p0bLDM8WiWXLEuyFYpZ20rUidIRJhQhUVsY61QGeTWaWJ4sd1empYnxvUthGJ4L2dZrOS8jF3m06gM8ay9I7Bxvf2ZDcJY1AeYiNUwOAHLtePSGh235TKFahsyRjq8rYS+L2YwcNFB+rmycPMTk2aIXb5ZNcL+AN3uTlDMMzBMz4X5ZQmxFP4IDY1PJz46Z86ESFNbHITQAOat0EIH5pZ40gbVAlqQVngXDaBjjdMk0ZkxRj7tlS6KIRbj5RhriP0TUtXlYA00H0DJqAGDq1uKgR3CwMYwCp+aJHO98C/ljdqAbY5KWBXRZ0D8UH6WsheG6KDUSOCpSrCYni+fkVAtZW3lHGHofjnq9CFedbfy7bf9SNeNvDDYBpG6ZIy1RjqodV3Gi+VOPpnjW2UbhUMm2CCOEcT0+oHypHVhovhzJWlvQuf9RWFvTyVIPJ/9wirlUuaT1GBi6P2HgSupXawdozVRaxp2NIQwnFLrNx6DcfdRl5UOuVLSNg+FKZuLZJoCqWHrTNKqpAw9jXKb3nPJBOyzDh7a+kMOQ5c</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1965,7 +1950,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">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</div>
+<div id="enc_content" style="display:none">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</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {

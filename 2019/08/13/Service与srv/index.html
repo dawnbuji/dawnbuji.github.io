@@ -87,10 +87,12 @@
 <meta property="og:site_name" content="dawn_buji&#39;s Blog">
 <meta property="og:description" content="Service ros中的同步通信方式  同步通信是client发送一个请求会一直在原地等着，会阻塞，直到服务器端返回来结果，node A才会继续执行 node间可以通过request-reply方式通信（请求和响应）  node A（client）客服端 node B（Server）服务器 node B会给外界提供一个/Service（服务），别的node来请求node B来调用这个服务，即no">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-13T01:40:18.529Z">
+<meta property="og:image" content="https://github.com/images/rosdepend.jpg">
+<meta property="og:updated_time" content="2019-08-13T03:01:56.245Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Service与srv">
 <meta name="twitter:description" content="Service ros中的同步通信方式  同步通信是client发送一个请求会一直在原地等着，会阻塞，直到服务器端返回来结果，node A才会继续执行 node间可以通过request-reply方式通信（请求和响应）  node A（client）客服端 node B（Server）服务器 node B会给外界提供一个/Service（服务），别的node来请求node B来调用这个服务，即no">
+<meta name="twitter:image" content="https://github.com/images/rosdepend.jpg">
 
 
 
@@ -390,27 +392,13 @@
 <td>激光雷达、里程计发布数据</td>
 <td>开关传感器、拍照、逆解计算</td>
 </tr>
-<tr>
-<td>注：</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>1. 回调函数来做一个处理</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>2. rpc就是在一个进程（node）里面去调用另一个进程（node）里面的函数</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>3. 远程过程调用是和本地函数调用这个概念是相对的</td>
-<td></td>
-<td></td>
-</tr>
 </tbody></table>
+<p>注：</p>
+<ol>
+<li>回调函数来做一个处理</li>
+<li>rpc就是在一个进程（node）里面去调用另一个进程（node）里面的函数</li>
+<li>远程过程调用是和本地函数调用这个概念是相对的</li>
+</ol>
 <h2 id="常用命令rosservice"><a href="#常用命令rosservice" class="headerlink" title="常用命令rosservice"></a>常用命令rosservice</h2><ol>
 <li>列出当前所有活跃的service<br> <code>$ rosservice list</code></li>
 <li>显示某个service的属性信息<br> <code>$ rosservice info service_name</code></li>
@@ -431,7 +419,7 @@
 <p>my_pkg/msg/JointPos.msg       #定义JointPos[]数组</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string joint_name</span><br><span class="line">geometry_msgs/Pose pose</span><br><span class="line">floar32 confidence</span><br></pre></td></tr></table></figure>
 
-<p>定义了srv或者msg，要修改package.xml和CMakeList.txt，具体就是添加一些条目，指定了srv和msg编译运行时所需要的依赖<br>只有自定义了srv或者msg就要把这几条添进去<br><a href="/image/rosdepend.jpg">rosdepend</a></p>
+<p>定义了srv或者msg，要修改package.xml和CMakeList.txt，具体就是添加一些条目，指定了srv和msg编译运行时所需要的依赖<br>只有自定义了srv或者msg就要把这几条添进去<br><img src="/images/rosdepend.jpg" alt="rosdepend"></p>
 <h2 id="常用命令rossrv"><a href="#常用命令rossrv" class="headerlink" title="常用命令rossrv"></a>常用命令rossrv</h2><ol>
 <li>列出系统上所有的srv<br> <code>$ rossrv list</code></li>
 <li>显示某个srv内容<br> <code>$ rossrv show srv_name</code></li>
