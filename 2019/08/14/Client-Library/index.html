@@ -79,20 +79,28 @@
 
 
 
-<meta name="description" content="Service ros中的同步通信方式  同步通信是client发送一个请求会一直在原地等着，会阻塞，直到服务器端返回来结果，node A才会继续执行 node间可以通过request-reply方式通信（请求和响应）  node A（client）客服端 node B（Server）服务器 node B会给外界提供一个/Service（服务），别的node来请求node B来调用这个服务，即no">
+<meta name="description" content="Client Library(客户端库) 概念类似于API区别：client library的层级要更高，它是在API的基础上又做了一层封装，对开发者更加友好 提供ros编程的库,就是一个接口，它把底层的标准流程给封装好，方便程序员去写代码例如：建立node，发布消息，调用服务…  ros提供的client library roscpp c++ 执行效率高，适合做图像、slim这方面的工作，代码写">
 <meta name="keywords" content="ros">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Service与srv">
-<meta property="og:url" content="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/13/Service与srv/index.html">
+<meta property="og:title" content="Client_Library">
+<meta property="og:url" content="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/14/Client-Library/index.html">
 <meta property="og:site_name" content="dawn_buji&#39;s Blog">
-<meta property="og:description" content="Service ros中的同步通信方式  同步通信是client发送一个请求会一直在原地等着，会阻塞，直到服务器端返回来结果，node A才会继续执行 node间可以通过request-reply方式通信（请求和响应）  node A（client）客服端 node B（Server）服务器 node B会给外界提供一个/Service（服务），别的node来请求node B来调用这个服务，即no">
+<meta property="og:description" content="Client Library(客户端库) 概念类似于API区别：client library的层级要更高，它是在API的基础上又做了一层封装，对开发者更加友好 提供ros编程的库,就是一个接口，它把底层的标准流程给封装好，方便程序员去写代码例如：建立node，发布消息，调用服务…  ros提供的client library roscpp c++ 执行效率高，适合做图像、slim这方面的工作，代码写">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://github.com/images/rosdepend.jpg">
-<meta property="og:updated_time" content="2019-08-13T03:01:56.245Z">
+<meta property="og:image" content="https://github.com/images/roscpp.jpg">
+<meta property="og:image" content="https://github.com/images/NodeHandle.jpg">
+<meta property="og:image" content="https://github.com/images/master.jpg">
+<meta property="og:image" content="https://github.com/images/this_node.jpg">
+<meta property="og:image" content="https://github.com/images/service.jpg">
+<meta property="og:image" content="https://github.com/images/names.jpg">
+<meta property="og:image" content="https://github.com/images/topic_demo.jpg">
+<meta property="og:image" content="https://github.com/images/ros.msg.jpg">
+<meta property="og:image" content="https://github.com/images/talker.cpp.jpg">
+<meta property="og:updated_time" content="2019-08-14T03:30:53.860Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Service与srv">
-<meta name="twitter:description" content="Service ros中的同步通信方式  同步通信是client发送一个请求会一直在原地等着，会阻塞，直到服务器端返回来结果，node A才会继续执行 node间可以通过request-reply方式通信（请求和响应）  node A（client）客服端 node B（Server）服务器 node B会给外界提供一个/Service（服务），别的node来请求node B来调用这个服务，即no">
-<meta name="twitter:image" content="https://github.com/images/rosdepend.jpg">
+<meta name="twitter:title" content="Client_Library">
+<meta name="twitter:description" content="Client Library(客户端库) 概念类似于API区别：client library的层级要更高，它是在API的基础上又做了一层封装，对开发者更加友好 提供ros编程的库,就是一个接口，它把底层的标准流程给封装好，方便程序员去写代码例如：建立node，发布消息，调用服务…  ros提供的client library roscpp c++ 执行效率高，适合做图像、slim这方面的工作，代码写">
+<meta name="twitter:image" content="https://github.com/images/roscpp.jpg">
 
 
 
@@ -122,14 +130,14 @@
 
 
 
-  <link rel="canonical" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/13/Service与srv/">
+  <link rel="canonical" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/14/Client-Library/">
 
 
 
 
 
 
-  <title>Service与srv | dawn_buji's Blog</title>
+  <title>Client_Library | dawn_buji's Blog</title>
   
 
 
@@ -256,7 +264,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/13/Service与srv/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/14/Client-Library/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dawn_buji">
@@ -273,7 +281,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Service与srv</h1>
+          <h1 class="post-title" itemprop="name headline">Client_Library</h1>
         
 
         <div class="post-meta">
@@ -285,8 +293,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-13T08:32:53+08:00">
-                2019-08-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-14T09:41:28+08:00">
+                2019-08-14
               </time>
             
 
@@ -345,85 +353,43 @@
       
 
       
-        <h1 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h1><ul>
-<li>ros中的同步通信方式<br>  同步通信是client发送一个请求会一直在原地等着，会阻塞，直到服务器端返回来结果，node A才会继续执行</li>
-<li>node间可以通过request-reply方式通信（请求和响应）<br>  node A（client）客服端 node B（Server）服务器 node B会给外界提供一个/Service（服务），别的node来请求node B来调用这个服务，即node A会把Service需要的参数传给Service也就是请求它，node B收到请求就会做处理，处理完了就会回复给node A</li>
+        <h1 id="Client-Library-客户端库"><a href="#Client-Library-客户端库" class="headerlink" title="Client Library(客户端库)"></a>Client Library(客户端库)</h1><ul>
+<li>概念类似于API<br>区别：<br>client library的层级要更高，它是在API的基础上又做了一层封装，对开发者更加友好</li>
+<li>提供ros编程的库,就是一个接口，它把底层的标准流程给封装好，方便程序员去写代码<br>例如：建立node，发布消息，调用服务…</li>
 </ul>
-<h2 id="Topic-VS-Service"><a href="#Topic-VS-Service" class="headerlink" title="Topic VS Service"></a>Topic VS Service</h2><table>
-<thead>
-<tr>
-<th>对象</th>
-<th>Topic</th>
-<th>Service</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>通信方式</td>
-<td>异步通信</td>
-<td>同步通信</td>
-</tr>
-<tr>
-<td>实现原理</td>
-<td>TCP/IP</td>
-<td>TCP/IP</td>
-</tr>
-<tr>
-<td>通信模型</td>
-<td>Publish-Subscribe</td>
-<td>Request-Reply</td>
-</tr>
-<tr>
-<td></td>
-<td>publish-subscribe（多对多）</td>
-<td>client-server（多对一）</td>
-</tr>
-<tr>
-<td></td>
-<td>接收者收到数据会回调（callback）</td>
-<td>远程过程调用（RPC）服务器端的服务</td>
-</tr>
-<tr>
-<td>应用场景</td>
-<td>连续、高频的数据发布</td>
-<td>偶尔调用的功能/具体的任务</td>
-</tr>
-<tr>
-<td>举例</td>
-<td>激光雷达、里程计发布数据</td>
-<td>开关传感器、拍照、逆解计算</td>
-</tr>
-</tbody></table>
-<p>注：</p>
+<h2 id="ros提供的client-library"><a href="#ros提供的client-library" class="headerlink" title="ros提供的client library"></a>ros提供的client library</h2><ol>
+<li>roscpp c++ 执行效率高，适合做图像、slim这方面的工作，代码写起来麻烦</li>
+<li>rospy  python 开发效率高，小工具，小node都可以用rospy来写。<br>一些ros命令行工具，像rosrun、rostopic都是用rospy来实现的<br>这些命令都是一个个python脚本，最底层就是rospy来实现的</li>
+<li>roslisp<br>…</li>
+</ol>
+<h2 id="roscpp"><a href="#roscpp" class="headerlink" title="roscpp"></a>roscpp</h2><ul>
+<li>ros提供的用c++和topic、service、param、timer交互的一个接口</li>
+<li>官方文档中</li>
+</ul>
+<p>ros::init（）初始化函数，在写c++程序时，必须要调用的一个函数<br>ros::NodeHandle:最重要的一个部分，用来创建topic、service和调用这些公共接口<br>ros::master：通过它获取和master交互来查询系统的信息<br>ros::this_node:用来查询进程的函数<br>ros::service:查询服务的函数<br>ros::param:查询参数服务器<br>ros::names:名称管理用到的功能<br>如下图<br><img src="/images/roscpp.jpg" alt="roscpp"></p>
+<h3 id="ros-init"><a href="#ros-init" class="headerlink" title="ros::init()"></a>ros::init()</h3><p>void ros::init();    //解析ROS参数，为本node命名<br>::为作用域的限定符，表示init()这个函数是在ros这个命名空间之中的</p>
+<h3 id="ros-NodeHandle-Class-类"><a href="#ros-NodeHandle-Class-类" class="headerlink" title="ros::NodeHandle Class(类)"></a>ros::NodeHandle Class(类)</h3><ul>
+<li>c++里面的类有自己的成员变量和成员函数</li>
+<li>怎么用<br>创建一个话题的publisher</li>
+</ul>
 <ol>
-<li>回调函数来做一个处理</li>
-<li>rpc就是在一个进程（node）里面去调用另一个进程（node）里面的函数</li>
-<li>远程过程调用是和本地函数调用这个概念是相对的</li>
-</ol>
-<h2 id="常用命令rosservice"><a href="#常用命令rosservice" class="headerlink" title="常用命令rosservice"></a>常用命令rosservice</h2><ol>
-<li>列出当前所有活跃的service<br> <code>$ rosservice list</code></li>
-<li>显示某个service的属性信息<br> <code>$ rosservice info service_name</code></li>
-<li>调用某个service<br> <code>$ rosservice call service_name args(希望传入的参数)</code></li>
-</ol>
-<h1 id="srv"><a href="#srv" class="headerlink" title="srv"></a>srv</h1><ul>
-<li>service的简写</li>
-<li>service通信的数据格式</li>
-<li>定义在*.srv文件中</li>
-<li>*.srv文件一定要放在srv这个文件下</li>
-<li>形如<br>my_pkg/srv/DetectHuman.srv<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bool	start_detect#请求这个服务要遵守的格式，可以 比较简单，就用一个bool型</span><br><span class="line">					#当它是ture的时候，就开始检测，检测完了之后就回传一个HumanPose[]这个数组</span><br><span class="line">---</span><br><span class="line">my_pkg/HumanPose[]	pose_data#这个服务应答、返回的格式，回传定义为数组，就是说可能不止一个人，</span><br><span class="line">							 #这个数组是自定义的了,定义在msg文件中，srv可以嵌套msg但不能嵌套srv</span><br></pre></td></tr></table></figure>
+<li>首先声明一个ros::NodeHandle nh；(对象) </li>
+<li>用这个函数的话，就ros::Publisher pwb = nh.advertise(…);//有两个参数，第一个参数是写topic的名称，指定这个publisher往哪个topic去发布消息，第二个王消息队列上发布消息的长度</li>
+<li>调用完了advertise函数返回值就是一个ros::Publisher赋给一个Publisher的对象</li>
+<li>发布消息，就直接用pwb.publish(msg);<br>形如<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ros::NodeHandle nh;</span><br><span class="line">ros::Publisher pub = nh.advertise(...);</span><br><span class="line">ros::publish(msg);</span><br></pre></td></tr></table></figure>
 
 </li>
-</ul>
-<p>my_pkg/msg/HumanPose.msg    #msg一种自定义的数据类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">std_msgs/Header header</span><br><span class="line">string uuid</span><br><span class="line">int32 number_of_joints</span><br><span class="line">my_pkg/JointPos[] joint_data</span><br></pre></td></tr></table></figure>
-
-<p>my_pkg/msg/JointPos.msg       #定义JointPos[]数组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string joint_name</span><br><span class="line">geometry_msgs/Pose pose</span><br><span class="line">floar32 confidence</span><br></pre></td></tr></table></figure>
-
-<p>定义了srv或者msg，要修改package.xml和CMakeList.txt，具体就是添加一些条目，指定了srv和msg编译运行时所需要的依赖<br>只有自定义了srv或者msg就要把这几条添进去<br><img src="/images/rosdepend.jpg" alt="rosdepend"></p>
-<h2 id="常用命令rossrv"><a href="#常用命令rossrv" class="headerlink" title="常用命令rossrv"></a>常用命令rossrv</h2><ol>
-<li>列出系统上所有的srv<br> <code>$ rossrv list</code></li>
-<li>显示某个srv内容<br> <code>$ rossrv show srv_name</code></li>
 </ol>
+<p>创建话题的subscriber<br>参数有topic名称，队列的长度，还有一个回调函数的名称（函数指针）当subscribe到一个msg时就会由回调函数来处理这个msg<br><img src="/images/NodeHandle.jpg" alt="ros::NodeHandle"></p>
+<h3 id="ros-master-Namespace即命名空间"><a href="#ros-master-Namespace即命名空间" class="headerlink" title="ros::master Namespace即命名空间"></a>ros::master Namespace即命名空间</h3><p>Namespace和Class的区别是Namespace是没有对象的，我们相当于把它当作普通函数在调用<br>例如：<br>下图中第一个函数用的时候就是<br><code>ros::master::check();</code><br><img src="/images/master.jpg" alt="ros::master"></p>
+<h3 id="ros-this-node-Namespce-命名空间"><a href="#ros-this-node-Namespce-命名空间" class="headerlink" title="ros::this_node Namespce(命名空间)"></a>ros::this_node Namespce(命名空间)</h3><p><img src="/images/this_node.jpg" alt="ros::this_node"></p>
+<h3 id="ros-service-Namespce"><a href="#ros-service-Namespce" class="headerlink" title="ros::service Namespce"></a>ros::service Namespce</h3><p><img src="/images/service.jpg" alt="ros::service"></p>
+<h3 id="ros-names-Namespace"><a href="#ros-names-Namespace" class="headerlink" title="ros::names Namespace"></a>ros::names Namespace</h3><p><img src="/images/names.jpg" alt="ros::names"></p>
+<h3 id="roscpp-topic-demo"><a href="#roscpp-topic-demo" class="headerlink" title="roscpp topic_demo"></a>roscpp topic_demo</h3><p><img src="/images/topic_demo.jpg" alt="topic_demo"><br>注：定义了好了msg的格式后，并不能直接用，要对它进行编译，编译完成后，会生成一个对应的头文件<br>写代码时，把它include进去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;topic_demo/gps.h&gt;</span><br><span class="line">topic_damo::gps msg;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/ros.msg.jpg" alt="ros.msg"></p>
+<p>ros写ros.cpp文件时必须要定义这个头文件<br><code>#include &lt;ros/ros.h&gt;</code><br><img src="/images/talker.cpp.jpg" alt="talker.cpp"></p>
 
       
     </div>
@@ -454,8 +420,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/12/Topic和Msg/" rel="next" title="Topic和Msg">
-                <i class="fa fa-chevron-left"></i> Topic和Msg
+              <a href="/2019/08/13/ros常用工具/" rel="next" title="ros常用工具">
+                <i class="fa fa-chevron-left"></i> ros常用工具
               </a>
             
           </div>
@@ -463,10 +429,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/13/Server/" rel="prev" title="Server">
-                Server <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -600,7 +562,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Service"><span class="nav-number">1.</span> <span class="nav-text">Service</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Topic-VS-Service"><span class="nav-number">1.1.</span> <span class="nav-text">Topic VS Service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用命令rosservice"><span class="nav-number">1.2.</span> <span class="nav-text">常用命令rosservice</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#srv"><span class="nav-number">2.</span> <span class="nav-text">srv</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用命令rossrv"><span class="nav-number">2.1.</span> <span class="nav-text">常用命令rossrv</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Client-Library-客户端库"><span class="nav-number">1.</span> <span class="nav-text">Client Library(客户端库)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ros提供的client-library"><span class="nav-number">1.1.</span> <span class="nav-text">ros提供的client library</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#roscpp"><span class="nav-number">1.2.</span> <span class="nav-text">roscpp</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ros-init"><span class="nav-number">1.2.1.</span> <span class="nav-text">ros::init()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ros-NodeHandle-Class-类"><span class="nav-number">1.2.2.</span> <span class="nav-text">ros::NodeHandle Class(类)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ros-master-Namespace即命名空间"><span class="nav-number">1.2.3.</span> <span class="nav-text">ros::master Namespace即命名空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ros-this-node-Namespce-命名空间"><span class="nav-number">1.2.4.</span> <span class="nav-text">ros::this_node Namespce(命名空间)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ros-service-Namespce"><span class="nav-number">1.2.5.</span> <span class="nav-text">ros::service Namespce</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ros-names-Namespace"><span class="nav-number">1.2.6.</span> <span class="nav-text">ros::names Namespace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#roscpp-topic-demo"><span class="nav-number">1.2.7.</span> <span class="nav-text">roscpp topic_demo</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

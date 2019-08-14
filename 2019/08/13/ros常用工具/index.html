@@ -87,10 +87,13 @@
 <meta property="og:site_name" content="dawn_buji&#39;s Blog">
 <meta property="og:description" content="ros常用工具 仿真：gazebo 调试、可视化：rviz、rqt 命令行工具：rostopic、rosbag… 专用工具：Moveit!  Gazebo 与ros都是OSRF开源机器人组织开发的 机器人仿真工具 还有像V-Rep、carsim（无人驾驶领域）之类的仿真工具包  ODE物理引擎 gazebo可以兼容很多物理引擎，主要还是ODE这个开源的物理引擎，其他的像Bullet也行 用于动力学">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-13T09:44:24.263Z">
+<meta property="og:image" content="https://github.com/images/rosrqt_graph.jpg">
+<meta property="og:image" content="https://github.com/images/rosrqt_plot.jpg">
+<meta property="og:updated_time" content="2019-08-14T01:40:55.154Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ros常用工具">
 <meta name="twitter:description" content="ros常用工具 仿真：gazebo 调试、可视化：rviz、rqt 命令行工具：rostopic、rosbag… 专用工具：Moveit!  Gazebo 与ros都是OSRF开源机器人组织开发的 机器人仿真工具 还有像V-Rep、carsim（无人驾驶领域）之类的仿真工具包  ODE物理引擎 gazebo可以兼容很多物理引擎，主要还是ODE这个开源的物理引擎，其他的像Bullet也行 用于动力学">
+<meta name="twitter:image" content="https://github.com/images/rosrqt_graph.jpg">
 
 
 
@@ -359,7 +362,29 @@
 <li>全称 The Robot Visualization tool 机器人可视化工具 </li>
 <li>把一些抽象的、复杂的传感器信息用图像的方式呈现给我们</li>
 <li>方便监控和调试</li>
+<li>点云：就是一个个小方格，每个点不仅有颜色（rgb）信息，而且有位置（x轴、y轴、z轴）信息</li>
 </ul>
+<h2 id="rqt"><a href="#rqt" class="headerlink" title="rqt"></a>rqt</h2><ul>
+<li>全称rosqt，基于qt开发的可视化工具</li>
+<li>常用rqt_graph,rqt_plot,rqt_console</li>
+<li>扩展性好，跨平台的性能也很好，</li>
+<li>与Rviz相比，显示的东西更高级一些</li>
+<li>rqt_graph:显示通信架构 当前有些node在运行，有哪些topic，消息的流向从哪里到哪里，可以反映系统的全貌</li>
+<li>rqt_plot:绘制全线，它把一些参数，尤其是动态参数的曲线给绘制出来，用于看原始数据，比如看速度，直观地把曲线绘制出来</li>
+<li>rqt_console：查看日志，带一些过滤器，把日志分成了不同等级<br>rqt_graph效果图：<br><img src="/images/rosrqt_graph.jpg" alt="rosrqt_graph"><br>上图是一个当前运行的计算图，它把整个系统的node和消息的流向都画出来了<br>其中圆圈里面的是节点，箭头上的是topic<br>rqt_plot效果图：<br><img src="/images/rosrqt_plot.jpg" alt="rosrqt_plot"><br>可以图形化地把原始数据显示出来</li>
+</ul>
+<h2 id="rosbag"><a href="#rosbag" class="headerlink" title="rosbag"></a>rosbag</h2><ul>
+<li>ros里数据记录、数据回放系统</li>
+<li>ros命令行工具</li>
+<li>记录和回放数据流</li>
+<li>其中的record功能就可以把指定的topic记录下来，设置录制的长度、消息的个数</li>
+<li>这些消息都会存在.bag文件里，可以回放play<br>记录和回放的原理:<br>记录的话，就是创建了一个node，把你需要的订阅的消息都记录下来，然后打上时间戳</li>
+</ul>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ol>
+<li>记录某些topic到bag中<br> <code>$ rosbag record &lt;topic-names&gt;</code><br>一般录制到bag文件名为类似于2019-8-14 09:36:42.bag文件中</li>
+<li>记录所有topic到bag中<br> <code>$ rosbag record -a</code></li>
+<li>回放bag<br> <code>$ rosbag play &lt;bag-files&gt;</code><br>回放时，即开了新的节点，所以在命令行先输入roscore</li>
+</ol>
 
       
     </div>
@@ -399,6 +424,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/14/Client-Library/" rel="prev" title="Client_Library">
+                Client_Library <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -477,7 +506,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -532,7 +561,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ros常用工具"><span class="nav-number">1.</span> <span class="nav-text">ros常用工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Gazebo"><span class="nav-number">1.1.</span> <span class="nav-text">Gazebo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RViz"><span class="nav-number">1.2.</span> <span class="nav-text">RViz</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ros常用工具"><span class="nav-number">1.</span> <span class="nav-text">ros常用工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Gazebo"><span class="nav-number">1.1.</span> <span class="nav-text">Gazebo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RViz"><span class="nav-number">1.2.</span> <span class="nav-text">RViz</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rqt"><span class="nav-number">1.3.</span> <span class="nav-text">rqt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rosbag"><span class="nav-number">1.4.</span> <span class="nav-text">rosbag</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令"><span class="nav-number">1.4.1.</span> <span class="nav-text">常用命令</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
