@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ros,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="TF(TransForm) 坐标系变换 坐标变换（位置+姿态） 坐标系数据维护的工具  tf 坐标变换的标准、话题、工具、接口例如：标准定义这个坐标转换的数据格式、数据结构（通常是树状结构-tf tree）tf话题（topic）：其中的msg就是保存了tf tree这种数据结构，维护了整个机器人甚至整个地图的坐标转换关系接口：就是roscpp、rospy关于tf的API 机器人部件：link，每一">
+<meta name="keywords" content="ros">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TF&amp;URDF">
+<meta property="og:url" content="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/14/TF/index.html">
+<meta property="og:site_name" content="dawn_buji&#39;s Blog">
+<meta property="og:description" content="TF(TransForm) 坐标系变换 坐标变换（位置+姿态） 坐标系数据维护的工具  tf 坐标变换的标准、话题、工具、接口例如：标准定义这个坐标转换的数据格式、数据结构（通常是树状结构-tf tree）tf话题（topic）：其中的msg就是保存了tf tree这种数据结构，维护了整个机器人甚至整个地图的坐标转换关系接口：就是roscpp、rospy关于tf的API 机器人部件：link，每一">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/images/tf-tree.jpg">
+<meta property="og:image" content="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/14/TF/tftreemsg.jpg">
+<meta property="og:image" content="https://github.com/images/transformstamped.jpg">
+<meta property="og:image" content="https://github.com/images/tfc++.jpg">
+<meta property="og:image" content="https://github.com/images/c++transform.jpg">
+<meta property="og:image" content="https://github.com/images/TransformBroadcaster.jpg">
+<meta property="og:image" content="https://github.com/images/TransformListener.jpg">
+<meta property="og:image" content="https://github.com/images/tfpy.jpg">
+<meta property="og:image" content="https://github.com/images/ts.transformations.jpg">
+<meta property="og:image" content="https://github.com/images/tf.TransformListener1.jpg">
+<meta property="og:image" content="https://github.com/images/tf.TransformListener2.jpg">
+<meta property="og:image" content="https://github.com/images/tf.TransformBroadcaster.jpg">
+<meta property="og:image" content="https://github.com/images/link_joint.jpg">
+<meta property="og:updated_time" content="2019-08-15T04:22:12.300Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TF&amp;URDF">
+<meta name="twitter:description" content="TF(TransForm) 坐标系变换 坐标变换（位置+姿态） 坐标系数据维护的工具  tf 坐标变换的标准、话题、工具、接口例如：标准定义这个坐标转换的数据格式、数据结构（通常是树状结构-tf tree）tf话题（topic）：其中的msg就是保存了tf tree这种数据结构，维护了整个机器人甚至整个地图的坐标转换关系接口：就是roscpp、rospy关于tf的API 机器人部件：link，每一">
+<meta name="twitter:image" content="https://github.com/images/tf-tree.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/14/TF/">
+
+
+
+
+
+
+  <title>TF&URDF | dawn_buji's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">dawn_buji's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一蓑烟雨任平生</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/14/TF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dawn_buji">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dawn_buji's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">TF&URDF</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-14T16:15:38+08:00">
+                2019-08-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ros机器人操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">ros机器人操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="TF-TransForm"><a href="#TF-TransForm" class="headerlink" title="TF(TransForm)"></a>TF(TransForm)</h1><ul>
+<li>坐标系变换</li>
+<li>坐标变换（位置+姿态）</li>
+<li>坐标系数据维护的工具</li>
+</ul>
+<h2 id="tf"><a href="#tf" class="headerlink" title="tf"></a>tf</h2><ul>
+<li>坐标变换的标准、话题、工具、接口<br>例如：标准定义这个坐标转换的数据格式、数据结构（通常是树状结构-tf tree）<br>tf话题（topic）：其中的msg就是保存了tf tree这种数据结构，维护了整个机器人甚至整个地图的坐标转换关系<br>接口：就是roscpp、rospy关于tf的API</li>
+<li>机器人部件：link，每一个link上面都对应一个frame（坐标系）</li>
+<li>如何维护各个坐标系之间的关系<br>TF树<br><img src="/images/tf-tree.jpg" alt="tf-tree"></li>
+<li>frame与frame之间联通<br>frame与frame之间联通必须要有一个node，像联通关系一样来发布消息，维护frame之间的联通关系，发布坐标变换的消息<br>这个node就是图中的Broadcaster，是一个publisher</li>
+</ul>
+<hr>
+<p>那么这个node的数据格式是什么呢？</p>
+<h3 id="TransformStamped-msg"><a href="#TransformStamped-msg" class="headerlink" title="TransformStamped.msg"></a>TransformStamped.msg</h3><ul>
+<li>两个frame之间的数据格式<br>具体格式如下</li>
+</ul>
+<h3 id="tf-tfMessage-msg与tf2-msgs-TFMessage-msg"><a href="#tf-tfMessage-msg与tf2-msgs-TFMessage-msg" class="headerlink" title="tf/tfMessage.msg与tf2_msgs/TFMessage.msg"></a>tf/tfMessage.msg与tf2_msgs/TFMessage.msg</h3><ul>
+<li>第一代的tf设计的比较复杂，为了简化类型并且支持一些其他扩展库的类型，因此开发了tf2</li>
+<li>通过<code>rostopic info /tf</code>查看一下tf属性，知道topic里面是第几代msg</li>
+<li>描述tf tree的关系</li>
+<li>这个tf tree的数据结构、数据原理<br><img src="tftreemsg.jpg" alt="tftreemsg"></li>
+</ul>
+<p><img src="/images/transformstamped.jpg" alt="transformstamped"></p>
+<h2 id="tf-in-c"><a href="#tf-in-c" class="headerlink" title="tf in c++"></a>tf in c++</h2><p><img src="/images/tfc++.jpg" alt="tfc++"><br>数据转换<br><img src="/images/c++transform.jpg" alt="c++transform">//无图片<br>tf::TransformBroadcaster类<br><img src="/images/TransformBroadcaster.jpg" alt="TransformBroadcaster"><br>tf::TransformListener类<br><img src="/images/TransformListener.jpg" alt="TransformListener"><br>其中第三个参数使用的时间戳ros::Time(0)是获取最新的消息，<br>ros::Time::now()是接收不到消息的，因为发送消息到接收消息要一段时间</p>
+<h2 id="tf-in-python"><a href="#tf-in-python" class="headerlink" title="tf in python"></a>tf in python</h2><ul>
+<li>TF相关数据类型<br><img src="/images/tfpy.jpg" alt="tfpy"></li>
+<li>tf.transformations<br>提供了一个基本的数学运算函数<br><img src="/images/ts.transformations.jpg" alt="ts.transformations"><br>rospy里面有一个tf库，在用之前需要import这个库</li>
+<li>tf.TransformListener类<br><img src="/images/tf.TransformListener1.jpg" alt="tf.TransformListener1"><br><img src="/images/tf.TransformListener2.jpg" alt="tf.TransformListener2"></li>
+<li>tf.TransformBroadcaster类<br><img src="/images/tf.TransformBroadcaster.jpg" alt="tf.TransformBroadcaster"></li>
+<li>tf常用命令</li>
+</ul>
+<ol>
+<li>根据当前的tf树创建一个pdf图<br><code>$ rosrun tf view_frames</code> #订阅/tf这个msg，5s的时间然后生成tf树的PDF图</li>
+<li>查看当前的tf树<br><code>$ rosrun rqt_tf_tree rqt_tf_tree</code>#动态的查看</li>
+<li>查看两个frame之间的变换关系<br><code>$ rosrun tf tf_echo [reference_frame][target_frame]</code></li>
+</ol>
+<h1 id="URDF"><a href="#URDF" class="headerlink" title="URDF"></a>URDF</h1><ul>
+<li>Unified Robot Description Format统一机器人描述格式</li>
+<li>这个文件制定了一个规范，用来描述这个机器人是这样的一个结构</li>
+<li>tf、可视化、仿真的功能都需要urdf的参与 </li>
+<li>ros里面有个package为urdf本质是一个解析器，用来解析urdf格式的文件</li>
+<li>urdf格式中定义了两个部分</li>
+</ul>
+<ol>
+<li>link 就是指部件、零件，每一个link都有三个轴，分别代表x,y,z</li>
+<li>joint 就是连接两个link之间的关节，表示两个link之间的连接关系，和tf是对应的<br><img src="/images/link_joint.jpg" alt="link_joint"></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ros/" rel="tag"># ros</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/14/roscpp/" rel="next" title="roscpp">
+                <i class="fa fa-chevron-left"></i> roscpp
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/14/rospy/" rel="prev" title="rospy">
+                rospy <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="dawn_buji">
+            
+              <p class="site-author-name" itemprop="name">dawn_buji</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TF-TransForm"><span class="nav-number">1.</span> <span class="nav-text">TF(TransForm)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tf"><span class="nav-number">1.1.</span> <span class="nav-text">tf</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TransformStamped-msg"><span class="nav-number">1.1.1.</span> <span class="nav-text">TransformStamped.msg</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-tfMessage-msg与tf2-msgs-TFMessage-msg"><span class="nav-number">1.1.2.</span> <span class="nav-text">tf/tfMessage.msg与tf2_msgs/TFMessage.msg</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf-in-c"><span class="nav-number">1.2.</span> <span class="nav-text">tf in c++</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf-in-python"><span class="nav-number">1.3.</span> <span class="nav-text">tf in python</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#URDF"><span class="nav-number">2.</span> <span class="nav-text">URDF</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dawn_buji</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

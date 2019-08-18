@@ -250,6 +250,532 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/14/rospy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dawn_buji">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dawn_buji's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/14/rospy/" itemprop="url">rospy</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-14T18:08:36+08:00">
+                2019-08-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ros机器人操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">ros机器人操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="rospy"><a href="#rospy" class="headerlink" title="rospy"></a>rospy</h1><ul>
+<li>Node,Topic,Service,Param,Time</li>
+</ul>
+<h2 id="rospy-Node相关函数"><a href="#rospy-Node相关函数" class="headerlink" title="rospy-Node相关函数"></a>rospy-Node相关函数</h2><ul>
+<li>在python文件中必须得<code>import rospy</code>这个Client-Library</li>
+<li>python是一个解释型语言<br>如图<br><img src="/images/rospy-node.jpg" alt="rospy-node"></li>
+</ul>
+<h2 id="rospy-Topic"><a href="#rospy-Topic" class="headerlink" title="rospy-Topic"></a>rospy-Topic</h2><ul>
+<li>rospy中没有spinOnce()函数</li>
+<li>publisher类中,发布一个消息<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pub = rospy.Publisher(&apos;topic_name&apos;,msg-type,queue_size=None)</span><br><span class="line">pub.publish(msg)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>其中的queue_size是None是就是同步通信，是一个较小的整数时就是异步通信</p>
+<ul>
+<li>subscriber类中，回调函数call_back = fn即一个函数名<br><img src="/images/rospy-topic.jpg" alt="rospy-topic"></li>
+</ul>
+<h2 id="ros-Service"><a href="#ros-Service" class="headerlink" title="ros-Service"></a>ros-Service</h2><ul>
+<li>Service类主要包含Server这一端的API</li>
+<li>Service类主要包含Client这一端的API<br>其中Service类中有一个handler函数<br>形如<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def handler(req)</span><br><span class="line">...</span><br><span class="line">	return resp</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>接收请求进行处理，返回一个回答<br>其中ServiceProxy类形式如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">client = ServiceProxy(name,service_class)  #构造函数</span><br><span class="line">resp = client.call(req) #发起请求，直接调用</span><br><span class="line">resp = client(req) #隐式调用,实际上调用的就是handle</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/ros-Service.jpg" alt="ros-Service"></p>
+<h2 id="rospy-Param"><a href="#rospy-Param" class="headerlink" title="rospy-Param"></a>rospy-Param</h2><p><img src="/images/rospy-Param.jpg" alt="rospy-Param"></p>
+<h2 id="rospy-Time"><a href="#rospy-Time" class="headerlink" title="rospy-Time"></a>rospy-Time</h2><ul>
+<li>Time类 反映一个时刻<br>指一个时刻，构造一个time对象时，就要指定初始的时间 秒和纳秒，，不填这两个参数的话，就以零时刻开始<br>如<br><code>rospy.Time(secs=1,necs=0)</code>#构造函数秒和纳秒<br>Time now() 是一个静态的成员函数<br><code>rospy.Time.now()</code>#可以这样调用</li>
+<li>Duration类 反映一段时间<br><code>rosoy.Duration(1,0)</code> 这个时间有1秒钟，0纳秒<br>Time - Time = Duration<br>T + D = T<br>D + D = D<br>D - D = D<br>T + T没有意义</li>
+</ul>
+<p>函数<br>Time get_rostime() #当前时刻的Time对象<br><code>rospy.sleep(duration)</code> #参数是要挂起的时间<br>Rate类<br>rate = rospy.Rate(frequency) #构造函数，指定它的频率，然后返回一个rate对象<br><img src="/images/rospy-Time.jpg" alt="rospy-Time"></p>
+<h2 id="topic-demo"><a href="#topic-demo" class="headerlink" title="topic_demo"></a>topic_demo</h2><p><img src="/images/topic_demopy.jpg" alt="topic_demopy"></p>
+<p><img src="/images/topic_demo.msg.jpg" alt="topic_demopy.msg"></p>
+<p>注：catkin_make之后，会生成.msg文件，引用的话就用<br>形如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from topic_demo.msg import gps</span><br></pre></td></tr></table></figure>
+
+<h3 id="pylistener-py"><a href="#pylistener-py" class="headerlink" title="pylistener.py"></a>pylistener.py</h3><p><img src="/images/pylistener.py.jpg" alt="pylistener.py"><br>topic是单向的，从一个node发送到另一个node，不需要有返回值的<br>监听和处理消息用的</p>
+<h3 id="pytalker-py"><a href="#pytalker-py" class="headerlink" title="pytalker.py"></a>pytalker.py</h3><p><img src="/images/pytalker.py.jpg" alt="pytalker.py"></p>
+<h3 id="CMakeLists-txt"><a href="#CMakeLists-txt" class="headerlink" title="CMakeLists.txt"></a>CMakeLists.txt</h3><p><img src="/images/CMakeLists.txtpy.jpg" alt="CMakeLists.txtpy"><br>python是不需要CMake来编译的，它是解释性语言，直接就能运行<br>message_generation必须经过cmake编译才能运行</p>
+<h3 id="package-xml"><a href="#package-xml" class="headerlink" title="package.xml"></a>package.xml</h3><p><img src="/images/package.xmlpy" alt="package.xmlpy"></p>
+<h2 id="service-demo"><a href="#service-demo" class="headerlink" title="service_demo"></a>service_demo</h2><p><img src="/images/service_demopy.jpg" alt="service_demopy"></p>
+<p><img src="/images/service_demopy.srv.jpg" alt="service_demopy.srv"><br>注：catkin_make之后会生成.srv文件,引用的话就用<br>形如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from service_damo.srv import *</span><br></pre></td></tr></table></figure>
+
+<p>*号包含Greeing、GreeingResponse、GreetingRequest这三种类型</p>
+<h3 id="server-demo-py"><a href="#server-demo-py" class="headerlink" title="server_demo.py"></a>server_demo.py</h3><p>注：rospy.spin()来触发所有的service中的处理函数和topic中的回调函数<br><img src="/images/server_demo.py.jpg" alt="server_demo.py"></p>
+<h3 id="client-demo-py"><a href="#client-demo-py" class="headerlink" title="client_demo.py"></a>client_demo.py</h3><p><img src="/images/client_demo.py.jpg" alt="client_demo.py"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/14/TF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dawn_buji">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dawn_buji's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/14/TF/" itemprop="url">TF&URDF</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-14T16:15:38+08:00">
+                2019-08-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ros机器人操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">ros机器人操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="TF-TransForm"><a href="#TF-TransForm" class="headerlink" title="TF(TransForm)"></a>TF(TransForm)</h1><ul>
+<li>坐标系变换</li>
+<li>坐标变换（位置+姿态）</li>
+<li>坐标系数据维护的工具</li>
+</ul>
+<h2 id="tf"><a href="#tf" class="headerlink" title="tf"></a>tf</h2><ul>
+<li>坐标变换的标准、话题、工具、接口<br>例如：标准定义这个坐标转换的数据格式、数据结构（通常是树状结构-tf tree）<br>tf话题（topic）：其中的msg就是保存了tf tree这种数据结构，维护了整个机器人甚至整个地图的坐标转换关系<br>接口：就是roscpp、rospy关于tf的API</li>
+<li>机器人部件：link，每一个link上面都对应一个frame（坐标系）</li>
+<li>如何维护各个坐标系之间的关系<br>TF树<br><img src="/images/tf-tree.jpg" alt="tf-tree"></li>
+<li>frame与frame之间联通<br>frame与frame之间联通必须要有一个node，像联通关系一样来发布消息，维护frame之间的联通关系，发布坐标变换的消息<br>这个node就是图中的Broadcaster，是一个publisher</li>
+</ul>
+<hr>
+<p>那么这个node的数据格式是什么呢？</p>
+<h3 id="TransformStamped-msg"><a href="#TransformStamped-msg" class="headerlink" title="TransformStamped.msg"></a>TransformStamped.msg</h3><ul>
+<li>两个frame之间的数据格式<br>具体格式如下</li>
+</ul>
+<h3 id="tf-tfMessage-msg与tf2-msgs-TFMessage-msg"><a href="#tf-tfMessage-msg与tf2-msgs-TFMessage-msg" class="headerlink" title="tf/tfMessage.msg与tf2_msgs/TFMessage.msg"></a>tf/tfMessage.msg与tf2_msgs/TFMessage.msg</h3><ul>
+<li>第一代的tf设计的比较复杂，为了简化类型并且支持一些其他扩展库的类型，因此开发了tf2</li>
+<li>通过<code>rostopic info /tf</code>查看一下tf属性，知道topic里面是第几代msg</li>
+<li>描述tf tree的关系</li>
+<li>这个tf tree的数据结构、数据原理<br><img src="tftreemsg.jpg" alt="tftreemsg"></li>
+</ul>
+<p><img src="/images/transformstamped.jpg" alt="transformstamped"></p>
+<h2 id="tf-in-c"><a href="#tf-in-c" class="headerlink" title="tf in c++"></a>tf in c++</h2><p><img src="/images/tfc++.jpg" alt="tfc++"><br>数据转换<br><img src="/images/c++transform.jpg" alt="c++transform">//无图片<br>tf::TransformBroadcaster类<br><img src="/images/TransformBroadcaster.jpg" alt="TransformBroadcaster"><br>tf::TransformListener类<br><img src="/images/TransformListener.jpg" alt="TransformListener"><br>其中第三个参数使用的时间戳ros::Time(0)是获取最新的消息，<br>ros::Time::now()是接收不到消息的，因为发送消息到接收消息要一段时间</p>
+<h2 id="tf-in-python"><a href="#tf-in-python" class="headerlink" title="tf in python"></a>tf in python</h2><ul>
+<li>TF相关数据类型<br><img src="/images/tfpy.jpg" alt="tfpy"></li>
+<li>tf.transformations<br>提供了一个基本的数学运算函数<br><img src="/images/ts.transformations.jpg" alt="ts.transformations"><br>rospy里面有一个tf库，在用之前需要import这个库</li>
+<li>tf.TransformListener类<br><img src="/images/tf.TransformListener1.jpg" alt="tf.TransformListener1"><br><img src="/images/tf.TransformListener2.jpg" alt="tf.TransformListener2"></li>
+<li>tf.TransformBroadcaster类<br><img src="/images/tf.TransformBroadcaster.jpg" alt="tf.TransformBroadcaster"></li>
+<li>tf常用命令</li>
+</ul>
+<ol>
+<li>根据当前的tf树创建一个pdf图<br><code>$ rosrun tf view_frames</code> #订阅/tf这个msg，5s的时间然后生成tf树的PDF图</li>
+<li>查看当前的tf树<br><code>$ rosrun rqt_tf_tree rqt_tf_tree</code>#动态的查看</li>
+<li>查看两个frame之间的变换关系<br><code>$ rosrun tf tf_echo [reference_frame][target_frame]</code></li>
+</ol>
+<h1 id="URDF"><a href="#URDF" class="headerlink" title="URDF"></a>URDF</h1><ul>
+<li>Unified Robot Description Format统一机器人描述格式</li>
+<li>这个文件制定了一个规范，用来描述这个机器人是这样的一个结构</li>
+<li>tf、可视化、仿真的功能都需要urdf的参与 </li>
+<li>ros里面有个package为urdf本质是一个解析器，用来解析urdf格式的文件</li>
+<li>urdf格式中定义了两个部分</li>
+</ul>
+<ol>
+<li>link 就是指部件、零件，每一个link都有三个轴，分别代表x,y,z</li>
+<li>joint 就是连接两个link之间的关节，表示两个link之间的连接关系，和tf是对应的<br><img src="/images/link_joint.jpg" alt="link_joint"></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/14/roscpp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dawn_buji">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dawn_buji's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/14/roscpp/" itemprop="url">roscpp</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-14T15:38:43+08:00">
+                2019-08-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ros机器人操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">ros机器人操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="roscpp"><a href="#roscpp" class="headerlink" title="roscpp"></a>roscpp</h1><h2 id="service-demo"><a href="#service-demo" class="headerlink" title="service_demo"></a>service_demo</h2><p><img src="/images/service_demo.jpg" alt="service_demo"></p>
+<h3 id="package、srv"><a href="#package、srv" class="headerlink" title="package、srv"></a>package、srv</h3><p><img src="/images/package-srv.jpg" alt="package-srv"></p>
+<h3 id="server-cpp"><a href="#server-cpp" class="headerlink" title="server.cpp"></a>server.cpp</h3><p><img src="/images/server.cpp.jpg" alt="server.cpp"><br><img src="/images/servercpp.jpg" alt="servercpp"></p>
+<h3 id="client-cpp"><a href="#client-cpp" class="headerlink" title="client.cpp"></a>client.cpp</h3><p><img src="/images/client.cpp.jpg" alt="client.cpp"><br>注:<br>clinet.call(srv)即调用这个服务，会返回一个bool型变量，其实就是handle_function()返回的变量<br>CMakaLists.text和package.xml文件不再赘述</p>
+<h2 id="param-demo"><a href="#param-demo" class="headerlink" title="param_demo"></a>param_demo</h2><ul>
+<li>两种API：ros::param和ros::NodeHandle<h3 id="param-demo-cpp"><a href="#param-demo-cpp" class="headerlink" title="param_demo.cpp"></a>param_demo.cpp</h3><img src="/images/param_demo.cpp.jpg" alt="param_demo.cpp"><br>注：<br>get(得到)param1(KEY)的值赋给parameter1这个参数<br>nh.param()中的第三个参数是默认值，当在param3这个键中未找到值，就讲123赋给parameter3<h3 id="param-demo-cpp-launch"><a href="#param-demo-cpp-launch" class="headerlink" title="param_demo_cpp.launch"></a>param_demo_cpp.launch</h3><img src="/images/param_demo_cpp.launch.jpg" alt="param_demo_cpp.launch"></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/14/Client-Library/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -366,7 +892,7 @@
 <li>首先声明一个ros::NodeHandle nh；(对象) </li>
 <li>用这个函数的话，就ros::Publisher pwb = nh.advertise(…);//有两个参数，第一个参数是写topic的名称，指定这个publisher往哪个topic去发布消息，第二个王消息队列上发布消息的长度</li>
 <li>调用完了advertise函数返回值就是一个ros::Publisher赋给一个Publisher的对象</li>
-<li>发布消息，就直接用pwb.publish(msg);<br>形如<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ros::NodeHandle nh;</span><br><span class="line">ros::Publisher pub = nh.advertise(...);</span><br><span class="line">ros::publish(msg);</span><br></pre></td></tr></table></figure>
+<li>发布消息，就直接用pwb.publish(msg);<br>形如<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ros::NodeHandle nh;#句柄</span><br><span class="line">ros::Publisher pub = nh.advertise(...);</span><br><span class="line">ros::publish(msg);</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
@@ -380,6 +906,9 @@
 
 <p><img src="/images/ros.msg.jpg" alt="ros.msg"></p>
 <p>ros写ros.cpp文件时必须要定义这个头文件<br><code>#include &lt;ros/ros.h&gt;</code><br><img src="/images/talker.cpp.jpg" alt="talker.cpp"></p>
+<h3 id="listener-cpp"><a href="#listener-cpp" class="headerlink" title="listener.cpp"></a>listener.cpp</h3><p>如下图<br><img src="/images/roslistener.jpg" alt="roslistener"><br><img src="/images/roslsner.jpg" alt="roslsner"><br>注：<br>Float32.msg<br>ros自带的Float32类型是一个结构体，但里面只有一个内容就是data，data才是真正数据的地方<br>ros::spin()<br>每来一个消息就会把消息放在队列里，何时去处理呢？<br>并不是来一个就会处理一个，必须调用ros::spin()函数，这个ros::spin()会反复查看回调函数的队列是否有东西<br>如果有就在这个队列的东西清空，把里面的每一个msg进行处理，如果队列是空的，就不会调用这个回调函数来处理<br>ros::spin()是反复调用当前可触发的回调函数，执行到这一句它就会反复查看有无可执行的回调函数，所以是阻塞的<br>ros::spinOnce()仅查看一次有无可处理的队列，有的话就处理，没有的话就继续向下执行了，因此它不是阻塞的函数<br>创建Subscriber来接收某个topic上的消息，然后用回调函数来处理对应的消息，回调函数不会自动触发<br>需要调用ros::spin()或ros::spinOnce()来触发</p>
+<h3 id="CMakeLists-txt"><a href="#CMakeLists-txt" class="headerlink" title="CMakeLists.txt"></a>CMakeLists.txt</h3><p><img src="/images/roscmakelists.jpg" alt="roscmakelists"><br>注：<br>message_generation：帮助我们生成自定义的msg文件</p>
+<h3 id="package-xml"><a href="#package-xml" class="headerlink" title="package.xml"></a>package.xml</h3><p><img src="/images/rospackage.jpg" alt="rospackage"></p>
 
           
         
@@ -1505,663 +2034,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/12/catkin工作空间探索/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dawn_buji">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dawn_buji's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/12/catkin工作空间探索/" itemprop="url">catkin工作空间探索及Metapackage</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-12T08:37:02+08:00">
-                2019-08-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ros机器人操作系统/" itemprop="url" rel="index">
-                    <span itemprop="name">ros机器人操作系统</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>代码<br><code>rosdep install --from-paths src --ignore-src --rosdistro melodic -y</code><br>作用是添加代码包所需要的依赖，但rosdep怎么知道要添加什么依赖包呢，其实是定义在package下的package.xml文件里面的build_depend和run_depend这两个标签，告诉rosdep编译和运行时一定有这些依赖项，rosdep知道要把这些依赖项装好。</p>
-<p><code>rospack list | grep catkin_ws</code>ros包在catkin_ws的管道列表</p>
-<h1 id="Metapackage"><a href="#Metapackage" class="headerlink" title="Metapackage"></a>Metapackage</h1><ul>
-<li>Linux软件包管理的概念</li>
-<li>虚包，没有什么实质性内容</li>
-<li>依赖很多其他软件包</li>
-<li>如 在<code>sudo apt-get install ros-melodic-desktop-full</code>其实就是安装了一个Metapackage，包含ros的一些组件，ros的编译系统，ros的基本文件系统，一些指令等等。不需要安装这些所有的软件包，只需安装这一个就够了。所以metapackage就是将它依赖的软件包组合起来。stack叫作软件包集，最后废弃了。</li>
-<li>作用：就是安装时更方便，将功能相似的软件包给组织起来</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Metapackage名称</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>navigation</td>
-<td>导航相关的功能包集</td>
-</tr>
-<tr>
-<td>moveit</td>
-<td>运动规划相关的（主要是机械臂）功能包集</td>
-</tr>
-<tr>
-<td>image_pipeline</td>
-<td>图像获取、处理相关的功能包集</td>
-</tr>
-<tr>
-<td>vision_opencv</td>
-<td>ROS与OpenCV交互的功能包集</td>
-</tr>
-<tr>
-<td>turtlebot</td>
-<td>Turtlebot机器人相关的功能包集</td>
-</tr>
-<tr>
-<td>pr2_robot</td>
-<td>pr2机器人驱动功能包集</td>
-</tr>
-</tbody></table>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/11/catkin工作空间和编译系统/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dawn_buji">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dawn_buji's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/11/catkin工作空间和编译系统/" itemprop="url">catkin工作空间和编译系统</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-11T18:12:44+08:00">
-                2019-08-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ros机器人操作系统/" itemprop="url" rel="index">
-                    <span itemprop="name">ros机器人操作系统</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="catkin工作区间"><a href="#catkin工作区间" class="headerlink" title="catkin工作区间"></a>catkin工作区间</h1><ul>
-<li><p>ros工程框架层次最高的概念</p>
-</li>
-<li><p>catkin是ros定制的编译构建系统，是对CMake的扩展</p>
-</li>
-<li><p>编译ros程序的</p>
-</li>
-</ul>
-<h2 id="catkin工作空间"><a href="#catkin工作空间" class="headerlink" title="catkin工作空间"></a>catkin工作空间</h2><ul>
-<li>组织和管理功能包的文件夹</li>
-<li>以catkin工具编译</li>
-<li>创建、克隆、修改功能包在这个文件里完成</li>
-</ul>
-<h2 id="catkin-make-命令"><a href="#catkin-make-命令" class="headerlink" title="catkin_make(命令)"></a>catkin_make(命令)</h2><ul>
-<li>编译工作空间</li>
-</ul>
-<p>首先，建立工作空间</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$mkdir -p ~/catkin_ws/src</span><br><span class="line">$cd ~/catkin_ws/</span><br><span class="line">$catkin_make</span><br></pre></td></tr></table></figure>
-
-<p>然后，编译</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$cd ~/catkin_ws	#回到工作空间</span><br><span class="line">$catkin_make</span><br><span class="line">$source ~/catkin_ws/devel/setup.bash #编译完成后要source刷新环境</span><br></pre></td></tr></table></figure>
-
-<p>要在catkin_ws目录下catkin_make<br>记得编译完的catkin_ws刷新到环境变量里面去，系统可以知道我们生成的ros可执行文件放在哪里</p>
-<ul>
-<li>src:package源代码，写代码的地方</li>
-<li>build：cmake&amp;catkin缓存和中间文件</li>
-<li>devel：目标文件（头文件、动态静态的链接库和可执行文件）</li>
-</ul>
-<h2 id="src"><a href="#src" class="headerlink" title="src"></a>src</h2><h3 id="package"><a href="#package" class="headerlink" title="package"></a>package</h3><ul>
-<li>是catkin编译的基本单元，catkin系统会递归的查找每一个package</li>
-<li>ros软件的基本组织形式，相当于ros的细胞</li>
-<li>一个package可以包含多个可执行文件（节点）</li>
-<li>包含至少CMakeLists.txt和package.xml两个文件夹<h4 id="CMakeLists-txt"><a href="#CMakeLists-txt" class="headerlink" title="CMakeLists.txt"></a>CMakeLists.txt</h4></li>
-<li>规定catkin编译的规则（告诉编译系统怎么package里面的代码，要编译哪些文件、需要哪些依赖、生成哪些可执行目标、怎么链接等等）</li>
-<li>例如：源文件、依赖项、目标文件</li>
-<li>编译出了什么问题一般跟这个CMakeList.txt这个文件和依赖包有关系  </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">cmake_minimum_required()		#指定catkin最低版本</span><br><span class="line">project()					    #指定软件包的名称</span><br><span class="line">find_package()			    	#指定编译时需要的依赖项</span><br><span class="line">add_message_files()/add_service_files()/add_action_files()</span><br><span class="line">								#添加消息文件/服务文件/动作文件</span><br><span class="line">generate_messages()				#生成消息、服务、动作</span><br><span class="line">catkin_package()				#指定catkin信息给编译系统生成Cmake文件</span><br><span class="line">add_library()/add_executable()  #指定生成库文件、可执行文件</span><br><span class="line">target_link_libraries()  		#指定可执行文件去链接哪个库</span><br><span class="line">catkin_add_gtest()				#添加测试单元</span><br><span class="line">install()						#生成可安装目标</span><br></pre></td></tr></table></figure>
-
-<h4 id="package-xml"><a href="#package-xml" class="headerlink" title="package.xml"></a>package.xml</h4><ul>
-<li>定义package的属性，相当于包的自我描述</li>
-<li>例如：包名、版本号、作者、依赖等</li>
-<li>模板</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;package&gt;				&lt;!--根标签--&gt;</span><br><span class="line">	&lt;name&gt;					&lt;!--包名--&gt;</span><br><span class="line">	&lt;version&gt;				&lt;!--版本号--&gt;</span><br><span class="line">	&lt;description&gt;			&lt;!--包描述--&gt;</span><br><span class="line">	&lt;maintainer&gt;			&lt;!--维护者--&gt;</span><br><span class="line">	&lt;license&gt;				&lt;!--软件许可--&gt;</span><br><span class="line">	&lt;buildtool_depend&gt;		&lt;!--编译工具--&gt;</span><br><span class="line">	&lt;build_depend&gt;			&lt;!--编译时的依赖--&gt;</span><br><span class="line">	&lt;run_depend&gt;			&lt;!--运行时的依赖--&gt;</span><br><span class="line">&lt;/package&gt;				&lt;!--根标签--&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>ros的可执行程序有两种来源</p>
-<ol>
-<li>脚本（Linux的shell、python脚本）</li>
-<li>C++(头文件、源文件)</li>
-<li>通常在package下的scripts放可执行脚本（包括<em>.py、</em>.sh）</li>
-<li>在package下的include放c++的头文件（*.h）</li>
-<li>在package下的src放c++的源文件(*.cpp),可能也有python文件</li>
-</ol>
-<h2 id="自定义通讯格式"><a href="#自定义通讯格式" class="headerlink" title="自定义通讯格式"></a>自定义通讯格式</h2><ol>
-<li>消息（msg）</li>
-<li>服务（srv）</li>
-<li>动作（action）</li>
-</ol>
-<p>比如建一个服务，那么就在package下建一个srv文件（放*.srv文件）</p>
-<h2 id="launch文件以及配置文件"><a href="#launch文件以及配置文件" class="headerlink" title="launch文件以及配置文件"></a>launch文件以及配置文件</h2><ul>
-<li>launch文件（launch）<ol>
-<li>一个package可以有多个可执行文件，要想每个都运行起来，那么就将它们组织到launch文件中，launch文件就是帮助我们一次性运行多个可执行文件</li>
-<li>在package下建一个launch文件（放*.launch）</li>
-</ol>
-</li>
-<li>配置文件（yaml）<ol>
-<li>参数、设置之类的</li>
-<li>一般都在package下config文件下（放*.yaml）</li>
-<li>自由度比较高，什么内容，什么格式一般都由自己来定，常用的就是.yaml格式</li>
-</ol>
-</li>
-</ul>
-<h1 id="常用指令-包管理的指令"><a href="#常用指令-包管理的指令" class="headerlink" title="常用指令(包管理的指令)"></a>常用指令(包管理的指令)</h1><ol>
-<li>rospack<ul>
-<li>查找某个包的地址</li>
-<li><code>$ rospack find package_name</code></li>
-<li>列出本地所有pkg</li>
-<li><code>$ rospack list</code></li>
-</ul>
-</li>
-<li>roscd(相当于Linux下的cd)<ul>
-<li>跳转到某个pkg路径下</li>
-<li><code>$ roscd package_name</code></li>
-</ul>
-</li>
-<li>rosls(相当于Linux下的ls)<ul>
-<li>列举某个pkg下的文件信息</li>
-<li><code>$ rosls packge_name</code></li>
-</ul>
-</li>
-<li>rosed(相当于Linux下的vi(m))<ul>
-<li>编辑pkg中的文件</li>
-<li><code>$ roscd package_name file_name</code></li>
-</ul>
-</li>
-<li>catkin_create_pkg<ul>
-<li>创建一个pkg</li>
-<li><code>catkin_create_pkg &lt;pkg_name&gt; [deps#包所需的依赖]</code></li>
-</ul>
-</li>
-<li>rosdep<ul>
-<li>安装某个pkg所需的依赖</li>
-<li>适用场合，如从GitHub上下载的包</li>
-<li><code>$ rosdep install [pkg_name]</code></li>
-</ul>
-</li>
-</ol>
-<p>e.g<br>    - <code>$ mkdir -p catkin_ws/src</code><br>    - <code>$ cd catkin_ws/</code><br>    - <code>$ catkin_make</code><br>    - <code>cd src</code><br>    - <code>$ catkin_create_pkg test1</code><br>    - <code>catkin_create_pkg test2 roscpp#c++编程的API rospy std_msgs#通讯 nav_msgs#导航</code></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/08/线性规划/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dawn_buji">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dawn_buji's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/08/线性规划/" itemprop="url">线性规划</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-08T09:12:19+08:00">
-                2019-08-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数学建模/" itemprop="url" rel="index">
-                    <span itemprop="name">数学建模</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="线性规划问题"><a href="#线性规划问题" class="headerlink" title="线性规划问题"></a>线性规划问题</h1><hr>
-<h2 id="线性规划的实例与定义"><a href="#线性规划的实例与定义" class="headerlink" title="线性规划的实例与定义"></a>线性规划的实例与定义</h2><ul>
-<li>例1.1 某机床厂生产甲、乙两种机床，每台销售后的利润分别为4000元与3000元。生产甲机床需用A、B机器加工，加工时间分别为每台2h和1h；生产乙机床需用A、B、C三种机器加工，加工时间为每台各1h。若每天可用于加工的机器实数分别为A机器10h、B机器8h和C机器7h，问该厂应生产甲、乙机床各几台，才能使总利润最大？<br>上述问题的数学模型：设该厂生产x_1台甲机床和x_2乙机床时总利润z最大，则x_1,x_2应满足<center>max z = 4x_1 + 3x_2(1.1)
-<center>s.t. 2x_1 + x_2 <= 10 <center> x_1+x_2 <= 8 <center> x_1,x_2 >= 0
-
-</=></=></center></center></li>
-</ul>
-<p>式中：变量 x_1, x_2为决策变量</p>
-<p>式（1.1）称为问题的目标函数，式（1.2）中的几个不等式是问题的约束条件，记为s.t.（即subject to）。由于上面的目标函数及约束条件均为线性函数，故称为线性规划问题。</p>
-<p>总之，线性规划问题是在一组线性约束条件的限制下，求一线性目标函数最大或最小的问题。</p>
-<p>在解决实际问题时，把问题归结成一个线性规划数学模型是很重要的一步，往往也是很困难的一步，模型建立得是否得当，直接影响到求解。而选择适当的决策变量，是建立有效模型的关键之一。</p>
-<hr>
-<h2 id="线性规划的MATLAB标准形式与软件求解"><a href="#线性规划的MATLAB标准形式与软件求解" class="headerlink" title="线性规划的MATLAB标准形式与软件求解"></a>线性规划的MATLAB标准形式与软件求解</h2><ul>
-<li>MATLAB中规定线性规划的标准形式，目标函数是求最小值，约束条件的不等号是小于等于号</li>
-<li>MATLAB中求解线性规划的命令为</li>
-</ul>
-<pre><code>[x,fval] = linprog(f,A,b)
-[x,fval] = linprog(f,A,b,Aeq,beq)
-[x,fval] = linprog(f,A,b,Aeq,beq,lb,ub)
-</code></pre><hr>
-<h2 id="投资的收益和风险"><a href="#投资的收益和风险" class="headerlink" title="投资的收益和风险"></a>投资的收益和风险</h2><table>
-<thead>
-<tr>
-<th>si</th>
-<th>ri/%(平均收益率)</th>
-<th>qi/%(风险损失率)</th>
-<th>pi/%</th>
-<th>ui/元</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>s0</td>
-<td>5</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>s1</td>
-<td>28</td>
-<td>2.5</td>
-<td>1</td>
-<td>103</td>
-</tr>
-<tr>
-<td>s2</td>
-<td>21</td>
-<td>1.5</td>
-<td>2</td>
-<td>198</td>
-</tr>
-<tr>
-<td>s3</td>
-<td>23</td>
-<td>5.5</td>
-<td>4.5</td>
-<td>52</td>
-</tr>
-<tr>
-<td>s4</td>
-<td>25</td>
-<td>2.6</td>
-<td>6.5</td>
-<td>40</td>
-</tr>
-</tbody></table>
-<h3 id="模型一-固定风险水平，优化收益"><a href="#模型一-固定风险水平，优化收益" class="headerlink" title="模型一 固定风险水平，优化收益"></a>模型一 固定风险水平，优化收益</h3><p>MATLAB程序如下</p>
-<pre><code>&gt;&gt;  a = 0;
-hold on
-while a &lt; 0.05
-c = [-0.05,-0.27,-0.19,-0.185,-0.185];
-A = [zeros(4,1),diag([0.025,0.015,0.055,0.026])]%diag对角矩阵
-b = a * ones(4,1);
-Aeq = [1,1.01,1.02,1.045,1.065];
-beq = 1;
-lb = zeros(5,1);
-[x,Q] = linprog(c,A,b,Aeq,beq,lb);
-Q = -Q;
-plot(a,Q,&apos;*k&apos;);
-a = a +0.001;
-end
-</code></pre><p>下面是MATLAB效果图<br><img src="/images/MATLAB%E6%BC%94%E7%A4%BA%E5%9B%BE1.png" alt="MATLAB效果图">  </p>
-<p><a href="https://www.baidu.com" target="_blank" rel="noopener">百度</a></p>
-<hr>
-<h3 id="模型二-固定盈利水平，极小化风险"><a href="#模型二-固定盈利水平，极小化风险" class="headerlink" title="模型二 固定盈利水平，极小化风险"></a>模型二 固定盈利水平，极小化风险</h3><h3 id="模型三-对风险、收益分别赋予权重"><a href="#模型三-对风险、收益分别赋予权重" class="headerlink" title="模型三 对风险、收益分别赋予权重"></a>模型三 对风险、收益分别赋予权重</h3>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2214,7 +2086,7 @@ end
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

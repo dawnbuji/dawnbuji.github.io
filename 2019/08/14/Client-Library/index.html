@@ -96,7 +96,11 @@
 <meta property="og:image" content="https://github.com/images/topic_demo.jpg">
 <meta property="og:image" content="https://github.com/images/ros.msg.jpg">
 <meta property="og:image" content="https://github.com/images/talker.cpp.jpg">
-<meta property="og:updated_time" content="2019-08-14T03:30:53.860Z">
+<meta property="og:image" content="https://github.com/images/roslistener.jpg">
+<meta property="og:image" content="https://github.com/images/roslsner.jpg">
+<meta property="og:image" content="https://github.com/images/roscmakelists.jpg">
+<meta property="og:image" content="https://github.com/images/rospackage.jpg">
+<meta property="og:updated_time" content="2019-08-14T07:25:15.383Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Client_Library">
 <meta name="twitter:description" content="Client Library(客户端库) 概念类似于API区别：client library的层级要更高，它是在API的基础上又做了一层封装，对开发者更加友好 提供ros编程的库,就是一个接口，它把底层的标准流程给封装好，方便程序员去写代码例如：建立node，发布消息，调用服务…  ros提供的client library roscpp c++ 执行效率高，适合做图像、slim这方面的工作，代码写">
@@ -376,7 +380,7 @@
 <li>首先声明一个ros::NodeHandle nh；(对象) </li>
 <li>用这个函数的话，就ros::Publisher pwb = nh.advertise(…);//有两个参数，第一个参数是写topic的名称，指定这个publisher往哪个topic去发布消息，第二个王消息队列上发布消息的长度</li>
 <li>调用完了advertise函数返回值就是一个ros::Publisher赋给一个Publisher的对象</li>
-<li>发布消息，就直接用pwb.publish(msg);<br>形如<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ros::NodeHandle nh;</span><br><span class="line">ros::Publisher pub = nh.advertise(...);</span><br><span class="line">ros::publish(msg);</span><br></pre></td></tr></table></figure>
+<li>发布消息，就直接用pwb.publish(msg);<br>形如<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ros::NodeHandle nh;#句柄</span><br><span class="line">ros::Publisher pub = nh.advertise(...);</span><br><span class="line">ros::publish(msg);</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
@@ -390,6 +394,9 @@
 
 <p><img src="/images/ros.msg.jpg" alt="ros.msg"></p>
 <p>ros写ros.cpp文件时必须要定义这个头文件<br><code>#include &lt;ros/ros.h&gt;</code><br><img src="/images/talker.cpp.jpg" alt="talker.cpp"></p>
+<h3 id="listener-cpp"><a href="#listener-cpp" class="headerlink" title="listener.cpp"></a>listener.cpp</h3><p>如下图<br><img src="/images/roslistener.jpg" alt="roslistener"><br><img src="/images/roslsner.jpg" alt="roslsner"><br>注：<br>Float32.msg<br>ros自带的Float32类型是一个结构体，但里面只有一个内容就是data，data才是真正数据的地方<br>ros::spin()<br>每来一个消息就会把消息放在队列里，何时去处理呢？<br>并不是来一个就会处理一个，必须调用ros::spin()函数，这个ros::spin()会反复查看回调函数的队列是否有东西<br>如果有就在这个队列的东西清空，把里面的每一个msg进行处理，如果队列是空的，就不会调用这个回调函数来处理<br>ros::spin()是反复调用当前可触发的回调函数，执行到这一句它就会反复查看有无可执行的回调函数，所以是阻塞的<br>ros::spinOnce()仅查看一次有无可处理的队列，有的话就处理，没有的话就继续向下执行了，因此它不是阻塞的函数<br>创建Subscriber来接收某个topic上的消息，然后用回调函数来处理对应的消息，回调函数不会自动触发<br>需要调用ros::spin()或ros::spinOnce()来触发</p>
+<h3 id="CMakeLists-txt"><a href="#CMakeLists-txt" class="headerlink" title="CMakeLists.txt"></a>CMakeLists.txt</h3><p><img src="/images/roscmakelists.jpg" alt="roscmakelists"><br>注：<br>message_generation：帮助我们生成自定义的msg文件</p>
+<h3 id="package-xml"><a href="#package-xml" class="headerlink" title="package.xml"></a>package.xml</h3><p><img src="/images/rospackage.jpg" alt="rospackage"></p>
 
       
     </div>
@@ -429,6 +436,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/14/roscpp/" rel="prev" title="roscpp">
+                roscpp <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -507,7 +518,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -562,7 +573,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Client-Library-客户端库"><span class="nav-number">1.</span> <span class="nav-text">Client Library(客户端库)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ros提供的client-library"><span class="nav-number">1.1.</span> <span class="nav-text">ros提供的client library</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#roscpp"><span class="nav-number">1.2.</span> <span class="nav-text">roscpp</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ros-init"><span class="nav-number">1.2.1.</span> <span class="nav-text">ros::init()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ros-NodeHandle-Class-类"><span class="nav-number">1.2.2.</span> <span class="nav-text">ros::NodeHandle Class(类)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ros-master-Namespace即命名空间"><span class="nav-number">1.2.3.</span> <span class="nav-text">ros::master Namespace即命名空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ros-this-node-Namespce-命名空间"><span class="nav-number">1.2.4.</span> <span class="nav-text">ros::this_node Namespce(命名空间)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ros-service-Namespce"><span class="nav-number">1.2.5.</span> <span class="nav-text">ros::service Namespce</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ros-names-Namespace"><span class="nav-number">1.2.6.</span> <span class="nav-text">ros::names Namespace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#roscpp-topic-demo"><span class="nav-number">1.2.7.</span> <span class="nav-text">roscpp topic_demo</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Client-Library-客户端库"><span class="nav-number">1.</span> <span class="nav-text">Client Library(客户端库)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ros提供的client-library"><span class="nav-number">1.1.</span> <span class="nav-text">ros提供的client library</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#roscpp"><span class="nav-number">1.2.</span> <span class="nav-text">roscpp</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ros-init"><span class="nav-number">1.2.1.</span> <span class="nav-text">ros::init()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ros-NodeHandle-Class-类"><span class="nav-number">1.2.2.</span> <span class="nav-text">ros::NodeHandle Class(类)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ros-master-Namespace即命名空间"><span class="nav-number">1.2.3.</span> <span class="nav-text">ros::master Namespace即命名空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ros-this-node-Namespce-命名空间"><span class="nav-number">1.2.4.</span> <span class="nav-text">ros::this_node Namespce(命名空间)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ros-service-Namespce"><span class="nav-number">1.2.5.</span> <span class="nav-text">ros::service Namespce</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ros-names-Namespace"><span class="nav-number">1.2.6.</span> <span class="nav-text">ros::names Namespace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#roscpp-topic-demo"><span class="nav-number">1.2.7.</span> <span class="nav-text">roscpp topic_demo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#listener-cpp"><span class="nav-number">1.2.8.</span> <span class="nav-text">listener.cpp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CMakeLists-txt"><span class="nav-number">1.2.9.</span> <span class="nav-text">CMakeLists.txt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#package-xml"><span class="nav-number">1.2.10.</span> <span class="nav-text">package.xml</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
