@@ -250,6 +250,191 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/12/Mater和Node/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dawn_buji">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dawn_buji's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/12/Mater和Node/" itemprop="url">Mater和Node</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-12T10:25:44+08:00">
+                2019-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ros机器人操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">ros机器人操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="ROS通信架构（计算图级）"><a href="#ROS通信架构（计算图级）" class="headerlink" title="ROS通信架构（计算图级）"></a>ROS通信架构（计算图级）</h1><ul>
+<li>将程序跑起来会有一个怎样的网络结构，会有一个什么样的框架</li>
+<li>personrobot2简称pr2</li>
+<li>怎样管理进程，它们之间怎样通信</li>
+<li>ros的首要目标就是方便各个模块之间的管理和通信</li>
+<li>启动这些进程，需要一个管家管理这些要启动的进程-master（节点管理器）</li>
+</ul>
+<h2 id="master"><a href="#master" class="headerlink" title="master"></a>master</h2><ul>
+<li>master的作用有两个<ol>
+<li>每个node（节点）启动时都要向master注册</li>
+<li>管理node（节点）之间的通信，node之间点对点的通信</li>
+</ol>
+</li>
+<li>启动ros程序之前，第一步就是启动master</li>
+<li>启动ros master的方法：<code>$ roscore</code></li>
+<li><code>$roscore</code>启动了以下三个东西<ol>
+<li>master：节点管理器</li>
+<li>rosout：日志输出 node 告诉我们系统有什么error、有什么warning，把这些log记录下来</li>
+<li>parameter server：参数服务器 做一些参数的配置</li>
+</ol>
+</li>
+<li>启动了mater之后就可以启动一些具体的进程了，即node（节点）</li>
+</ul>
+<h2 id="node-节点"><a href="#node-节点" class="headerlink" title="node (节点)"></a>node (节点)</h2><ul>
+<li>ros的进程，在ros中叫作节点</li>
+<li>pkg里的可执行文件（c++编译的、.python、.shell）运行的实例。当我们运行这些可执行文件，它们被加载到了内存中就成为了一个node</li>
+<li>可执行文件是静态的，node是动态的，一般来说一个node就做某个特定的功能，就专注做某件事</li>
+<li>node一般都是以功能来划分的，不同的功能放在不同的node里</li>
+</ul>
+<h3 id="node启动的方法-rosrun"><a href="#node启动的方法-rosrun" class="headerlink" title="node启动的方法-rosrun"></a>node启动的方法-rosrun</h3><p>启动一个node<br><code>$ rosrun [pkg_name] [node_name]</code></p>
+<h3 id="rosnode"><a href="#rosnode" class="headerlink" title="rosnode"></a>rosnode</h3><p>用来管理和查看一些node<br>列出当前运行的node信息<br><code>$ rosnode list</code><br>显示某个node的详细信息<br><code>$ rosnode info [node_name]</code><br>结束某个node<br><code>$ rosnode kill [node_name]</code></p>
+<p>多node的话，要怎样解决呢？难道要一个一个地启动进程？<br>像这样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ roscore</span><br><span class="line">$ rosrun ... [node1]</span><br><span class="line">$ rosrun ... [node2]</span><br><span class="line">...</span><br><span class="line">$ rosrun ... [noden]</span><br></pre></td></tr></table></figure>
+
+<p>no no no</p>
+<h3 id="roslaunch"><a href="#roslaunch" class="headerlink" title="roslaunch"></a>roslaunch</h3><p>启动master和多个节点<br><code>$ roslaunch [pck_name] [file_name.launch]</code></p>
+<ul>
+<li>pkg下会建一个launch文件夹，里面放.launch文件</li>
+<li>这个.launch文件就是我们要运行的roslaunch<br>这个.launch文件已经配置好了我要启动的规则，且会自动检测系统是否运行roscore即master在不在。如果没有，就先启动roscore，然后按照launch的规则执行。</li>
+</ul>
+<h4 id="launch书写规则"><a href="#launch书写规则" class="headerlink" title="launch书写规则"></a>launch书写规则</h4><p>package.xml书写方式一样的，因为它们都遵循这.xml这种标签语言的规范<br><a href="http://wiki.ros.org/roslaunch/XML" target="_blank" rel="noopener">launch文件</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;launch&gt;			&lt;!--根标签--&gt;</span><br><span class="line">	&lt;node&gt;			&lt;!--需要启动的node及参数--&gt;</span><br><span class="line">	&lt;include&gt;		&lt;!--包含其他launch文件--&gt;</span><br><span class="line">	&lt;machine&gt;		&lt;!--指定运行的机器--&gt;</span><br><span class="line">	&lt;env-loader&gt;	&lt;!--设置环境变量--&gt;	</span><br><span class="line">	&lt;param&gt;			&lt;!--定义参数到参数服务器--&gt;</span><br><span class="line">	&lt;rosparam&gt;		&lt;!--启动yaml文件参数到参数服务器--&gt;</span><br><span class="line">	&lt;arg&gt;			&lt;!--定义参数传入到launch文件中&gt;</span><br><span class="line">	&lt;remap&gt;			&lt;!--设定参数映射--&gt;</span><br><span class="line">	&lt;group&gt;			&lt;!--定义命名空间--&gt;</span><br><span class="line">&lt;/launch&gt;			&lt;!--根标签--&gt;</span><br></pre></td></tr></table></figure>
+
+<p>启动pr2<br><code>$ roslaunch pr2_bringup pr2.launch</code><br>通常我们把启动的包名命名为***_bringup</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/12/catkin工作空间探索/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1027,7 +1212,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX19v04UflqA+AmBSeY8YBf0yprIvge5vu7QFEiZ4A/zfRKj55z3f2iqNRpgBnwDb9tuwAFxypoxNDSdRPap9W+7m9UE0FhtfSDTKa4CmoyOFuHT20J50Tpff+j0MT95rnXVM7FXaiUKd/HibzMAL+F8/7ZdmGj4r2WVKqBWiz/tyPpDzn12BpI8BoCbdFmI08xq1L00i4Bq6kfYEbXeZA3P5mgO6lKlYaT3O1OJRyBXp/GGK51hwscQnOQDbpStROYp2KmkwHhxc25/Ok80EBaXmcgOQYHkAiAghxchFbWZtTxZ4mUpF4b2/YSuHdZ3eu4nplMZ21nA5prQRq7FyGwWhLwQ8YUlAr46eluqaVmrhusoDEfEm7gwEqLreuKU6Z7YHQaHvkljB1PiLNtQdgM2OVfE4iDZncQKzlmo49IYK0drhnSKSWMkS7sELMPX63dnss6hLGbCelzRnETNq9pRD1xbsjua4uk8Bm7xXFPOZxp1435DxKWauzAOGiaCY1E0Iq1aO33FevMnpFW8J0Wiulh2SHuHtA6y1zH01lqaGQJz3H+BdBvSTXTAmHbyQqNdgDCnRDE8TFO1O+sMM9WQ3dCJFcNLbP2qOIqkgSzZiQovGupEQPOFfwZzaOIfiD4T3vXZY1ut+OOUa/EDBjBeRpxVq1QI1MnNscxAcLz+RmX/63IzB674V2M0xcjFIRrOLETJU+LrDuenf6GY6RB2+ZwMDAODiT/J1/4rMvxxLAMurUhtFNmsFem9um5cDpWd0phg2OEaFTT9pp/2DlaxNAOIvJw204wS/AdgfVKjdsdU5lgV/QHpYaGOxp7/BckeQWKKThfjhEHGlgbCSWVmGv0MUI5/Az2+ooDJnuXemBs29WUj47xdY2K3yIzrVqHBABhomO4IbKCcJDLosS2qyvg1mTS1Cau/H20NR0PbRTxYiwO+MSdtjWSIE5Gk9LxxP8vj28ueN7DwDD8f/bWtIHqGkeNddkHZZDsL7HtNy8leMQ/rQOWgUxoKr7aYcSdQve8krEt5uUxsK62RDHYBIi3VzkqkTDWtPl//pn/H3N6NYD+GbWfsn4Tk0mggV4O7i8UsZq+OvgbvRbVq+B7UyaXKfPIV91kVCDfai3GHLuRo4dfald9K4/FNOLwG7MA1LT25IDSwv1e+bc49BGDCz2q8Xvit4h5SRF1QzebDctEmQ6bnxvPaq+9HSIyfplAoTX/ZdDVKlVFnPNZbdkFpo1oNfyeteCI/5Xkx+K+T4+49XgOTzlTjEHreR/yFzv8nt/Nh2EdKU0ZxaVgzo+1j6IhUcd2/SYykaFmEVqud2FbUHzARB7gb6Svx7DvzsEpORBEXG/2H0ddAPuP+bdNijQ7CGGhTGLS+DnEkzqUmubU0Z61TjfJ2Vc0BfME3Jlsip+tcGlWQAxx3FPhifTSXiJeH7L/c4WlbWfGTFkNsvOkA1MOO+kl6oz685uCPMq4Cbjx/8MP+NDUv27Zjx8JdL+6tL6y7eBFCxMHiK04HpNiYwfI4MDzNDOmkrMW8cjkbcGwhTZhJDURAGkpj5AMRvhsNMIIm90tTk+/9u92mFKoqn6cLNIniiBukwOV5uMe6LaihJn9JvtYyIX8gaIIy2DQ7JOJUnAIIYoSFU3sGu6hbtUwA9pbD0YRwwScUaz3SRPgFSVuE+EjBFYAopXvaOdxkd71uM3RsKaHtkinV5T8EFyiCBUEkhDqZqs2I9iGqKEM9bmH65QXlnlBnrSUfpt8XkEMmm6jozeiw9Lt+YjVQnLbmq0GuqlhHwlGBvPEcdgOm9s5o3rf2u7RnjmzpAPNg81LkY92XTKiW9X0rWZSEsL1j9wL8G</div>
+<div id="enc_content" style="display:none">U2FsdGVkX19OA6AKK+p5chaJajBcilL/NZVfvGPmcTmb7omlPo1/znHzj3dbFZOHuzH8Xg/qpGsnuhgRsTsnilFUEJzYxa1T7n8pORA625Kz3ZPEMBrr9ESM6A6mk+b/P2IC+I8+5mB6hhpCeRNO52K1kiI+wWuasJq9ZrMLEZBYqJ1jCEV8EWIOiWJVtX04FcnPKsGxJ3BsNep5QJUtMYsRatBW7ksZwe82wZfuYTnuLlPUT4HzHnDha/wFPsAqp3qaj0fXe5yDYpflm9t36gn65CkahC0bslqDA71Do8VK6+82x9rCkreg65iuTaoJUrhkkRLNbTIDbJLxS8rKD2fv+8S9pVE1UJJGDhow2/49HNlX5G+m8T2VkVAPVmIs8y4aLLBGu3EvEd1WRCK8saEy6w4E12OUvD7cW7spXwqzeapgtFXaliRj3PDqyuxxW2YAcQjZNUZ6yO7UvRUHrM3OL9gppZcgttbkSlr0CkHL4+tygp0DkG798VCHb3WfBdkfKfz8u3k29bEaHBFMHkcOrIky+v5VE1Lhhi152xjsq4BGEKnx+LMpinuLxFqDdN1Yc8Lbr5i/O55thApD6gu1CXfPUsWReR6v7ZPkyI8n//g61phFEE9EWviZmExpSNFoNW/5mWCuWkFJ9bZjPQIRj7EadaqkUZXy9eXLULgkGOGi3eNE89C8oohTV7BuJZ9FHwpbB8SiPBUsOJ9qTZBug93yG4mOzerWWB8FF51LmA08/1su/MwIXpn4ZafxjSNi9Qhhu6g4pATEnrtueM/pA80J+KstjHU8BBoPsGafTuLCuW+oHt8nxaeV0eU74acWRxXAGeLy54QxagOx+MF8INsWzU7sRyjZXL8h8F6Xw9pAp7rME09DqXB1hsCYGRvsm6gYwhRk31zgw8/vI71bg1CdMoWTxECJJ3qSjd7eCNzOuZgeynNoRHkfkLQuCGdH2/8ThBWiTzgNgfa0MzeFUvr5VtqaynfEduTkkUYTOIhpLBaDzLu6rR0ZYwsH7U+VzDPvgQ6yUXkuuAITO4hrl5maar8Hh+Rn/c+6rntbXBb0SZn9Jbrm8uJYpXwfgJJPym6hi3vh6f/HBh4RbMidV9xdPGqfqnN4X0YONvK6VosdN1vRN+zMbQ/ZYLNQxsHZWFxwFANneiWKMXgWerLmrvCX62fg51/UbLQAzv5QnZ4EqhAuvSVHuhL7KHV9PqeiUIicpTGYh5S6PJA2l7tNQy/gm4qBbSdi1vv/GfWCiOJYButYycfjH+8pS7YLEWl8l/2Zj3W3nice182/R81BFBTO38+28V9J7IopskQYsYBd1o8tPqRgpHM0XtR+vqVCCS31r8G/tzxweMhG3UPyIFjuYmWvhlHrzDX7LEaU0WuN2BZk/ZO/LtqFRJ1VXd+yoSz9AkcSZGwlKRxmhMDtIB23dwwxmTbYU0JWUTUC/IRS8vs/S1kB22w0LnPop0z0j35wOEdvvD/0pOvX4b05021DAc07dVcYy6scJEDtovm2j20cEv7GRMzaUJNrrq9Dej+KVu+GB95PySNVVQUC/8er7fT3qdug9uOa7TTu67280YiicfwBWnk3jvcA6O05+rVZDjdldQF2uIUBFpBqod4O7JPwedl6CC+EdF6vwU78fyUIs3WNpbJbuY4zhQYAHJSJQCKoUplwGYunUFH6ol+z3dkQvvvKu1yv8eWxahemcepj8ytmC2hCnMlhdZIARU51PwrqBrLgM7VOh1eC0BevUlVBUoY7bTDVIXUdbRkL9tSZGKrI4tMswFZfTIw8tSXjoxOnrWSzL/eZJMIv1MHjNw3WnZczWiPv7ALgIeNiP6NVH6qpi4hPmOLc</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1207,7 +1392,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">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</div>
+<div id="enc_content" style="display:none">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</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1484,7 +1669,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">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</div>
+<div id="enc_content" style="display:none">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</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1583,7 +1768,7 @@ doDecrypt(passwd, onError);
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1594,7 +1779,7 @@ doDecrypt(passwd, onError);
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1605,7 +1790,7 @@ doDecrypt(passwd, onError);
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1642,7 +1827,7 @@ doDecrypt(passwd, onError);
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
