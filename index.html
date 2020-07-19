@@ -250,6 +250,186 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/19/Log-Two/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dawn_buji">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dawn_buji's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/19/Log-Two/" itemprop="url">Log Two</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-19T20:07:04+08:00">
+                2020-07-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/个人日记/" itemprop="url" rel="index">
+                    <span itemprop="name">个人日记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/js/crypto-js.js"></script>
+<script>
+function doDecrypt (pwd, onError) {
+	console.log('in doDecrypt');
+	const txt = document.getElementById('enc_content').innerHTML;
+	let plantext;
+	try {
+		const bytes = CryptoJS.AES.decrypt(txt, pwd);
+		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
+	} catch(err) {
+		if(onError) {
+			onError(err);
+		}
+		return;
+	}
+	document.getElementById('enc_content').innerHTML = plaintext;
+	document.getElementById('enc_content').style.display = 'block';
+	document.getElementById('enc_passwd').style.display = 'none';
+	if(typeof MathJax !== 'undefined') {
+		MathJax.Hub.Queue(
+			['resetEquationNumbers', MathJax.InputJax.TeX],
+			['PreProcess', MathJax.Hub],
+			['Reprocess', MathJax.Hub]
+		);
+	}
+}
+</script>
+<div id="enc_content" style="display:none">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</div>
+<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<script>
+var onError = function(error) {
+	document.getElementById("enc_error").innerHTML = "password error!"
+};
+function decrypt() {
+var passwd = document.getElementById("enc_pwd_input").value;
+console.log(passwd);
+doDecrypt(passwd, onError);
+}
+</script>
+</div>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/15/OneDay-test/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -370,7 +550,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX1+iEaJ2lPKRy3wVx6c2VXS1xOrcIFpUymmjXayJskwP/yZcUiUW7L+9M+xqPmsggt6SSJ/yQRjQjz8D0Nhp81nlMQGuy8j295c58JY+phR0SxtZ2/zmMVCR1hU2ViWb2sROaCbDMGqhmhmgB9f6KuijI4EoSLGBbSzaGSESfVJwYz5Q1mg/EpB+n2qLCKArm5mIzwhMIEABboI4OKv23TmpqiKeFUgcTsaUtNFfPAlusoDYgEThenZovwZLTbZrfqeVB++/AQsm4tAl8uzXph6M1YvZKNTfZqF+XeefAmqrldvCt/bC+VrL272H5U40i70jPGsLu1Bbx+oB2m6scocFGOH7cOQ2ZyFDJ2WC/MS3CC0LvIHdo/Wu4Qxnli5mJb/40ZQW3SUZ/f7l1sr/GQ1RPAD06l2oRnm4G9wwYubDh2QISzD+s8PLvpESClnxWAskl5zdluYAiTeOrnRL/V9t0ayayqgVxMm1rcKjSHw6UWazJJzU+apqdzEsxzR3/vfykPDy02oYPUf5jgU/z7qwd2nngiZIQyjqoOSyRyFqiLxZ18BDA9U8NOjsITWyzqVpQY+bisogC08jEiusMNoDjr17JmG45ZtD3mQeTqewq50dJ3OlrbELV/ptulKdyzNNT73dKmIa3QbjPRYMw5LHsjffZB3DyT8Tm3wKsuCBWvBfwUBNiOr6F9d05L3dncZUBf9sbOg56V54JQ1lg+fmVKi5d8tD/p3vApYfKAuyMQ3AvD3U9JcBa3HRPhu689naVRJZfDNyR6YR4LIjyAUxp1Au9FSp8DKA/pRif1+ziOhJ4EqzZozIkxhmmj5AWtcNt9TqsegaOWJQFa3MpyFcF8HysZyy5+iasESgDI0wbl+z/R/5vbb3JvYVSruq60EEW0CzrqGLGq/mFAKJGKNp9tiCPZZh+bClBnxRlz0JAQcLPP44g2W2rckLcoL2/QtBcEDq+QktCx/nuRAy+pIFOGX4llZ4gpfA43VX/A3Yt+oLgfzJNXPmR7BbXhVg7oum3ccQUQq4YcwZ/LwVLTDCodtSBgAGYYuHGug4y0myk1F/VAIm98PeOC2WC4rvSAqqMXwKqOzl1CApoXbzfMd1V5S8nVEchTg596GYRF41Qef4ug7ZfruECqDp4XdVDsn6DejRcwnWDGfmvJfXoXsH+wCumtn8IN0RhC4MvtDsGCWZylbjpK3jMTHv3ZTX3YEUFvJQzaeGYJhz47Z7yYJ67YnygKsfSbfbB6SdsxJkqbox9hV16rmUUyUz6MGujZhq7oM5KdR/fliMsQ+qkund21hZULDjO935vZLbMS18bgJvdHGj/ijzmTL+pxlafgU7FMBrv2lVzrtI2N7QsUQWmEQYYjNiZWMBrMZrZwmYBnNNflb6zxNybHY6IK8FPke8vIgugvI7qQ==</div>
+<div id="enc_content" style="display:none">U2FsdGVkX1+llMtnm3jhONby1oXrPbOwFv3fpKqVV5SEIh11uW2KZWN+nzfaNTBw9DohR4SRdSrFjwx9dNBbsdsu8POSvleCyFlK89Vh1OnEjtxkpejt5GFWmPkxdbLmXv7UjLGdimvHfS8dp0IU5F9Z2/ODyoy7rBaJTgVzUUe2FtZcbm0r4gPAAj5mdPpuNr9+Fg+J9XNsAoBz2vhbTvI3ofYBrcecyZGHu7z6zMwDfDQWLFI/qJ45zGtMOpB8SK47xpNNdTWyHHYWv2AAAJpYn8SCksMwKjDE4rH877RrCIhsLCXIXUiZjdORUmwRILgHLRyHr29bLS5lqNlLRvwuWbYYpH9OB2H4UnUhuBkTXLQd0FnsvdfhzSZDbehRUor7jbeuY/5sgF7vNbkb3rUsqpaw+pPfI4q0gWq/8uZm7kpl19JlWlLNTxhwASFUquWlhGUKnguw2k9YV0wXYpfWBs35nk4GGO+WhQBgU9ruJc3vUQRnrbjdx2YkT2FFQmIFprxu8/zdMjx7n+0mnWxOFnNtPD08FMv5BNZwr5UtrVWtuaRYpYUgMbyz0xUdX3nXoW70hO3M3a0erxnPXIUon+MgOvPeZ2NKdL7Fh7bCIkR79czbIwn/vTyoJ1LbKNmrWsHnF3kgieH9LVtBS0edSrSmbXHD+IZeH1ER199MKurtezwcdux3O424n5Ol+loO/dvoNWFoDdBGQVnnVGE55h/kZHXviBC5Ggm0G6mFqwyVAAg7WkJvq7DvBOaPjf7+CC8F3HiaGhagIzU6IkF2ZhwznAG8JxJu5QiSxcofnBAjWQkx6FHIQrhSdDuPAkVEjhStLPzhXUfDOCo/Is957jRykzJO2WX1Ar/MeJxlLxj/E2dvyAyKBwL74B2/mYUo368Ju6JgxYXs9dWCMPH6gKvGiNyvjQIdJlFLcW7pX+KBbgRDkWS9VTQyuNUr1eJWLJIKtBSmaw5hMrgR1wbnqQyXH0zywK5GawP41ws9b00czS1KdONMQ4HBHiQ4cwQbAoT0YtrPji5lyM2eB9bqVqO4rb8k1GoX8x//mPPMpzMF1NJwS/tXoHwG4X7vaIFIpYT9CK30WXBeWu7n0nvmpIOwVL2dXMphy658FLt6ut+N6RFvfw1H/mxfdt/epiREXz0TnfSV70M89KKTiJvSy33JfLVeN4q+qrQCnFYTyzT60xjRj9ZzrlHjJaZ/3z1akGsMwODyIoZELkcyNsxYS46GwfXFYBPUDAnclBfhtshj5AY6zmPBaH9z8fsp5bT+ruKchnLhSgGLLCgb4Qnhe3LpV/cB+K5SN7dOe7DynjpIefTUoYINRc6b9Wl/TyjlrR6qWFhMHcKrd5LBUDWm8ZXfdjUk7lUUF+vBHMKBL2iD9iJeA4rD3YIjSnD6bdP/8s8gD8cYqw0npS7l+w==</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1856,179 +2036,6 @@ doDecrypt(passwd, onError);
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/12/Topic和Msg/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dawn_buji">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dawn_buji's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/12/Topic和Msg/" itemprop="url">Topic和Msg</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-12T21:06:46+08:00">
-                2019-08-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ros机器人操作系统/" itemprop="url" rel="index">
-                    <span itemprop="name">ros机器人操作系统</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="通信方式"><a href="#通信方式" class="headerlink" title="通信方式"></a>通信方式</h1><ol>
-<li>Topic(主题)</li>
-<li>Service(服务)</li>
-<li>Parameter Service(参数服务器)</li>
-<li>Actionlib(动作库)</li>
-</ol>
-<h2 id="Topic"><a href="#Topic" class="headerlink" title="Topic"></a>Topic</h2><ul>
-<li>ros中用的最多的一种通信方式</li>
-<li>ros中的异步通信方式</li>
-<li>Node间通过publish-subscribe机制通信<br>node A向Topic发送消息，node B向Topic订阅消息，topic就像是一个频道，node A向这个频道发，node B向这个频道收听</li>
-<li>是一个字符串string<h3 id="什么是异步？"><a href="#什么是异步？" class="headerlink" title="什么是异步？"></a>什么是异步？</h3>例：node1（camera）-&gt;publish(发布)-&gt;/camera_rgb、/camera_depth(Topic)<br>这个node只管发布topic，不管有没有人接收和处理<br>node2(image process)-&gt;sub（订阅）-&gt;/camera_rgb、/camera_depth(Topic)<br>这个node只管消息来了 接收、处理 不管谁发布的<br>对于发布者来说，当它发布了这个消息，它不用等待这个消息返回的状态<br>对于接受者来说，有消息到了就去处理，没有消息就可以做别的事情<br>这就是一种异步的通信方式<br>node3（display）:也可以同时订阅/camera_rgb等topic</li>
-</ul>
-<ol>
-<li>topic的通信方式是异步的，在发送的时候会调用这个publish（）这个方法，调用完这个函数，就可以立即返回了，不用等待发送之后的处理的结果</li>
-<li>topic可以有多个subscribers（接收者），同样地，一个topic也可以有多个publishers（发送者）</li>
-</ol>
-<h3 id="Topic相关命令"><a href="#Topic相关命令" class="headerlink" title="Topic相关命令"></a>Topic相关命令</h3><ol>
-<li>列出当前所有topic<br> <code>$ rostopic list</code></li>
-<li>显示某个topic的属性信息<br> <code>$ rostopic info /topic_name</code></li>
-<li>显示某个topic的内容<br> <code>$ rostopic echo /topic_name</code></li>
-<li>向某个topic发布内容<br>  <code>$ rostopic pub /topic_name ...</code></li>
-</ol>
-<h2 id="Message"><a href="#Message" class="headerlink" title="Message"></a>Message</h2><ul>
-<li>是topic内容的数据类型，topic的格式标准。message是一种数据格式，信息要遵守的规范。相当于类这个概念。</li>
-<li>定义在<em>.msg文件中 `pkg/msg/</em>.msg`</li>
-<li>基本的msg包括<br>  bool,int8,int16,int64(以及uint)<br>  float32,float64,sting<br>  time,duration,header<br>  可变长数组array[],固定长度数组array[C]<br>message就相当于一个结构体或者说是类</li>
-</ul>
-<h3 id="Message相关命令"><a href="#Message相关命令" class="headerlink" title="Message相关命令"></a>Message相关命令</h3><ol>
-<li>列出系统上所有msg<br> <code>$ rosmsg list</code></li>
-<li>显示某个msg内容<br> <code>$ rosmsg show /msg_name</code></li>
-</ol>
-<p>其中一些topic如/camera/rgb … 和/camera/depth …,即图像的色彩和深度，两者信息融合后就可以构成点云（pointcloud），这个数据，用于定位、建图、识别这些功能上。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2081,7 +2088,7 @@ doDecrypt(passwd, onError);
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

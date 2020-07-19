@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="ros,">
+  <meta name="keywords" content="日常,">
 
 
 
@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="Service ros中的同步通信方式  同步通信是client发送一个请求会一直在原地等着，会阻塞，直到服务器端返回来结果，node A才会继续执行 node间可以通过request-reply方式通信（请求和响应）  node A（client）客服端 node B（Server）服务器 node B会给外界提供一个/Service（服务），别的node来请求node B来调用这个服务，即no">
-<meta name="keywords" content="ros">
+<meta name="description" content="function doDecrypt (pwd, onError) { 	console.log(&apos;in doDecrypt&apos;); 	const txt = document.getElementById(&apos;enc_content&apos;).innerHTML; 	let plantext; 	try { 		const bytes = CryptoJS.AES.decrypt(txt, pwd);">
+<meta name="keywords" content="日常">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Service与srv">
-<meta property="og:url" content="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/13/Service与srv/index.html">
+<meta property="og:title" content="Log Two">
+<meta property="og:url" content="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/19/Log-Two/index.html">
 <meta property="og:site_name" content="dawn_buji&#39;s Blog">
-<meta property="og:description" content="Service ros中的同步通信方式  同步通信是client发送一个请求会一直在原地等着，会阻塞，直到服务器端返回来结果，node A才会继续执行 node间可以通过request-reply方式通信（请求和响应）  node A（client）客服端 node B（Server）服务器 node B会给外界提供一个/Service（服务），别的node来请求node B来调用这个服务，即no">
+<meta property="og:description" content="function doDecrypt (pwd, onError) { 	console.log(&apos;in doDecrypt&apos;); 	const txt = document.getElementById(&apos;enc_content&apos;).innerHTML; 	let plantext; 	try { 		const bytes = CryptoJS.AES.decrypt(txt, pwd);">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://github.com/images/rosdepend.jpg">
-<meta property="og:updated_time" content="2019-08-13T03:01:56.245Z">
+<meta property="og:updated_time" content="2020-07-19T13:43:57.842Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Service与srv">
-<meta name="twitter:description" content="Service ros中的同步通信方式  同步通信是client发送一个请求会一直在原地等着，会阻塞，直到服务器端返回来结果，node A才会继续执行 node间可以通过request-reply方式通信（请求和响应）  node A（client）客服端 node B（Server）服务器 node B会给外界提供一个/Service（服务），别的node来请求node B来调用这个服务，即no">
-<meta name="twitter:image" content="https://github.com/images/rosdepend.jpg">
+<meta name="twitter:title" content="Log Two">
+<meta name="twitter:description" content="function doDecrypt (pwd, onError) { 	console.log(&apos;in doDecrypt&apos;); 	const txt = document.getElementById(&apos;enc_content&apos;).innerHTML; 	let plantext; 	try { 		const bytes = CryptoJS.AES.decrypt(txt, pwd);">
 
 
 
@@ -122,14 +120,14 @@
 
 
 
-  <link rel="canonical" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/13/Service与srv/">
+  <link rel="canonical" href="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/19/Log-Two/">
 
 
 
 
 
 
-  <title>Service与srv | dawn_buji's Blog</title>
+  <title>Log Two | dawn_buji's Blog</title>
   
 
 
@@ -256,7 +254,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/13/Service与srv/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/19/Log-Two/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dawn_buji">
@@ -273,7 +271,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Service与srv</h1>
+          <h1 class="post-title" itemprop="name headline">Log Two</h1>
         
 
         <div class="post-meta">
@@ -285,8 +283,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-13T08:32:53+08:00">
-                2019-08-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-19T20:07:04+08:00">
+                2020-07-19
               </time>
             
 
@@ -308,8 +306,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ros机器人操作系统/" itemprop="url" rel="index">
-                    <span itemprop="name">ros机器人操作系统</span>
+                  <a href="/categories/个人日记/" itemprop="url" rel="index">
+                    <span itemprop="name">个人日记</span>
                   </a>
                 </span>
 
@@ -345,86 +343,46 @@
       
 
       
-        <h1 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h1><ul>
-<li>ros中的同步通信方式<br>  同步通信是client发送一个请求会一直在原地等着，会阻塞，直到服务器端返回来结果，node A才会继续执行</li>
-<li>node间可以通过request-reply方式通信（请求和响应）<br>  node A（client）客服端 node B（Server）服务器 node B会给外界提供一个/Service（服务），别的node来请求node B来调用这个服务，即node A会把Service需要的参数传给Service也就是请求它，node B收到请求就会做处理，处理完了就会回复给node A</li>
-</ul>
-<h2 id="Topic-VS-Service"><a href="#Topic-VS-Service" class="headerlink" title="Topic VS Service"></a>Topic VS Service</h2><table>
-<thead>
-<tr>
-<th>对象</th>
-<th>Topic</th>
-<th>Service</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>通信方式</td>
-<td>异步通信</td>
-<td>同步通信</td>
-</tr>
-<tr>
-<td>实现原理</td>
-<td>TCP/IP</td>
-<td>TCP/IP</td>
-</tr>
-<tr>
-<td>通信模型</td>
-<td>Publish-Subscribe</td>
-<td>Request-Reply</td>
-</tr>
-<tr>
-<td></td>
-<td>publish-subscribe（多对多）</td>
-<td>client-server（多对一）</td>
-</tr>
-<tr>
-<td></td>
-<td>接收者收到数据会回调（callback）</td>
-<td>远程过程调用（RPC）服务器端的服务</td>
-</tr>
-<tr>
-<td>应用场景</td>
-<td>连续、高频的数据发布</td>
-<td>偶尔调用的功能/具体的任务</td>
-</tr>
-<tr>
-<td>举例</td>
-<td>激光雷达、里程计发布数据</td>
-<td>开关传感器、拍照、逆解计算</td>
-</tr>
-</tbody></table>
-<p>注：</p>
-<ol>
-<li>回调函数来做一个处理</li>
-<li>rpc就是在一个进程（node）里面去调用另一个进程（node）里面的函数</li>
-<li>远程过程调用是和本地函数调用这个概念是相对的</li>
-</ol>
-<h2 id="常用命令rosservice"><a href="#常用命令rosservice" class="headerlink" title="常用命令rosservice"></a>常用命令rosservice</h2><ol>
-<li>列出当前所有活跃的service<br> <code>$ rosservice list</code></li>
-<li>显示某个service的属性信息<br> <code>$ rosservice info service_name</code></li>
-<li>调用某个service<br> <code>$ rosservice call service_name args(希望传入的参数)</code></li>
-</ol>
-<h1 id="srv"><a href="#srv" class="headerlink" title="srv"></a>srv</h1><ul>
-<li>service的简写</li>
-<li>service通信的数据格式</li>
-<li>定义在*.srv文件中</li>
-<li>*.srv文件一定要放在srv这个文件下</li>
-<li>形如<br>my_pkg/srv/DetectHuman.srv<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bool	start_detect#请求这个服务要遵守的格式，可以 比较简单，就用一个bool型</span><br><span class="line">					#当它是ture的时候，就开始检测，检测完了之后就回传一个HumanPose[]这个数组</span><br><span class="line">---</span><br><span class="line">my_pkg/HumanPose[]	pose_data#这个服务应答、返回的格式，回传定义为数组，就是说可能不止一个人，</span><br><span class="line">							 #这个数组是自定义的了,定义在msg文件中，srv可以嵌套msg但不能嵌套srv</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>my_pkg/msg/HumanPose.msg    #msg一种自定义的数据类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">std_msgs/Header header</span><br><span class="line">string uuid</span><br><span class="line">int32 number_of_joints</span><br><span class="line">my_pkg/JointPos[] joint_data</span><br></pre></td></tr></table></figure>
-
-<p>my_pkg/msg/JointPos.msg       #定义JointPos[]数组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string joint_name</span><br><span class="line">geometry_msgs/Pose pose</span><br><span class="line">floar32 confidence</span><br></pre></td></tr></table></figure>
-
-<p>定义了srv或者msg，要修改package.xml和CMakeList.txt，具体就是添加一些条目，指定了srv和msg编译运行时所需要的依赖<br>只有自定义了srv或者msg就要把这几条添进去<br><img src="/images/rosdepend.jpg" alt="rosdepend"></p>
-<h2 id="常用命令rossrv"><a href="#常用命令rossrv" class="headerlink" title="常用命令rossrv"></a>常用命令rossrv</h2><ol>
-<li>列出系统上所有的srv<br> <code>$ rossrv list</code></li>
-<li>显示某个srv内容<br> <code>$ rossrv show srv_name</code></li>
-</ol>
-
+        <script src="/js/crypto-js.js"></script>
+<script>
+function doDecrypt (pwd, onError) {
+	console.log('in doDecrypt');
+	const txt = document.getElementById('enc_content').innerHTML;
+	let plantext;
+	try {
+		const bytes = CryptoJS.AES.decrypt(txt, pwd);
+		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
+	} catch(err) {
+		if(onError) {
+			onError(err);
+		}
+		return;
+	}
+	document.getElementById('enc_content').innerHTML = plaintext;
+	document.getElementById('enc_content').style.display = 'block';
+	document.getElementById('enc_passwd').style.display = 'none';
+	if(typeof MathJax !== 'undefined') {
+		MathJax.Hub.Queue(
+			['resetEquationNumbers', MathJax.InputJax.TeX],
+			['PreProcess', MathJax.Hub],
+			['Reprocess', MathJax.Hub]
+		);
+	}
+}
+</script>
+<div id="enc_content" style="display:none">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</div>
+<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<script>
+var onError = function(error) {
+	document.getElementById("enc_error").innerHTML = "password error!"
+};
+function decrypt() {
+var passwd = document.getElementById("enc_pwd_input").value;
+console.log(passwd);
+doDecrypt(passwd, onError);
+}
+</script>
+</div>
       
     </div>
     
@@ -441,7 +399,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ros/" rel="tag"># ros</a>
+            <a href="/tags/日常/" rel="tag"># 日常</a>
           
         </div>
       
@@ -454,8 +412,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/12/Topic和Msg/" rel="next" title="Topic和Msg">
-                <i class="fa fa-chevron-left"></i> Topic和Msg
+              <a href="/2020/07/15/OneDay-test/" rel="next" title="OneDay'test">
+                <i class="fa fa-chevron-left"></i> OneDay'test
               </a>
             
           </div>
@@ -463,10 +421,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/13/Server/" rel="prev" title="Server">
-                Server <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -518,17 +472,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -590,22 +535,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Service"><span class="nav-number">1.</span> <span class="nav-text">Service</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Topic-VS-Service"><span class="nav-number">1.1.</span> <span class="nav-text">Topic VS Service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用命令rosservice"><span class="nav-number">1.2.</span> <span class="nav-text">常用命令rosservice</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#srv"><span class="nav-number">2.</span> <span class="nav-text">srv</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用命令rossrv"><span class="nav-number">2.1.</span> <span class="nav-text">常用命令rossrv</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
