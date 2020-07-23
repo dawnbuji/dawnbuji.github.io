@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="日常,">
+  <meta name="keywords" content="学习,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="function doDecrypt (pwd, onError) { 	console.log(&apos;in doDecrypt&apos;); 	const txt = document.getElementById(&apos;enc_content&apos;).innerHTML; 	let plantext; 	try { 		const bytes = CryptoJS.AES.decrypt(txt, pwd);">
-<meta name="keywords" content="日常">
+<meta name="description" content="Stm32时钟简介 RCC 复位和时钟总线 AHB 系统总线（高阶外设总线）   APB1 定时器、串口、低速 APB2 GPIO、高速HSE:高速外部时钟HSI:高速内部时钟LSI:低速内部时钟LSE:低速外部时钟 了解APB1(低速)和APB2(高速)外设 学会看STM32时钟框图 学会用库函数开启外设时钟 学会STM32 IO配置方法与应用场合  定义初始化结构体GPIO_InitTypeD">
+<meta name="keywords" content="学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Log Two">
-<meta property="og:url" content="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/19/Log-Two/index.html">
+<meta property="og:title" content="RCC_LED">
+<meta property="og:url" content="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/23/RCC-LED/index.html">
 <meta property="og:site_name" content="dawn_buji&#39;s Blog">
-<meta property="og:description" content="function doDecrypt (pwd, onError) { 	console.log(&apos;in doDecrypt&apos;); 	const txt = document.getElementById(&apos;enc_content&apos;).innerHTML; 	let plantext; 	try { 		const bytes = CryptoJS.AES.decrypt(txt, pwd);">
+<meta property="og:description" content="Stm32时钟简介 RCC 复位和时钟总线 AHB 系统总线（高阶外设总线）   APB1 定时器、串口、低速 APB2 GPIO、高速HSE:高速外部时钟HSI:高速内部时钟LSI:低速内部时钟LSE:低速外部时钟 了解APB1(低速)和APB2(高速)外设 学会看STM32时钟框图 学会用库函数开启外设时钟 学会STM32 IO配置方法与应用场合  定义初始化结构体GPIO_InitTypeD">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-07-19T13:43:57.842Z">
+<meta property="og:updated_time" content="2020-07-23T10:02:15.324Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Log Two">
-<meta name="twitter:description" content="function doDecrypt (pwd, onError) { 	console.log(&apos;in doDecrypt&apos;); 	const txt = document.getElementById(&apos;enc_content&apos;).innerHTML; 	let plantext; 	try { 		const bytes = CryptoJS.AES.decrypt(txt, pwd);">
+<meta name="twitter:title" content="RCC_LED">
+<meta name="twitter:description" content="Stm32时钟简介 RCC 复位和时钟总线 AHB 系统总线（高阶外设总线）   APB1 定时器、串口、低速 APB2 GPIO、高速HSE:高速外部时钟HSI:高速内部时钟LSI:低速内部时钟LSE:低速外部时钟 了解APB1(低速)和APB2(高速)外设 学会看STM32时钟框图 学会用库函数开启外设时钟 学会STM32 IO配置方法与应用场合  定义初始化结构体GPIO_InitTypeD">
 
 
 
@@ -120,14 +120,14 @@
 
 
 
-  <link rel="canonical" href="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/19/Log-Two/">
+  <link rel="canonical" href="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/23/RCC-LED/">
 
 
 
 
 
 
-  <title>Log Two | dawn_buji's Blog</title>
+  <title>RCC_LED | dawn_buji's Blog</title>
   
 
 
@@ -254,7 +254,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/19/Log-Two/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/23/RCC-LED/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dawn_buji">
@@ -271,7 +271,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Log Two</h1>
+          <h1 class="post-title" itemprop="name headline">RCC_LED</h1>
         
 
         <div class="post-meta">
@@ -283,8 +283,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-19T20:07:04+08:00">
-                2020-07-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-23T11:10:24+08:00">
+                2020-07-23
               </time>
             
 
@@ -306,8 +306,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/个人日记/" itemprop="url" rel="index">
-                    <span itemprop="name">个人日记</span>
+                  <a href="/categories/BlueBridgeCup/" itemprop="url" rel="index">
+                    <span itemprop="name">BlueBridgeCup</span>
                   </a>
                 </span>
 
@@ -343,46 +343,27 @@
       
 
       
-        <script src="/js/crypto-js.js"></script>
-<script>
-function doDecrypt (pwd, onError) {
-	console.log('in doDecrypt');
-	const txt = document.getElementById('enc_content').innerHTML;
-	let plantext;
-	try {
-		const bytes = CryptoJS.AES.decrypt(txt, pwd);
-		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {
-			onError(err);
-		}
-		return;
-	}
-	document.getElementById('enc_content').innerHTML = plaintext;
-	document.getElementById('enc_content').style.display = 'block';
-	document.getElementById('enc_passwd').style.display = 'none';
-	if(typeof MathJax !== 'undefined') {
-		MathJax.Hub.Queue(
-			['resetEquationNumbers', MathJax.InputJax.TeX],
-			['PreProcess', MathJax.Hub],
-			['Reprocess', MathJax.Hub]
-		);
-	}
-}
-</script>
-<div id="enc_content" style="display:none">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</div>
-<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>
+        <h1 id="Stm32时钟简介"><a href="#Stm32时钟简介" class="headerlink" title="Stm32时钟简介"></a>Stm32时钟简介</h1><ul>
+<li>RCC 复位和时钟总线</li>
+<li>AHB 系统总线（高阶外设总线）</li>
+</ul>
+<ol>
+<li>APB1 定时器、串口、低速</li>
+<li>APB2 GPIO、高速<br>HSE:高速外部时钟<br>HSI:高速内部时钟<br>LSI:低速内部时钟<br>LSE:低速外部时钟</li>
+<li>了解APB1(低速)和APB2(高速)外设</li>
+<li>学会看STM32时钟框图</li>
+<li>学会用库函数开启外设时钟</li>
+<li>学会STM32 IO配置方法与应用场合</li>
+</ol>
+<h2 id="定义初始化结构体"><a href="#定义初始化结构体" class="headerlink" title="定义初始化结构体"></a>定义初始化结构体</h2><p><code>GPIO_InitTypeDef GPIO_InitStructure</code><br>定义结构体变量类型 结构体名称<br><code>GPIO_Mode</code><br>枚举变量构成  </p>
+<ol>
+<li><code>GPIO_Mode_AIN</code><br>模拟输入 ADC采样</li>
+<li><code>GPIO_Mode_IPD</code><br>输入下拉 IO口不接的话，默认为低电平</li>
+<li><code>GPIO_Mode_IPU</code><br>输入上拉 IO口不接的话，默认为高电平</li>
+<li><code>GPIO_Mode_IN_FLOATING</code><br>输入浮空 IO口不接的话，状态不定，呈高阻态  </li>
+<li><code>GPIO_Mode_Out_OD</code>  </li>
+</ol>
+
       
     </div>
     
@@ -399,7 +380,7 @@ doDecrypt(passwd, onError);
       
         <div class="post-tags">
           
-            <a href="/tags/日常/" rel="tag"># 日常</a>
+            <a href="/tags/学习/" rel="tag"># 学习</a>
           
         </div>
       
@@ -412,8 +393,8 @@ doDecrypt(passwd, onError);
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/15/OneDay-test/" rel="next" title="OneDay'test">
-                <i class="fa fa-chevron-left"></i> OneDay'test
+              <a href="/2020/07/22/Log-Four/" rel="next" title="Log-Four">
+                <i class="fa fa-chevron-left"></i> Log-Four
               </a>
             
           </div>
@@ -421,10 +402,6 @@ doDecrypt(passwd, onError);
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/07/21/Log-Three/" rel="prev" title="Log_Three">
-                Log_Three <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -476,8 +453,17 @@ doDecrypt(passwd, onError);
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -539,6 +525,22 @@ doDecrypt(passwd, onError);
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Stm32时钟简介"><span class="nav-number">1.</span> <span class="nav-text">Stm32时钟简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义初始化结构体"><span class="nav-number">1.1.</span> <span class="nav-text">定义初始化结构体</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

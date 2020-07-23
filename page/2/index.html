@@ -250,6 +250,172 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/13/action/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dawn_buji">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dawn_buji's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/13/action/" itemprop="url">action</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-13T16:21:42+08:00">
+                2019-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ros机器人操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">ros机器人操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="action"><a href="#action" class="headerlink" title="action"></a>action</h1><ul>
+<li>ros中的一种通信方式</li>
+<li>相当于一个功能更强大的service</li>
+<li>cline可以cancel请求，server可以feedback状态反馈，实时进度跟进</li>
+<li>类似于service，带有状态反馈的通信方式<br>通信结构如下<br><img src="/images/rosaction.jpg" alt="action interface"></li>
+</ul>
+<ol>
+<li>goal 给server的请求，希望这个动作能实现的目标</li>
+<li>cancel 任务执行中间需要cancel掉这个任务</li>
+<li>status sever现在所处的一个状态</li>
+<li>result 动作处理完后会返回一个结果给client</li>
+<li>feedback 实时状态会反馈给client</li>
+</ol>
+<ul>
+<li>通常用于长时间、可抢占的任务</li>
+</ul>
+<h1 id="action-1"><a href="#action-1" class="headerlink" title="action"></a>action</h1><ul>
+<li>action通信的数据格式</li>
+<li>定义在*.action文件中<br>举例<br><img src="/images/ros.action.jpg" alt="actiont通信方式"><br>分三段</li>
+</ul>
+<ol>
+<li>goat client发布的目标</li>
+<li>result server返回的结果，只能传一次，动作执行完毕回传</li>
+<li>feedback 实时状态，多次、一直不停地回传<br>注：第二个.action文件中没有result</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/13/Server/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1771,7 +1937,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX1+l6CTRNmsXE/DXiNW6miCrhTzr6gRlWNzYXQqhWHZwF6EXK91hu2yRda5i9oDoZKq7kGgY6SKhlNm67dqw2BXBevzqKWMnTSz8Sx0F4YesMIVf8e6G904BmAY0YOKCxQyCELKJ7pKYHeQ9rtTSjfZlRvwY9xHn8pXlZI+Mw/EGJ2thN8XD+oXKuNu6ck3mrZKlV7fyU2JGHLNk/NnjFoqDDJa3q7xrjJiKOXPoVZBTNLObowWvocqqoij7B2jThAhtMOZr3qlAsj7jHXr4rsMGy7PS4mYIyU9G+zJQPYYcCsxyYnIOAadpdECUE5ZOT8P9s+WpQnihiiI4E495oauxflU5haAW0Gjcei+nRvEUI6ufN2JMPVYIWdZxCiNRUJoxJsq4DE3XWaPRcfKLd1saI6CD4YjGu9AIrpVOmR0iqLtARA3dk87iMMRsfDcqweRZYWYJfVcBDjGGB2t9cuJ1xQwg9t+vzPCPS7q0D50GomaEjp+upMiBdeYpEIKJjmh8j5ME/kuUI8iMjIMOhFGwQr3Dl21Sy1ZLXX1ySLB4hljDUzyey5KZ6SAn/nT/tLO5eLTDz1koPvlxRMIr+WQsQUw3W/qnKVIe4KhVF0mXIkItd1Fo0dcyc6I6OfWMeyV2dqFP0PGtKyRvA16fPJH1n5FQWCk9ooi5JcDIwN/CGeSRhmpANdYzQDaxwpmeu60UbnIZB+ei9shX6juNBR6LLbuP1DTtXHdmbUPmk8rDQz5t19b7/KLZtTmXQYY1xSFLwIKJtoqwgbBgyOjiJIPkojnlTDSzkupgUh/AD2L4fUUmEb2bQ+gYllVG/50c0shRcz/LCHwUfPwRORuPaCvoU+8yEups82HCUVG2k5vtKDNX7VHtbsboCNoG3iakieSb86WKMm/7PyhmAcT8Cou4hWsc7v49lWTe+hRdnDUxxrkDjkX8YBi4CnC07yxh/dzhHwG0kjHMe2/IrIA35SnPPzYpb+DT5BNjFUp72Qn7a6jz9rVHcoDsCd54IPQMDoKFMBVFEpi31JpTtmEI7bmRn1ALmdD5Oia9OlhZgpYCCHsp6xeUqdB3l0wGOAkylCgDcoykX9WpEKKNjNJgsMgWbY5HNks6YfyQxamFPAN1OAbE01nSPTJe5OsBAJudxpOr5jT1+skVVdIJ/AMAXztNa4hmtNC3tVuGwOLbJmSA4BYWluFK/WISVzYZjP/Lpc9qdJIIS/7LarDlRIZKJPtfYuhNTdXx9uW57tMRrzWkSaGYEo1JLbKmWdxiqK4aRa1bQioo30PzulP0aSgRrSik4XSHaELqN2T5X4Z+jBO45VDpxTZz2nBUudCpGYaIK7yLcdLWylvZc7336/ozbt+I85jRSuFRTDOXHpjFepTamIXZ1mUWqlGOXmx2vMVXpPyFdR8pGufqA/Ui2qybNqRE8KD5jDYo00GCwFSgMgyZ3OT1dFcVGtf5iQdeHrEl36KBoLFTtqHkov/dsIeVwtB6mDGvaJT5CKZ2TjwLEA7/GQw/7XW55DHf02BkINA3JTy6aZb48y4RqlU2Hs42ndd8lOCsND1msGICDmg1lDw/LPRyQzAw+tq3Kco+C3wA9197l99xtiFujz8RzD/ZNEEXF5qM4bJO112hF1zepLL62eQaaNf1x1AyXCbIGbgGobVMF5awCIOxLEhSNxpEjc0o+nj5rcQmRjzALaiHgf65apJAaGpddeT8Ej7tLh+xi+k8gVduvAOB+EEZ4z4J+YAP42pvOkAX3dPRmrqtuzyRWiovT5lCumV+SvgJikAPSv6hXb/3gPH4cPkwYOxBduBcfIb6Nly7cy3X7w4eXGS4M6ya/iCzA0ca</div>
+<div id="enc_content" style="display:none">U2FsdGVkX1+weBtTRYEcLvS79he2KIqjlZqeYcH4+jynm4lvFIULHK7rOkE7nIuHxZy/ObR7d05ou1XV1gYXg1GU24JcJuity/I+zYPjx4X3nZ8mbQF9NjJYLmEpGmyOWitNLouXKtjhp/A6HpwfZCPlTjhzccCN5zKYB2W400xZALmofON+9wN1sQfzJ7ghYhuninEpH5at6hukb+ax/nu3GRIxhzLQdEMkRIAg8/LwEAK1RxDlCZMSPW5XlHTWMCfZjqnHlPNNcvJV80vt28HGe8NjoQc+nRvL9i2yPJxAiMXqc+SrVl8FD53bsdsrWHYcgDOQSuxbLPCM5SvK9/w07DeFhcIn3bkMUG3/bflJiH690okWlWsTDLeoTFXBGn2TCk7U7x0jKphP85jqjWQfh0+RdtCKZZVVoQ+xX+7Ab49AjgvvEfa45LW0Ij1LDlgJhdNGmwbiojjZpzqAh2P9XYbNBjcHaoXF6bPWNcHmTk2t2YS9BSH0u5w6vs+v4Y+estpvaiVrzcCmcYZ0afA082emZ0SWU9U7OGVckvyGpZ9MC5JzIZND4Mqr1B3U1pY7iWmNlxZn5CEzUV0BpL6j4Fjir+YU6BC5Cl3+775rizPaZ5ftXqKT+Gnoem+vzfJ6a6rgK3coB4Pk4bIZ18c4wezuB1EZzx3WRFdPOL8GaeNP1w7Gqv2LLejbfgcEO66HY/g4HMTLd4/f0qaWY7XxZqg6LfmwlzK3y60hIPcSI502GinIEUMG7EnO4DAQOBQFPztjX2AUsvZ9kNgQUTdSTrzse0YriFu2iKmvpbeGmujRRa7WqfvRjd+rgCzVlO8VZKNuHgHnp6VVxaxMZIARifzmVCdZNdf6kkbbQ0j7+u5/iYUR10tSg4Pdek/dXXuv6Eg69uA4W9ZaV2nRvBGSiK5/QF2l69EeJtwMKHp9baoWW454jIWy3nz+9bLArB8R4h5YLcucDCWIsk/O61UOlzaIMt244MS33g+LDzMlMNu72yKui3ONQImDHwejn9BB1z7EurEmO4fd7wJMNrJng7EhzZmXGL9zroAs/tkrWAHn0g5STZ7pOlQW3WxULforqQi6PluN9yN1ye2Rb990PwAidIGQ355F5YX4fq7QFxufn6osH5l0tQ0yXK0QaVe471c+tySMGGtPiK9+Us1h0sjGV00l0It7MB/u0McQWK8KkRK2/4ufIMXLSRJRQoVqU6CdA16ICcRUDqxb1goxv5hQrCH+3Ka3Dgrk3RboXxKOcxomzdNUU1Vbyl8Zh+PcQ7+UAuM0Gn/9IGiCXAsVFnWMctjk1Opg2P+OXFnQQlQQlWHggpeptQaXTPFrZryyU8/54A5a+ampE1s2Mzjf0st0dQJEkvuF4ofeBZceOns3avjDzVcGUowFbJ1HuGYBw95bAAnZWp7mHply3vgArnmrDtpjDepXZh0wB1zHkIZuvbv/A30KyfIFgeXWiA/6Fp5arK4O5pyU7hgLXPgoc/Xrkyyp6+3DzaAnQGoRcCKhxztQ72sexsaFBHezJ0v4lAyt8JVRJsA8+qDZvpDlZqxwxGDIKaP7yW+aXVfxEUUMWUUv9gXxrPLqFt7ZueK99wk0LNbdS5ylGRMpz8mIx2QlDT55qR0L+Ycs8JPGKb+f/361OGyjPzm/OYCp8P02zauRltFOs91PouCK/UK14zWqBwlrKh7UxbZ9AGEpUrxh8gSmcL4EPJwfkgF53+GhCG8KpzLm7iLoz2cdgzwkepjuahd7BzC+TEMESDkOWtaONy6pXlqSmZultdxqkDhP16D2kiAkqq8zeN4YDL3FizJzWJXQCuqS7+nhjZVEfW13qMGFiLXASqTTbmy2</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1951,7 +2117,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">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</div>
+<div id="enc_content" style="display:none">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</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1964,125 +2130,6 @@ doDecrypt(passwd, onError);
 }
 </script>
 </div>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/07/25/test-my-blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dawn_buji">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dawn_buji's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/25/test-my-blog/" itemprop="url">test_my_blog</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-25T14:09:10+08:00">
-                2019-07-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
           
         
       
@@ -2169,7 +2216,7 @@ doDecrypt(passwd, onError);
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2180,7 +2227,7 @@ doDecrypt(passwd, onError);
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2191,7 +2238,7 @@ doDecrypt(passwd, onError);
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
