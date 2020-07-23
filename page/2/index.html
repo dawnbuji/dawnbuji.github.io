@@ -250,6 +250,172 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/13/Server/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dawn_buji">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dawn_buji's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/13/Server/" itemprop="url">Server</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-13T09:41:17+08:00">
+                2019-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ros机器人操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">ros机器人操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="parameter-server（参数服务器）"><a href="#parameter-server（参数服务器）" class="headerlink" title="parameter server（参数服务器）"></a>parameter server（参数服务器）</h1><ul>
+<li>用roscore命令时已经把参数服务器启动好了</li>
+<li>有别于ros里面同步通信和异步通信的通信方式</li>
+<li>更加静态</li>
+<li>存储着各种参数和配置的字典</li>
+<li>可用命令行，launch文件和node（API（在ros的源代码里））读写（维护方便）</li>
+<li>字典就是一个个的键值对，字典里面的key不能重复，都是唯一的，每一个key对应着一个value</li>
+<li>字典就是一个映射关系，在实际的项目里，我们往往把一些不常改变的参数、配置放到参数服务器里即字典里</li>
+<li>这样对它进行读写都非常方便<br>字典形如<br>Key|/rosdistro|/rosversion|/use_sim_time|…</li>
+<li>|-|-|-|-<br>Value|’kinetic’|’1.12.7’|true|…</li>
+</ul>
+<h2 id="常用命令rosparam"><a href="#常用命令rosparam" class="headerlink" title="常用命令rosparam"></a>常用命令rosparam</h2><ol>
+<li>列出当前所有参数<br> <code>$ rosparam list</code></li>
+<li>显示某个参数的值<br> <code>$ rosparam get param_key</code></li>
+<li>设置某个参数的值<br> <code>$ rosparam set param_key param_value</code></li>
+<li>保存参数到文件<br> <code>$ rosparam dump file_name</code></li>
+<li>从文件读取参数<br> <code>$ rosparam load file_name</code>#从文件读取参数到字典里</li>
+<li>删除参数参数<br> <code>$ rosparam delete param_key</code><br>注：dump或者load的文件要遵从YAML格式<br>形如<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name:&apos;Zhangsan&apos;</span><br><span class="line">age:20</span><br><span class="line">gender:&apos;M&apos;</span><br><span class="line">score:&#123;Chinese:80,Math:90&#125;</span><br><span class="line">score_history:[85,82,88,90]</span><br><span class="line">#格式 key：value 也是键值对的形式，相当于字典</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="在launch文件中"><a href="#在launch文件中" class="headerlink" title="在launch文件中"></a>在launch文件中</h2><ul>
+<li>在launch文件中与参数服务器相关的标签是<param>与<rosparam>标签<br>形如<br><img src="/images/rosparam.jpg" alt="rosparam"><br>注：其中的name就是key<br>  第一个value就是xacro.py这个脚本去执行robot.xacro文件得到的结果作为value<br>  第二个标签就相当于从xbot2_control.yaml文件读取参数到字典里</rosparam></li>
+</ul>
+<p>一般在开发中，习惯把一些算法的一些参数写在yaml文件中，在roslaunch启动时把它读取并启动起来<br>有了param就将参数和代码分离开了，要是调参的话，就直接在yaml文件里修改参数，每次加载时启动</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/13/Service与srv/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1605,7 +1771,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX1+jQXuyXj4cOs2R/8vCbSPIymh9W9t/S3NPf9F8NWGSBJENM2u7WLPww7aYKJMDq6QzJRmxXHFWMwKtAJcyOnioYGhJgbO3aNLtB0MaW6JZjkBK411VW3UyqNRKrtUR69Iygo2JCwHP2tL6zqOfallXfBniJPhQiY/y30AyAJySzQrnG3s9kqAHP1pgEcfyd4Hhy5YEogHmMfyQEM4sqV7rY3IvfCMvst+mr0tYmix/wyn+cD8+eqrSU4pUpCWzbvhaMZSnEc2ezn088Fhxg+awoebyUei7c2a4WdK5lEnXTqXUxvBqQh0om/T4bXARGcyLH90VoZcc503pjRLf9SyGZbTSCBd/14doa7yOEV8Y9s5L1H0fJMlz0aVplh88HBB4II+CkXPWQeZddlyHHEm+KeSHtOs1QWHJztEkAIKJR9FXhJEhXdZFYESgL1Vuy/kabyFdp+YlCV3uzzwl3gH91WW7DC+5w9fxPJbL4SGvHiFQ2UaK5R96lOzpBMkUWOBRU8zNXWO/6tL0sxGwXlsLqkO/to3NrtAqxrZbIbulU4FWnsLT4XCDoyglQt1co+pcbdwtCbopR1Ah3JN08tu9At96qA6CsXOH7keRvRlZz463ASWUIBTbcrZ6oszmAYKf5GCb1lsNfObjP8C9pzh0yEYo2xRaIiMbC+HkU2nfL1PNsbtj5wXyDkzlc/TfA5fSLytbQg7p4NzpREsht2/L5K2lq3m+GtU4u9bK78S7viLmANg+pkkwM47k/DaliHkTmg0fuMV4tiqXLDxH7XXBy3oZtr/4ls6TT7+Tr1N1PrbYAdehTjsnn/pOVRQY82kY2Gl8WSg4bqQU6XCFX84us55sFU1bg9AkOGpwdl5rCSoHe9oHc1gzxpjXcq3JUU3SDPqz0GA5Ea5xplkofuIy0Hxl/LVAy/PguFABNwAftoww7ZQ9KxIvkZcxiT+1IQTYJtFJdhZYIun+wU5J7q9b8/pN5GV9y7W96ZIyd+6UvJAYT3Yf05ru/U4OtN7dGm3Uf6l5pgvyxCIOYgN6biTKiXKHc6PmB/Kj0moTOQXyVInuuVw933nS8VijPeFh277IWeG8bdTxWzP1erzVpy66Y9dJfNy9lh3/T6YV++ah8+n1C+xN5jy73TkJXBXRgWb1IXQHi25ZREVW5Wi+FREnNQaie2bW0cwMwgwdbn4mmk0LVdQCQOk84Q5ID7oHCDgdhTx77zLnOjPloItwsmITvpJdBEY3CYqKFQLglzuknps/QXp8LwAhw7i1Mfhu4UMfMnGhWDzNWY1wFoCukoLQz5i9gYeDner2BM2mQNdO0AUUhWVFwe1kqzc7RrJUwTbDlux8Yobro0RFyD9vK/YlSCjxMqTaSyWD+rxx+t3bHc6RD/W6v+pevZDn6BK7wYNsCojoMu0IEAn3NNen+jmCYLIjAY8T0ilfykRk/cTduWr0PoPKSckO6PRYe4NG0/4tfLSZ0fpxWFsrFdpQ8PyVb/X7BloMOQM2JxH93JaVdeqQHpkEpaiXi7SVLBagV9+BLXk9AxolREQM6PeQRAXE/wDzDpEq5sFE1LrK0zjsq6PJsUG9gHZrbDyc4pxu/cGDjepcg9km3Lyb8LDkMXs5DTyUEC7UgOLo3nfZjtCrnWl4tnbrssg85/x6nnVheV/e8dvx5ugV5jhNgiCbMC0M38krhHteLJO+RIdmfC22UEVJTi70uTHTXSiIBloNlUQwrsO3JMLBXYq5axovIti2mT4Nry3ACk0/ctoiHZoI0GxzwS4DJzA7PsdzTK1lJbFqlSThrD8e7JEQThmMNsgIDn1X2ew6poapbJRI5pWgiW2A1IePuakE</div>
+<div id="enc_content" style="display:none">U2FsdGVkX19pqP85yuaaAiEjy6PemcBMhTUh5HuV5nnsEfYJ88D9Xn2Rl5MnPbZiYCcfpbAeUMbK7axOE2UYMwjdF+2sVcQOxYdpfAhh8YM9O9IsTitx4QgGnFniu+pwsKuHOO9PPl82Js0cYNdbXqp9CHKs384GisI2dMXeRDXPxu3dAWc9pTz94xD7+NfVWVSq2YBt/fHAn8u5vLZY1ixIJlaQY7NQrGatONPhYRqlJRKbMqNEOLO9D4doWmeiTYAAeNr9lo5cpxyZhV9ZSKHVnpYnpIzvQYVbF1B1N/62pqpkPavmtX8bqIoyGVOp12uNgtVPSJ7gYamkvY6BkD57S+dMnLawGegAqS0foyYfc8Ljv1gSv9859TyqIeJFSevigC16qJ3uWlDVHTN3SfbX/x9JCjywQjPry9xMDAR5bzzEdYu4v7wFQ/NTGJEK6FYkdr2c9N/3En7R2Zy6ooQYSEQKjRKd8dg0qaT8QhN26fgHIG8FsYw5Yp8iohedVQ5zWuHxN2ecnArK0llyYEbmfKR/pBVOGCPN6HPkYtWjiSmrdXHZn0HDnN58WghMjKvvdAZ4L/5jWuMPDbLTobO33UbypwwRcTzYTJINUli7zpH8OtsLV6JKNnb20SJY3kiS8Xvazk3fdr1jNCPO7R2ZSpBf5sHhc1ltdFYq2Rw2tFI9qecpAhwqP1b1iEP/dNlEIQHdnmIccnNZo8wEBIFTo8ruAa7KT2b7qiTEkaRgaQb6+5E3Q3YHoolYAY08WKZ99d2nOu42d3Vqb+V1ApvXdC7gcJQC5qTLpm+rGoPI0wVBGSVyLueuSCjJLI1HtiX9AY7Ay0QjSE9hzbOMxYQ5mI5HjvuoKWNH1AOSog3AYtlTuEddPN0m0tQzn4/9DaP7d6/vjtjgss6lHF5iLUygm+UfSpODylTne27aene0RflPywYvo0KOQmPWAnDWcApk84aGoKl1JI6P51VhHKVZVnHczGvH/tGCDQH13+YA5ESlrQFEVDEfDZDKf/vS6e1fXgieKFnHMKwjIihdl0lfY/CywQYOfpBt9DbmEOqJ7GkPsCnMsSzKtdLKCm6EhxzZUfvFScp46Ue705BOX75Nt3g0uawVarDs4ifUmzUE7WrLPttMS/lrTNGE3LnP0kf0lXmmvcV7CsTl/PUa/6aninyu1QAFRpspJMHZdP7qWbQVX/fNRj0Q7DEJaRkq422AeF1ahS8aQgA5pEhUzrGi8lgdzyK6PqvHWNpXD3D/N5IQo69gZuTV7SxZZ7D1HBVKQsQdQuvXyrnZMzzXzr+RMBULo3ds5APE+bDMqqIvb3X9ai0YjlV45F2ZXXwCaVs4scsQO10XZFB8bebR27if47qOMtAtpbghkuOgy62iR9ZTOBQ9k0EJSV5oBklX8LwZjtxsr0swGoCSYTJBZUNmgdVgz966uwLrS1JWsZZSdCnFu1dJnbIO/ACkL9wIP1CW4wZPMytNGzYfSvJf5vHaARbJ2Ks9pG7h2+i43cyAOFXsfB72j3KAhobXdMMJeTb9aFQPBfMxuYfDhxWN6ckxQ7Dqwnx3R/tWIKLTUNZX6Y+/zC5CkK0ShFZZN0PT+j3yETDt0cMJkp8oSQ1wbsb4FV1ajG/AE93QSh9qAa68Hn43r9yl8/75R8kX4Se03g+/NrdEltALKOrwrMEv2J4ilms11hBT6ZXdCi65AZ8FUIZckVM4uzilZywuZmeFA1XAssHKQo2aWJcMJkM7d9qS5xU5AFpFZ4TWVGCF6/lPk27SVsJHWbB0gHc3Kix897xc51RB4rktks7/53wZ9pTjIwJfZTk2OGEsMfO1gYwoa7+R/J9MjbANGsD/2cgB</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1785,7 +1951,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">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</div>
+<div id="enc_content" style="display:none">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</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1951,169 +2117,11 @@ doDecrypt(passwd, onError);
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/07/25/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dawn_buji">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dawn_buji's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/25/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-25T14:06:38+08:00">
-                2019-07-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="/js/crypto-js.js"></script>
-<script>
-function doDecrypt (pwd, onError) {
-	console.log('in doDecrypt');
-	const txt = document.getElementById('enc_content').innerHTML;
-	let plantext;
-	try {
-		const bytes = CryptoJS.AES.decrypt(txt, pwd);
-		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {
-			onError(err);
-		}
-		return;
-	}
-	document.getElementById('enc_content').innerHTML = plaintext;
-	document.getElementById('enc_content').style.display = 'block';
-	document.getElementById('enc_passwd').style.display = 'none';
-	if(typeof MathJax !== 'undefined') {
-		MathJax.Hub.Queue(
-			['resetEquationNumbers', MathJax.InputJax.TeX],
-			['PreProcess', MathJax.Hub],
-			['Reprocess', MathJax.Hub]
-		);
-	}
-}
-</script>
-<div id="enc_content" style="display:none">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</div>
-<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2161,7 +2169,7 @@ doDecrypt(passwd, onError);
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
