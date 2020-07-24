@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="ros,">
+  <meta name="keywords" content="学习,">
 
 
 
@@ -79,20 +79,21 @@
 
 
 
-<meta name="description" content="Service ros中的同步通信方式  同步通信是client发送一个请求会一直在原地等着，会阻塞，直到服务器端返回来结果，node A才会继续执行 node间可以通过request-reply方式通信（请求和响应）  node A（client）客服端 node B（Server）服务器 node B会给外界提供一个/Service（服务），别的node来请求node B来调用这个服务，即no">
-<meta name="keywords" content="ros">
+<meta name="description" content="端口重映射及蜂鸣器操作方法端口重映射蜂鸣器原理图如下：三极管作用：放大电流10k电阻作用：限流二极管作用：与蜂鸣器构成放电回路，防止烧坏三极管为什么要端口重映射？因为蜂鸣器的IO口PB4原本的功能是JTAG调试，而非普通IO口重映射方法：    开启AFIO复用时钟RCC_APB2Periph_AFIO(所有重映射功能都在AFIO这个时钟管理下面)RCC_APB2PeriphClockCmd(RC">
+<meta name="keywords" content="学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Service与srv">
-<meta property="og:url" content="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/13/Service与srv/index.html">
+<meta property="og:title" content="Beep">
+<meta property="og:url" content="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/24/Beep/index.html">
 <meta property="og:site_name" content="dawn_buji&#39;s Blog">
-<meta property="og:description" content="Service ros中的同步通信方式  同步通信是client发送一个请求会一直在原地等着，会阻塞，直到服务器端返回来结果，node A才会继续执行 node间可以通过request-reply方式通信（请求和响应）  node A（client）客服端 node B（Server）服务器 node B会给外界提供一个/Service（服务），别的node来请求node B来调用这个服务，即no">
+<meta property="og:description" content="端口重映射及蜂鸣器操作方法端口重映射蜂鸣器原理图如下：三极管作用：放大电流10k电阻作用：限流二极管作用：与蜂鸣器构成放电回路，防止烧坏三极管为什么要端口重映射？因为蜂鸣器的IO口PB4原本的功能是JTAG调试，而非普通IO口重映射方法：    开启AFIO复用时钟RCC_APB2Periph_AFIO(所有重映射功能都在AFIO这个时钟管理下面)RCC_APB2PeriphClockCmd(RC">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://github.com/images/rosdepend.jpg">
-<meta property="og:updated_time" content="2019-08-13T03:01:56.245Z">
+<meta property="og:image" content="https://github.com/images/buzzer.png">
+<meta property="og:image" content="https://github.com/images/beep_control.png">
+<meta property="og:updated_time" content="2020-07-24T09:28:03.702Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Service与srv">
-<meta name="twitter:description" content="Service ros中的同步通信方式  同步通信是client发送一个请求会一直在原地等着，会阻塞，直到服务器端返回来结果，node A才会继续执行 node间可以通过request-reply方式通信（请求和响应）  node A（client）客服端 node B（Server）服务器 node B会给外界提供一个/Service（服务），别的node来请求node B来调用这个服务，即no">
-<meta name="twitter:image" content="https://github.com/images/rosdepend.jpg">
+<meta name="twitter:title" content="Beep">
+<meta name="twitter:description" content="端口重映射及蜂鸣器操作方法端口重映射蜂鸣器原理图如下：三极管作用：放大电流10k电阻作用：限流二极管作用：与蜂鸣器构成放电回路，防止烧坏三极管为什么要端口重映射？因为蜂鸣器的IO口PB4原本的功能是JTAG调试，而非普通IO口重映射方法：    开启AFIO复用时钟RCC_APB2Periph_AFIO(所有重映射功能都在AFIO这个时钟管理下面)RCC_APB2PeriphClockCmd(RC">
+<meta name="twitter:image" content="https://github.com/images/buzzer.png">
 
 
 
@@ -122,14 +123,14 @@
 
 
 
-  <link rel="canonical" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/13/Service与srv/">
+  <link rel="canonical" href="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/24/Beep/">
 
 
 
 
 
 
-  <title>Service与srv | dawn_buji's Blog</title>
+  <title>Beep | dawn_buji's Blog</title>
   
 
 
@@ -256,7 +257,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/13/Service与srv/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/24/Beep/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dawn_buji">
@@ -273,7 +274,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Service与srv</h1>
+          <h1 class="post-title" itemprop="name headline">Beep</h1>
         
 
         <div class="post-meta">
@@ -285,8 +286,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-13T08:32:53+08:00">
-                2019-08-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-24T17:12:17+08:00">
+                2020-07-24
               </time>
             
 
@@ -308,8 +309,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ros机器人操作系统/" itemprop="url" rel="index">
-                    <span itemprop="name">ros机器人操作系统</span>
+                  <a href="/categories/BlueBridgeCup/" itemprop="url" rel="index">
+                    <span itemprop="name">BlueBridgeCup</span>
                   </a>
                 </span>
 
@@ -345,85 +346,13 @@
       
 
       
-        <h1 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h1><ul>
-<li>ros中的同步通信方式<br>  同步通信是client发送一个请求会一直在原地等着，会阻塞，直到服务器端返回来结果，node A才会继续执行</li>
-<li>node间可以通过request-reply方式通信（请求和响应）<br>  node A（client）客服端 node B（Server）服务器 node B会给外界提供一个/Service（服务），别的node来请求node B来调用这个服务，即node A会把Service需要的参数传给Service也就是请求它，node B收到请求就会做处理，处理完了就会回复给node A</li>
-</ul>
-<h2 id="Topic-VS-Service"><a href="#Topic-VS-Service" class="headerlink" title="Topic VS Service"></a>Topic VS Service</h2><table>
-<thead>
-<tr>
-<th>对象</th>
-<th>Topic</th>
-<th>Service</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>通信方式</td>
-<td>异步通信</td>
-<td>同步通信</td>
-</tr>
-<tr>
-<td>实现原理</td>
-<td>TCP/IP</td>
-<td>TCP/IP</td>
-</tr>
-<tr>
-<td>通信模型</td>
-<td>Publish-Subscribe</td>
-<td>Request-Reply</td>
-</tr>
-<tr>
-<td></td>
-<td>publish-subscribe（多对多）</td>
-<td>client-server（多对一）</td>
-</tr>
-<tr>
-<td></td>
-<td>接收者收到数据会回调（callback）</td>
-<td>远程过程调用（RPC）服务器端的服务</td>
-</tr>
-<tr>
-<td>应用场景</td>
-<td>连续、高频的数据发布</td>
-<td>偶尔调用的功能/具体的任务</td>
-</tr>
-<tr>
-<td>举例</td>
-<td>激光雷达、里程计发布数据</td>
-<td>开关传感器、拍照、逆解计算</td>
-</tr>
-</tbody></table>
-<p>注：</p>
+        <h1 id="端口重映射及蜂鸣器操作方法"><a href="#端口重映射及蜂鸣器操作方法" class="headerlink" title="端口重映射及蜂鸣器操作方法"></a>端口重映射及蜂鸣器操作方法</h1><h2 id="端口重映射"><a href="#端口重映射" class="headerlink" title="端口重映射"></a>端口重映射</h2><p>蜂鸣器原理图如下：<br><img src="/images/buzzer.png" alt="buzzer"><br>三极管作用：放大电流<br>10k电阻作用：限流<br>二极管作用：与蜂鸣器构成放电回路，防止烧坏三极管<br>为什么要端口重映射？<br>因为蜂鸣器的IO口PB4原本的功能是JTAG调试，而非普通IO口<br>重映射方法：  </p>
 <ol>
-<li>回调函数来做一个处理</li>
-<li>rpc就是在一个进程（node）里面去调用另一个进程（node）里面的函数</li>
-<li>远程过程调用是和本地函数调用这个概念是相对的</li>
+<li>开启AFIO复用时钟RCC_APB2Periph_AFIO(所有重映射功能都在AFIO这个时钟管理下面)<br><code>RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB|RCC_APB2Periph_AFIO, ENABLE);</code>  </li>
+<li>调用GPIO_PinRemapConfig配置管脚重映射<br><code>GPIO_PinRemapConfig(GPIO_Remap_SWJ_NoJTRST, ENABLE);</code>  </li>
+<li>注意映射后端口的功能（本实验中重映射后作为普通IO口使用）<br>库函数中有例程可以参考GPIO/JTAG_Remap</li>
 </ol>
-<h2 id="常用命令rosservice"><a href="#常用命令rosservice" class="headerlink" title="常用命令rosservice"></a>常用命令rosservice</h2><ol>
-<li>列出当前所有活跃的service<br> <code>$ rosservice list</code></li>
-<li>显示某个service的属性信息<br> <code>$ rosservice info service_name</code></li>
-<li>调用某个service<br> <code>$ rosservice call service_name args(希望传入的参数)</code></li>
-</ol>
-<h1 id="srv"><a href="#srv" class="headerlink" title="srv"></a>srv</h1><ul>
-<li>service的简写</li>
-<li>service通信的数据格式</li>
-<li>定义在*.srv文件中</li>
-<li>*.srv文件一定要放在srv这个文件下</li>
-<li>形如<br>my_pkg/srv/DetectHuman.srv<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bool	start_detect#请求这个服务要遵守的格式，可以 比较简单，就用一个bool型</span><br><span class="line">					#当它是ture的时候，就开始检测，检测完了之后就回传一个HumanPose[]这个数组</span><br><span class="line">---</span><br><span class="line">my_pkg/HumanPose[]	pose_data#这个服务应答、返回的格式，回传定义为数组，就是说可能不止一个人，</span><br><span class="line">							 #这个数组是自定义的了,定义在msg文件中，srv可以嵌套msg但不能嵌套srv</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>my_pkg/msg/HumanPose.msg    #msg一种自定义的数据类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">std_msgs/Header header</span><br><span class="line">string uuid</span><br><span class="line">int32 number_of_joints</span><br><span class="line">my_pkg/JointPos[] joint_data</span><br></pre></td></tr></table></figure>
-
-<p>my_pkg/msg/JointPos.msg       #定义JointPos[]数组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string joint_name</span><br><span class="line">geometry_msgs/Pose pose</span><br><span class="line">floar32 confidence</span><br></pre></td></tr></table></figure>
-
-<p>定义了srv或者msg，要修改package.xml和CMakeList.txt，具体就是添加一些条目，指定了srv和msg编译运行时所需要的依赖<br>只有自定义了srv或者msg就要把这几条添进去<br><img src="/images/rosdepend.jpg" alt="rosdepend"></p>
-<h2 id="常用命令rossrv"><a href="#常用命令rossrv" class="headerlink" title="常用命令rossrv"></a>常用命令rossrv</h2><ol>
-<li>列出系统上所有的srv<br> <code>$ rossrv list</code></li>
-<li>显示某个srv内容<br> <code>$ rossrv show srv_name</code></li>
-</ol>
+<h2 id="蜂鸣器控制"><a href="#蜂鸣器控制" class="headerlink" title="蜂鸣器控制"></a>蜂鸣器控制</h2><p><img src="/images/beep_control.png" alt="beep_control">  </p>
 
       
     </div>
@@ -441,7 +370,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ros/" rel="tag"># ros</a>
+            <a href="/tags/学习/" rel="tag"># 学习</a>
           
         </div>
       
@@ -454,8 +383,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/12/Topic和Msg/" rel="next" title="Topic和Msg">
-                <i class="fa fa-chevron-left"></i> Topic和Msg
+              <a href="/2020/07/23/RCC-LED/" rel="next" title="RCC_LED">
+                <i class="fa fa-chevron-left"></i> RCC_LED
               </a>
             
           </div>
@@ -463,10 +392,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/13/Server/" rel="prev" title="Server">
-                Server <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -600,7 +525,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Service"><span class="nav-number">1.</span> <span class="nav-text">Service</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Topic-VS-Service"><span class="nav-number">1.1.</span> <span class="nav-text">Topic VS Service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用命令rosservice"><span class="nav-number">1.2.</span> <span class="nav-text">常用命令rosservice</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#srv"><span class="nav-number">2.</span> <span class="nav-text">srv</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用命令rossrv"><span class="nav-number">2.1.</span> <span class="nav-text">常用命令rossrv</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#端口重映射及蜂鸣器操作方法"><span class="nav-number">1.</span> <span class="nav-text">端口重映射及蜂鸣器操作方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#端口重映射"><span class="nav-number">1.1.</span> <span class="nav-text">端口重映射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蜂鸣器控制"><span class="nav-number">1.2.</span> <span class="nav-text">蜂鸣器控制</span></a></li></ol></li></ol></div>
             
 
           </div>

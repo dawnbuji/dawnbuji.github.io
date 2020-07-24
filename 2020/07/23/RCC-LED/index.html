@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="dawn_buji&#39;s Blog">
 <meta property="og:description" content="Stm32时钟简介 RCC 复位和时钟总线 AHB 系统总线（高阶外设总线）   APB1 定时器、串口、低速 APB2 GPIO、高速HSE:高速外部时钟HSI:高速内部时钟LSI:低速内部时钟LSE:低速外部时钟 了解APB1(低速)和APB2(高速)外设 学会看STM32时钟框图 学会用库函数开启外设时钟 学会STM32 IO配置方法与应用场合    定义初始化结构体GPIO_InitTyp">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-07-24T01:26:24.151Z">
+<meta property="og:updated_time" content="2020-07-24T09:14:17.584Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RCC_LED">
 <meta name="twitter:description" content="Stm32时钟简介 RCC 复位和时钟总线 AHB 系统总线（高阶外设总线）   APB1 定时器、串口、低速 APB2 GPIO、高速HSE:高速外部时钟HSI:高速内部时钟LSI:低速内部时钟LSE:低速外部时钟 了解APB1(低速)和APB2(高速)外设 学会看STM32时钟框图 学会用库函数开启外设时钟 学会STM32 IO配置方法与应用场合    定义初始化结构体GPIO_InitTyp">
@@ -372,7 +372,7 @@
 <li><p>使能相应的IO口时钟  <code>RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);</code></p>
 </li>
 <li><p>结构体赋值 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  </span><br><span class="line">GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8;  </span><br><span class="line">GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  </span><br><span class="line">GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>调用初始化函数 <code>GPIO_Init(GPIOC, &amp;GPIO_InitStructure);</code></p>
 </li>
@@ -432,6 +432,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/24/Beep/" rel="prev" title="Beep">
+                Beep <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -510,7 +514,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
