@@ -250,6 +250,187 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/14/Client-Library/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dawn_buji">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dawn_buji's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/14/Client-Library/" itemprop="url">Client_Library</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-14T09:41:28+08:00">
+                2019-08-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ros机器人操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">ros机器人操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Client-Library-客户端库"><a href="#Client-Library-客户端库" class="headerlink" title="Client Library(客户端库)"></a>Client Library(客户端库)</h1><ul>
+<li>概念类似于API<br>区别：<br>client library的层级要更高，它是在API的基础上又做了一层封装，对开发者更加友好</li>
+<li>提供ros编程的库,就是一个接口，它把底层的标准流程给封装好，方便程序员去写代码<br>例如：建立node，发布消息，调用服务…</li>
+</ul>
+<h2 id="ros提供的client-library"><a href="#ros提供的client-library" class="headerlink" title="ros提供的client library"></a>ros提供的client library</h2><ol>
+<li>roscpp c++ 执行效率高，适合做图像、slim这方面的工作，代码写起来麻烦</li>
+<li>rospy  python 开发效率高，小工具，小node都可以用rospy来写。<br>一些ros命令行工具，像rosrun、rostopic都是用rospy来实现的<br>这些命令都是一个个python脚本，最底层就是rospy来实现的</li>
+<li>roslisp<br>…</li>
+</ol>
+<h2 id="roscpp"><a href="#roscpp" class="headerlink" title="roscpp"></a>roscpp</h2><ul>
+<li>ros提供的用c++和topic、service、param、timer交互的一个接口</li>
+<li>官方文档中</li>
+</ul>
+<p>ros::init（）初始化函数，在写c++程序时，必须要调用的一个函数<br>ros::NodeHandle:最重要的一个部分，用来创建topic、service和调用这些公共接口<br>ros::master：通过它获取和master交互来查询系统的信息<br>ros::this_node:用来查询进程的函数<br>ros::service:查询服务的函数<br>ros::param:查询参数服务器<br>ros::names:名称管理用到的功能<br>如下图<br><img src="/images/roscpp.jpg" alt="roscpp"></p>
+<h3 id="ros-init"><a href="#ros-init" class="headerlink" title="ros::init()"></a>ros::init()</h3><p>void ros::init();    //解析ROS参数，为本node命名<br>::为作用域的限定符，表示init()这个函数是在ros这个命名空间之中的</p>
+<h3 id="ros-NodeHandle-Class-类"><a href="#ros-NodeHandle-Class-类" class="headerlink" title="ros::NodeHandle Class(类)"></a>ros::NodeHandle Class(类)</h3><ul>
+<li>c++里面的类有自己的成员变量和成员函数</li>
+<li>怎么用<br>创建一个话题的publisher</li>
+</ul>
+<ol>
+<li>首先声明一个ros::NodeHandle nh；(对象) </li>
+<li>用这个函数的话，就ros::Publisher pwb = nh.advertise(…);//有两个参数，第一个参数是写topic的名称，指定这个publisher往哪个topic去发布消息，第二个王消息队列上发布消息的长度</li>
+<li>调用完了advertise函数返回值就是一个ros::Publisher赋给一个Publisher的对象</li>
+<li>发布消息，就直接用pwb.publish(msg);<br>形如<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ros::NodeHandle nh;#句柄</span><br><span class="line">ros::Publisher pub = nh.advertise(...);</span><br><span class="line">ros::publish(msg);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>创建话题的subscriber<br>参数有topic名称，队列的长度，还有一个回调函数的名称（函数指针）当subscribe到一个msg时就会由回调函数来处理这个msg<br><img src="/images/NodeHandle.jpg" alt="ros::NodeHandle"></p>
+<h3 id="ros-master-Namespace即命名空间"><a href="#ros-master-Namespace即命名空间" class="headerlink" title="ros::master Namespace即命名空间"></a>ros::master Namespace即命名空间</h3><p>Namespace和Class的区别是Namespace是没有对象的，我们相当于把它当作普通函数在调用<br>例如：<br>下图中第一个函数用的时候就是<br><code>ros::master::check();</code><br><img src="/images/master.jpg" alt="ros::master"></p>
+<h3 id="ros-this-node-Namespce-命名空间"><a href="#ros-this-node-Namespce-命名空间" class="headerlink" title="ros::this_node Namespce(命名空间)"></a>ros::this_node Namespce(命名空间)</h3><p><img src="/images/this_node.jpg" alt="ros::this_node"></p>
+<h3 id="ros-service-Namespce"><a href="#ros-service-Namespce" class="headerlink" title="ros::service Namespce"></a>ros::service Namespce</h3><p><img src="/images/service.jpg" alt="ros::service"></p>
+<h3 id="ros-names-Namespace"><a href="#ros-names-Namespace" class="headerlink" title="ros::names Namespace"></a>ros::names Namespace</h3><p><img src="/images/names.jpg" alt="ros::names"></p>
+<h3 id="roscpp-topic-demo"><a href="#roscpp-topic-demo" class="headerlink" title="roscpp topic_demo"></a>roscpp topic_demo</h3><p><img src="/images/topic_demo.jpg" alt="topic_demo"><br>注：定义了好了msg的格式后，并不能直接用，要对它进行编译，编译完成后，会生成一个对应的头文件<br>写代码时，把它include进去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;topic_demo/gps.h&gt;</span><br><span class="line">topic_damo::gps msg;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/ros.msg.jpg" alt="ros.msg"></p>
+<p>ros写ros.cpp文件时必须要定义这个头文件<br><code>#include &lt;ros/ros.h&gt;</code><br><img src="/images/talker.cpp.jpg" alt="talker.cpp"></p>
+<h3 id="listener-cpp"><a href="#listener-cpp" class="headerlink" title="listener.cpp"></a>listener.cpp</h3><p>如下图<br><img src="/images/roslistener.jpg" alt="roslistener"><br><img src="/images/roslsner.jpg" alt="roslsner"><br>注：<br>Float32.msg<br>ros自带的Float32类型是一个结构体，但里面只有一个内容就是data，data才是真正数据的地方<br>ros::spin()<br>每来一个消息就会把消息放在队列里，何时去处理呢？<br>并不是来一个就会处理一个，必须调用ros::spin()函数，这个ros::spin()会反复查看回调函数的队列是否有东西<br>如果有就在这个队列的东西清空，把里面的每一个msg进行处理，如果队列是空的，就不会调用这个回调函数来处理<br>ros::spin()是反复调用当前可触发的回调函数，执行到这一句它就会反复查看有无可执行的回调函数，所以是阻塞的<br>ros::spinOnce()仅查看一次有无可处理的队列，有的话就处理，没有的话就继续向下执行了，因此它不是阻塞的函数<br>创建Subscriber来接收某个topic上的消息，然后用回调函数来处理对应的消息，回调函数不会自动触发<br>需要调用ros::spin()或ros::spinOnce()来触发</p>
+<h3 id="CMakeLists-txt"><a href="#CMakeLists-txt" class="headerlink" title="CMakeLists.txt"></a>CMakeLists.txt</h3><p><img src="/images/roscmakelists.jpg" alt="roscmakelists"><br>注：<br>message_generation：帮助我们生成自定义的msg文件</p>
+<h3 id="package-xml"><a href="#package-xml" class="headerlink" title="package.xml"></a>package.xml</h3><p><img src="/images/rospackage.jpg" alt="rospackage"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/13/ros常用工具/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1984,186 +2165,6 @@ end
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/01/hexo-github/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dawn_buji">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dawn_buji's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/01/hexo-github/" itemprop="url">hexo+github</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-01T18:51:09+08:00">
-                2019-08-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/测试/" itemprop="url" rel="index">
-                    <span itemprop="name">测试</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="/js/crypto-js.js"></script>
-<script>
-function doDecrypt (pwd, onError) {
-	console.log('in doDecrypt');
-	const txt = document.getElementById('enc_content').innerHTML;
-	let plantext;
-	try {
-		const bytes = CryptoJS.AES.decrypt(txt, pwd);
-		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {
-			onError(err);
-		}
-		return;
-	}
-	document.getElementById('enc_content').innerHTML = plaintext;
-	document.getElementById('enc_content').style.display = 'block';
-	document.getElementById('enc_passwd').style.display = 'none';
-	if(typeof MathJax !== 'undefined') {
-		MathJax.Hub.Queue(
-			['resetEquationNumbers', MathJax.InputJax.TeX],
-			['PreProcess', MathJax.Hub],
-			['Reprocess', MathJax.Hub]
-		);
-	}
-}
-</script>
-<div id="enc_content" style="display:none">U2FsdGVkX1+/VkNbZZK/chBj/Hh2JqR1ZZ5obiYdyOHacqbhLk4X2sr+2cfE6L8zMUGqhtg6BiMViqzCI4RScCV000J2Gj8UeUneXxn5tfJI9zZhaIJmRMJGNxosQTH9zmSNIoUmbmHUR6O/w4fF3cezsKKHSBeeaRbI6JBFg5RHeCsGMB0xbelgFl+YY4khEA9f1PQhWBlsQn2romG9R3tIxEd1amorfKAb5kP+LCBw66vz/ped++69+UfiJ0fKVxbjzNCa3SuHG8AJvWA8xnArmZ/nQLUK5Uobe7ivrLw49eWW+TbPKOWkYyvebgVZfrD1fkmQF8hzTmLEecubcGF5egAUpJd+Rskj20BjiCKHUzJnls+dT2JzItj68ZvqEaUSvhsvGnPuYiDG97HAIMcd1vVYLzc35UtrGeW2cwjb4pdpDwWoCcj9Pt4JYnu0mBHAPyzf0/AJSvObsBTnHizhuNPE+4HY43D1uAcsPxcnvZkD6FxVcU6qWjmwjEZB+H8iHh5BKy/kZQqDw75edqn0rce+6daY+Sc0gSUiTrFJo5PnsKk9JWog2vvHnA135iKRAGTlDSUuQx2/X22ud+y4YfkxsgUqLbX9e8cIrd1D/C0lntODXCx7SdHARl6e9spoKg8yGHL7UDJe+jY1QnniUQ9faatnte+sOizSA3p9p5q4D6Vlge6DN4JXxOiCamRizrs7CRBT1gZyL3hnaZt4PY0DWzEFaNQAk11LK2HGELhxF+KDBbfzyjFncdsOeCZSFt15SaFx9eXoGJY70nT6TBZTV6qrwwoFEQl0syk8zecNp9C+QCAxG8NLmE0JEb8K4hWYVptPeOAes0ZjQtN3t6k3pKrvu1XgHe6juLmvCk1C62kNX2k+3JnQ2oBQb3RG26uwEYKlyNVOtikftTZqLa22iRlabOBpXeiv5sJiybtE4OAHd+KZW1KNdTiqwtnPUo++8hpU01heSrEa6ja9AsctKePi2beJbsUm6R55yssHft4AtEpd65MbDWICAhP3q+LCidaTucfXlkaBlvEzjFYWKdAs7NEO0MbPZ7gajFhbFIh8vCa32mF9uSR+uXEg/OXkI5w0sFMDxCWiZNl63f4PKfUiDEYxH7UAl/v44UEQCidzUXl1Lyh/Hlzf6PCqKv0PM9nD44V0YCWM6AbVjx7e6csTTUKWmyF21dZHwn9yDIB8WGU9FpzhCB5wdHqTLDVCXC6pBOGcwZkmo0yVjLd3+f1dAjFibt6SIz5M1euCkM26ViI2ikYpJYak9qPG7agFCZLW4qaBeq42bRzrheRAUg/HX0FotvzFd80xtURWl7nIbK9oFhm+d0A+jdf0RZKsZIsmNQb0e65nR7p/v0BtdFMrQ7ObqCBQpu9kBLgpdcIQaMeHjFTbvc19FQcFlsew0AGU/9ZwAhc3J9sBhM7DVb4+PEzJuOv0565zVQu/3qmsH+ZRQKgowa9gCeHtWs7+iGgLZOI9rGQzWjMpj+JTx2IsWQwcC6356vRHAHP1JBBm0nnKA/id8YVhNo7iyesLaA6Q84OP4/hMF8hLK+kLIJslOWyY8/yXojFg1fjZIomvBFTcirMsKFzdRfdRT2gKxq52H9VuHRMaIrdjMaEBf4QO1caJY01f9BlomijnOV3+0dS/drfEOyzovVB10mS4/2eCOlpuLA2mv3UhYsnBsRwXvaG5laTW77+bDq4QRBQo7k8PaEhyavtrG9NH5vCK+d/Etub73liIE9CxYov9mlBghB2ZTBHPVmsnH/TvakZg8iZ2UIN9emFmcZt2Ae6m0l+5dHsYJ0CjkJrfT9qXhGKOaQvEDARYlFe9gKcQnxPbHxINffN2c/Z5</div>
-<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2216,7 +2217,7 @@ doDecrypt(passwd, onError);
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

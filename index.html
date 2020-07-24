@@ -250,6 +250,204 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/24/Systick-timer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dawn_buji">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dawn_buji's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/24/Systick-timer/" itemprop="url">Systick_timer</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-24T18:22:50+08:00">
+                2020-07-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/BlueBridgeCup/" itemprop="url" rel="index">
+                    <span itemprop="name">BlueBridgeCup</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Systick和定时器的使用"><a href="#Systick和定时器的使用" class="headerlink" title="Systick和定时器的使用"></a>Systick和定时器的使用</h1><h2 id="Systick介绍"><a href="#Systick介绍" class="headerlink" title="Systick介绍"></a>Systick介绍</h2><p>Systick timer 24位向下计数的系统定时器<br>主要寄存器：  </p>
+<ol>
+<li><p>STK_CTRL(Systick Control and Status register)   </p>
+</li>
+<li><p>STK_LOAD(Systick reload value register)  </p>
+</li>
+<li><p>STK_VAL(Systick current value register)<br>SysTick_Config(SystemCoreClock/1000);  //系统时钟设置<br>SystemCoreClock：72 000 000 1s振荡次数 72MHz<br>/1000为1ms振荡次数，即将Systick设为了1ms的定时器<br>中断处理文件stm32f10x_it.c中的  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">	void SysTick_Handler(void)</span><br><span class="line">	&#123;</span><br><span class="line">		TimingDelay--; //定时器1ms中断一次</span><br><span class="line">	&#125;</span><br><span class="line">```  </span><br><span class="line">主函数文件中应用此变量TimingDelay：</span><br></pre></td></tr></table></figure>
+
+<p> void Delay_Ms(u32 nTime) //ms定时器<br> {</p>
+<pre><code>TimingDelay = nTime;
+while(TimingDelay != 0);    </code></pre><p> }</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">学习要点：</span><br><span class="line">1. Systick介绍</span><br><span class="line">2. 了解SysTick_Config函数</span><br><span class="line">3. 了解void Delay_Ms(u32 nTime)函数原理  </span><br><span class="line"></span><br><span class="line">## 介绍定时器（普通、通用）  </span><br><span class="line">学习要点：  </span><br><span class="line">1. 通用定时器</span><br><span class="line">2. 了解NVIC相关内容  </span><br><span class="line">资料包中TIM/TimeBase  </span><br><span class="line">内嵌向量中断控制器：Nested Vectored Interrupt Controller(NVIC)  </span><br><span class="line">所有ARM3芯片都有的中断向量控制器  </span><br><span class="line">统一管理中断向量</span><br></pre></td></tr></table></figure>
+
+<p> /**</p>
+<ul>
+<li><p>@brief  Configure the nested vectored interrupt controller.</p>
+</li>
+<li><p>@param  None</p>
+</li>
+<li><p>@retval None</p>
+</li>
+<li><p>/<br>void NVIC_Configuration(void)<br>{<br>NVIC_InitTypeDef NVIC_InitStructure;  NVIC初始化结构体<br>/* Enable the TIM2 global Interrupt */<br>NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn; 中断通道<br>NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0; 抢占优先级<br>NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1; 响应优先级<br>NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE; 使能通道中断<br>NVIC_Init(&amp;NVIC_InitStructure);<br>}  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">抢占优先级：  </span><br><span class="line">A中断正在运行，B有中断可以抢占（打断）A的中断  </span><br><span class="line">响应优先级：  </span><br><span class="line">- 中断同时来，就执行优先级高的  </span><br><span class="line">- 如果B已经中断了，则A就不会抢占它  </span><br><span class="line">数字越小 ，优先级就越高  </span><br><span class="line">library添加相关的文件  </span><br><span class="line">Library/Driver/src  </span><br><span class="line">在misc.c文件中（misc混杂的）  </span><br><span class="line">``` </span><br><span class="line">	/**</span><br><span class="line">	  * @brief  Configures the priority grouping: pre-emption priority and subpriority.</span><br><span class="line">	  * @param  NVIC_PriorityGroup: specifies the priority grouping bits length. </span><br><span class="line">	  *   This parameter can be one of the following values:</span><br><span class="line">	  *     @arg NVIC_PriorityGroup_0: 0 bits for pre-emption priority</span><br><span class="line">	  *                                4 bits for subpriority</span><br><span class="line">	  *     @arg NVIC_PriorityGroup_1: 1 bits for pre-emption priority</span><br><span class="line">	  *                                3 bits for subpriority</span><br><span class="line">	  *     @arg NVIC_PriorityGroup_2: 2 bits for pre-emption priority</span><br><span class="line">	  *                                2 bits for subpriority</span><br><span class="line">	  *     @arg NVIC_PriorityGroup_3: 3 bits for pre-emption priority</span><br><span class="line">	  *                                1 bits for subpriority</span><br><span class="line">	  *     @arg NVIC_PriorityGroup_4: 4 bits for pre-emption priority</span><br><span class="line">	  *                                0 bits for subpriority</span><br><span class="line">	  * @retval None</span><br><span class="line">	  */</span><br><span class="line">	void NVIC_PriorityGroupConfig(uint32_t NVIC_PriorityGroup) 优先级组配置</span><br><span class="line">	&#123;</span><br><span class="line">	  /* Check the parameters */</span><br><span class="line">	  assert_param(IS_NVIC_PRIORITY_GROUP(NVIC_PriorityGroup));</span><br><span class="line">	  </span><br><span class="line">	  /* Set the PRIGROUP[10:8] bits according to NVIC_PriorityGroup value */</span><br><span class="line">	  SCB-&gt;AIRCR = AIRCR_VECTKEY_MASK | NVIC_PriorityGroup;</span><br><span class="line">	&#125;  </span><br><span class="line"></span><br><span class="line">```      </span><br><span class="line">Group0: 0 bits 抢占优先级  4 bits 响应优先级 16个 0-15 高-低  </span><br><span class="line">Group1: 1 bits 抢占优先级（2个）可配置为0/1 配置为0的可抢占配置为1的中断 3 bits 响应优先级  </span><br><span class="line">定时器配置：</span><br></pre></td></tr></table></figure>
+
+<p>TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;<br>/* Time base configuration */<br>TIM_TimeBaseStructure.TIM_Period = 1000-1; 计数周期<br>TIM_TimeBaseStructure.TIM_Prescaler = 72-1; 预分频值 =71 72MHz预分成1M<br>TIM_TimeBaseStructure.TIM_ClockDivision = 0;时钟分频<br>TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;计数模式（Up or Down)<br>TIM_TimeBaseInit(TIM2, &amp;TIM_TimeBaseStructure);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">72MHz/72 = 1MHz 即1us</span><br><span class="line">1us * 1000 = 1ms 故设置 `TIM_TimeBaseStructure.TIM_Period = 1000-1;`  </span><br><span class="line">定时器初始化代码：</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<p>void TIM2_Init(void)<br>{<br>    TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;<br>    NVIC_InitTypeDef NVIC_InitStructure;</p>
+<pre><code>/* Enable the TIM2 global Interrupt */
+NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;
+NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
+NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+
+NVIC_Init(&amp;NVIC_InitStructure);
+
+/* TIM2 clock enable */
+RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+
+/* Time base configuration */
+TIM_TimeBaseStructure.TIM_Period = 1000-1; //1ms
+TIM_TimeBaseStructure.TIM_Prescaler = 71;  //72 000 000 /72 = 1 000 000 Hz = 1MHz
+TIM_TimeBaseStructure.TIM_ClockDivision = 0;
+TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
+
+TIM_TimeBaseInit(TIM2, &amp;TIM_TimeBaseStructure);
+
+/* TIM IT enable */
+TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
+
+/* TIM2 enable counter */
+TIM_Cmd(TIM2, ENABLE);    </code></pre><p>}<br>```</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/24/Beep/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -709,7 +907,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">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</div>
+<div id="enc_content" style="display:none">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</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -889,7 +1087,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">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</div>
+<div id="enc_content" style="display:none">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</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1069,7 +1267,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">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</div>
+<div id="enc_content" style="display:none">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</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1249,7 +1447,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX185LgIwphnbOgvL2d/BxD9AscpUf50rw3qeAbd5D5gvsZ1bftZVf44dKm1qCg4n+qYeYrg4FOIwliWcBleTvUgiNabXnCmmaU1u35y65zyRg/Bu5dcyCBBz/6xOOLU6MzyG6+HMiLVrbcIKT1HbzsymDvF41XfFgL5b25xI1NCaibu1+0zzbN1agqDXpPo2je8ZsiIFbd6C9ZqDg9DwwDsSy0IRE67LnAPWKmycwphvR0TCxetYDDJb0OPuWad1WjL+9q0YC3ousHWFfivaNoYtA9pg+k1dkc/6JC96ix//A4Mn333KwcTnC6DA8i1Y/07Y4uz7OMcfxycuI6QzeMLRD3HTJTWjKLgIvNavkP5erM250hp/BY/h/ThbHLZb8UCt4T/cvxVyCduTduu02pvtvZpjfm55X5ZegIl0JH4YprS+vokIxyqVkFOedxx21rg9TWyqRdiYwwaNqcZzc5p8ogAdoAc3OOotz5X6C/i6MsruuLAuCT2yyougiIWfg3IcYWyVYO+4qEzEEHKUvfAtq28UtIlmvr6iLF/L7asTzCm2oubQkCja0TRUSXJHsFwocH0lepP0PfcglzhIs0OQm/FuBXapjOQG3YG5QZ9B5YaAoAafvxcA9aVqu2hwjsgfMY5LZdCYqLxR3ZWo6qn5vuAEooj/HSMpHk4LUaH8WEYwGbkVajdhncrGiq3S03f7ZyqB/NiLzPvUsrxJiWU8OkzwpmmjY4w4jlWlUSc/4meNCmU3c23R8M/rD7cspzpT1YyRdDmJHTWRp55ez3BGtVqwwHK87XSm9sbqI+Lml7OzO+ira1o8a44RNNOM9I0GSefW2lTwbMDSpCV3MeMPp52sZQfjGu9zOS1hjamNpQ5gtvoei0stjUckmd8Fm5Iew8O8fMtlbbj25tdnA4BOh+vTSlVJsuagg8edS9z5d6d7r6CMLS0XTL2iRbRtJWGEHPYbDko6Z1kPyqaNxOC4xG7pWLBvg+UDUB/LDXrQmUaBPeC8O2yPIW7It42R5fPhf7hH1oQKX2rguH7WIhRXjsQE1XEXzDTv/MYSyzuT3JU1EANcNBByGNhklVFmyyA+iihkXSEp3tKYOvSag1Sq1bOBrcV0AOSxA8XpoAyCsKlGQelZ+f+IksecV4HtiqJihN6ervp0kkqqikQopfUhDY133r31u4PwLuXb32Ydrji/JFHKKAiCrgm9Kn1/c7YT1GXrLN3rXJierU2Bqe/JuQNGpVF3znjhrSM0RJgjGyZd0O9GZUXDV1pk577JCdJ/edGvpqQBltHmjbiEmGG5qx3ziegEPqLqiBTIed0fn4sfqxtn7MwunPJwlNmolEHfj6BPlmepyZKTPk+AiQDpYGqAtJF+P+pbnAG8b6Ie4WFEATjxpmpNkGY3fv6jNYIZTxpnVeCyxg==</div>
+<div id="enc_content" style="display:none">U2FsdGVkX19qrJAxTZ2UJOZBMuYnW5bE4AL7uILEW4pa89YU+zEdoYJJg/hZOFdueC6+KgQ/Iuecdhh79yhCadeoee7wZUr6C8AQ3/b3J3V7oWQ7ip3Bedc699S+vSr7jODAPdH8h5LWwFUZ6xYP6ifHkoyYu+nvxvCQ6wDNT6UpqSDfT1wPudq2wqbI1kaRRrGDJ0xE+wo4FMUIQQgOcsW0kHbY6G4WxfQqO8CkWBPmpaKwkzCb4HL5YWMvoQS3wRNvr66vbDq3k9AqGg1RHxLf5RfLm84ybyOVJso7H5gXEccTzlSjmqXAiWNsY3mj+Pr5vhpsB5Lf1/w12QaTP7wbk9abbv5HQtRluHNZYM+Rsme7T3tvnuOm8A9kfPvCGEqfMojWXj0Nvaq8s71reVAqYl6JfaXRLI3CBsyhJZt6tg6NPTNE1IDiImq+HQm+ea3kOgxloCq1ZTI9wv+mkTSPUemym7rXqJWlBAy+bT6SKKAa5t5t/FvRGb5Vo6TUSZOFV1L3AxqNOV+0hnAXioYGT6cjcqjz2Yh9YZxzhI1xbfBH3xmaOV1ZKP7LGHYY9XYVCIUfpYUD0flCOYCamPnnQln6mX8m1+Li65GacpPY1r2gD1MYgTZqB64ZRFH91JgjWgiBEJN1V7qyBjw9MHXK21WyVCZ0/4+3qFxpfBip8za9z06xXzO4TyoJ5y5tYZXQl0EYtxkGlY72voBcmSt+SV3QUYN9SK8qzJv8dHBqoHWS46E/3t1uPziJdyS1dZCqR25+2AQ9w9PBwUNRN/KKwsgpQW8MXzGmCriF86KFhubz73EU5eY27v2no8bP+mx54H/oVqqPbPbDbLPkm1+1bnEhex0LIzoLHo01u23Ula5EmF2SxaOwpTT/NVIJgILjai8wTI+HWJ/qeL+FKYUmN8aOwJ5TTD4TBUQ0D4VotcSGXiG+mrhaB9Rzt9VhUhpCUahqJ2xxppt1nJA46tUA5ilQmd48xwoSB5cZTEnywfCCXn1htU6L91GEWvs3wX8UrQckJKhQl1ZjUMX4wejbfKedKSowgzQs63YBbtREFRFk2+UWI+K08jkUnE9JWJ23SKEdBrGkMvBdrFibB1WsFT0TsXh1oqzDsNShtELXq61jGr9+DJUwBwRF7a4ns4m/Eguu9erU/CLDFEg5Rj8SaA96zW4GeJpHJb9WokDeim+qvPk16wnTkWjONDpTmslGE6wcIjGp0VMqnN/38ADGQKo6MVlNtskfduJXZVFST9e+d9cVaS2+pJfxBqP5HI2umyaSGZQmmtEz8Vx+GbbTHejHRJQFRR+jno6DIIq/cJOTAJoCViIlHLkUhIvJHq7IEtj9ERST0Xee7c93Ciw5p9/oZBq2VGFH3NPMIYGmVy1mb6jTzPr8YwGgXdB/cIvZiR2WFZp3xMvzWG32DQ==</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1822,187 +2020,6 @@ doDecrypt(passwd, onError);
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/14/Client-Library/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dawn_buji">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dawn_buji's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/14/Client-Library/" itemprop="url">Client_Library</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-14T09:41:28+08:00">
-                2019-08-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ros机器人操作系统/" itemprop="url" rel="index">
-                    <span itemprop="name">ros机器人操作系统</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Client-Library-客户端库"><a href="#Client-Library-客户端库" class="headerlink" title="Client Library(客户端库)"></a>Client Library(客户端库)</h1><ul>
-<li>概念类似于API<br>区别：<br>client library的层级要更高，它是在API的基础上又做了一层封装，对开发者更加友好</li>
-<li>提供ros编程的库,就是一个接口，它把底层的标准流程给封装好，方便程序员去写代码<br>例如：建立node，发布消息，调用服务…</li>
-</ul>
-<h2 id="ros提供的client-library"><a href="#ros提供的client-library" class="headerlink" title="ros提供的client library"></a>ros提供的client library</h2><ol>
-<li>roscpp c++ 执行效率高，适合做图像、slim这方面的工作，代码写起来麻烦</li>
-<li>rospy  python 开发效率高，小工具，小node都可以用rospy来写。<br>一些ros命令行工具，像rosrun、rostopic都是用rospy来实现的<br>这些命令都是一个个python脚本，最底层就是rospy来实现的</li>
-<li>roslisp<br>…</li>
-</ol>
-<h2 id="roscpp"><a href="#roscpp" class="headerlink" title="roscpp"></a>roscpp</h2><ul>
-<li>ros提供的用c++和topic、service、param、timer交互的一个接口</li>
-<li>官方文档中</li>
-</ul>
-<p>ros::init（）初始化函数，在写c++程序时，必须要调用的一个函数<br>ros::NodeHandle:最重要的一个部分，用来创建topic、service和调用这些公共接口<br>ros::master：通过它获取和master交互来查询系统的信息<br>ros::this_node:用来查询进程的函数<br>ros::service:查询服务的函数<br>ros::param:查询参数服务器<br>ros::names:名称管理用到的功能<br>如下图<br><img src="/images/roscpp.jpg" alt="roscpp"></p>
-<h3 id="ros-init"><a href="#ros-init" class="headerlink" title="ros::init()"></a>ros::init()</h3><p>void ros::init();    //解析ROS参数，为本node命名<br>::为作用域的限定符，表示init()这个函数是在ros这个命名空间之中的</p>
-<h3 id="ros-NodeHandle-Class-类"><a href="#ros-NodeHandle-Class-类" class="headerlink" title="ros::NodeHandle Class(类)"></a>ros::NodeHandle Class(类)</h3><ul>
-<li>c++里面的类有自己的成员变量和成员函数</li>
-<li>怎么用<br>创建一个话题的publisher</li>
-</ul>
-<ol>
-<li>首先声明一个ros::NodeHandle nh；(对象) </li>
-<li>用这个函数的话，就ros::Publisher pwb = nh.advertise(…);//有两个参数，第一个参数是写topic的名称，指定这个publisher往哪个topic去发布消息，第二个王消息队列上发布消息的长度</li>
-<li>调用完了advertise函数返回值就是一个ros::Publisher赋给一个Publisher的对象</li>
-<li>发布消息，就直接用pwb.publish(msg);<br>形如<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ros::NodeHandle nh;#句柄</span><br><span class="line">ros::Publisher pub = nh.advertise(...);</span><br><span class="line">ros::publish(msg);</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>创建话题的subscriber<br>参数有topic名称，队列的长度，还有一个回调函数的名称（函数指针）当subscribe到一个msg时就会由回调函数来处理这个msg<br><img src="/images/NodeHandle.jpg" alt="ros::NodeHandle"></p>
-<h3 id="ros-master-Namespace即命名空间"><a href="#ros-master-Namespace即命名空间" class="headerlink" title="ros::master Namespace即命名空间"></a>ros::master Namespace即命名空间</h3><p>Namespace和Class的区别是Namespace是没有对象的，我们相当于把它当作普通函数在调用<br>例如：<br>下图中第一个函数用的时候就是<br><code>ros::master::check();</code><br><img src="/images/master.jpg" alt="ros::master"></p>
-<h3 id="ros-this-node-Namespce-命名空间"><a href="#ros-this-node-Namespce-命名空间" class="headerlink" title="ros::this_node Namespce(命名空间)"></a>ros::this_node Namespce(命名空间)</h3><p><img src="/images/this_node.jpg" alt="ros::this_node"></p>
-<h3 id="ros-service-Namespce"><a href="#ros-service-Namespce" class="headerlink" title="ros::service Namespce"></a>ros::service Namespce</h3><p><img src="/images/service.jpg" alt="ros::service"></p>
-<h3 id="ros-names-Namespace"><a href="#ros-names-Namespace" class="headerlink" title="ros::names Namespace"></a>ros::names Namespace</h3><p><img src="/images/names.jpg" alt="ros::names"></p>
-<h3 id="roscpp-topic-demo"><a href="#roscpp-topic-demo" class="headerlink" title="roscpp topic_demo"></a>roscpp topic_demo</h3><p><img src="/images/topic_demo.jpg" alt="topic_demo"><br>注：定义了好了msg的格式后，并不能直接用，要对它进行编译，编译完成后，会生成一个对应的头文件<br>写代码时，把它include进去</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;topic_demo/gps.h&gt;</span><br><span class="line">topic_damo::gps msg;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/ros.msg.jpg" alt="ros.msg"></p>
-<p>ros写ros.cpp文件时必须要定义这个头文件<br><code>#include &lt;ros/ros.h&gt;</code><br><img src="/images/talker.cpp.jpg" alt="talker.cpp"></p>
-<h3 id="listener-cpp"><a href="#listener-cpp" class="headerlink" title="listener.cpp"></a>listener.cpp</h3><p>如下图<br><img src="/images/roslistener.jpg" alt="roslistener"><br><img src="/images/roslsner.jpg" alt="roslsner"><br>注：<br>Float32.msg<br>ros自带的Float32类型是一个结构体，但里面只有一个内容就是data，data才是真正数据的地方<br>ros::spin()<br>每来一个消息就会把消息放在队列里，何时去处理呢？<br>并不是来一个就会处理一个，必须调用ros::spin()函数，这个ros::spin()会反复查看回调函数的队列是否有东西<br>如果有就在这个队列的东西清空，把里面的每一个msg进行处理，如果队列是空的，就不会调用这个回调函数来处理<br>ros::spin()是反复调用当前可触发的回调函数，执行到这一句它就会反复查看有无可执行的回调函数，所以是阻塞的<br>ros::spinOnce()仅查看一次有无可处理的队列，有的话就处理，没有的话就继续向下执行了，因此它不是阻塞的函数<br>创建Subscriber来接收某个topic上的消息，然后用回调函数来处理对应的消息，回调函数不会自动触发<br>需要调用ros::spin()或ros::spinOnce()来触发</p>
-<h3 id="CMakeLists-txt"><a href="#CMakeLists-txt" class="headerlink" title="CMakeLists.txt"></a>CMakeLists.txt</h3><p><img src="/images/roscmakelists.jpg" alt="roscmakelists"><br>注：<br>message_generation：帮助我们生成自定义的msg文件</p>
-<h3 id="package-xml"><a href="#package-xml" class="headerlink" title="package.xml"></a>package.xml</h3><p><img src="/images/rospackage.jpg" alt="rospackage"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2055,7 +2072,7 @@ doDecrypt(passwd, onError);
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

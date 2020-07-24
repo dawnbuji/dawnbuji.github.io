@@ -79,21 +79,18 @@
 
 
 
-<meta name="description" content="端口重映射及蜂鸣器操作方法端口重映射蜂鸣器原理图如下：三极管作用：放大电流10k电阻作用：限流二极管作用：与蜂鸣器构成放电回路，防止烧坏三极管为什么要端口重映射？因为蜂鸣器的IO口PB4原本的功能是JTAG调试，而非普通IO口重映射方法：    开启AFIO复用时钟RCC_APB2Periph_AFIO(所有重映射功能都在AFIO这个时钟管理下面)RCC_APB2PeriphClockCmd(RC">
+<meta name="description" content="Systick和定时器的使用Systick介绍Systick timer 24位向下计数的系统定时器主要寄存器：    STK_CTRL(Systick Control and Status register)     STK_LOAD(Systick reload value register)    STK_VAL(Systick current value register)SysTick_">
 <meta name="keywords" content="学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Beep">
-<meta property="og:url" content="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/24/Beep/index.html">
+<meta property="og:title" content="Systick_timer">
+<meta property="og:url" content="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/24/Systick-timer/index.html">
 <meta property="og:site_name" content="dawn_buji&#39;s Blog">
-<meta property="og:description" content="端口重映射及蜂鸣器操作方法端口重映射蜂鸣器原理图如下：三极管作用：放大电流10k电阻作用：限流二极管作用：与蜂鸣器构成放电回路，防止烧坏三极管为什么要端口重映射？因为蜂鸣器的IO口PB4原本的功能是JTAG调试，而非普通IO口重映射方法：    开启AFIO复用时钟RCC_APB2Periph_AFIO(所有重映射功能都在AFIO这个时钟管理下面)RCC_APB2PeriphClockCmd(RC">
+<meta property="og:description" content="Systick和定时器的使用Systick介绍Systick timer 24位向下计数的系统定时器主要寄存器：    STK_CTRL(Systick Control and Status register)     STK_LOAD(Systick reload value register)    STK_VAL(Systick current value register)SysTick_">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://github.com/images/buzzer.png">
-<meta property="og:image" content="https://github.com/images/beep_control.png">
-<meta property="og:updated_time" content="2020-07-24T09:28:03.702Z">
+<meta property="og:updated_time" content="2020-07-24T12:52:56.035Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Beep">
-<meta name="twitter:description" content="端口重映射及蜂鸣器操作方法端口重映射蜂鸣器原理图如下：三极管作用：放大电流10k电阻作用：限流二极管作用：与蜂鸣器构成放电回路，防止烧坏三极管为什么要端口重映射？因为蜂鸣器的IO口PB4原本的功能是JTAG调试，而非普通IO口重映射方法：    开启AFIO复用时钟RCC_APB2Periph_AFIO(所有重映射功能都在AFIO这个时钟管理下面)RCC_APB2PeriphClockCmd(RC">
-<meta name="twitter:image" content="https://github.com/images/buzzer.png">
+<meta name="twitter:title" content="Systick_timer">
+<meta name="twitter:description" content="Systick和定时器的使用Systick介绍Systick timer 24位向下计数的系统定时器主要寄存器：    STK_CTRL(Systick Control and Status register)     STK_LOAD(Systick reload value register)    STK_VAL(Systick current value register)SysTick_">
 
 
 
@@ -123,14 +120,14 @@
 
 
 
-  <link rel="canonical" href="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/24/Beep/">
+  <link rel="canonical" href="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/24/Systick-timer/">
 
 
 
 
 
 
-  <title>Beep | dawn_buji's Blog</title>
+  <title>Systick_timer | dawn_buji's Blog</title>
   
 
 
@@ -257,7 +254,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/24/Beep/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/24/Systick-timer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dawn_buji">
@@ -274,7 +271,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Beep</h1>
+          <h1 class="post-title" itemprop="name headline">Systick_timer</h1>
         
 
         <div class="post-meta">
@@ -286,7 +283,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-24T17:12:17+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-24T18:22:50+08:00">
                 2020-07-24
               </time>
             
@@ -346,13 +343,63 @@
       
 
       
-        <h1 id="端口重映射及蜂鸣器操作方法"><a href="#端口重映射及蜂鸣器操作方法" class="headerlink" title="端口重映射及蜂鸣器操作方法"></a>端口重映射及蜂鸣器操作方法</h1><h2 id="端口重映射"><a href="#端口重映射" class="headerlink" title="端口重映射"></a>端口重映射</h2><p>蜂鸣器原理图如下：<br><img src="/images/buzzer.png" alt="buzzer"><br>三极管作用：放大电流<br>10k电阻作用：限流<br>二极管作用：与蜂鸣器构成放电回路，防止烧坏三极管<br>为什么要端口重映射？<br>因为蜂鸣器的IO口PB4原本的功能是JTAG调试，而非普通IO口<br>重映射方法：  </p>
+        <h1 id="Systick和定时器的使用"><a href="#Systick和定时器的使用" class="headerlink" title="Systick和定时器的使用"></a>Systick和定时器的使用</h1><h2 id="Systick介绍"><a href="#Systick介绍" class="headerlink" title="Systick介绍"></a>Systick介绍</h2><p>Systick timer 24位向下计数的系统定时器<br>主要寄存器：  </p>
 <ol>
-<li>开启AFIO复用时钟RCC_APB2Periph_AFIO(所有重映射功能都在AFIO这个时钟管理下面)<br><code>RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB|RCC_APB2Periph_AFIO, ENABLE);</code>  </li>
-<li>调用GPIO_PinRemapConfig配置管脚重映射<br><code>GPIO_PinRemapConfig(GPIO_Remap_SWJ_NoJTRST, ENABLE);</code>  </li>
-<li>注意映射后端口的功能（本实验中重映射后作为普通IO口使用）<br>库函数中有例程可以参考GPIO/JTAG_Remap</li>
+<li><p>STK_CTRL(Systick Control and Status register)   </p>
+</li>
+<li><p>STK_LOAD(Systick reload value register)  </p>
+</li>
+<li><p>STK_VAL(Systick current value register)<br>SysTick_Config(SystemCoreClock/1000);  //系统时钟设置<br>SystemCoreClock：72 000 000 1s振荡次数 72MHz<br>/1000为1ms振荡次数，即将Systick设为了1ms的定时器<br>中断处理文件stm32f10x_it.c中的  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">	void SysTick_Handler(void)</span><br><span class="line">	&#123;</span><br><span class="line">		TimingDelay--; //定时器1ms中断一次</span><br><span class="line">	&#125;</span><br><span class="line">```  </span><br><span class="line">主函数文件中应用此变量TimingDelay：</span><br></pre></td></tr></table></figure>
+
+<p> void Delay_Ms(u32 nTime) //ms定时器<br> {</p>
+<pre><code>TimingDelay = nTime;
+while(TimingDelay != 0);    </code></pre><p> }</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">学习要点：</span><br><span class="line">1. Systick介绍</span><br><span class="line">2. 了解SysTick_Config函数</span><br><span class="line">3. 了解void Delay_Ms(u32 nTime)函数原理  </span><br><span class="line"></span><br><span class="line">## 介绍定时器（普通、通用）  </span><br><span class="line">学习要点：  </span><br><span class="line">1. 通用定时器</span><br><span class="line">2. 了解NVIC相关内容  </span><br><span class="line">资料包中TIM/TimeBase  </span><br><span class="line">内嵌向量中断控制器：Nested Vectored Interrupt Controller(NVIC)  </span><br><span class="line">所有ARM3芯片都有的中断向量控制器  </span><br><span class="line">统一管理中断向量</span><br></pre></td></tr></table></figure>
+
+<p> /**</p>
+<ul>
+<li><p>@brief  Configure the nested vectored interrupt controller.</p>
+</li>
+<li><p>@param  None</p>
+</li>
+<li><p>@retval None</p>
+</li>
+<li><p>/<br>void NVIC_Configuration(void)<br>{<br>NVIC_InitTypeDef NVIC_InitStructure;  NVIC初始化结构体<br>/* Enable the TIM2 global Interrupt */<br>NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn; 中断通道<br>NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0; 抢占优先级<br>NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1; 响应优先级<br>NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE; 使能通道中断<br>NVIC_Init(&amp;NVIC_InitStructure);<br>}  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">抢占优先级：  </span><br><span class="line">A中断正在运行，B有中断可以抢占（打断）A的中断  </span><br><span class="line">响应优先级：  </span><br><span class="line">- 中断同时来，就执行优先级高的  </span><br><span class="line">- 如果B已经中断了，则A就不会抢占它  </span><br><span class="line">数字越小 ，优先级就越高  </span><br><span class="line">library添加相关的文件  </span><br><span class="line">Library/Driver/src  </span><br><span class="line">在misc.c文件中（misc混杂的）  </span><br><span class="line">``` </span><br><span class="line">	/**</span><br><span class="line">	  * @brief  Configures the priority grouping: pre-emption priority and subpriority.</span><br><span class="line">	  * @param  NVIC_PriorityGroup: specifies the priority grouping bits length. </span><br><span class="line">	  *   This parameter can be one of the following values:</span><br><span class="line">	  *     @arg NVIC_PriorityGroup_0: 0 bits for pre-emption priority</span><br><span class="line">	  *                                4 bits for subpriority</span><br><span class="line">	  *     @arg NVIC_PriorityGroup_1: 1 bits for pre-emption priority</span><br><span class="line">	  *                                3 bits for subpriority</span><br><span class="line">	  *     @arg NVIC_PriorityGroup_2: 2 bits for pre-emption priority</span><br><span class="line">	  *                                2 bits for subpriority</span><br><span class="line">	  *     @arg NVIC_PriorityGroup_3: 3 bits for pre-emption priority</span><br><span class="line">	  *                                1 bits for subpriority</span><br><span class="line">	  *     @arg NVIC_PriorityGroup_4: 4 bits for pre-emption priority</span><br><span class="line">	  *                                0 bits for subpriority</span><br><span class="line">	  * @retval None</span><br><span class="line">	  */</span><br><span class="line">	void NVIC_PriorityGroupConfig(uint32_t NVIC_PriorityGroup) 优先级组配置</span><br><span class="line">	&#123;</span><br><span class="line">	  /* Check the parameters */</span><br><span class="line">	  assert_param(IS_NVIC_PRIORITY_GROUP(NVIC_PriorityGroup));</span><br><span class="line">	  </span><br><span class="line">	  /* Set the PRIGROUP[10:8] bits according to NVIC_PriorityGroup value */</span><br><span class="line">	  SCB-&gt;AIRCR = AIRCR_VECTKEY_MASK | NVIC_PriorityGroup;</span><br><span class="line">	&#125;  </span><br><span class="line"></span><br><span class="line">```      </span><br><span class="line">Group0: 0 bits 抢占优先级  4 bits 响应优先级 16个 0-15 高-低  </span><br><span class="line">Group1: 1 bits 抢占优先级（2个）可配置为0/1 配置为0的可抢占配置为1的中断 3 bits 响应优先级  </span><br><span class="line">定时器配置：</span><br></pre></td></tr></table></figure>
+
+<p>TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;<br>/* Time base configuration */<br>TIM_TimeBaseStructure.TIM_Period = 1000-1; 计数周期<br>TIM_TimeBaseStructure.TIM_Prescaler = 72-1; 预分频值 =71 72MHz预分成1M<br>TIM_TimeBaseStructure.TIM_ClockDivision = 0;时钟分频<br>TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;计数模式（Up or Down)<br>TIM_TimeBaseInit(TIM2, &amp;TIM_TimeBaseStructure);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">72MHz/72 = 1MHz 即1us</span><br><span class="line">1us * 1000 = 1ms 故设置 `TIM_TimeBaseStructure.TIM_Period = 1000-1;`  </span><br><span class="line">定时器初始化代码：</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
 </ol>
-<h2 id="蜂鸣器控制"><a href="#蜂鸣器控制" class="headerlink" title="蜂鸣器控制"></a>蜂鸣器控制</h2><p><img src="/images/beep_control.png" alt="beep_control">  </p>
+<p>void TIM2_Init(void)<br>{<br>    TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;<br>    NVIC_InitTypeDef NVIC_InitStructure;</p>
+<pre><code>/* Enable the TIM2 global Interrupt */
+NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;
+NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
+NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+
+NVIC_Init(&amp;NVIC_InitStructure);
+
+/* TIM2 clock enable */
+RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+
+/* Time base configuration */
+TIM_TimeBaseStructure.TIM_Period = 1000-1; //1ms
+TIM_TimeBaseStructure.TIM_Prescaler = 71;  //72 000 000 /72 = 1 000 000 Hz = 1MHz
+TIM_TimeBaseStructure.TIM_ClockDivision = 0;
+TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
+
+TIM_TimeBaseInit(TIM2, &amp;TIM_TimeBaseStructure);
+
+/* TIM IT enable */
+TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
+
+/* TIM2 enable counter */
+TIM_Cmd(TIM2, ENABLE);    </code></pre><p>}<br>```</p>
 
       
     </div>
@@ -383,8 +430,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/23/RCC-LED/" rel="next" title="RCC_LED">
-                <i class="fa fa-chevron-left"></i> RCC_LED
+              <a href="/2020/07/24/Beep/" rel="next" title="Beep">
+                <i class="fa fa-chevron-left"></i> Beep
               </a>
             
           </div>
@@ -392,10 +439,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/07/24/Systick-timer/" rel="prev" title="Systick_timer">
-                Systick_timer <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -529,7 +572,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#端口重映射及蜂鸣器操作方法"><span class="nav-number">1.</span> <span class="nav-text">端口重映射及蜂鸣器操作方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#端口重映射"><span class="nav-number">1.1.</span> <span class="nav-text">端口重映射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蜂鸣器控制"><span class="nav-number">1.2.</span> <span class="nav-text">蜂鸣器控制</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Systick和定时器的使用"><span class="nav-number">1.</span> <span class="nav-text">Systick和定时器的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Systick介绍"><span class="nav-number">1.1.</span> <span class="nav-text">Systick介绍</span></a></li></ol></li></ol></div>
             
 
           </div>
