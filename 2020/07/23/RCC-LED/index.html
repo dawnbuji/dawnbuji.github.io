@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Stm32时钟简介 RCC 复位和时钟总线 AHB 系统总线（高阶外设总线）   APB1 定时器、串口、低速 APB2 GPIO、高速HSE:高速外部时钟HSI:高速内部时钟LSI:低速内部时钟LSE:低速外部时钟 了解APB1(低速)和APB2(高速)外设 学会看STM32时钟框图 学会用库函数开启外设时钟 学会STM32 IO配置方法与应用场合  定义初始化结构体GPIO_InitTypeD">
+<meta name="description" content="Stm32时钟简介 RCC 复位和时钟总线 AHB 系统总线（高阶外设总线）   APB1 定时器、串口、低速 APB2 GPIO、高速HSE:高速外部时钟HSI:高速内部时钟LSI:低速内部时钟LSE:低速外部时钟 了解APB1(低速)和APB2(高速)外设 学会看STM32时钟框图 学会用库函数开启外设时钟 学会STM32 IO配置方法与应用场合    定义初始化结构体GPIO_InitTyp">
 <meta name="keywords" content="学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RCC_LED">
 <meta property="og:url" content="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/23/RCC-LED/index.html">
 <meta property="og:site_name" content="dawn_buji&#39;s Blog">
-<meta property="og:description" content="Stm32时钟简介 RCC 复位和时钟总线 AHB 系统总线（高阶外设总线）   APB1 定时器、串口、低速 APB2 GPIO、高速HSE:高速外部时钟HSI:高速内部时钟LSI:低速内部时钟LSE:低速外部时钟 了解APB1(低速)和APB2(高速)外设 学会看STM32时钟框图 学会用库函数开启外设时钟 学会STM32 IO配置方法与应用场合  定义初始化结构体GPIO_InitTypeD">
+<meta property="og:description" content="Stm32时钟简介 RCC 复位和时钟总线 AHB 系统总线（高阶外设总线）   APB1 定时器、串口、低速 APB2 GPIO、高速HSE:高速外部时钟HSI:高速内部时钟LSI:低速内部时钟LSE:低速外部时钟 了解APB1(低速)和APB2(高速)外设 学会看STM32时钟框图 学会用库函数开启外设时钟 学会STM32 IO配置方法与应用场合    定义初始化结构体GPIO_InitTyp">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-07-23T10:02:15.324Z">
+<meta property="og:updated_time" content="2020-07-24T01:26:24.151Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RCC_LED">
-<meta name="twitter:description" content="Stm32时钟简介 RCC 复位和时钟总线 AHB 系统总线（高阶外设总线）   APB1 定时器、串口、低速 APB2 GPIO、高速HSE:高速外部时钟HSI:高速内部时钟LSI:低速内部时钟LSE:低速外部时钟 了解APB1(低速)和APB2(高速)外设 学会看STM32时钟框图 学会用库函数开启外设时钟 学会STM32 IO配置方法与应用场合  定义初始化结构体GPIO_InitTypeD">
+<meta name="twitter:description" content="Stm32时钟简介 RCC 复位和时钟总线 AHB 系统总线（高阶外设总线）   APB1 定时器、串口、低速 APB2 GPIO、高速HSE:高速外部时钟HSI:高速内部时钟LSI:低速内部时钟LSE:低速外部时钟 了解APB1(低速)和APB2(高速)外设 学会看STM32时钟框图 学会用库函数开启外设时钟 学会STM32 IO配置方法与应用场合    定义初始化结构体GPIO_InitTyp">
 
 
 
@@ -353,15 +353,45 @@
 <li>了解APB1(低速)和APB2(高速)外设</li>
 <li>学会看STM32时钟框图</li>
 <li>学会用库函数开启外设时钟</li>
-<li>学会STM32 IO配置方法与应用场合</li>
+<li>学会STM32 IO配置方法与应用场合  </li>
 </ol>
-<h2 id="定义初始化结构体"><a href="#定义初始化结构体" class="headerlink" title="定义初始化结构体"></a>定义初始化结构体</h2><p><code>GPIO_InitTypeDef GPIO_InitStructure</code><br>定义结构体变量类型 结构体名称<br><code>GPIO_Mode</code><br>枚举变量构成  </p>
+<h2 id="定义初始化结构体"><a href="#定义初始化结构体" class="headerlink" title="定义初始化结构体"></a>定义初始化结构体</h2><p><code>GPIO_InitTypeDef GPIO_InitStructure</code><br>定义结构体变量类型 结构体名称<br><code>GPIO_Mode</code><br>枚举变量构成<br><a href="https://www.cnblogs.com/cumtchw/" target="_blank" rel="noopener">GPIO的八种工作模式</a>  </p>
 <ol>
-<li><code>GPIO_Mode_AIN</code><br>模拟输入 ADC采样</li>
-<li><code>GPIO_Mode_IPD</code><br>输入下拉 IO口不接的话，默认为低电平</li>
-<li><code>GPIO_Mode_IPU</code><br>输入上拉 IO口不接的话，默认为高电平</li>
-<li><code>GPIO_Mode_IN_FLOATING</code><br>输入浮空 IO口不接的话，状态不定，呈高阻态  </li>
-<li><code>GPIO_Mode_Out_OD</code>  </li>
+<li><code>GPIO_Mode_AIN</code><br>模拟输入 ADC采样  </li>
+<li><code>GPIO_Mode_IPD</code><br>下拉输入 IO口不接的话，默认为低电平  </li>
+<li><code>GPIO_Mode_IPU</code><br>上拉输入 IO口不接的话，默认为高电平  </li>
+<li><code>GPIO_Mode_IN_FLOATING</code><br>浮空输入 IO口不接的话，状态不定，呈高阻态    </li>
+<li><code>GPIO_Mode_Out_OD</code><br>开漏输出，IO输出0接GND，IO输出1，悬空，需要外接上拉电阻，才能实现输出高电平。当输出为1时，IO口的状态由上拉电阻拉高电平，但由于是开漏输出模式，这样IO口也就可以由外部电路改变为低电平或不变。可以读IO输入电平变化，实现C51的IO双向功能，适合于做电流型的驱动,其吸收电流的能力相对强(一般20ma以内)。    </li>
+<li><code>GPIO_Mode_Out_PP</code><br>推挽输出，可以输出高电平、低电平（提高电路负载能力，开关速度）  </li>
+<li><code>GPIO_Mode_AF_OD</code><br>复用开漏输出，片内外设功能 </li>
+<li><code>GPIO_Mode_AF_PP</code><br>复用推挽输出，片内外设功能  </li>
+</ol>
+<h2 id="IO口配置步骤"><a href="#IO口配置步骤" class="headerlink" title="IO口配置步骤"></a>IO口配置步骤</h2><ol>
+<li><p>定义一个IO口初始化结构体  <code>GPIO_InitTypeDef GPIO_InitStructure;</code>  </p>
+</li>
+<li><p>使能相应的IO口时钟  <code>RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);</code></p>
+</li>
+<li><p>结构体赋值 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  </span><br><span class="line">GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用初始化函数 <code>GPIO_Init(GPIOC, &amp;GPIO_InitStructure);</code></p>
+</li>
+</ol>
+<h1 id="LED锁存器控制"><a href="#LED锁存器控制" class="headerlink" title="LED锁存器控制"></a>LED锁存器控制</h1><ul>
+<li>D0-D7对应的GPIO引脚为PC8-PC15</li>
+<li>LE锁存器控制引脚为PD2</li>
+</ul>
+<h2 id="LED为共阳模式"><a href="#LED为共阳模式" class="headerlink" title="LED为共阳模式"></a>LED为共阳模式</h2><ul>
+<li><code>GPIO_ResetBits(GPIOC,led_ctrl&lt;&lt;8);</code> 把对应引脚清0，不影响其他位<br>例如，将led_ctrl赋值为0x01，则GPIOC的第八个引脚被赋值为0。  </li>
+<li><code>GPIO_SetBits(GPIOD,GPIO_Pin_2);</code> 把对应的引脚置1，不影响其他位</li>
+<li>编写LED控制代码的方法<br>例如，使LED亮，设置该LED对应的GPIO口的状态，再打开锁存器使PC口的状态做出的改变输出到LED口。之后，关闭锁存器使该状态保持，并且保持的状态不会改变。<pre><code>GPIO_ResetBits(GPIOC, led_ctrl&lt;&lt;8);
+  GPIO_SetBits(GPIOD, GPIO_Pin_2);
+  GPIO_ResetBits(GPIOD, GPIO_Pin_2);</code></pre></li>
+</ul>
+<p>注：</p>
+<ol>
+<li>View/Watch windows/watch1/2 可以在仿真调试时看到变量状态<br>调试时能看的变量：全局变量与未被优化的局部变量</li>
+<li>开启代码提示 configuration/Text Completion</li>
 </ol>
 
       
@@ -535,7 +565,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Stm32时钟简介"><span class="nav-number">1.</span> <span class="nav-text">Stm32时钟简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义初始化结构体"><span class="nav-number">1.1.</span> <span class="nav-text">定义初始化结构体</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Stm32时钟简介"><span class="nav-number">1.</span> <span class="nav-text">Stm32时钟简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义初始化结构体"><span class="nav-number">1.1.</span> <span class="nav-text">定义初始化结构体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IO口配置步骤"><span class="nav-number">1.2.</span> <span class="nav-text">IO口配置步骤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LED锁存器控制"><span class="nav-number">2.</span> <span class="nav-text">LED锁存器控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LED为共阳模式"><span class="nav-number">2.1.</span> <span class="nav-text">LED为共阳模式</span></a></li></ol></li></ol></div>
             
 
           </div>
