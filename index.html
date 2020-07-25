@@ -6,10 +6,10 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -115,7 +115,7 @@
 
 
 
-  <link rel="canonical" href="https://github.com/dawnbuji/dawnbuji.github.io/">
+  <link rel="canonical" href="https://github.com/dawnbuji/dawnbuji.github.io/"/>
 
 
 
@@ -151,7 +151,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">dawn_buji's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -181,7 +181,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -191,7 +191,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -201,7 +201,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -211,7 +211,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -250,11 +250,11 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/25/KEY/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/25/Systick-timer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dawn_buji">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
@@ -269,7 +269,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/07/25/KEY/" itemprop="url">KEY</a></h1>
+                <a class="post-title-link" href="/2020/07/25/Systick-timer/" itemprop="url">未命名</a></h1>
         
 
         <div class="post-meta">
@@ -281,7 +281,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-25T10:48:33+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-25T16:08:05+08:00">
                 2020-07-25
               </time>
             
@@ -321,7 +321,611 @@
       
         
           
+            <!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+<title>Systick-timer</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<hr>
+<p>title: Systick_timer
+date: 2020-07-24 18:22:50
+tags: 学习</p>
+<h2>categories: BlueBridgeCup</h2>
+<h1>Systick和定时器的使用</h1>
+<h2>Systick介绍</h2>
+<p>Systick timer 24位向下计数的系统定时器<br>
+主要寄存器：<br>
+1. STK<em>CTRL(Systick Control and Status register) <br>
+2. STK</em>LOAD(Systick reload value register)<br>
+3. STK<em>VAL(Systick current value register)<br>
+SysTick<em>Config(SystemCoreClock/1000);  //系统时钟设置<br>
+SystemCoreClock：72 000 000 1s振荡次数 72MHz<br>
+/1000为1ms振荡次数，即将Systick设为了1ms的定时器<br>
+中断处理文件stm32f10x</em>it.c中的<br>
+<code>void SysTick_Handler(void)
+	{
+		TimingDelay--; //定时器1ms中断一次
+	}</code>	<br>
+主函数文件中应用此变量TimingDelay：<br>
+<code>void Delay_Ms(u32 nTime) //ms定时器
+	{
+		TimingDelay = nTime;
+		while(TimingDelay != 0);	
+	}</code>	 
+学习要点：
+1. Systick介绍
+2. 了解SysTick</em>Config函数
+3. 了解void Delay_Ms(u32 nTime)函数原理  </p>
+<h2>介绍定时器（普通、通用）</h2>
+<p>学习要点：<br>
+1. 通用定时器
+2. 了解NVIC相关内容<br>
+资料包中TIM/TimeBase<br>
+内嵌向量中断控制器：Nested Vectored Interrupt Controller(NVIC)<br>
+所有ARM3芯片都有的中断向量控制器<br>
+统一管理中断向量  <br>
+<code>/**
+	  * @brief  Configure the nested vectored interrupt controller.
+	  * @param  None
+	  * @retval None
+	  */
+	void NVIC_Configuration(void)
+	{
+	  NVIC_InitTypeDef NVIC_InitStructure;  NVIC初始化结构体
+	  /* Enable the TIM2 global Interrupt */
+	  NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn; 中断通道
+	  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0; 抢占优先级
+	  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1; 响应优先级
+	  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE; 使能通道中断
+	  NVIC_Init(&amp;NVIC_InitStructure);
+	}</code>	
+抢占优先级：<br>
+A中断正在运行，B有中断可以抢占（打断）A的中断<br>
+响应优先级：<br>
+- 中断同时来，就执行优先级高的<br>
+- 如果B已经中断了，则A就不会抢占它<br>
+数字越小 ，优先级就越高<br>
+library添加相关的文件<br>
+Library/Driver/src<br>
+在misc.c文件中（misc混杂的）<br>
+<code>/**
+	  * @brief  Configures the priority grouping: pre-emption priority and subpriority.
+	  * @param  NVIC_PriorityGroup: specifies the priority grouping bits length. 
+	  *   This parameter can be one of the following values:
+	  *     @arg NVIC_PriorityGroup_0: 0 bits for pre-emption priority
+	  *                                4 bits for subpriority
+	  *     @arg NVIC_PriorityGroup_1: 1 bits for pre-emption priority
+	  *                                3 bits for subpriority
+	  *     @arg NVIC_PriorityGroup_2: 2 bits for pre-emption priority
+	  *                                2 bits for subpriority
+	  *     @arg NVIC_PriorityGroup_3: 3 bits for pre-emption priority
+	  *                                1 bits for subpriority
+	  *     @arg NVIC_PriorityGroup_4: 4 bits for pre-emption priority
+	  *                                0 bits for subpriority
+	  * @retval None
+	  */
+	void NVIC_PriorityGroupConfig(uint32_t NVIC_PriorityGroup) 优先级组配置
+	{
+	  /* Check the parameters */
+	  assert_param(IS_NVIC_PRIORITY_GROUP(NVIC_PriorityGroup));
+	  
+	  /* Set the PRIGROUP[10:8] bits according to NVIC_PriorityGroup value */
+	  SCB-&gt;AIRCR = AIRCR_VECTKEY_MASK | NVIC_PriorityGroup;
+	}</code>		   <br>
+Group0: 0 bits 抢占优先级  4 bits 响应优先级 16个 0-15 高-低<br>
+Group1: 1 bits 抢占优先级（2个）可配置为0/1 配置为0的可抢占配置为1的中断 3 bits 响应优先级 </p>
+<p>定时器配置：<br>
+<code>TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;  
+	 /* Time base configuration */   
+	 TIM_TimeBaseStructure.TIM_Period = 1000-1; 计数周期  
+	 TIM_TimeBaseStructure.TIM_Prescaler = 72-1; 预分频值 =71 72MHz预分成1M  
+	 TIM_TimeBaseStructure.TIM_ClockDivision = 0;时钟分频  
+	 TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;计数模式（Up or Down)  
+	 TIM_TimeBaseInit(TIM2, &amp;TIM_TimeBaseStructure);</code></p>
+<p>72MHz/72 = 1MHz 即1us
+1us * 1000 = 1ms 故设置 <code>TIM_TimeBaseStructure.TIM_Period = 1000-1;</code>  </p>
+<p>定时器初始化代码：  <br>
+```	 
+    void TIM2<em>Init(void)
+	{
+	    TIM</em>TimeBaseInitTypeDef  TIM_TimeBaseStructure;  <br>
+	    NVIC<em>InitTypeDef NVIC</em>InitStructure;</p>
+<pre><code>    /* Enable the TIM2 global Interrupt */
+    NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+
+    NVIC_Init(&amp;NVIC_InitStructure);
+
+    /* TIM2 clock enable */
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+
+    /* Time base configuration */
+    TIM_TimeBaseStructure.TIM_Period = 1000-1; //1ms
+    TIM_TimeBaseStructure.TIM_Prescaler = 71;  //72 000 000 /72 = 1 000 000 Hz = 1MHz
+    TIM_TimeBaseStructure.TIM_ClockDivision = 0;
+    TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
+
+    TIM_TimeBaseInit(TIM2, &amp;TIM_TimeBaseStructure);
+
+    /* TIM IT enable */
+    TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE); //Update更新，查询中断标志位是否有中断
+
+    /* TIM2 enable counter */
+    TIM_Cmd(TIM2, ENABLE);    
+
+}
+</code></pre>
+
+<p>```</p>
+<p>其中，<code>NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;</code> 只能设置为0，因为在<code>void NVIC_PriorityGroupConfig(uint32_t NVIC_PriorityGroup) 优先级组配置</code>时，在main函数开头我们将它配置为Group，没有抢占优先级，如果不为0可能有问题<br>
+要编写的中断处理函数，有统一的名字，名字在启动文件中给出TIM2中断处理函数名。<br>
+例程，stm32f10x<em>it.c 资料包TIM这个文件夹下<br>
+<code>/**
+	  * @brief  This function handles TIM2 global interrupt request.
+	  * @param  None
+	  * @retval None
+	  */
+	void TIM2_IRQHandler(void)
+	{
+	  if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET) 判断中断是否到来
+	  {
+	    TIM_ClearITPendingBit(TIM2, TIM_IT_Update);清除中断标志位
+	  }
+	}</code>
+注意：中断处理函数，参数设置，TIM</em>IT_Update: TIM update Interrupt source。  </p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/25/KEY/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dawn_buji">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dawn_buji's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/25/KEY/" itemprop="url">KEY</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
             
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-25T10:48:33+08:00">
+                2020-07-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/BlueBridgeCup/" itemprop="url" rel="index">
+                    <span itemprop="name">BlueBridgeCup</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="独立按键编程"><a href="#独立按键编程" class="headerlink" title="独立按键编程"></a>独立按键编程</h1><h2 id="独立按键电路"><a href="#独立按键电路" class="headerlink" title="独立按键电路"></a>独立按键电路</h2><p><img src="/images/key.png" alt="key">  </p>
+<ul>
+<li>按键未按下，对应IO口读到高电平；按下，读到低电平</li>
+<li>按键存在抖动，按键抖动时间约为2ms</li>
+</ul>
+<h2 id="独立按键相关库函数"><a href="#独立按键相关库函数" class="headerlink" title="独立按键相关库函数"></a>独立按键相关库函数</h2><ul>
+<li>按键初始化函数  </li>
+</ul>
+<hr>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">void Key_Init(void)</span><br><span class="line">&#123;</span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">	</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB, ENABLE);</span><br><span class="line">	</span><br><span class="line">	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;</span><br><span class="line">	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_8;</span><br><span class="line">	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</span><br><span class="line">	GPIO_Init(GPIOA, &amp;GPIO_InitStructure);</span><br><span class="line">	</span><br><span class="line">	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1|GPIO_Pin_2;</span><br><span class="line">	GPIO_Init (GPIOB , &amp;GPIO_InitStructure);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre><hr>
+<ul>
+<li>按键状态读取  </li>
+</ul>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#define KEY1 GPIO_ReadInputDataBit(GPIOA , GPIO_Pin_0)  </span><br><span class="line">#define KEY2 GPIO_ReadInputDataBit(GPIOA , GPIO_Pin_8)  </span><br><span class="line">#define KEY3 GPIO_ReadInputDataBit(GPIOB , GPIO_Pin_1)  </span><br><span class="line">#define KEY4 GPIO_ReadInputDataBit(GPIOB , GPIO_Pin_2)  </span><br><span class="line"></span><br><span class="line">#define key_input KEY1 | (KEY2&lt;&lt;1) | (KEY3&lt;&lt;2) | (KEY4&lt;&lt;3) | 0xf0;</span><br></pre></td></tr></table></figure>
+
+<hr>
+
           
         
       
@@ -373,7 +977,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dawn_buji">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
@@ -411,7 +1015,7 @@
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -466,84 +1070,34 @@
 <ol>
 <li>STK_CTRL(Systick Control and Status register)   </li>
 <li>STK_LOAD(Systick reload value register)  </li>
-<li>STK_VAL(Systick current value register)<br>SysTick_Config(SystemCoreClock/1000);  //系统时钟设置<br>SystemCoreClock：72 000 000 1s振荡次数 72MHz<br>/1000为1ms振荡次数，即将Systick设为了1ms的定时器<br>中断处理文件stm32f10x_it.c中的<br>`<br> void SysTick_Handler(void)<br> {<pre><code>TimingDelay--; //定时器1ms中断一次</code></pre> }<br><code>主函数文件中应用此变量TimingDelay：</code><br> void Delay_Ms(u32 nTime) //ms定时器<br> {<pre><code>TimingDelay = nTime;
-while(TimingDelay != 0);    </code></pre> }<br>`<br>学习要点：</li>
-<li>Systick介绍</li>
-<li>了解SysTick_Config函数</li>
-<li>了解void Delay_Ms(u32 nTime)函数原理  </li>
+<li>STK_VAL(Systick current value register)<br>SysTick_Config(SystemCoreClock/1000);  //系统时钟设置<br>SystemCoreClock：72 000 000 1s振荡次数 72MHz<br>/1000为1ms振荡次数，即将Systick设为了1ms的定时器<br>中断处理文件stm32f10x_it.c中的  </li>
 </ol>
-<h2 id="介绍定时器（普通、通用）"><a href="#介绍定时器（普通、通用）" class="headerlink" title="介绍定时器（普通、通用）"></a>介绍定时器（普通、通用）</h2><p>学习要点：  </p>
-<ol>
-<li>通用定时器</li>
-<li>了解NVIC相关内容<br>资料包中TIM/TimeBase<br>内嵌向量中断控制器：Nested Vectored Interrupt Controller(NVIC)<br>所有ARM3芯片都有的中断向量控制器<br>统一管理中断向量<br>`<br> /**<ul>
-<li>@brief  Configure the nested vectored interrupt controller.</li>
-<li>@param  None</li>
-<li>@retval None</li>
-<li>/<br>void NVIC_Configuration(void)<br>{<br>NVIC_InitTypeDef NVIC_InitStructure;  NVIC初始化结构体<br>/* Enable the TIM2 global Interrupt */<br>NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn; 中断通道<br>NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0; 抢占优先级<br>NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1; 响应优先级<br>NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE; 使能通道中断<br>NVIC_Init(&amp;NVIC_InitStructure);<br>}<br>`<br>抢占优先级：<br>A中断正在运行，B有中断可以抢占（打断）A的中断<br>响应优先级：  </li>
-</ul>
-</li>
-</ol>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">	void SysTick_Handler(void)</span><br><span class="line">	&#123;</span><br><span class="line">		TimingDelay--; //定时器1ms中断一次</span><br><span class="line">	&#125;</span><br><span class="line">```	  </span><br><span class="line">---  </span><br><span class="line">主函数文件中应用此变量TimingDelay：  </span><br><span class="line">---</span><br><span class="line">```		</span><br><span class="line">	void Delay_Ms(u32 nTime) //ms定时器</span><br><span class="line">	&#123;</span><br><span class="line">		TimingDelay = nTime;</span><br><span class="line">		while(TimingDelay != 0);	</span><br><span class="line">	&#125;</span><br><span class="line">```	 </span><br><span class="line">---  </span><br><span class="line">学习要点：</span><br><span class="line">1. Systick介绍</span><br><span class="line">2. 了解SysTick_Config函数</span><br><span class="line">3. 了解void Delay_Ms(u32 nTime)函数原理  </span><br><span class="line"></span><br><span class="line">## 介绍定时器（普通、通用）  </span><br><span class="line">学习要点：  </span><br><span class="line">1. 通用定时器</span><br><span class="line">2. 了解NVIC相关内容  </span><br><span class="line">资料包中TIM/TimeBase  </span><br><span class="line">内嵌向量中断控制器：Nested Vectored Interrupt Controller(NVIC)  </span><br><span class="line">所有ARM3芯片都有的中断向量控制器  </span><br><span class="line">统一管理中断向量    </span><br><span class="line">---  </span><br><span class="line">```	</span><br><span class="line">	/**</span><br><span class="line">	  * @brief  Configure the nested vectored interrupt controller.</span><br><span class="line">	  * @param  None</span><br><span class="line">	  * @retval None</span><br><span class="line">	  */</span><br><span class="line">	void NVIC_Configuration(void)</span><br><span class="line">	&#123;</span><br><span class="line">	  NVIC_InitTypeDef NVIC_InitStructure;  NVIC初始化结构体</span><br><span class="line">	  /* Enable the TIM2 global Interrupt */</span><br><span class="line">	  NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn; 中断通道</span><br><span class="line">	  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0; 抢占优先级</span><br><span class="line">	  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1; 响应优先级</span><br><span class="line">	  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE; 使能通道中断</span><br><span class="line">	  NVIC_Init(&amp;NVIC_InitStructure);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>抢占优先级：<br>A中断正在运行，B有中断可以抢占（打断）A的中断<br>响应优先级：  </p>
 <ul>
-<li><p>中断同时来，就执行优先级高的  </p>
-</li>
-<li><p>如果B已经中断了，则A就不会抢占它<br>数字越小 ，优先级就越高<br>library添加相关的文件<br>Library/Driver/src<br>在misc.c文件中（misc混杂的）<br>`<br>  /**</p>
-<pre><code>* @brief  Configures the priority grouping: pre-emption priority and subpriority.
-* @param  NVIC_PriorityGroup: specifies the priority grouping bits length. 
-*   This parameter can be one of the following values:
-*     @arg NVIC_PriorityGroup_0: 0 bits for pre-emption priority
-*                                4 bits for subpriority
-*     @arg NVIC_PriorityGroup_1: 1 bits for pre-emption priority
-*                                3 bits for subpriority
-*     @arg NVIC_PriorityGroup_2: 2 bits for pre-emption priority
-*                                2 bits for subpriority
-*     @arg NVIC_PriorityGroup_3: 3 bits for pre-emption priority
-*                                1 bits for subpriority
-*     @arg NVIC_PriorityGroup_4: 4 bits for pre-emption priority
-*                                0 bits for subpriority
-* @retval None
-*/</code></pre><p>  void NVIC_PriorityGroupConfig(uint32_t NVIC_PriorityGroup) 优先级组配置<br>  {</p>
-<pre><code>/* Check the parameters */
-assert_param(IS_NVIC_PRIORITY_GROUP(NVIC_PriorityGroup));
-
-/* Set the PRIGROUP[10:8] bits according to NVIC_PriorityGroup value */
-SCB-&gt;AIRCR = AIRCR_VECTKEY_MASK | NVIC_PriorityGroup;</code></pre><p>  }<br>`<br>Group0: 0 bits 抢占优先级  4 bits 响应优先级 16个 0-15 高-低<br>Group1: 1 bits 抢占优先级（2个）可配置为0/1 配置为0的可抢占配置为1的中断 3 bits 响应优先级 </p>
-</li>
+<li>中断同时来，就执行优先级高的  </li>
+<li>如果B已经中断了，则A就不会抢占它<br>数字越小 ，优先级就越高<br>library添加相关的文件<br>Library/Driver/src<br>在misc.c文件中（misc混杂的）</li>
 </ul>
-<p>定时器配置：<br><code>TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;  
-     /* Time base configuration */   
-     TIM_TimeBaseStructure.TIM_Period = 1000-1; 计数周期  
-     TIM_TimeBaseStructure.TIM_Prescaler = 72-1; 预分频值 =71 72MHz预分成1M  
-     TIM_TimeBaseStructure.TIM_ClockDivision = 0;时钟分频  
-     TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;计数模式（Up or Down)  
-     TIM_TimeBaseInit(TIM2, &amp;TIM_TimeBaseStructure);</code></p>
-<p>72MHz/72 = 1MHz 即1us<br>1us * 1000 = 1ms 故设置 <code>TIM_TimeBaseStructure.TIM_Period = 1000-1;</code>  </p>
-<p>定时器初始化代码：<br>    void TIM2_Init(void)<br>    {<br>        TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;<br>        NVIC_InitTypeDef NVIC_InitStructure;</p>
-<pre><code>    /* Enable the TIM2 global Interrupt */
-    NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;
-    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
-    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
-    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">	/**</span><br><span class="line">	  * @brief  Configures the priority grouping: pre-emption priority and subpriority.</span><br><span class="line">	  * @param  NVIC_PriorityGroup: specifies the priority grouping bits length. </span><br><span class="line">	  *   This parameter can be one of the following values:</span><br><span class="line">	  *     @arg NVIC_PriorityGroup_0: 0 bits for pre-emption priority</span><br><span class="line">	  *                                4 bits for subpriority</span><br><span class="line">	  *     @arg NVIC_PriorityGroup_1: 1 bits for pre-emption priority</span><br><span class="line">	  *                                3 bits for subpriority</span><br><span class="line">	  *     @arg NVIC_PriorityGroup_2: 2 bits for pre-emption priority</span><br><span class="line">	  *                                2 bits for subpriority</span><br><span class="line">	  *     @arg NVIC_PriorityGroup_3: 3 bits for pre-emption priority</span><br><span class="line">	  *                                1 bits for subpriority</span><br><span class="line">	  *     @arg NVIC_PriorityGroup_4: 4 bits for pre-emption priority</span><br><span class="line">	  *                                0 bits for subpriority</span><br><span class="line">	  * @retval None</span><br><span class="line">	  */</span><br><span class="line">	void NVIC_PriorityGroupConfig(uint32_t NVIC_PriorityGroup) 优先级组配置</span><br><span class="line">	&#123;</span><br><span class="line">	  /* Check the parameters */</span><br><span class="line">	  assert_param(IS_NVIC_PRIORITY_GROUP(NVIC_PriorityGroup));</span><br><span class="line">	  </span><br><span class="line">	  /* Set the PRIGROUP[10:8] bits according to NVIC_PriorityGroup value */</span><br><span class="line">	  SCB-&gt;AIRCR = AIRCR_VECTKEY_MASK | NVIC_PriorityGroup;</span><br><span class="line">	&#125;  </span><br><span class="line">```	</span><br><span class="line">---  </span><br><span class="line">	     </span><br><span class="line">Group0: 0 bits 抢占优先级  4 bits 响应优先级 16个 0-15 高-低  </span><br><span class="line">Group1: 1 bits 抢占优先级（2个）可配置为0/1 配置为0的可抢占配置为1的中断 3 bits 响应优先级 </span><br><span class="line"> </span><br><span class="line">定时器配置： </span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 
-    NVIC_Init(&amp;NVIC_InitStructure);
+<pre><code>TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;  
+ /* Time base configuration */   
+ TIM_TimeBaseStructure.TIM_Period = 1000-1; 计数周期  
+ TIM_TimeBaseStructure.TIM_Prescaler = 72-1; 预分频值 =71 72MHz预分成1M  
+ TIM_TimeBaseStructure.TIM_ClockDivision = 0;时钟分频  
+ TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;计数模式（Up or Down)  
+ TIM_TimeBaseInit(TIM2, &amp;TIM_TimeBaseStructure);  </code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">--- </span><br><span class="line"></span><br><span class="line">72MHz/72 = 1MHz 即1us</span><br><span class="line">1us * 1000 = 1ms 故设置 `TIM_TimeBaseStructure.TIM_Period = 1000-1;`  </span><br><span class="line"></span><br><span class="line">定时器初始化代码：   </span><br><span class="line">---  </span><br><span class="line">```	 </span><br><span class="line">    void TIM2_Init(void)</span><br><span class="line">	&#123;</span><br><span class="line">	    TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;    </span><br><span class="line">	    NVIC_InitTypeDef NVIC_InitStructure;</span><br><span class="line">	</span><br><span class="line">	    /* Enable the TIM2 global Interrupt */</span><br><span class="line">	    NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;</span><br><span class="line">	    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;</span><br><span class="line">	    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;</span><br><span class="line">	    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;</span><br><span class="line">	    </span><br><span class="line">	    NVIC_Init(&amp;NVIC_InitStructure);</span><br><span class="line">	    </span><br><span class="line">	    /* TIM2 clock enable */</span><br><span class="line">	    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);</span><br><span class="line">	    </span><br><span class="line">	    /* Time base configuration */</span><br><span class="line">	    TIM_TimeBaseStructure.TIM_Period = 1000-1; //1ms</span><br><span class="line">	    TIM_TimeBaseStructure.TIM_Prescaler = 71;  //72 000 000 /72 = 1 000 000 Hz = 1MHz</span><br><span class="line">	    TIM_TimeBaseStructure.TIM_ClockDivision = 0;</span><br><span class="line">	    TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;</span><br><span class="line">	</span><br><span class="line">	    TIM_TimeBaseInit(TIM2, &amp;TIM_TimeBaseStructure);</span><br><span class="line">	</span><br><span class="line">	    /* TIM IT enable */</span><br><span class="line">	    TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE); //Update更新，查询中断标志位是否有中断</span><br><span class="line">	</span><br><span class="line">	    /* TIM2 enable counter */</span><br><span class="line">	    TIM_Cmd(TIM2, ENABLE);    </span><br><span class="line">	</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 
-    /* TIM2 clock enable */
-    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+<hr>
+<p>其中，<code>NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;</code> 只能设置为0，因为在<code>void NVIC_PriorityGroupConfig(uint32_t NVIC_PriorityGroup) 优先级组配置</code>时，在main函数开头我们将它配置为Group，没有抢占优先级，如果不为0可能有问题<br>要编写的中断处理函数，有统一的名字，名字在启动文件中给出TIM2中断处理函数名。  </p>
+<h2 id="例程，stm32f10x-it-c-资料包TIM这个文件夹下"><a href="#例程，stm32f10x-it-c-资料包TIM这个文件夹下" class="headerlink" title="例程，stm32f10x_it.c 资料包TIM这个文件夹下  "></a>例程，stm32f10x_it.c 资料包TIM这个文件夹下  </h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">   /**</span><br><span class="line">  * @brief  This function handles TIM2 global interrupt request.</span><br><span class="line">  * @param  None</span><br><span class="line">  * @retval None</span><br><span class="line">  */</span><br><span class="line">void TIM2_IRQHandler(void)</span><br><span class="line">&#123;</span><br><span class="line">  if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET) 判断中断是否到来</span><br><span class="line">  &#123;</span><br><span class="line">    TIM_ClearITPendingBit(TIM2, TIM_IT_Update);清除中断标志位</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    /* Time base configuration */
-    TIM_TimeBaseStructure.TIM_Period = 1000-1; //1ms
-    TIM_TimeBaseStructure.TIM_Prescaler = 71;  //72 000 000 /72 = 1 000 000 Hz = 1MHz
-    TIM_TimeBaseStructure.TIM_ClockDivision = 0;
-    TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
-
-    TIM_TimeBaseInit(TIM2, &amp;TIM_TimeBaseStructure);
-
-    /* TIM IT enable */
-    TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE); //Update更新，查询中断标志位是否有中断
-
-    /* TIM2 enable counter */
-    TIM_Cmd(TIM2, ENABLE);    
-
-}</code></pre><p>其中，<code>NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;</code> 只能设置为0，因为在<code>void NVIC_PriorityGroupConfig(uint32_t NVIC_PriorityGroup) 优先级组配置</code>时，在main函数开头我们将它配置为Group，没有抢占优先级，如果不为0可能有问题<br>要编写的中断处理函数，有统一的名字，名字在启动文件中给出TIM2中断处理函数名。<br>例程，stm32f10x_it.c 资料包TIM这个文件夹下<br>    /**<br>      * @brief  This function handles TIM2 global interrupt request.<br>      * @param  None<br>      * @retval None<br>      */<br>    void TIM2_IRQHandler(void)<br>    {<br>      if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET) 判断中断是否到来<br>      {<br>        TIM_ClearITPendingBit(TIM2, TIM_IT_Update);清除中断标志位<br>      }<br>    }<br>注意：中断处理函数，参数设置，TIM_IT_Update: TIM update Interrupt source。  </p>
+<hr>
+<p>注意：中断处理函数，参数设置，TIM_IT_Update: TIM update Interrupt source。  </p>
 
           
         
@@ -596,7 +1150,7 @@ SCB-&gt;AIRCR = AIRCR_VECTKEY_MASK | NVIC_PriorityGroup;</code></pre><p>  }<br>`
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dawn_buji">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
@@ -634,7 +1188,7 @@ SCB-&gt;AIRCR = AIRCR_VECTKEY_MASK | NVIC_PriorityGroup;</code></pre><p>  }<br>`
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -744,7 +1298,7 @@ SCB-&gt;AIRCR = AIRCR_VECTKEY_MASK | NVIC_PriorityGroup;</code></pre><p>  }<br>`
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dawn_buji">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
@@ -782,7 +1336,7 @@ SCB-&gt;AIRCR = AIRCR_VECTKEY_MASK | NVIC_PriorityGroup;</code></pre><p>  }<br>`
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -935,7 +1489,7 @@ SCB-&gt;AIRCR = AIRCR_VECTKEY_MASK | NVIC_PriorityGroup;</code></pre><p>  }<br>`
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dawn_buji">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
@@ -973,7 +1527,7 @@ SCB-&gt;AIRCR = AIRCR_VECTKEY_MASK | NVIC_PriorityGroup;</code></pre><p>  }<br>`
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -1024,7 +1578,7 @@ SCB-&gt;AIRCR = AIRCR_VECTKEY_MASK | NVIC_PriorityGroup;</code></pre><p>  }<br>`
       
         
           
-            <script src="/js/crypto-js.js"></script>
+            <script src=/js/crypto-js.js></script>
 <script>
 function doDecrypt (pwd, onError) {
 	console.log('in doDecrypt');
@@ -1051,7 +1605,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">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</div>
+<div id="enc_content" style="display:none">U2FsdGVkX19WYsveyKw0QLOsl+UPyEGMnJwAeYsmozw1qIAPubJKULoiqVaVXmp0QfqSs6AszcCj+WpN2AKzGaH+gBRLpWiPi9y7+2SNgzFs0rNSpQb6/GAd6cMfR9w2ImkOVQnuAS3iW2MdsolproxA6V6KoqOGkQYQLDXEZpy6sFay9I+sGCDYIJdti7NgLVtSE7BVG2rCHT0ZK4XkczFG8uKAA+CN3RWQMWgy9gEpT0SvNx6g+3NpZQjSiteoLXMHYarujZ+TkGn+/vnQypUecpj12yZ8MoLoMEoeZWnS3woTJ6iCWfvQfY/AnN4hC0KRw1MZMacDlbwnhnKtYX66WPf1txwIG/p+gaiipyJVIdYypLHjGhBCsq2Lbrf3UZx6MMkPgy7xANV60635q4rCEIgIFZn3ZodF0BzKeLZGzFKl2G+ktcpP2eT8G+IydV7OY3yz/SYX1djySYYJDlS8aNu9HMZL9C/YtbO9b2X1WjFY4iiNSI044cJla24uE8HlUDteSfzXabsoiuRZz+NXS4F7udwvFOrCYQH0o3RJ2mI/wx8LHkHFTbapAaVUjPdk010qCTxgAUb0pqK5JOlYL7y6eI+g4PnD0njUjgCcS2jHHhOLXbY6LYD7lQyFODxfD9LMKxjIxPWxa6fwPfx2lDIyIHkesWt6bBoQR2PvKpV51mvQ+XABTyvbHzftFkXudhcZteYY59SKdUvnDUcYnRFHzPcnyNCSsKbREf3ZL6kx//ofR/+kv5t2+n4FuxzRFL/dLM/3MenBJOkiK+zqFjXqy7KpRMzpYlJLOD0s49no1Q8pGeGNDrW9YEvlTluVGCAK4iNt8FymrOmLPSN7w9sTYkglWRKQA/soOH5/xrMDq8xIqRNUni9asm1p4sb/gdWz2MBc8YUhhG5PlqPjwt8z9LRtD4BhZk4WUgpGbu07ntD7zih6iDKa3v1gYIzK06AmyaQSBttgoMw44B1C4crXQG+6VKz1s8af11vzsqrrVzgvMiqrZ4Liu0Sy11Wm+TAKSn/e1S1bnSQBnY4DQo7cLzpeRpNzVNbP3vHeHAveBKjuGvVWoG+/oQUFYWyL7BuXypIi+OPt3PCbzLlQVnPc10XxT9LWC+BiMv7rUuWcdoXjOj15w07eSNMspAlECqAyv66snM6x7sm8WyzuTVth2AZ4kLDo65I2mEHoYJvR315/oXCV05PaZ0woPEAhDC2f/+8oCytz5hgBdALw74hjSp6e5c8wjk7c4MPD+Mx6Y0ZySrA0xPYBptvftgE0vCqSZ1Fpv45lEAGqxg1eTPvVZ3BOY+OuM/oLItK6ms/8jsYBUqZQqnz2i96sYKXy5z7aJ6KX8X97JbxTd2BFeLaEux5gMrAyAjjxgzImcLpjvl+2vvMb/h/NpqIj8iicchmdluSWWDK/JT9DiWVTqXnb1oFq3iDN4tFsskDrWdZ+oYxT6st3yMKafJ54hqPDI6zY76m9yZEKSzuPGzeWJzrgtKFpcQxEfD1CDGsk90bGEnQNN7FR8iZev9Me/cg0VMIj1dQ8WFUQWn0Btzas8Vl1bPiF1kESJ5uV9X62nfhRlknQPPtRyHDZGOo/P6JYlvZklY3llu9olH5q+Oyu3oU6xUbMW82N+/e+z4C7SEP8dkBpDHRIVVaDSAC/bOd87j8y6iq0C5moXhVtPZ8N4rA+mKPEACAjSXO9+FECHUL3MVWQwOkjC0N1Jd2D6rf6S74JJHPVByH8Z47101WjrgzWDSJHWwuviEKPoh8CieDkQRxXopxnwdxeXSHVfLEdU7FA31WKQTEfC/s/9RQJILr6PrGkG2X31F6BpbAbE8XYXtr9LyA+pUcSL0s8DtPyA6hazAqBEvruaG/X1qpjaF4eofEnN13oS6lIjL04vvCfa5nrl0Iqyr04Z4HIjdqFRMb21MV9IAq0QhUI3cNons5j5ePNoPuOP2oTaf8iWx+p6Nf/pHgHrWOSXgFrnYO22Gban5yGZ4wbOm0MWvw3+vJUedEzoDETX0qI+liws1JUv1EO793DR+EJZWZxuUu0jk0jgmCYXtvqoDbw0tKc7KwiB5dn7N/pIxP8RbNHRmQRIvpQYc+j1g+MC8bnpc1enwywB29j+9FTQ5UXjUVgUYbAdrRhJG3Al6qNOvE8tMOqnMoK/Zy6WoL1OoQzqi+/MDHwEcSjm6sv8DS+J3hlZNEY5rD7wOdzHAlhNI5v5xs1/pEe2mw8V/94SWMjjPDjsvO/nN7rL59MIUz3dIY+jLQcf8N0yp97YF6rl26OUgZvAOyQ36kGnzCywoQiwK+qd+7hjoBL4+ZNsEFoAObqPkDYNjiKHC4QIfFAWnliizgOsMsIQhBlN4akGDZ4/spbbmlTpHKhwVXDJHJxldrPK0ip6MsAprsUFc/U1+uT/LZ00G6LC/ckprKKwpn+2+1SDolUmYumE2k/SAMblsVwBZHAjK4BpfAK1DgxikRKP80QOuneOAE1+x9PWqZ5ksfOK0VWcD6sgLJ6MfsPrrVIOK9CXgqSNedm6QWlziiRqjPyviksnytR+NL1YU9RJ3vz3HKYFIKEG3eG0BMSfPq+4hCAXcMAuYO9qB8S2ZTMR/jWttLaxFEYnEISZW0/z9MCKTV5gtMOGDfLsMCCwvSVvXh3C85xM272OOLlUsPE95DIBFiHtCanPyRwU5a3UtckCdn/Ex3P+KRf+yXzcpwfoaz4VjV0+gPb+WNttj3+0BmJdLQ8Wfi4r9Ru48kZczIjcAtDn5PPS1cFR60n4YpRdtuHvrVfnJ1YrspsKNqrdUDAKjr4TXR/TLlkUQN2ia7q7u7R1iCPvpFewL3HvwNqYgJDIzdBamWTCioqAZj8ZFOYGF1kUoppHUklaDBr1scShtFvDzyDYGrgWeMqhKzY7L98TBzBoVxBWSwu1LR4RFRRhJBLWNBdY7rIxYcmNgmvviskT0yjbYbAKdFcnA==</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1115,7 +1669,7 @@ doDecrypt(passwd, onError);
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dawn_buji">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
@@ -1153,7 +1707,7 @@ doDecrypt(passwd, onError);
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -1204,7 +1758,7 @@ doDecrypt(passwd, onError);
       
         
           
-            <script src="/js/crypto-js.js"></script>
+            <script src=/js/crypto-js.js></script>
 <script>
 function doDecrypt (pwd, onError) {
 	console.log('in doDecrypt');
@@ -1231,7 +1785,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">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</div>
+<div id="enc_content" style="display:none">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</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1295,7 +1849,7 @@ doDecrypt(passwd, onError);
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dawn_buji">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
@@ -1333,7 +1887,7 @@ doDecrypt(passwd, onError);
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -1384,7 +1938,7 @@ doDecrypt(passwd, onError);
       
         
           
-            <script src="/js/crypto-js.js"></script>
+            <script src=/js/crypto-js.js></script>
 <script>
 function doDecrypt (pwd, onError) {
 	console.log('in doDecrypt');
@@ -1411,7 +1965,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">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</div>
+<div id="enc_content" style="display:none">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</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1475,7 +2029,7 @@ doDecrypt(passwd, onError);
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dawn_buji">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
@@ -1513,7 +2067,7 @@ doDecrypt(passwd, onError);
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -1564,7 +2118,7 @@ doDecrypt(passwd, onError);
       
         
           
-            <script src="/js/crypto-js.js"></script>
+            <script src=/js/crypto-js.js></script>
 <script>
 function doDecrypt (pwd, onError) {
 	console.log('in doDecrypt');
@@ -1591,7 +2145,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX1+mHp4TmRCGM/63E1fJaqHOTqnptT55OqgMumK40rqwl0v7d0dkm4uQxmYiFMSBnoGQCfBcP9hoMk73QPL2sK4s6N2Qy3FGFql2ibWCu9/jdOxd7vMIaTrEhhIfQj79iVsgvYNduZqoH5Ffrm80B7KmyrtLnvv8cnQ/pLv0nQD2YdQVW6Ay4g0RAiLIC0IeZeXpxY8NMGNZbimyBozMfRIdEnQulxNiCtiG4da+fYvjWOvDXW+xSG2EUSiNpw445ZWov9PwlPrXmOT74/PozVFxuauajImkKwWBDIP5Ij+wnfpR2N6IAf+VmfonHthEpaJH3RAEwWgiOVX7fn91JaO6Wbp0+D3OnWZeaKJbYd5AaEt8wOCYpu8RTvfveqF7XhFzFPVytUOHoSDRp9Cqb4mxeAxyfS5LGKL7Bkg6o9ArqUDTSrHY4L9APOwoz9t4LEguPYHLgm4tzDlm4n4cHog2a3pfmDb0n1z/1JkFtGpPhrqeWdjVbl9AE3PeoryXgRgqJMBUqDwvAAP+n6ZEs9V7kCELu0tQlrPPajmWOyF2z4UB1u7NCgm8ZH3tyoeamBDRy4Chy2AdVQO9kLUJ+zwYbeJ3T5+onFXkhx+ksY8RYgNOx7K9DeFBwEdL/+bTv9jy1Nuv2fEPpwLIokpdfCIuG51EAF2k/xqZGREpU9ED4mmswpD2woI2R/E1HABPFS4WZsWlhUXytiwkWdRVV0WgyJzq9VsF/odys1jRd4kIFCcGAT2n2xGHDk1rcELUiz24Hb0MSxh78KWGuc8PulWKpkH4QzV4mGhOSm+1vi30tCZNqaap3LOZUNbHp4tC42ja1+VZj3vBv9Ui6hrHx+8nBALEY9PjZ+MCi5OgNlH/9TV06Iiq5qlnOXp/s8dIVzlRAidlzPAaxDOQIG9f/iBE4rlu7OAFi1AvVHmplcV6C0E++8H6bQMN0C2ddhE6jBHaEj1N+1KH+AvjQapdzm9KalAb0hWP7l3Sh7PQ6QrcNeBu18bMD6BZkrG/wSKE53SXqhQLJxCzcXXY38STWHLuUWMlCu+gWp1wzAN68FhBfacHbJxojVLhYpGGmkAbEC9oArog7PZ7Eh9oMG6x5UcBBwnL5mZ7bgV0blbGWTrocxl7oDmg8jGojANXfGWbODyCqypZdx8+w/AG0LSLQyPY4dowbOu/YsH60gpZT7mB0oDcSBQmR2S64G4QlbRE4DEpCSNa9xsLo/elaIBFfxXZtrR1bItOjKTXWe8GNg0lYE+QqhyvsB3KrllEFWp40fKT0m2PMPiZnV0kNvhKbqxsJUXsr6j5xyLxy+dUr0qbR2bs7EKRFTRldSNvqf6kmxqCDYxhkkioXfxS7yNBVzePzwbdYCOJq4QFQx33GEL1dGb8hVfNkepnLLTiapmFKTGyvd1dFHZBhg==</div>
+<div id="enc_content" style="display:none">U2FsdGVkX1/AEdwfxs6Rt5QRrL66jmDgygpojgVsveJGlfO74oHRzZy4Ct5jYUrefdQXT6wswvFeTuG5ZWQqH1qYKhgdhTGuhC8HBqYMoeiJrChf2lfWbx/6Cs0o/qfvloYsvtQbhh7PTM22veoItFmMmqjCt9PCg7wwdxYz25AaQsKI+6dQS+dOaMGZC592Dqt6aTmMeeu3bXpfzGYSoVyKI4J9730bJUwW6h1V5bQ5ZY1VRGkVj2kkhys8DOtoiVc3Hxm/NbmZJMKjbDALtYhAU5HSEB8FJvspdoMq+JjZFfLavQAA/cdnJOKqK0JortFEryuN/8vUKra053vuQ3rGz1sTP7uKg4H3nGHPW67dDNquCpZmQMjPYuY1P9MQ2uyClI5fMSU4vdT07RzrHnxdB37OIyM9yYpN70KsSiMlVSBn1DLujgaQttIrMZLa6WuLZUa7vmhlUTWA/1ySL4acVPVcJH5Ty7UnwkXXeMpCyYaZA+GX9WHUqo80yNu6heqa2Kd/nkQMYnJaqDI6826KInsDdUDk6R2QpiIKlkDTe1sGlSgQZFkzEXXk/6J+2eX7sAZ6oxHH0f0wQ/HrgIqB5UsgxOr8t5cb2z6z944opYH9tDWEpm4Rlq4/n69gzzsznFqddvZgjAkEQirfJP1m+sSTMd/VQrI+PsETp9HuS1Z0BoyAZgsexAKGBHvVS2kdakRjHlHArx2dqRiEbit7B1uqNJit/UfGxkxiGk3Yqia0NATiZ1MKATHfNK7fHHVRbZCmcJvLO63mbD7e9ZKCNWtyvicnE4krJBnDHqolPi1eWa4ojo/3tUI5i2kR1fCh8tXuu9TZK2o9j0NVu2DRqqx4Fzx5uevKAiPS56LRThu3Pl1A/RW+ZAR9bGag6mWZ6ANtoir0eXyFK1LM1cFNvZKaXPXpKSgnbsgjlvWX0aMMqhNsCtKh4EY5/+mHP+6Ohz9m00kTqQItI7TB5FqOIsM6IETdZMsVr4pA510EsXCxbTjKYgPY8n2OFEzTUrZj3A7wpPXV7U7dK4AVBFmEbQyQA/ddIqUkVaYHHIxzixPmXo3ZAND3Y/+MEg/uDo6Gi+k13kFlDnA6h8ViNqh0oRLn0UaCE1bJ7qzX8X4PAeAADpb70OLFjoOhb21r3vDvt3uW88TRjcCeTyhIOG/02w6F9qE0DBDksPo9TDtRJjxcdv+14QCdjs6zPPXo2XBcirZvXvGF3DOVylQ2GKOMvZSiRjGEi5ozAPhDADP2KNAfDY6gywUq3OWnGk4irBaO5eawX0IJAuRnxDFffFWRfclMd9uLvlsz9soj9L9GYpakDkfls1/y66C+Ez9r1r/ZKdyq0clUK13alUKLzPS5bwiLHugGR/73xEa6xsD6AuqtxJmZpL5WWMxOrjoQHz6rRULc//4h8FG1uciysA==</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1655,7 +2209,7 @@ doDecrypt(passwd, onError);
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dawn_buji">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
@@ -1693,7 +2247,7 @@ doDecrypt(passwd, onError);
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -1828,194 +2382,6 @@ doDecrypt(passwd, onError);
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/14/TF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dawn_buji">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dawn_buji's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/14/TF/" itemprop="url">TF&URDF</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-14T16:15:38+08:00">
-                2019-08-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ros机器人操作系统/" itemprop="url" rel="index">
-                    <span itemprop="name">ros机器人操作系统</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="TF-TransForm"><a href="#TF-TransForm" class="headerlink" title="TF(TransForm)"></a>TF(TransForm)</h1><ul>
-<li>坐标系变换</li>
-<li>坐标变换（位置+姿态）</li>
-<li>坐标系数据维护的工具</li>
-</ul>
-<h2 id="tf"><a href="#tf" class="headerlink" title="tf"></a>tf</h2><ul>
-<li>坐标变换的标准、话题、工具、接口<br>例如：标准定义这个坐标转换的数据格式、数据结构（通常是树状结构-tf tree）<br>tf话题（topic）：其中的msg就是保存了tf tree这种数据结构，维护了整个机器人甚至整个地图的坐标转换关系<br>接口：就是roscpp、rospy关于tf的API</li>
-<li>机器人部件：link，每一个link上面都对应一个frame（坐标系）</li>
-<li>如何维护各个坐标系之间的关系<br>TF树<br><img src="/images/tf-tree.jpg" alt="tf-tree"></li>
-<li>frame与frame之间联通<br>frame与frame之间联通必须要有一个node，像联通关系一样来发布消息，维护frame之间的联通关系，发布坐标变换的消息<br>这个node就是图中的Broadcaster，是一个publisher</li>
-</ul>
-<hr>
-<p>那么这个node的数据格式是什么呢？</p>
-<h3 id="TransformStamped-msg"><a href="#TransformStamped-msg" class="headerlink" title="TransformStamped.msg"></a>TransformStamped.msg</h3><ul>
-<li>两个frame之间的数据格式<br>具体格式如下</li>
-</ul>
-<h3 id="tf-tfMessage-msg与tf2-msgs-TFMessage-msg"><a href="#tf-tfMessage-msg与tf2-msgs-TFMessage-msg" class="headerlink" title="tf/tfMessage.msg与tf2_msgs/TFMessage.msg"></a>tf/tfMessage.msg与tf2_msgs/TFMessage.msg</h3><ul>
-<li>第一代的tf设计的比较复杂，为了简化类型并且支持一些其他扩展库的类型，因此开发了tf2</li>
-<li>通过<code>rostopic info /tf</code>查看一下tf属性，知道topic里面是第几代msg</li>
-<li>描述tf tree的关系</li>
-<li>这个tf tree的数据结构、数据原理<br><img src="tftreemsg.jpg" alt="tftreemsg"></li>
-</ul>
-<p><img src="/images/transformstamped.jpg" alt="transformstamped"></p>
-<h2 id="tf-in-c"><a href="#tf-in-c" class="headerlink" title="tf in c++"></a>tf in c++</h2><p><img src="/images/tfc++.jpg" alt="tfc++"><br>数据转换<br><img src="/images/c++transform.jpg" alt="c++transform">//无图片<br>tf::TransformBroadcaster类<br><img src="/images/TransformBroadcaster.jpg" alt="TransformBroadcaster"><br>tf::TransformListener类<br><img src="/images/TransformListener.jpg" alt="TransformListener"><br>其中第三个参数使用的时间戳ros::Time(0)是获取最新的消息，<br>ros::Time::now()是接收不到消息的，因为发送消息到接收消息要一段时间</p>
-<h2 id="tf-in-python"><a href="#tf-in-python" class="headerlink" title="tf in python"></a>tf in python</h2><ul>
-<li>TF相关数据类型<br><img src="/images/tfpy.jpg" alt="tfpy"></li>
-<li>tf.transformations<br>提供了一个基本的数学运算函数<br><img src="/images/ts.transformations.jpg" alt="ts.transformations"><br>rospy里面有一个tf库，在用之前需要import这个库</li>
-<li>tf.TransformListener类<br><img src="/images/tf.TransformListener1.jpg" alt="tf.TransformListener1"><br><img src="/images/tf.TransformListener2.jpg" alt="tf.TransformListener2"></li>
-<li>tf.TransformBroadcaster类<br><img src="/images/tf.TransformBroadcaster.jpg" alt="tf.TransformBroadcaster"></li>
-<li>tf常用命令</li>
-</ul>
-<ol>
-<li>根据当前的tf树创建一个pdf图<br><code>$ rosrun tf view_frames</code> #订阅/tf这个msg，5s的时间然后生成tf树的PDF图</li>
-<li>查看当前的tf树<br><code>$ rosrun rqt_tf_tree rqt_tf_tree</code>#动态的查看</li>
-<li>查看两个frame之间的变换关系<br><code>$ rosrun tf tf_echo [reference_frame][target_frame]</code></li>
-</ol>
-<h1 id="URDF"><a href="#URDF" class="headerlink" title="URDF"></a>URDF</h1><ul>
-<li>Unified Robot Description Format统一机器人描述格式</li>
-<li>这个文件制定了一个规范，用来描述这个机器人是这样的一个结构</li>
-<li>tf、可视化、仿真的功能都需要urdf的参与 </li>
-<li>ros里面有个package为urdf本质是一个解析器，用来解析urdf格式的文件</li>
-<li>urdf格式中定义了两个部分</li>
-</ul>
-<ol>
-<li>link 就是指部件、零件，每一个link都有三个轴，分别代表x,y,z</li>
-<li>joint 就是连接两个link之间的关节，表示两个link之间的连接关系，和tf是对应的<br><img src="/images/link_joint.jpg" alt="link_joint"></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2055,7 +2421,9 @@ doDecrypt(passwd, onError);
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="dawn_buji">
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="dawn_buji" />
             
               <p class="site-author-name" itemprop="name">dawn_buji</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -2068,7 +2436,7 @@ doDecrypt(passwd, onError);
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
