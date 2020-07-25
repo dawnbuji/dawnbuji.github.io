@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="独立按键编程独立按键电路    按键未按下，对应IO口读到高电平；按下，读到低电平 按键存在抖动，按键抖动时间约为2ms  独立按键相关库函数 按键初始化函数     1234567891011121314void Key_Init(void)&amp;#123;	GPIO_InitTypeDef GPIO_InitStructure;		RCC_APB2PeriphClockCmd(RCC_APB2Pe">
+<meta name="description" content="独立按键编程独立按键电路    按键未按下，对应IO口读到高电平；按下，读到低电平 按键存在抖动，按键抖动时间约为2ms  独立按键相关库函数 按键初始化函数     void Key_Init(void) {     GPIO_InitTypeDef GPIO_InitStructure;      RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_">
 <meta name="keywords" content="学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="KEY">
 <meta property="og:url" content="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/25/KEY/index.html">
 <meta property="og:site_name" content="dawn_buji&#39;s Blog">
-<meta property="og:description" content="独立按键编程独立按键电路    按键未按下，对应IO口读到高电平；按下，读到低电平 按键存在抖动，按键抖动时间约为2ms  独立按键相关库函数 按键初始化函数     1234567891011121314void Key_Init(void)&amp;#123;	GPIO_InitTypeDef GPIO_InitStructure;		RCC_APB2PeriphClockCmd(RCC_APB2Pe">
+<meta property="og:description" content="独立按键编程独立按键电路    按键未按下，对应IO口读到高电平；按下，读到低电平 按键存在抖动，按键抖动时间约为2ms  独立按键相关库函数 按键初始化函数     void Key_Init(void) {     GPIO_InitTypeDef GPIO_InitStructure;      RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://github.com/images/key.png">
-<meta property="og:updated_time" content="2020-07-25T08:19:04.452Z">
+<meta property="og:updated_time" content="2020-07-25T08:32:57.027Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="KEY">
-<meta name="twitter:description" content="独立按键编程独立按键电路    按键未按下，对应IO口读到高电平；按下，读到低电平 按键存在抖动，按键抖动时间约为2ms  独立按键相关库函数 按键初始化函数     1234567891011121314void Key_Init(void)&amp;#123;	GPIO_InitTypeDef GPIO_InitStructure;		RCC_APB2PeriphClockCmd(RCC_APB2Pe">
+<meta name="twitter:description" content="独立按键编程独立按键电路    按键未按下，对应IO口读到高电平；按下，读到低电平 按键存在抖动，按键抖动时间约为2ms  独立按键相关库函数 按键初始化函数     void Key_Init(void) {     GPIO_InitTypeDef GPIO_InitStructure;      RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_">
 <meta name="twitter:image" content="https://github.com/images/key.png">
 
 
@@ -354,7 +354,20 @@
 <li>按键初始化函数  </li>
 </ul>
 <hr>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">void Key_Init(void)</span><br><span class="line">&#123;</span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">	</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB, ENABLE);</span><br><span class="line">	</span><br><span class="line">	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;</span><br><span class="line">	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_8;</span><br><span class="line">	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</span><br><span class="line">	GPIO_Init(GPIOA, &amp;GPIO_InitStructure);</span><br><span class="line">	</span><br><span class="line">	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1|GPIO_Pin_2;</span><br><span class="line">	GPIO_Init (GPIOB , &amp;GPIO_InitStructure);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre><hr>
+<pre><code>void Key_Init(void)
+{
+    GPIO_InitTypeDef GPIO_InitStructure;
+
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB, ENABLE);
+
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_8;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(GPIOA, &amp;GPIO_InitStructure);
+
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1|GPIO_Pin_2;
+    GPIO_Init (GPIOB , &amp;GPIO_InitStructure);
+}</code></pre><hr>
 <ul>
 <li>按键状态读取  </li>
 </ul>
