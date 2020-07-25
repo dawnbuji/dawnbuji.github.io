@@ -250,6 +250,231 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/08/线性规划/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dawn_buji">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dawn_buji's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/08/线性规划/" itemprop="url">线性规划</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-08T09:12:19+08:00">
+                2019-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学建模/" itemprop="url" rel="index">
+                    <span itemprop="name">数学建模</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="线性规划问题"><a href="#线性规划问题" class="headerlink" title="线性规划问题"></a>线性规划问题</h1><hr>
+<h2 id="线性规划的实例与定义"><a href="#线性规划的实例与定义" class="headerlink" title="线性规划的实例与定义"></a>线性规划的实例与定义</h2><ul>
+<li>例1.1 某机床厂生产甲、乙两种机床，每台销售后的利润分别为4000元与3000元。生产甲机床需用A、B机器加工，加工时间分别为每台2h和1h；生产乙机床需用A、B、C三种机器加工，加工时间为每台各1h。若每天可用于加工的机器实数分别为A机器10h、B机器8h和C机器7h，问该厂应生产甲、乙机床各几台，才能使总利润最大？<br>上述问题的数学模型：设该厂生产x_1台甲机床和x_2乙机床时总利润z最大，则x_1,x_2应满足<center>max z = 4x_1 + 3x_2(1.1)
+<center>s.t. 2x_1 + x_2 <= 10 <center> x_1+x_2 <= 8 <center> x_1,x_2 >= 0
+
+</=></=></center></center></li>
+</ul>
+<p>式中：变量 x_1, x_2为决策变量</p>
+<p>式（1.1）称为问题的目标函数，式（1.2）中的几个不等式是问题的约束条件，记为s.t.（即subject to）。由于上面的目标函数及约束条件均为线性函数，故称为线性规划问题。</p>
+<p>总之，线性规划问题是在一组线性约束条件的限制下，求一线性目标函数最大或最小的问题。</p>
+<p>在解决实际问题时，把问题归结成一个线性规划数学模型是很重要的一步，往往也是很困难的一步，模型建立得是否得当，直接影响到求解。而选择适当的决策变量，是建立有效模型的关键之一。</p>
+<hr>
+<h2 id="线性规划的MATLAB标准形式与软件求解"><a href="#线性规划的MATLAB标准形式与软件求解" class="headerlink" title="线性规划的MATLAB标准形式与软件求解"></a>线性规划的MATLAB标准形式与软件求解</h2><ul>
+<li>MATLAB中规定线性规划的标准形式，目标函数是求最小值，约束条件的不等号是小于等于号</li>
+<li>MATLAB中求解线性规划的命令为</li>
+</ul>
+<pre><code>[x,fval] = linprog(f,A,b)
+[x,fval] = linprog(f,A,b,Aeq,beq)
+[x,fval] = linprog(f,A,b,Aeq,beq,lb,ub)
+</code></pre><hr>
+<h2 id="投资的收益和风险"><a href="#投资的收益和风险" class="headerlink" title="投资的收益和风险"></a>投资的收益和风险</h2><table>
+<thead>
+<tr>
+<th>si</th>
+<th>ri/%(平均收益率)</th>
+<th>qi/%(风险损失率)</th>
+<th>pi/%</th>
+<th>ui/元</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>s0</td>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>s1</td>
+<td>28</td>
+<td>2.5</td>
+<td>1</td>
+<td>103</td>
+</tr>
+<tr>
+<td>s2</td>
+<td>21</td>
+<td>1.5</td>
+<td>2</td>
+<td>198</td>
+</tr>
+<tr>
+<td>s3</td>
+<td>23</td>
+<td>5.5</td>
+<td>4.5</td>
+<td>52</td>
+</tr>
+<tr>
+<td>s4</td>
+<td>25</td>
+<td>2.6</td>
+<td>6.5</td>
+<td>40</td>
+</tr>
+</tbody></table>
+<h3 id="模型一-固定风险水平，优化收益"><a href="#模型一-固定风险水平，优化收益" class="headerlink" title="模型一 固定风险水平，优化收益"></a>模型一 固定风险水平，优化收益</h3><p>MATLAB程序如下</p>
+<pre><code>&gt;&gt;  a = 0;
+hold on
+while a &lt; 0.05
+c = [-0.05,-0.27,-0.19,-0.185,-0.185];
+A = [zeros(4,1),diag([0.025,0.015,0.055,0.026])]%diag对角矩阵
+b = a * ones(4,1);
+Aeq = [1,1.01,1.02,1.045,1.065];
+beq = 1;
+lb = zeros(5,1);
+[x,Q] = linprog(c,A,b,Aeq,beq,lb);
+Q = -Q;
+plot(a,Q,&apos;*k&apos;);
+a = a +0.001;
+end
+</code></pre><p>下面是MATLAB效果图<br><img src="/images/MATLAB%E6%BC%94%E7%A4%BA%E5%9B%BE1.png" alt="MATLAB效果图">  </p>
+<p><a href="https://www.baidu.com" target="_blank" rel="noopener">百度</a></p>
+<hr>
+<h3 id="模型二-固定盈利水平，极小化风险"><a href="#模型二-固定盈利水平，极小化风险" class="headerlink" title="模型二 固定盈利水平，极小化风险"></a>模型二 固定盈利水平，极小化风险</h3><h3 id="模型三-对风险、收益分别赋予权重"><a href="#模型三-对风险、收益分别赋予权重" class="headerlink" title="模型三 对风险、收益分别赋予权重"></a>模型三 对风险、收益分别赋予权重</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/01/hexo-github/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -370,7 +595,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX188YVb1yHKiF+s/9bxUoHr/5S5icGA/rnzFt64pmxbqJL79XOh6YfXRZndkqyzExLILZ3MfxKwf7Sp4okwqrciPJZCKGmXV0YRTTTFXi20hxgPYsIdBpdiOBoLlf/OgEkgLEvRzues9rrjSOJmLMzAWYFL5Ms9oVr0wyiHIwRDXFEJ3C3HVARjs+zaJt/ltCROJa4lunB4WhgPUzr5ebl2FrPdJ3vrEQQYl6gMnEmX6UmzafkmUEhE+Kkuvzpv3iEQgOZ/c8fDPhYqHiv6Qu+EqFrN8j4D39yvpIGDhvnHkUyvwUalk0G/XPABN4NLU7GDbWcsz6O2pkW3gyyG7ZLdQSmZFmCZsE7hQ5NXgnTCvON52MXQxFha+pDXaO6AD4mb8rCiWehzcyJrIR7sabrsH2x4RzR04XniRhuqw+wVY6QCd/6WMGHVkpjuyep0BdHkNhUk+UifjrwxUlKyLcrGnHmOhtzsZTV6MPB2saEJetJUXtHCHr+o/iFc8g9q+ym/Ms2DhQrf8Sld8DfMI2RxqHDi7kSnPc2nDkY6ybMzvcoEh/g6NgwXOnBzgQbD7ZNrxxWplkBLaLKaocAsFF/LiqsO+KdzXUwoevI9nAUUTfW/2X1zTcnyg14/lTWgZr6K4ACO1y+8GpY0YFBIpk+ENYeYP1EAbrxvl2tzlR9Uv9WwFUZbdO5Rp/v/lJQMw0wLwaM/AfNWAup5nGtrQLVZt7XNWhk3om+5TFwsJI5RZKGoYN3LLMEQj9ZQ76Z21LBIx9WtZGSJnRMjkzcXGlKzjrckwxhnqh5vvtP0tLhXUwDEp9YVNNVELrZelB0S1+NoUEtRJ8pZ+bSWRhWcU8TS1xpyv4gAS/EORpn5ZNR2rls9lQBKiv98LKlG+7Tj8nYARjrkRPcjaE+20MNRx74UFadD9et93Fezo8MX4E2cNNWcMmeU/p/I3fD2HefMBVqsXvbC5+Sk5xJ6t5Asak7eQqQTWTQeaINZHFxqtyAgrhL1NyfSzZBIAb/qN0E8NgaICbHU/zzi1J+rlnJerLaKV0spwKtSt2NKc0v08z1pUv2Mb2mfVC6wmpSZj8gBTpJ0rmRz02nUHAopB+hj4ojUi9hh9lA4qMox1nZKBSmKhmAWwXf9Xtp8AqMjuv4Km/qLRG9Pj3BrK8sBlGvRtdviI+rrNjyftJfGOtg7rLsXZPEVL5jcoUK6sT+rSzh9Z+tfMdjdBVF0erwFJ7gNf2SWhTb4UfkFgu+N8VVgjrO4axxhb/Wl7EFR+OWG9ezNJ/xEIhVsegArcKye7yDX6UfgbJiAzhu7M2Kcx96RRG233X4ER6ypftpCx+9BNaAJsE/p8uGF37fGNhh+qLFpdGr6hJuhgb8NfbH4Rh3bbR+2+f57ZvLCpyzGUsBWdJnyiNji4Qx/0GsqRiVVslbzheQnxsFtzLRqt3940SsFtBRmprRXfmHQjJYno+kvwPKer1RnJNsuMk1jxGo3Aylu+vFv1u6kg1xs+h9MI+bO/WgiZ/oL9PukQdPZ53CCmJfsmhXM53HDh1HBHlACsFxWofjuZtPR7x6WsQco0n/ddUcSoHZz3yICHnt8lnwSLknOBdoh0w/6TsnCP4Lhj6auBO75/a/qffkxtZ2QnocD9C07ndz0hgSzivBFT5gFPTH4qZMoFr2KEr/v/btlYyq0DUku7rtGFJ2CwuabmFXKejRIuzDLqg3A9uE5Rin7zN7m/ysvdaWnBsbtGFZW3p/v4VDleIKuEBrTyS1IpQp8oq3L/8RmrCQsWXH+zqxWsDu5yv/IV8KYj5baMugQ3EMCxKp5D9jBAbQyGxaF2XYPuVkPj4IWnzBX6B4q8</div>
+<div id="enc_content" style="display:none">U2FsdGVkX19uVDqGcLrzGXvBgN2RlFxUm1VE0ZJqPjxjrpTTuMQN2hQ5NDc5IfQkQOgFgFuBxOJQN3ISA9S/MUWSN9eP2avMKVvyzbDpmneD2N7zhmVutKTAAtQgU+FBFRezBE0q37P8ndvcvgvR3E4K1/7y+aOwt/JlYyDdjJYZH3R2XTz5dclMK/8oWlFrjWHUe6n+rj5u6x41YbklhrWIkK6MDsu+DUGgka9I5PKd5lRq2bVeaaLJhFbHiyE+Igpw+cK7hvwmOkpU5bQnKMYeLUu8Oewt11y53aYEbsgKXPiSOgKmeHcKQxhuOTuX3QY0bhfmbKnoVMLKIqMokWzZbqs43X/HjgYryA6AmQ8vGZVrnhYuU6hCcT2S3MEesvQapzPGkDwQRt0nWZHlfeukjtlC+7E8SpLKlhV0QnpEjtVPYmtf5vmQBVIfYhgNBgh9M1Hb0nq0H6P+yrwqK9UfC1g1q1Q+L8OhUj/i6ij6IW2w7W2+3tFjNcQVf83VFjhqI4D/meWfQas3vWGGenLe4/cBo1k1Zf6JMibaIF3uqCmrBIslGWujF6N5MUfXkknmC191ON006c8VBlQjQXYInGr88oPYgTqbJJr/lzgzPY2UDOKokmBZKHirz1GY5jGjoAZI4Kh6M/hP1nrtDZc+rLU5bUSiCaxGIoJaOcAlLFCetWZDbAjK6/m4rGxlXJvt73ZBHa4vhzG6Vl2GSvfDOXNk02/tol7vCQhViOaTWbx9zH7D59uzYubnCOcu5meLorXyeM1svwmL6J4UF8534M/emcpCiF/b6nYL2fi5hyddD7WBpoB2RQBKsVhahkzfX73iipU7gD5o7DFN04/RdhJAyGQ5X3Z/NCvGrRTFdfkTPyR/1iTsNL7fVxgfhQwq6oaD47ThsXjloiP1YP2oI4jPxOWA3ZZzoBsxdjofPBc+dZCJv1h2hKwZrfqCyhh+fvft4+W9/GI/h/HJccv9YGT+C5CO3gBxLDltV9ypIHI2k9WKSuNtw3mqks4CyjU+ZrT3tQWTviM5PjBW1y9V6w/Nj3B/vWsRjn/z0jTZufFDDkdyX7Ruhmmkti137JKcOmlYR2o0FhMzZ0PyQagvVyQwBXxK5cLux0C8rfmD/StJn+PSgDaUAhUsiQYP5brveTrJpDtzGArauh9SWxLx8e7EaM7FWa0LUNqc6yI8PBrPcfXFwevzpGGvol8prb4D3HsV0uk20mvoFyyy6ikA1RUu/hwhX9/7B21u+grv3FyCwNbRFP0Yk6jdu78bpApsXHaduyvbpqjZPoVcWqekGGB6jNNyGhXS9eAZECoRJY4BN+fWPH6WWawuGnS0eAdID0rCFO/1fqas/e1WObbuZi8uliqp4jDg05RMVbxUrAHXFSf6LawA8dLIoYBd9d5VBWyfSY5g0nkw5bdn9AwdzbXS0ZTXDQ5nK4lUG/hDjU5cvINBkpFMU/RyJT8BtLGklUcEfcLWrgs3nl2yIyVbwbi0I16A/AWL0zJG7QrQcHu91A6hzPP5luV2yFEeyaFO3FTRu7aANAqSes6vXmnsvPwrpFHwz4KRBpaU7hhdxPs160z/SwPhi9mP7qT+2scoFnfC3i1HPBJS0OqQ9Jlnpzxs5+zNj3PwzssPeUdAvZEa2u9DC0g8/u0S+i/NcBhIG2O8dmPX3zV13XrKFP2V7ZtWxi1EgpbCKWZVmgtcwb2lZxn+w9FxyJOUbKdOUqaO4DN4k0ugsvTrrO/bmxNlDfMLGkwys/3aOVVUSalwUvt2QtbNXIENe547JvcKHOQGgk2iN/iPL9U6+pWYBoFsNhRCG4/TvLwJsDTdK6dJKehrYzHFqU0nN6Ku5k/W</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -550,7 +775,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">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</div>
+<div id="enc_content" style="display:none">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</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -827,7 +1052,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX1+iVXwrTTU+uoggAHwzdArYC8NV88aBS2+JFuttBwMMat8lCsoHsjGm2U93IOutKJs/tC7WBhRr+m291JWeAQZNRw/0yO0FJdxXB31N4x551reyro0SHRdj1O3fipmX7tlYPiZOGkhMlwQrIgqlDHHT1fMg9OlorsmDSUh1UakeTBSY+uV5ID4u7T5l40z/T2p0wcymUPExPGu+3S0E62tpiF/2rVelp41dtM4tkajtPU4iqcPAVo0ZhASdvfLThve9vx68foLcvXSfKt18v4tdTMRKbXsR4ppx3GURE3QAuZp0KYueCKRk3qiJy0B6Qv43FxOvEPLfz4LxHaF+nxvr5wXC+pTagmz9KCvm8WFdQRgyss7z3agPNBVrzZ/Va4nFVM3Y4WDF1HX/QiVMY2Q5631IyA7qJXPrY5EaBrmyV3rx+j90PZpRRSvl8JXwo2jnLT3pjb4bXB8/ZG66z6d0GBFe8PTav7KXSdskJUtu9F86JFgdpL4RJal1oQ1VZBckRTvWkVM5gAAbG+K+qLz6fknwBPMrBpFtpUKhFjjGa5cxzPT0UatwjLzHJREtZBvMLRTZ75fUmwmh5ibTo325rjsR7LzN2pCiVbJDk3zOOShyAc1tWPPjfXzUT7EgwTcz9u+kyjE8k0RUaJ+8rQt3Kz//NXQYHgkVFlpDR5LO8hCVPNYDV23uT0Z4tTeh8T/Ekan0U8g2BquBVZ0NqRV1RXX3F3FgDJIRK7UofZ4zXfzAfKPFMroAq0Sk5iGfilNOAzj8rJNhIlPgpKiXZNFOXkTKGkCMB8stKC26kLjR4NuxsKIx3fLpH9lGSO9GJL3VQ82ySzhjMIL5p3Ng4RNwptncfxCpYevdLVzAabtrqRHdN9NL7tXCuahVp6XldYbjP5Hm/6/anUDZvK1cO4k2bkBOn7iO3wJTvtNC7On1zBbdV1gn5OWFmGEKJ/TvlT+ZfTjpYjJA7yep9QtCnACnVCZY77Mqt0jyn+quxWxcY0+lgdKm/4RJgkaScFvAHmbIildhPP/i+7+q1zVKqmxK1ClA/sRNZIOyXfXMvQFQ4r1etd96T9iXJukhl8+gG6bD2Q/hazu3hBWhwUh1HXjEmZRP74YUhsvhI1RmdvMZFibq3OoA+FKV23mIf4KX01b8Jviiha5i06eMnUpkhz6G/+Ag1KsIpd4hwNAcQxI4bYPROaDNYlmJvg8jql7so1wttfYrQCsCF6YDhBzAPhvyhis7Trd6h5UrTYuBrZTIulWc7z6x1nyVztzaON/gEHXm9ffovwBssLn0bdayY9QYylFnXg9EMusXAO6EuqfIH4ONOzIFAPAFMyRyCPto7RiZzeeA83nUbiE2fSl0Xi48HFjMsQP3QkFHy2p8HAJgM1cp7gQm/h4jc7ROn3aQN+2n6Ex9+lTYI3xNuGEq10e9zwx5SyQinfAKyg8NEvTnHw6DjxCVzO4zz5s8PI65l6ATx2YlbEeBncIRjZtK0HVyMuZ6GmLvh3RDv5xeyEAta2QKdDSfnAhETWQ9sEt6fHbXK65CkhPs03Mvm0IWh6xgnaii3fkdz5kXjiRmilMGcG1PtUFalgWZPePdic6iEiJJWH4vo9Yhbyg0VPggvlF3s+j/2/60YHNQ4c96CVQ8VwQdQvfFM0WyJzeRjCRf16rHq72P9ShUOBsy2XCvLOvkCuKuDGJhAd40AWSa84RPKjal/XHkpfHH3/aMzQGdNbmk624zmFr4IQ6E5g3zcI3vvecbWuoLrZPRcAU9/Riysy2VtKU3Hrpkc+j76ftPNJg2DK8ZHK3jb0OFjMB630CcJX+85rvrjX6fAeYCC/yM7YcnapU9MNgM0G5wI9Vp3mPAV3y3dB+CZuHGr5sxLbKiEdN9azkUng3MF9DWJohKS/RmZV9fMiWaq+s+JBKz8Y1AkpCTB0gAEFV86SNcykmqcFiAzeMlWbcdiEpyWcn6r3eSU51tkkeNqUIDxqzNyzqBkzsJW0VBc+JYgiVucIzNrSyQqCJ14tK/X1u5fKAw5KhT6aA1foNtr95bW9cQzkXfyHhAf8fL0LXP/sT+6jo6DeLrozubXUAy6JEQCmBmcBLkwP0tNvbDbeapmvD3+lAl/91tUtniNkoovDrzduoij62C0J0ecHK/CxqsueLmzksGISVlk4Vao1x+8etpzBATF//JXKHEjXe1frRFIv9KB2PlBpK3EgXvuWZa3SLdyhKjWnBbZRYVeCamYDuyymUVePBRxdcuKlqDrulIAnRKw1dLRLys5yqoqogACRyMuRpIRwcgXfQU/qpx/qd1kQjg4X4IasvnmtMzIUg04b5GssBC4NQTZe0CvlZPSdDwgCzgFXgFlxAxXQ/D51pCBjByQi3JvJsofyr+s2VDTYv/q21xt6XqKDSxhS5mteq7e7q316Lb0iUAuJfHUABPgTAVF6Jo5O07T9toE3UotAJYp9RBE/Z+4HWlIhhFPacun29zsSKeOEOSl0YTOirkDQWIU52g2uRCQU0H4JCFfvLhZNS5adtIAFWnVPCm3QI2DRG/NzEJNDmdsR21tu4u3LnXd9rzSnOJHp2UHo4vgwjP38IgpAJBRbVC4tGyaOmJgMbjrTfOW71RpIoWaB2Cec2xKruGKP9u4JnRu+OZDgLBRGbUgOzoly99BRLMd73R0MaCJOWUfZYL/yL6LLfL8bqnYboL//LIVi3YDdk7NAAOEFfNMvyl5VB8mL/tiqEpGJ+5T2QAMPdAzh2NqT9vIq/4qz3/4epIrlZIRU/n/5eufxUttY6RXKokgoLSZTF42vpV5mjv3ZMtxRkRV5CJAGkU7MC/Enfr23yOtzeQthWU6zA1SVfA/zfuWt29JmG5GMwuR0C+XatY68jYiAGXDL70R5MNktHsOxbLJdLGIK3Iwz10cO3gY9f4euqKQvqlJolhRA3rTVIBZJ+H7Srzdo7UglWymb/yphT8T0xA+jgbQU4btMHQBQqrc/rJ9dab2YfNGwk1ZM4kCVhqmNpEV/UzU7xtaD3vR6OUio4wHYG9y4MlGEt7Txdt6lN5wunUKwmp7VEnWAwIoRvCMjtFRn9MnCQ6O9hg7B8aJ/dBZtJguXCKYiX7jnZp9WPJuy8zAC3dxDk2gcw/G3pvWfSyrU2ofcAtX6thZuEOaITeWrHifvblWFUFdjxhAShfp+tE7v37HQB5K0EC8b1/PEwToegVznQ03SZ4qA==</div>
+<div id="enc_content" style="display:none">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</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -926,7 +1151,7 @@ doDecrypt(passwd, onError);
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

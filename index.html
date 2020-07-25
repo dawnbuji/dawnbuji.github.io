@@ -250,6 +250,125 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/25/KEY/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dawn_buji">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dawn_buji's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/25/KEY/" itemprop="url">KEY</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-25T10:48:33+08:00">
+                2020-07-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2020/07/24/Systick-timer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -345,55 +464,86 @@
           
             <h1 id="Systick和定时器的使用"><a href="#Systick和定时器的使用" class="headerlink" title="Systick和定时器的使用"></a>Systick和定时器的使用</h1><h2 id="Systick介绍"><a href="#Systick介绍" class="headerlink" title="Systick介绍"></a>Systick介绍</h2><p>Systick timer 24位向下计数的系统定时器<br>主要寄存器：  </p>
 <ol>
-<li><p>STK_CTRL(Systick Control and Status register)   </p>
-</li>
-<li><p>STK_LOAD(Systick reload value register)  </p>
-</li>
-<li><p>STK_VAL(Systick current value register)<br>SysTick_Config(SystemCoreClock/1000);  //系统时钟设置<br>SystemCoreClock：72 000 000 1s振荡次数 72MHz<br>/1000为1ms振荡次数，即将Systick设为了1ms的定时器<br>中断处理文件stm32f10x_it.c中的  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">	void SysTick_Handler(void)</span><br><span class="line">	&#123;</span><br><span class="line">		TimingDelay--; //定时器1ms中断一次</span><br><span class="line">	&#125;</span><br><span class="line">```		  </span><br><span class="line">主函数文件中应用此变量TimingDelay：  </span><br><span class="line">```		</span><br><span class="line">	void Delay_Ms(u32 nTime) //ms定时器</span><br><span class="line">	&#123;</span><br><span class="line">		TimingDelay = nTime;</span><br><span class="line">		while(TimingDelay != 0);	</span><br><span class="line">	&#125;</span><br><span class="line">``` 		 </span><br><span class="line">学习要点：</span><br><span class="line">1. Systick介绍</span><br><span class="line">2. 了解SysTick_Config函数</span><br><span class="line">3. 了解void Delay_Ms(u32 nTime)函数原理  </span><br><span class="line"></span><br><span class="line">## 介绍定时器（普通、通用）  </span><br><span class="line">学习要点：  </span><br><span class="line">1. 通用定时器</span><br><span class="line">2. 了解NVIC相关内容  </span><br><span class="line">资料包中TIM/TimeBase  </span><br><span class="line">内嵌向量中断控制器：Nested Vectored Interrupt Controller(NVIC)  </span><br><span class="line">所有ARM3芯片都有的中断向量控制器  </span><br><span class="line">统一管理中断向量    </span><br><span class="line">```		</span><br><span class="line">	/**</span><br><span class="line">	  * @brief  Configure the nested vectored interrupt controller.</span><br><span class="line">	  * @param  None</span><br><span class="line">	  * @retval None</span><br><span class="line">	  */</span><br><span class="line">	void NVIC_Configuration(void)</span><br><span class="line">	&#123;</span><br><span class="line">	  NVIC_InitTypeDef NVIC_InitStructure;  NVIC初始化结构体</span><br><span class="line">	  /* Enable the TIM2 global Interrupt */</span><br><span class="line">	  NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn; 中断通道</span><br><span class="line">	  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0; 抢占优先级</span><br><span class="line">	  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1; 响应优先级</span><br><span class="line">	  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE; 使能通道中断</span><br><span class="line">	  NVIC_Init(&amp;NVIC_InitStructure);</span><br><span class="line">	&#125;  </span><br><span class="line">```		</span><br><span class="line">抢占优先级：  </span><br><span class="line">A中断正在运行，B有中断可以抢占（打断）A的中断  </span><br><span class="line">响应优先级：  </span><br><span class="line">- 中断同时来，就执行优先级高的  </span><br><span class="line">- 如果B已经中断了，则A就不会抢占它  </span><br><span class="line">数字越小 ，优先级就越高  </span><br><span class="line">library添加相关的文件  </span><br><span class="line">Library/Driver/src  </span><br><span class="line">在misc.c文件中（misc混杂的）  </span><br><span class="line">	```	</span><br><span class="line">		/**</span><br><span class="line">		  * @brief  Configures the priority grouping: pre-emption priority and subpriority.</span><br><span class="line">		  * @param  NVIC_PriorityGroup: specifies the priority grouping bits length. </span><br><span class="line">		  *   This parameter can be one of the following values:</span><br><span class="line">		  *     @arg NVIC_PriorityGroup_0: 0 bits for pre-emption priority</span><br><span class="line">		  *                                4 bits for subpriority</span><br><span class="line">		  *     @arg NVIC_PriorityGroup_1: 1 bits for pre-emption priority</span><br><span class="line">		  *                                3 bits for subpriority</span><br><span class="line">		  *     @arg NVIC_PriorityGroup_2: 2 bits for pre-emption priority</span><br><span class="line">		  *                                2 bits for subpriority</span><br><span class="line">		  *     @arg NVIC_PriorityGroup_3: 3 bits for pre-emption priority</span><br><span class="line">		  *                                1 bits for subpriority</span><br><span class="line">		  *     @arg NVIC_PriorityGroup_4: 4 bits for pre-emption priority</span><br><span class="line">		  *                                0 bits for subpriority</span><br><span class="line">		  * @retval None</span><br><span class="line">		  */</span><br><span class="line">		void NVIC_PriorityGroupConfig(uint32_t NVIC_PriorityGroup) 优先级组配置</span><br><span class="line">		&#123;</span><br><span class="line">		  /* Check the parameters */</span><br><span class="line">		  assert_param(IS_NVIC_PRIORITY_GROUP(NVIC_PriorityGroup));</span><br><span class="line">		  </span><br><span class="line">		  /* Set the PRIGROUP[10:8] bits according to NVIC_PriorityGroup value */</span><br><span class="line">		  SCB-&gt;AIRCR = AIRCR_VECTKEY_MASK | NVIC_PriorityGroup;</span><br><span class="line">		&#125;  </span><br><span class="line">	``` 		     </span><br><span class="line">Group0: 0 bits 抢占优先级  4 bits 响应优先级 16个 0-15 高-低  </span><br><span class="line">Group1: 1 bits 抢占优先级（2个）可配置为0/1 配置为0的可抢占配置为1的中断 3 bits 响应优先级 </span><br><span class="line"> </span><br><span class="line">定时器配置：</span><br></pre></td></tr></table></figure>
-
-<p> TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;<br>  /* Time base configuration */<br>  TIM_TimeBaseStructure.TIM_Period = 1000-1; 计数周期<br>  TIM_TimeBaseStructure.TIM_Prescaler = 72-1; 预分频值 =71 72MHz预分成1M<br>  TIM_TimeBaseStructure.TIM_ClockDivision = 0;时钟分频<br>  TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;计数模式（Up or Down)<br>  TIM_TimeBaseInit(TIM2, &amp;TIM_TimeBaseStructure);  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">72MHz/72 = 1MHz 即1us</span><br><span class="line">1us * 1000 = 1ms 故设置 `TIM_TimeBaseStructure.TIM_Period = 1000-1;`  </span><br><span class="line"></span><br><span class="line">定时器初始化代码：</span><br></pre></td></tr></table></figure>
-
-<p> void TIM2_Init(void)<br> {</p>
-<pre><code>TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;    
-NVIC_InitTypeDef NVIC_InitStructure;
-
-/* Enable the TIM2 global Interrupt */
-NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;
-NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
-NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
-NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-
-NVIC_Init(&amp;NVIC_InitStructure);
-
-/* TIM2 clock enable */
-RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
-
-/* Time base configuration */
-TIM_TimeBaseStructure.TIM_Period = 1000-1; //1ms
-TIM_TimeBaseStructure.TIM_Prescaler = 71;  //72 000 000 /72 = 1 000 000 Hz = 1MHz
-TIM_TimeBaseStructure.TIM_ClockDivision = 0;
-TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
-
-TIM_TimeBaseInit(TIM2, &amp;TIM_TimeBaseStructure);
-
-/* TIM IT enable */
-TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE); //Update更新，查询中断标志位是否有中断
-
-/* TIM2 enable counter */
-TIM_Cmd(TIM2, ENABLE);    </code></pre><p> }</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">其中，`NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;` 只能设置为0，因为在`void NVIC_PriorityGroupConfig(uint32_t NVIC_PriorityGroup) 优先级组配置`时，在main函数开头我们将它配置为Group，没有抢占优先级，如果不为0可能有问题  </span><br><span class="line">要编写的中断处理函数，有统一的名字，名字在启动文件中给出TIM2中断处理函数名。  </span><br><span class="line">例程，stm32f10x_it.c 资料包TIM这个文件夹下</span><br></pre></td></tr></table></figure>
-
-<p> /**</p>
-<ul>
-<li>@brief  This function handles TIM2 global interrupt request.</li>
+<li>STK_CTRL(Systick Control and Status register)   </li>
+<li>STK_LOAD(Systick reload value register)  </li>
+<li>STK_VAL(Systick current value register)<br>SysTick_Config(SystemCoreClock/1000);  //系统时钟设置<br>SystemCoreClock：72 000 000 1s振荡次数 72MHz<br>/1000为1ms振荡次数，即将Systick设为了1ms的定时器<br>中断处理文件stm32f10x_it.c中的<br>`<br> void SysTick_Handler(void)<br> {<pre><code>TimingDelay--; //定时器1ms中断一次</code></pre> }<br><code>主函数文件中应用此变量TimingDelay：</code><br> void Delay_Ms(u32 nTime) //ms定时器<br> {<pre><code>TimingDelay = nTime;
+while(TimingDelay != 0);    </code></pre> }<br>`<br>学习要点：</li>
+<li>Systick介绍</li>
+<li>了解SysTick_Config函数</li>
+<li>了解void Delay_Ms(u32 nTime)函数原理  </li>
+</ol>
+<h2 id="介绍定时器（普通、通用）"><a href="#介绍定时器（普通、通用）" class="headerlink" title="介绍定时器（普通、通用）"></a>介绍定时器（普通、通用）</h2><p>学习要点：  </p>
+<ol>
+<li>通用定时器</li>
+<li>了解NVIC相关内容<br>资料包中TIM/TimeBase<br>内嵌向量中断控制器：Nested Vectored Interrupt Controller(NVIC)<br>所有ARM3芯片都有的中断向量控制器<br>统一管理中断向量<br>`<br> /**<ul>
+<li>@brief  Configure the nested vectored interrupt controller.</li>
 <li>@param  None</li>
 <li>@retval None</li>
-<li>/<br>void TIM2_IRQHandler(void)<br>{<br>if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET) 判断中断是否到来<br>{<br> TIM_ClearITPendingBit(TIM2, TIM_IT_Update);清除中断标志位<br>}<br>}<pre><code>注意：中断处理函数，参数设置，TIM_IT_Update: TIM update Interrupt source。  </code></pre></li>
+<li>/<br>void NVIC_Configuration(void)<br>{<br>NVIC_InitTypeDef NVIC_InitStructure;  NVIC初始化结构体<br>/* Enable the TIM2 global Interrupt */<br>NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn; 中断通道<br>NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0; 抢占优先级<br>NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1; 响应优先级<br>NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE; 使能通道中断<br>NVIC_Init(&amp;NVIC_InitStructure);<br>}<br>`<br>抢占优先级：<br>A中断正在运行，B有中断可以抢占（打断）A的中断<br>响应优先级：  </li>
 </ul>
 </li>
 </ol>
+<ul>
+<li><p>中断同时来，就执行优先级高的  </p>
+</li>
+<li><p>如果B已经中断了，则A就不会抢占它<br>数字越小 ，优先级就越高<br>library添加相关的文件<br>Library/Driver/src<br>在misc.c文件中（misc混杂的）<br>`<br>  /**</p>
+<pre><code>* @brief  Configures the priority grouping: pre-emption priority and subpriority.
+* @param  NVIC_PriorityGroup: specifies the priority grouping bits length. 
+*   This parameter can be one of the following values:
+*     @arg NVIC_PriorityGroup_0: 0 bits for pre-emption priority
+*                                4 bits for subpriority
+*     @arg NVIC_PriorityGroup_1: 1 bits for pre-emption priority
+*                                3 bits for subpriority
+*     @arg NVIC_PriorityGroup_2: 2 bits for pre-emption priority
+*                                2 bits for subpriority
+*     @arg NVIC_PriorityGroup_3: 3 bits for pre-emption priority
+*                                1 bits for subpriority
+*     @arg NVIC_PriorityGroup_4: 4 bits for pre-emption priority
+*                                0 bits for subpriority
+* @retval None
+*/</code></pre><p>  void NVIC_PriorityGroupConfig(uint32_t NVIC_PriorityGroup) 优先级组配置<br>  {</p>
+<pre><code>/* Check the parameters */
+assert_param(IS_NVIC_PRIORITY_GROUP(NVIC_PriorityGroup));
+
+/* Set the PRIGROUP[10:8] bits according to NVIC_PriorityGroup value */
+SCB-&gt;AIRCR = AIRCR_VECTKEY_MASK | NVIC_PriorityGroup;</code></pre><p>  }<br>`<br>Group0: 0 bits 抢占优先级  4 bits 响应优先级 16个 0-15 高-低<br>Group1: 1 bits 抢占优先级（2个）可配置为0/1 配置为0的可抢占配置为1的中断 3 bits 响应优先级 </p>
+</li>
+</ul>
+<p>定时器配置：<br><code>TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;  
+     /* Time base configuration */   
+     TIM_TimeBaseStructure.TIM_Period = 1000-1; 计数周期  
+     TIM_TimeBaseStructure.TIM_Prescaler = 72-1; 预分频值 =71 72MHz预分成1M  
+     TIM_TimeBaseStructure.TIM_ClockDivision = 0;时钟分频  
+     TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;计数模式（Up or Down)  
+     TIM_TimeBaseInit(TIM2, &amp;TIM_TimeBaseStructure);</code></p>
+<p>72MHz/72 = 1MHz 即1us<br>1us * 1000 = 1ms 故设置 <code>TIM_TimeBaseStructure.TIM_Period = 1000-1;</code>  </p>
+<p>定时器初始化代码：<br>    void TIM2_Init(void)<br>    {<br>        TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;<br>        NVIC_InitTypeDef NVIC_InitStructure;</p>
+<pre><code>    /* Enable the TIM2 global Interrupt */
+    NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+
+    NVIC_Init(&amp;NVIC_InitStructure);
+
+    /* TIM2 clock enable */
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+
+    /* Time base configuration */
+    TIM_TimeBaseStructure.TIM_Period = 1000-1; //1ms
+    TIM_TimeBaseStructure.TIM_Prescaler = 71;  //72 000 000 /72 = 1 000 000 Hz = 1MHz
+    TIM_TimeBaseStructure.TIM_ClockDivision = 0;
+    TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
+
+    TIM_TimeBaseInit(TIM2, &amp;TIM_TimeBaseStructure);
+
+    /* TIM IT enable */
+    TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE); //Update更新，查询中断标志位是否有中断
+
+    /* TIM2 enable counter */
+    TIM_Cmd(TIM2, ENABLE);    
+
+}</code></pre><p>其中，<code>NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;</code> 只能设置为0，因为在<code>void NVIC_PriorityGroupConfig(uint32_t NVIC_PriorityGroup) 优先级组配置</code>时，在main函数开头我们将它配置为Group，没有抢占优先级，如果不为0可能有问题<br>要编写的中断处理函数，有统一的名字，名字在启动文件中给出TIM2中断处理函数名。<br>例程，stm32f10x_it.c 资料包TIM这个文件夹下<br>    /**<br>      * @brief  This function handles TIM2 global interrupt request.<br>      * @param  None<br>      * @retval None<br>      */<br>    void TIM2_IRQHandler(void)<br>    {<br>      if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET) 判断中断是否到来<br>      {<br>        TIM_ClearITPendingBit(TIM2, TIM_IT_Update);清除中断标志位<br>      }<br>    }<br>注意：中断处理函数，参数设置，TIM_IT_Update: TIM update Interrupt source。  </p>
 
           
         
@@ -901,7 +1051,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">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</div>
+<div id="enc_content" style="display:none">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</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1081,7 +1231,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">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</div>
+<div id="enc_content" style="display:none">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</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1261,7 +1411,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">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</div>
+<div id="enc_content" style="display:none">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</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1441,7 +1591,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX19PzBdFY0YyMpbO2nnhPmBp4jcokWHH+aZEWuSxNJtFH5uq95uKtbpZntKGQeqlYkg4C63v0suJ7bMmnJ2iMIpiOt/RWImYhBb8vEOZaSjBtbzWe+OIOG+fVsu0gY5qrCP8aObJgCWRA9S2kbt7EeJhQnAcmJ6OHj24mDg8JDBBOZAhz4ziC+m1Wgs5VubUiV+rpFzA+e5uhX8Nk6DSYoIJQ5NM52mdeOqaH8y8TJB9uRytIzcvSwhm84FM/jil3D6wg2XoR80liI0w0iVPChCA16qOAiVRXDXbUI7U2sK3rdtoKS6CuyCSrI55pMTs+Bnk2CIwCFRlzW3/VYVwhx6bp66s3CmoUeglQhmM/Z4ykTL8hL5+166DCdTStOkqNNyrCHmx9kuo1/12nKa5fFxyGoyhYfrAzDCG6Fdv/S1isJbD7lk6eMRmSovnHAWegMqaITjkIXEZ0LffHM8Vx/p5Qid9O6S6D9e8hbsds98Wfz/iDxSl7GEC+yuoRevlGivt7pSWQImKLSCN+QY+QxR//LA7hYUq3ubJr/KRxiiflRCkVPxIh5KRs8IUyw5look4Wn+Aq2NbwxUpIk1bT8a33pmK9Ed7OzgmJthuk7nacFXbYW4TmvzP5vVKhzPUXZlyJnrByYprE+fqDfKl1gC0Pwd7KiPV9iA2BdKfryeP25zTsDZvdocfeotY8Z2P3upy05NxH+Ox27b07jBK9+2zVRU252jt7X13sZNdV0oZjRYBPeTelrEjR00R9eXBArNSaeYAvnzRd+bvOudSFewGyQ88eZ5HduvCrHp1a2N1WadaQu4J062PprZSRHzsd8TMP2iPD+ykDj4dDxv1TLlpWvNDj3JG2ynv1vcI+LPKfA4WcmS3QWU4ueuL+I2u4Oh1cInqgG37nioLxy4zWWWY8cEkBTuNTkv6pRJ6uq4MbvAI0TszHbwxmEV1VZqzlbSqrpEs3z2lfvm95Iw0phnhLxk2Npi6eOZAVhu4gQ8EASPz3I71eMSUnSVr7ZHw70QQS6c+tHQVd7iu+/WuWcZx9rPIg6qMPUifDE+NMwuLpNXNv8HoH4WiPSE6Q7esOwy6dzn3ZRZndZvQaXBXnXXLBalr4tJIrM1WTbcvi3jAd5ulEbAxgdqBZqkkbpTmMJj77dKemSyoX8n6K2ps6e5MF+zPKCHW9BwzdFQmZ/VqXRXT3uTsOXl2qPHmcIgIr9b9tbcIg96bh7ulqUhQXeVNsBbLb5hS/KoS6FuNXURUp+LJ8knCd8hSocTYFc1TYwoV36EYpjeE/ZY26KhwFfzghcS9P/MVNtxghiyBO4xFM6HFOCdO5NMxw61FFjbM5dClwjujoRjuFkX+8B09yiFmOQMq6LaENuj1kepZfjvaExrKUtgUwZ9VDDHHE8X5vbmQmmal3vDp4g==</div>
+<div id="enc_content" style="display:none">U2FsdGVkX1+mHp4TmRCGM/63E1fJaqHOTqnptT55OqgMumK40rqwl0v7d0dkm4uQxmYiFMSBnoGQCfBcP9hoMk73QPL2sK4s6N2Qy3FGFql2ibWCu9/jdOxd7vMIaTrEhhIfQj79iVsgvYNduZqoH5Ffrm80B7KmyrtLnvv8cnQ/pLv0nQD2YdQVW6Ay4g0RAiLIC0IeZeXpxY8NMGNZbimyBozMfRIdEnQulxNiCtiG4da+fYvjWOvDXW+xSG2EUSiNpw445ZWov9PwlPrXmOT74/PozVFxuauajImkKwWBDIP5Ij+wnfpR2N6IAf+VmfonHthEpaJH3RAEwWgiOVX7fn91JaO6Wbp0+D3OnWZeaKJbYd5AaEt8wOCYpu8RTvfveqF7XhFzFPVytUOHoSDRp9Cqb4mxeAxyfS5LGKL7Bkg6o9ArqUDTSrHY4L9APOwoz9t4LEguPYHLgm4tzDlm4n4cHog2a3pfmDb0n1z/1JkFtGpPhrqeWdjVbl9AE3PeoryXgRgqJMBUqDwvAAP+n6ZEs9V7kCELu0tQlrPPajmWOyF2z4UB1u7NCgm8ZH3tyoeamBDRy4Chy2AdVQO9kLUJ+zwYbeJ3T5+onFXkhx+ksY8RYgNOx7K9DeFBwEdL/+bTv9jy1Nuv2fEPpwLIokpdfCIuG51EAF2k/xqZGREpU9ED4mmswpD2woI2R/E1HABPFS4WZsWlhUXytiwkWdRVV0WgyJzq9VsF/odys1jRd4kIFCcGAT2n2xGHDk1rcELUiz24Hb0MSxh78KWGuc8PulWKpkH4QzV4mGhOSm+1vi30tCZNqaap3LOZUNbHp4tC42ja1+VZj3vBv9Ui6hrHx+8nBALEY9PjZ+MCi5OgNlH/9TV06Iiq5qlnOXp/s8dIVzlRAidlzPAaxDOQIG9f/iBE4rlu7OAFi1AvVHmplcV6C0E++8H6bQMN0C2ddhE6jBHaEj1N+1KH+AvjQapdzm9KalAb0hWP7l3Sh7PQ6QrcNeBu18bMD6BZkrG/wSKE53SXqhQLJxCzcXXY38STWHLuUWMlCu+gWp1wzAN68FhBfacHbJxojVLhYpGGmkAbEC9oArog7PZ7Eh9oMG6x5UcBBwnL5mZ7bgV0blbGWTrocxl7oDmg8jGojANXfGWbODyCqypZdx8+w/AG0LSLQyPY4dowbOu/YsH60gpZT7mB0oDcSBQmR2S64G4QlbRE4DEpCSNa9xsLo/elaIBFfxXZtrR1bItOjKTXWe8GNg0lYE+QqhyvsB3KrllEFWp40fKT0m2PMPiZnV0kNvhKbqxsJUXsr6j5xyLxy+dUr0qbR2bs7EKRFTRldSNvqf6kmxqCDYxhkkioXfxS7yNBVzePzwbdYCOJq4QFQx33GEL1dGb8hVfNkepnLLTiapmFKTGyvd1dFHZBhg==</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -1866,154 +2016,6 @@ doDecrypt(passwd, onError);
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/14/roscpp/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dawn_buji">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dawn_buji's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/14/roscpp/" itemprop="url">roscpp</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-14T15:38:43+08:00">
-                2019-08-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ros机器人操作系统/" itemprop="url" rel="index">
-                    <span itemprop="name">ros机器人操作系统</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="roscpp"><a href="#roscpp" class="headerlink" title="roscpp"></a>roscpp</h1><h2 id="service-demo"><a href="#service-demo" class="headerlink" title="service_demo"></a>service_demo</h2><p><img src="/images/service_demo.jpg" alt="service_demo"></p>
-<h3 id="package、srv"><a href="#package、srv" class="headerlink" title="package、srv"></a>package、srv</h3><p><img src="/images/package-srv.jpg" alt="package-srv"></p>
-<h3 id="server-cpp"><a href="#server-cpp" class="headerlink" title="server.cpp"></a>server.cpp</h3><p><img src="/images/server.cpp.jpg" alt="server.cpp"><br><img src="/images/servercpp.jpg" alt="servercpp"></p>
-<h3 id="client-cpp"><a href="#client-cpp" class="headerlink" title="client.cpp"></a>client.cpp</h3><p><img src="/images/client.cpp.jpg" alt="client.cpp"><br>注:<br>clinet.call(srv)即调用这个服务，会返回一个bool型变量，其实就是handle_function()返回的变量<br>CMakaLists.text和package.xml文件不再赘述</p>
-<h2 id="param-demo"><a href="#param-demo" class="headerlink" title="param_demo"></a>param_demo</h2><ul>
-<li>两种API：ros::param和ros::NodeHandle<h3 id="param-demo-cpp"><a href="#param-demo-cpp" class="headerlink" title="param_demo.cpp"></a>param_demo.cpp</h3><img src="/images/param_demo.cpp.jpg" alt="param_demo.cpp"><br>注：<br>get(得到)param1(KEY)的值赋给parameter1这个参数<br>nh.param()中的第三个参数是默认值，当在param3这个键中未找到值，就讲123赋给parameter3<h3 id="param-demo-cpp-launch"><a href="#param-demo-cpp-launch" class="headerlink" title="param_demo_cpp.launch"></a>param_demo_cpp.launch</h3><img src="/images/param_demo_cpp.launch.jpg" alt="param_demo_cpp.launch"></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2066,7 +2068,7 @@ doDecrypt(passwd, onError);
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
