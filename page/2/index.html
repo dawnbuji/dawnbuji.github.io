@@ -250,6 +250,196 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/14/rospy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dawn_buji">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dawn_buji's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/14/rospy/" itemprop="url">rospy</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-14T18:08:36+08:00">
+                2019-08-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ros机器人操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">ros机器人操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="rospy"><a href="#rospy" class="headerlink" title="rospy"></a>rospy</h1><ul>
+<li>Node,Topic,Service,Param,Time</li>
+</ul>
+<h2 id="rospy-Node相关函数"><a href="#rospy-Node相关函数" class="headerlink" title="rospy-Node相关函数"></a>rospy-Node相关函数</h2><ul>
+<li>在python文件中必须得<code>import rospy</code>这个Client-Library</li>
+<li>python是一个解释型语言<br>如图<br><img src="/images/rospy-node.jpg" alt="rospy-node"></li>
+</ul>
+<h2 id="rospy-Topic"><a href="#rospy-Topic" class="headerlink" title="rospy-Topic"></a>rospy-Topic</h2><ul>
+<li>rospy中没有spinOnce()函数</li>
+<li>publisher类中,发布一个消息<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pub = rospy.Publisher(&apos;topic_name&apos;,msg-type,queue_size=None)</span><br><span class="line">pub.publish(msg)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>其中的queue_size是None是就是同步通信，是一个较小的整数时就是异步通信</p>
+<ul>
+<li>subscriber类中，回调函数call_back = fn即一个函数名<br><img src="/images/rospy-topic.jpg" alt="rospy-topic"></li>
+</ul>
+<h2 id="ros-Service"><a href="#ros-Service" class="headerlink" title="ros-Service"></a>ros-Service</h2><ul>
+<li>Service类主要包含Server这一端的API</li>
+<li>Service类主要包含Client这一端的API<br>其中Service类中有一个handler函数<br>形如<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def handler(req)</span><br><span class="line">...</span><br><span class="line">	return resp</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>接收请求进行处理，返回一个回答<br>其中ServiceProxy类形式如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">client = ServiceProxy(name,service_class)  #构造函数</span><br><span class="line">resp = client.call(req) #发起请求，直接调用</span><br><span class="line">resp = client(req) #隐式调用,实际上调用的就是handle</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/ros-Service.jpg" alt="ros-Service"></p>
+<h2 id="rospy-Param"><a href="#rospy-Param" class="headerlink" title="rospy-Param"></a>rospy-Param</h2><p><img src="/images/rospy-Param.jpg" alt="rospy-Param"></p>
+<h2 id="rospy-Time"><a href="#rospy-Time" class="headerlink" title="rospy-Time"></a>rospy-Time</h2><ul>
+<li>Time类 反映一个时刻<br>指一个时刻，构造一个time对象时，就要指定初始的时间 秒和纳秒，，不填这两个参数的话，就以零时刻开始<br>如<br><code>rospy.Time(secs=1,necs=0)</code>#构造函数秒和纳秒<br>Time now() 是一个静态的成员函数<br><code>rospy.Time.now()</code>#可以这样调用</li>
+<li>Duration类 反映一段时间<br><code>rosoy.Duration(1,0)</code> 这个时间有1秒钟，0纳秒<br>Time - Time = Duration<br>T + D = T<br>D + D = D<br>D - D = D<br>T + T没有意义</li>
+</ul>
+<p>函数<br>Time get_rostime() #当前时刻的Time对象<br><code>rospy.sleep(duration)</code> #参数是要挂起的时间<br>Rate类<br>rate = rospy.Rate(frequency) #构造函数，指定它的频率，然后返回一个rate对象<br><img src="/images/rospy-Time.jpg" alt="rospy-Time"></p>
+<h2 id="topic-demo"><a href="#topic-demo" class="headerlink" title="topic_demo"></a>topic_demo</h2><p><img src="/images/topic_demopy.jpg" alt="topic_demopy"></p>
+<p><img src="/images/topic_demo.msg.jpg" alt="topic_demopy.msg"></p>
+<p>注：catkin_make之后，会生成.msg文件，引用的话就用<br>形如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from topic_demo.msg import gps</span><br></pre></td></tr></table></figure>
+
+<h3 id="pylistener-py"><a href="#pylistener-py" class="headerlink" title="pylistener.py"></a>pylistener.py</h3><p><img src="/images/pylistener.py.jpg" alt="pylistener.py"><br>topic是单向的，从一个node发送到另一个node，不需要有返回值的<br>监听和处理消息用的</p>
+<h3 id="pytalker-py"><a href="#pytalker-py" class="headerlink" title="pytalker.py"></a>pytalker.py</h3><p><img src="/images/pytalker.py.jpg" alt="pytalker.py"></p>
+<h3 id="CMakeLists-txt"><a href="#CMakeLists-txt" class="headerlink" title="CMakeLists.txt"></a>CMakeLists.txt</h3><p><img src="/images/CMakeLists.txtpy.jpg" alt="CMakeLists.txtpy"><br>python是不需要CMake来编译的，它是解释性语言，直接就能运行<br>message_generation必须经过cmake编译才能运行</p>
+<h3 id="package-xml"><a href="#package-xml" class="headerlink" title="package.xml"></a>package.xml</h3><p><img src="/images/package.xmlpy" alt="package.xmlpy"></p>
+<h2 id="service-demo"><a href="#service-demo" class="headerlink" title="service_demo"></a>service_demo</h2><p><img src="/images/service_demopy.jpg" alt="service_demopy"></p>
+<p><img src="/images/service_demopy.srv.jpg" alt="service_demopy.srv"><br>注：catkin_make之后会生成.srv文件,引用的话就用<br>形如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from service_damo.srv import *</span><br></pre></td></tr></table></figure>
+
+<p>*号包含Greeing、GreeingResponse、GreetingRequest这三种类型</p>
+<h3 id="server-demo-py"><a href="#server-demo-py" class="headerlink" title="server_demo.py"></a>server_demo.py</h3><p>注：rospy.spin()来触发所有的service中的处理函数和topic中的回调函数<br><img src="/images/server_demo.py.jpg" alt="server_demo.py"></p>
+<h3 id="client-demo-py"><a href="#client-demo-py" class="headerlink" title="client_demo.py"></a>client_demo.py</h3><p><img src="/images/client_demo.py.jpg" alt="client_demo.py"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/14/TF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1844,188 +2034,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/dawnbuji/dawnbuji.github.io/2019/08/12/catkin工作空间探索/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dawn_buji">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dawn_buji's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/12/catkin工作空间探索/" itemprop="url">catkin工作空间探索及Metapackage</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-12T08:37:02+08:00">
-                2019-08-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ros机器人操作系统/" itemprop="url" rel="index">
-                    <span itemprop="name">ros机器人操作系统</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>代码<br><code>rosdep install --from-paths src --ignore-src --rosdistro melodic -y</code><br>作用是添加代码包所需要的依赖，但rosdep怎么知道要添加什么依赖包呢，其实是定义在package下的package.xml文件里面的build_depend和run_depend这两个标签，告诉rosdep编译和运行时一定有这些依赖项，rosdep知道要把这些依赖项装好。</p>
-<p><code>rospack list | grep catkin_ws</code>ros包在catkin_ws的管道列表</p>
-<h1 id="Metapackage"><a href="#Metapackage" class="headerlink" title="Metapackage"></a>Metapackage</h1><ul>
-<li>Linux软件包管理的概念</li>
-<li>虚包，没有什么实质性内容</li>
-<li>依赖很多其他软件包</li>
-<li>如 在<code>sudo apt-get install ros-melodic-desktop-full</code>其实就是安装了一个Metapackage，包含ros的一些组件，ros的编译系统，ros的基本文件系统，一些指令等等。不需要安装这些所有的软件包，只需安装这一个就够了。所以metapackage就是将它依赖的软件包组合起来。stack叫作软件包集，最后废弃了。</li>
-<li>作用：就是安装时更方便，将功能相似的软件包给组织起来</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Metapackage名称</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>navigation</td>
-<td>导航相关的功能包集</td>
-</tr>
-<tr>
-<td>moveit</td>
-<td>运动规划相关的（主要是机械臂）功能包集</td>
-</tr>
-<tr>
-<td>image_pipeline</td>
-<td>图像获取、处理相关的功能包集</td>
-</tr>
-<tr>
-<td>vision_opencv</td>
-<td>ROS与OpenCV交互的功能包集</td>
-</tr>
-<tr>
-<td>turtlebot</td>
-<td>Turtlebot机器人相关的功能包集</td>
-</tr>
-<tr>
-<td>pr2_robot</td>
-<td>pr2机器人驱动功能包集</td>
-</tr>
-</tbody></table>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2078,7 +2086,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

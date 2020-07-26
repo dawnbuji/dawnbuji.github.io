@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="dawn_buji&#39;s Blog">
 <meta property="og:description" content="Systick-timer   /* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */ /* Author: Nicolas Hery - http://nicolashery.com */ /* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */ /* Sourc">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-07-25T08:08:06.003Z">
+<meta property="og:updated_time" content="2020-07-25T08:35:23.112Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dawn_buji&#39;s Blog">
 <meta name="twitter:description" content="Systick-timer   /* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */ /* Author: Nicolas Hery - http://nicolashery.com */ /* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */ /* Sourc">
@@ -625,48 +625,58 @@ tags: 学习</p>
 1. STK<em>CTRL(Systick Control and Status register) <br>
 2. STK</em>LOAD(Systick reload value register)<br>
 3. STK<em>VAL(Systick current value register)<br>
-SysTick<em>Config(SystemCoreClock/1000);  //系统时钟设置<br>
+SysTick</em>Config(SystemCoreClock/1000);  //系统时钟设置<br>
 SystemCoreClock：72 000 000 1s振荡次数 72MHz<br>
-/1000为1ms振荡次数，即将Systick设为了1ms的定时器<br>
-中断处理文件stm32f10x</em>it.c中的<br>
-<code>void SysTick_Handler(void)
-	{
-		TimingDelay--; //定时器1ms中断一次
-	}</code>	<br>
-主函数文件中应用此变量TimingDelay：<br>
-<code>void Delay_Ms(u32 nTime) //ms定时器
-	{
-		TimingDelay = nTime;
-		while(TimingDelay != 0);	
-	}</code>	 
-学习要点：
-1. Systick介绍
-2. 了解SysTick</em>Config函数
-3. 了解void Delay_Ms(u32 nTime)函数原理  </p>
+/1000为1ms振荡次数，即将Systick设为了1ms的定时器  </p>
+<h2>中断处理文件stm32f10x_it.c中的  </h2>
+<pre><code>void SysTick_Handler(void)
+{
+    TimingDelay--; //定时器1ms中断一次
+}
+</code></pre>
+
+<hr>
+<p>主函数文件中应用此变量TimingDelay：  </p>
+<hr>
+<pre><code>void Delay_Ms(u32 nTime) //ms定时器
+{
+    TimingDelay = nTime;
+    while(TimingDelay != 0);    
+}
+</code></pre>
+
+<hr>
+<p>学习要点：
+1. Systick介绍<br>
+2. 了解SysTick<em>Config函数 <br>
+3. 了解void Delay</em>Ms(u32 nTime)函数原理  </p>
 <h2>介绍定时器（普通、通用）</h2>
 <p>学习要点：<br>
 1. 通用定时器
 2. 了解NVIC相关内容<br>
 资料包中TIM/TimeBase<br>
 内嵌向量中断控制器：Nested Vectored Interrupt Controller(NVIC)<br>
-所有ARM3芯片都有的中断向量控制器<br>
-统一管理中断向量  <br>
-<code>/**
-	  * @brief  Configure the nested vectored interrupt controller.
-	  * @param  None
-	  * @retval None
-	  */
-	void NVIC_Configuration(void)
-	{
-	  NVIC_InitTypeDef NVIC_InitStructure;  NVIC初始化结构体
-	  /* Enable the TIM2 global Interrupt */
-	  NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn; 中断通道
-	  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0; 抢占优先级
-	  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1; 响应优先级
-	  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE; 使能通道中断
-	  NVIC_Init(&amp;NVIC_InitStructure);
-	}</code>	
-抢占优先级：<br>
+所有ARM3芯片都有的中断向量控制器  </p>
+<h2>统一管理中断向量    </h2>
+<pre><code>/**
+  * @brief  Configure the nested vectored interrupt controller.
+  * @param  None
+  * @retval None
+  */
+void NVIC_Configuration(void)
+{
+  NVIC_InitTypeDef NVIC_InitStructure;  NVIC初始化结构体
+  /* Enable the TIM2 global Interrupt */
+  NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn; 中断通道
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0; 抢占优先级
+  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1; 响应优先级
+  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE; 使能通道中断
+  NVIC_Init(&amp;NVIC_InitStructure);
+}  
+</code></pre>
+
+<hr>
+<p>抢占优先级：<br>
 A中断正在运行，B有中断可以抢占（打断）A的中断<br>
 响应优先级：<br>
 - 中断同时来，就执行优先级高的<br>
@@ -674,50 +684,58 @@ A中断正在运行，B有中断可以抢占（打断）A的中断<br>
 数字越小 ，优先级就越高<br>
 library添加相关的文件<br>
 Library/Driver/src<br>
-在misc.c文件中（misc混杂的）<br>
-<code>/**
-	  * @brief  Configures the priority grouping: pre-emption priority and subpriority.
-	  * @param  NVIC_PriorityGroup: specifies the priority grouping bits length. 
-	  *   This parameter can be one of the following values:
-	  *     @arg NVIC_PriorityGroup_0: 0 bits for pre-emption priority
-	  *                                4 bits for subpriority
-	  *     @arg NVIC_PriorityGroup_1: 1 bits for pre-emption priority
-	  *                                3 bits for subpriority
-	  *     @arg NVIC_PriorityGroup_2: 2 bits for pre-emption priority
-	  *                                2 bits for subpriority
-	  *     @arg NVIC_PriorityGroup_3: 3 bits for pre-emption priority
-	  *                                1 bits for subpriority
-	  *     @arg NVIC_PriorityGroup_4: 4 bits for pre-emption priority
-	  *                                0 bits for subpriority
-	  * @retval None
-	  */
-	void NVIC_PriorityGroupConfig(uint32_t NVIC_PriorityGroup) 优先级组配置
-	{
-	  /* Check the parameters */
-	  assert_param(IS_NVIC_PRIORITY_GROUP(NVIC_PriorityGroup));
-	  
-	  /* Set the PRIGROUP[10:8] bits according to NVIC_PriorityGroup value */
-	  SCB-&gt;AIRCR = AIRCR_VECTKEY_MASK | NVIC_PriorityGroup;
-	}</code>		   <br>
-Group0: 0 bits 抢占优先级  4 bits 响应优先级 16个 0-15 高-低<br>
+在misc.c文件中（misc混杂的）</p>
+<hr>
+<pre><code>/**
+  * @brief  Configures the priority grouping: pre-emption priority and subpriority.
+  * @param  NVIC_PriorityGroup: specifies the priority grouping bits length. 
+  *   This parameter can be one of the following values:
+  *     @arg NVIC_PriorityGroup_0: 0 bits for pre-emption priority
+  *                                4 bits for subpriority
+  *     @arg NVIC_PriorityGroup_1: 1 bits for pre-emption priority
+  *                                3 bits for subpriority
+  *     @arg NVIC_PriorityGroup_2: 2 bits for pre-emption priority
+  *                                2 bits for subpriority
+  *     @arg NVIC_PriorityGroup_3: 3 bits for pre-emption priority
+  *                                1 bits for subpriority
+  *     @arg NVIC_PriorityGroup_4: 4 bits for pre-emption priority
+  *                                0 bits for subpriority
+  * @retval None
+  */
+void NVIC_PriorityGroupConfig(uint32_t NVIC_PriorityGroup) 优先级组配置
+{
+  /* Check the parameters */
+  assert_param(IS_NVIC_PRIORITY_GROUP(NVIC_PriorityGroup));
+  
+  /* Set the PRIGROUP[10:8] bits according to NVIC_PriorityGroup value */
+  SCB-&gt;AIRCR = AIRCR_VECTKEY_MASK | NVIC_PriorityGroup;
+}  
+</code></pre>
+
+<hr>
+<p>Group0: 0 bits 抢占优先级  4 bits 响应优先级 16个 0-15 高-低<br>
 Group1: 1 bits 抢占优先级（2个）可配置为0/1 配置为0的可抢占配置为1的中断 3 bits 响应优先级 </p>
-<p>定时器配置：<br>
-<code>TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;  
-	 /* Time base configuration */   
-	 TIM_TimeBaseStructure.TIM_Period = 1000-1; 计数周期  
-	 TIM_TimeBaseStructure.TIM_Prescaler = 72-1; 预分频值 =71 72MHz预分成1M  
-	 TIM_TimeBaseStructure.TIM_ClockDivision = 0;时钟分频  
-	 TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;计数模式（Up or Down)  
-	 TIM_TimeBaseInit(TIM2, &amp;TIM_TimeBaseStructure);</code></p>
+<h2>定时器配置： </h2>
+<pre><code>TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;  
+ /* Time base configuration */   
+ TIM_TimeBaseStructure.TIM_Period = 1000-1; 计数周期  
+ TIM_TimeBaseStructure.TIM_Prescaler = 72-1; 预分频值 =71 72MHz预分成1M  
+ TIM_TimeBaseStructure.TIM_ClockDivision = 0;时钟分频  
+ TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;计数模式（Up or Down)  
+ TIM_TimeBaseInit(TIM2, &amp;TIM_TimeBaseStructure);  
+</code></pre>
+
+<hr>
 <p>72MHz/72 = 1MHz 即1us
 1us * 1000 = 1ms 故设置 <code>TIM_TimeBaseStructure.TIM_Period = 1000-1;</code>  </p>
-<p>定时器初始化代码：  <br>
-```	 
-    void TIM2<em>Init(void)
-	{
-	    TIM</em>TimeBaseInitTypeDef  TIM_TimeBaseStructure;  <br>
-	    NVIC<em>InitTypeDef NVIC</em>InitStructure;</p>
-<pre><code>    /* Enable the TIM2 global Interrupt */
+<p>定时器初始化代码：   </p>
+<hr>
+<pre><code>void TIM2_Init(void)
+{
+    TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;    
+    NVIC_InitTypeDef NVIC_InitStructure;
+
+    /* Enable the TIM2 global Interrupt */
     NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;
     NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
     NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
@@ -745,23 +763,26 @@ Group1: 1 bits 抢占优先级（2个）可配置为0/1 配置为0的可抢占�
 }
 </code></pre>
 
-<p>```</p>
+<hr>
 <p>其中，<code>NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;</code> 只能设置为0，因为在<code>void NVIC_PriorityGroupConfig(uint32_t NVIC_PriorityGroup) 优先级组配置</code>时，在main函数开头我们将它配置为Group，没有抢占优先级，如果不为0可能有问题<br>
-要编写的中断处理函数，有统一的名字，名字在启动文件中给出TIM2中断处理函数名。<br>
-例程，stm32f10x<em>it.c 资料包TIM这个文件夹下<br>
-<code>/**
-	  * @brief  This function handles TIM2 global interrupt request.
-	  * @param  None
-	  * @retval None
-	  */
-	void TIM2_IRQHandler(void)
-	{
-	  if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET) 判断中断是否到来
-	  {
-	    TIM_ClearITPendingBit(TIM2, TIM_IT_Update);清除中断标志位
-	  }
-	}</code>
-注意：中断处理函数，参数设置，TIM</em>IT_Update: TIM update Interrupt source。  </p>
+要编写的中断处理函数，有统一的名字，名字在启动文件中给出TIM2中断处理函数名。  </p>
+<h2>例程，stm32f10x_it.c 资料包TIM这个文件夹下  </h2>
+<pre><code>/**
+  * @brief  This function handles TIM2 global interrupt request.
+  * @param  None
+  * @retval None
+  */
+void TIM2_IRQHandler(void)
+{
+  if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET) 判断中断是否到来
+  {
+    TIM_ClearITPendingBit(TIM2, TIM_IT_Update);清除中断标志位
+  }
+}
+</code></pre>
+
+<hr>
+<p>注意：中断处理函数，参数设置，TIM<em>IT</em>Update: TIM update Interrupt source。  </p>
 
 </body>
 </html>
@@ -799,6 +820,10 @@ Group1: 1 bits 抢占优先级（2个）可配置为0/1 配置为0的可抢占�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/25/KEY/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -879,7 +904,7 @@ Group1: 1 bits 抢占优先级（2个）可配置为0/1 配置为0的可抢占�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -934,7 +959,7 @@ Group1: 1 bits 抢占优先级（2个）可配置为0/1 配置为0的可抢占�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">categories: BlueBridgeCup</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number"></span> <span class="nav-text">Systick和定时器的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">Systick介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">介绍定时器（普通、通用）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">categories: BlueBridgeCup</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number"></span> <span class="nav-text">Systick和定时器的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">Systick介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">中断处理文件stm32f10x_it.c中的  </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">介绍定时器（普通、通用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">4.</span> <span class="nav-text">统一管理中断向量    </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">5.</span> <span class="nav-text">定时器配置： </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">6.</span> <span class="nav-text">例程，stm32f10x_it.c 资料包TIM这个文件夹下  </span></a></li></ol></div>
             
 
           </div>
