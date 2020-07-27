@@ -321,348 +321,612 @@
       
         
           
-            <!DOCTYPE html>
+            <!doctype html>
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
-<title>KEY</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<style type="text/css">
-/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
-/* Author: Nicolas Hery - http://nicolashery.com */
-/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
-/* Source: https://github.com/nicolahery/markdownpad-github */
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width initial-scale=1">
+<title>KEY</title><link href="https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext" rel="stylesheet" type="text/css"><style type="text/css">html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
 
-/* RESET
-=============================================================================*/
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
 }
 
-/* BODY
-=============================================================================*/
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+}
 
 body {
-  font-family: Helvetica, arial, freesans, clean, sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
-  color: #333;
-  background-color: #fff;
-  padding: 20px;
-  max-width: 960px;
-  margin: 0 auto;
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
 }
 
-body>*:first-child {
-  margin-top: 0 !important;
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
 }
 
-body>*:last-child {
-  margin-bottom: 0 !important;
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
 }
 
-/* BLOCKS
-=============================================================================*/
-
-p, blockquote, ul, ol, dl, table, pre {
-  margin: 15px 0;
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
 }
 
-/* HEADERS
-=============================================================================*/
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 20px 0 10px;
-  padding: 0;
-  font-weight: bold;
-  -webkit-font-smoothing: antialiased;
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
 }
-
-h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
-  font-size: inherit;
-}
-
-h1 {
-  font-size: 28px;
-  color: #000;
-}
-
-h2 {
-  font-size: 24px;
-  border-bottom: 1px solid #ccc;
-  color: #000;
-}
-
-h3 {
-  font-size: 18px;
-}
-
-h4 {
-  font-size: 16px;
-}
-
-h5 {
-  font-size: 14px;
-}
-
-h6 {
-  color: #777;
-  font-size: 14px;
-}
-
-body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
-  margin-top: 0;
-  padding-top: 0;
-}
-
-a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
-  margin-top: 0;
-  padding-top: 0;
-}
-
-h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
-  margin-top: 10px;
-}
-
-/* LINKS
-=============================================================================*/
 
 a {
-  color: #4183C4;
-  text-decoration: none;
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    padding-bottom: .3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+   padding-bottom: .3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
 }
 
-a:hover {
-  text-decoration: underline;
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
 }
 
-/* LISTS
-=============================================================================*/
-
-ul, ol {
-  padding-left: 30px;
+.CodeMirror-lines {
+    padding-left: 4px;
 }
 
-ul li > :first-child, 
-ol li > :first-child, 
-ul li ul:first-of-type, 
-ol li ol:first-of-type, 
-ul li ol:first-of-type, 
-ol li ul:first-of-type {
-  margin-top: 0px;
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
 }
 
-ul ul, ul ol, ol ol, ol ul {
-  margin-bottom: 0;
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
 }
 
-dl {
-  padding: 0;
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
 }
 
-dl dt {
-  font-size: 14px;
-  font-weight: bold;
-  font-style: italic;
-  padding: 0;
-  margin: 15px 0 5px;
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
 }
 
-dl dt:first-child {
-  padding: 0;
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
 }
 
-dl dt>:first-child {
-  margin-top: 0px;
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
 }
 
-dl dt>:last-child {
-  margin-bottom: 0px;
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
 }
 
-dl dd {
-  margin: 0 0 15px;
-  padding: 0 15px;
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
 }
 
-dl dd>:first-child {
-  margin-top: 0px;
+.md-mathjax-midline {
+    background: #fafafa;
 }
 
-dl dd>:last-child {
-  margin-bottom: 0px;
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
 }
 
-/* CODE
-=============================================================================*/
-
-pre, code, tt {
-  font-size: 12px;
-  font-family: Consolas, "Liberation Mono", Courier, monospace;
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
 }
 
-code, tt {
-  margin: 0 0px;
-  padding: 0px 0px;
-  white-space: nowrap;
-  border: 1px solid #eaeaea;
-  background-color: #f8f8f8;
-  border-radius: 3px;
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
 }
 
-pre>code {
-  margin: 0;
-  padding: 0;
-  white-space: pre;
-  border: none;
-  background: transparent;
+.sidebar-tabs {
+    border-bottom: none;
 }
 
-pre {
-  background-color: #f8f8f8;
-  border: 1px solid #ccc;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px;
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
 }
 
-pre code, pre tt {
-  background-color: transparent;
-  border: none;
-}
-
-kbd {
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
-    background-color: #DDDDDD;
-    background-image: linear-gradient(#F1F1F1, #DDDDDD);
-    background-repeat: repeat-x;
-    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
-    border-image: none;
-    border-radius: 2px 2px 2px 2px;
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
     border-style: solid;
     border-width: 1px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    line-height: 10px;
-    padding: 1px 4px;
 }
 
-/* QUOTES
-=============================================================================*/
-
-blockquote {
-  border-left: 4px solid #DDD;
-  padding: 0 15px;
-  color: #777;
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
 }
 
-blockquote>:first-child {
-  margin-top: 0px;
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
 }
 
-blockquote>:last-child {
-  margin-bottom: 0px;
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
 }
 
-/* HORIZONTAL RULES
-=============================================================================*/
-
-hr {
-  clear: both;
-  margin: 15px 0;
-  height: 0px;
-  overflow: hidden;
-  border: none;
-  background: transparent;
-  border-bottom: 4px solid #ddd;
-  padding: 0;
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
 }
 
-/* TABLES
-=============================================================================*/
-
-table th {
-  font-weight: bold;
+.md-lang {
+    color: #b4654d;
 }
 
-table th, table td {
-  border: 1px solid #ccc;
-  padding: 6px 13px;
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
 }
 
-table tr {
-  border-top: 1px solid #ccc;
-  background-color: #fff;
+#md-notification .btn {
+    border: 0;
 }
 
-table tr:nth-child(2n) {
-  background-color: #f8f8f8;
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
 }
 
-/* IMAGES
-=============================================================================*/
-
-img {
-  max-width: 100%
+.ty-preferences .window-content {
+    background-color: #fafafa;
 }
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+
 </style>
 </head>
-<body>
-<hr>
-<p>title: KEY
-date: 2020-07-25 10:48:33
-tags: 学习</p>
-<h2>categories: BlueBridgeCup</h2>
-<h1>独立按键编程</h1>
-<h2>独立按键电路</h2>
-<p><img src="/images/key.png" alt="key"><br>
-<img src="http://pic34.nipic.com/20131024/12339136_104322093380_2.jpg" alt="kenan">
-- 按键未按下，对应IO口读到高电平；按下，读到低电平
-- 按键存在抖动，按键抖动时间约为2ms</p>
-<h2>独立按键相关库函数</h2>
-<h2>- 按键初始化函数  </h2>
-<pre><code>void Key_Init(void)
-{
-    GPIO_InitTypeDef GPIO_InitStructure;
-
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB, ENABLE);
-
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_8;
-    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-    GPIO_Init(GPIOA, &amp;GPIO_InitStructure);
-
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1|GPIO_Pin_2;
-    GPIO_Init (GPIOB , &amp;GPIO_InitStructure);
-}
-</code></pre>
-
-<hr>
-<ul>
-<li>按键状态读取  </li>
-</ul>
-<hr>
-<p>```
-	#define KEY1 GPIO<em>ReadInputDataBit(GPIOA , GPIO</em>Pin<em>0)<br>
-	#define KEY2 GPIO<em>ReadInputDataBit(GPIOA , GPIO</em>Pin</em>8)<br>
-	#define KEY3 GPIO<em>ReadInputDataBit(GPIOB , GPIO</em>Pin<em>1)<br>
-	#define KEY4 GPIO<em>ReadInputDataBit(GPIOB , GPIO</em>Pin</em>2)  </p>
-<pre><code>#define key_input KEY1 | (KEY2&lt;&lt;1) | (KEY3&lt;&lt;2) | (KEY4&lt;&lt;3) | 0xf0;  
-</code></pre>
-
-<p>```</p>
-<hr>
-
+<body class="typora-export os-windows">
+<div id="write" class><h1><a name="独立按键编程" class="md-header-anchor"></a><span>独立按键编程</span></h1><h2><a name="独立按键电路" class="md-header-anchor"></a><span>独立按键电路</span></h2><p><img src="/images/key.png" referrerpolicy="no-referrer" alt="key"><span>  </span></p><p><img src="/F:/blog_picture/key.png" referrerpolicy="no-referrer" alt="key"></p><ul><li><span>按键未按下，对应IO口读到高电平；按下，读到低电平</span></li><li><span>按键存在抖动，按键抖动时间约为2ms</span></li></ul><h2><a name="独立按键相关库函数" class="md-header-anchor"></a><span>独立按键相关库函数</span></h2><ul><li><span>按键初始化函数  </span></li></ul><hr><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">void Key_Init(void)</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>GPIO_InitTypeDef GPIO_InitStructure;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB, ENABLE);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_8;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>GPIO_Init(GPIOA, &amp;GPIO_InitStructure);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1|GPIO_Pin_2;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>GPIO_Init (GPIOB , &amp;GPIO_InitStructure);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 322px;"></div><div class="CodeMirror-gutters" style="display: none; height: 322px;"></div></div></div></pre><hr><ul><li><span>按键状态读取  </span></li></ul><hr><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>#define KEY1 GPIO_ReadInputDataBit(GPIOA , GPIO_Pin_0) &nbsp;</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>#define KEY2 GPIO_ReadInputDataBit(GPIOA , GPIO_Pin_8) &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>#define KEY3 GPIO_ReadInputDataBit(GPIOB , GPIO_Pin_1) &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>#define KEY4 GPIO_ReadInputDataBit(GPIOB , GPIO_Pin_2) &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>#define key_input KEY1 | (KEY2&lt;&lt;1) | (KEY3&lt;&lt;2) | (KEY4&lt;&lt;3) | 0xf0; &nbsp;</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 138px;"></div><div class="CodeMirror-gutters" style="display: none; height: 138px;"></div></div></div></pre><hr><h2><a name="独立按键编程-n90" class="md-header-anchor"></a><span>独立按键编程</span></h2><ol start><li><span>延时消抖</span></li></ol><hr><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">temp=read_key();</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">if(temp!=0xff)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>Delay();//按键消抖</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>temp=read_key();</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>if(temp!=0xff)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>{</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>….</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 230px;"></div><div class="CodeMirror-gutters" style="display: none; height: 230px;"></div></div></div></pre><hr><p><span>缺点：  </span></p><ul><li><span>占用CPU资源</span></li><li><span>不停触发</span></li><li><span>解决不停触发：加一个松手检测</span><code>while(temp!=0xff)</code><span>  </span></li></ul><ol start="2"><li><span>状态机消抖</span><br><code>#define key_input KEY1 | (KEY2&lt;&lt;1) | (KEY3&lt;&lt;2) | (KEY4&lt;&lt;3) | 0xf0;</code><span>判断这个数就能判断按键状态    </span></li></ol><hr><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>#define key_state_0 0 //判断是否按下</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>#define key_state_1 1 //判断是否为抖动</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>#define key_state_2 2 //判断是否弹起</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>unsigned char Key_Read(void)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>{</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>static char key_state = 0;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>unsigned char key_press, key_return = 0;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>key_press = key_input;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>switch (key_state)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>{</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp;  case key_state_0:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp; &nbsp;  if(key_press!=0xff) key_state = key_state_1;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp;  break;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp;  case key_state_1:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp; &nbsp;  if(key_press!=0xff)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp; &nbsp;  {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  switch (key_press)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  case 0xfe: key_return = 1; break;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  case 0xfd: key_return = 2; break;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  case 0xfb: key_return = 3; break;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  case 0xf7: key_return = 4; break;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  key_state = key_state_2;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp; &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp; &nbsp;  else </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  key_state = key_state_0;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp; break;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp; case key_state_2:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp; &nbsp; &nbsp; if(key_press==0xff) key_state = key_state_0;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp; break;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>return key_return;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 805px;"></div><div class="CodeMirror-gutters" style="display: none; height: 805px;"></div></div></div></pre><hr><ol start><li><span>每5ms调用一次</span><code>Key_Read(void)</code><span>，如果key1按下，state_0变为state_1，5ms后再次进入此函数；  </span></li></ol><ul><li><span>如果不是抖动，key_return返回对应数值，state_1变为state_2；5ms后，再次进入此函数，如果按键弹起state_2变为state_0，否则一直处于state_2。</span></li><li><span>如果是抖动，state_1变为state_0。  </span></li></ul><ol start="2"><li><p><span>只有真正按下时，key_return不为0；</span></p></li><li><p><span>三个状态，根据检测按键不同状态进行状态转换</span><br><img src="/images/key_state.png" referrerpolicy="no-referrer" alt="key_state"></p><p><img src="/F:/blog_picture/key_state.png" referrerpolicy="no-referrer" alt="key_state"></p></li><li><p><span>三行代码</span></p></li></ol><hr><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">unsigned&nbsp;char&nbsp;Trg;</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">unsigned&nbsp;char&nbsp;Cont;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text>​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">void Key_Read(void)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  unsigned char ReadData = (Key_Input) ^ 0xff;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  Trg = ReadData &amp; (ReadData ^ Cont);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  Cont = ReadData;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 207px;"></div><div class="CodeMirror-gutters" style="display: none; height: 207px;"></div></div></div></pre><hr><p><span>5ms调用一次</span><code>void Key_Read(void)</code><span></span><br><span>Cont:continue缩写</span><br><code>#define Key_Input KEY1 | (KEY2&lt;&lt;1) | (KEY3&lt;&lt;2) | (KEY4&lt;&lt;3) | 0xf0</code>
+<span>无键按下，Key_Input=0xff;ReadData=0xff^0xff=0x00;Trg=0x00;Cont=0x00;</span>
+<span>KEY1按下，  Key_Input=0xfe;ReadData=0xfe^0xff=0x01;Trg=0x01&amp;(0x01^0x00)=0x01;Cont=0x01(一次触发)</span>
+<span>KEY1长按，  Key_Input=0xfe;ReadData=0xfe^0xff=0x01;Trg=0x01&amp;(0x01^0x01)=0x00;Cont=0x01</span>
+<span>KEY1弹起，  KEYPORT=0xff; ReadData=0xff^0xff=0x00;Trg=0x00&amp;(0x00^0x01)=0x00;Cont=0x00  </span></p><p><span>如果按键读取一次恰好是按键抖动的时候，如果抖动时读取状态为0，则相当于按键未按下，等待下一个5ms（此时过了抖动时期，按键状态已经稳定）再次读取即可；如果抖动时读取的状态为1，就相当于按键按下，而再过5ms检测时，已经过了按键抖动的时期，不会发生状态在0与1之间不定的事情，此时，也是按键按下的状态。如果检测到状态变化就去响应的话，按键在抖动的时候，读取的状态时而为1时而为0，执行按键动作时，单片机可能认为有多次该按键按下动作。我们在执行按键动作的时候，有松手检测，即按键按下一次，算一个动作，编写按键按下时运行的函数只执行一次，如果按键抖动时，执行动作，单片机检测到（按下-松手-按下-松手-按下）等多次按键动作，那么按键按下时运行的函数被执行多次，导致逻辑错误。</span></p><ul><li><span>因此，以上动作是为了消抖。</span>
+<img src="https://img-blog.csdn.net/20170814192950355?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZWxpa2FuZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" referrerpolicy="no-referrer" alt="key_shake"></li></ul></div>
 </body>
 </html>
-<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
-
           
         
       
@@ -1389,7 +1653,7 @@ void TIM2_IRQHandler(void)
       
         
           
-            <h1 id="独立按键编程"><a href="#独立按键编程" class="headerlink" title="独立按键编程"></a>独立按键编程</h1><h2 id="独立按键电路"><a href="#独立按键电路" class="headerlink" title="独立按键电路"></a>独立按键电路</h2><p><img src="/images/key.png" alt="key">  </p>
+            <h1 id="独立按键编程"><a href="#独立按键编程" class="headerlink" title="独立按键编程"></a>独立按键编程</h1><h2 id="独立按键电路"><a href="#独立按键电路" class="headerlink" title="独立按键电路"></a>独立按键电路</h2><p><img src="E:/Hexo/Blog/public/images/key.png" alt="key">  </p>
 <ul>
 <li>按键未按下，对应IO口读到高电平；按下，读到低电平</li>
 <li>按键存在抖动，按键抖动时间约为2ms</li>
@@ -1419,6 +1683,64 @@ void TIM2_IRQHandler(void)
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#define KEY1 GPIO_ReadInputDataBit(GPIOA , GPIO_Pin_0)  </span><br><span class="line">#define KEY2 GPIO_ReadInputDataBit(GPIOA , GPIO_Pin_8)  </span><br><span class="line">#define KEY3 GPIO_ReadInputDataBit(GPIOB , GPIO_Pin_1)  </span><br><span class="line">#define KEY4 GPIO_ReadInputDataBit(GPIOB , GPIO_Pin_2)  </span><br><span class="line"></span><br><span class="line">#define key_input KEY1 | (KEY2&lt;&lt;1) | (KEY3&lt;&lt;2) | (KEY4&lt;&lt;3) | 0xf0;</span><br></pre></td></tr></table></figure>
 
 <hr>
+<h2 id="独立按键编程-1"><a href="#独立按键编程-1" class="headerlink" title="独立按键编程"></a>独立按键编程</h2><ol>
+<li>延时消抖</li>
+</ol>
+<hr>
+<pre><code>temp=read_key();
+if(temp!=0xff)
+{
+    Delay();//按键消抖
+    temp=read_key();
+    if(temp!=0xff)
+    {
+        ….
+    }
+}</code></pre><hr>
+<p>缺点：  </p>
+<ul>
+<li>占用CPU资源</li>
+<li>不停触发</li>
+<li>解决不停触发：加一个松手检测<code>while(temp!=0xff)</code>  </li>
+</ul>
+<ol start="2">
+<li>状态机消抖<br><code>#define key_input KEY1 | (KEY2&lt;&lt;1) | (KEY3&lt;&lt;2) | (KEY4&lt;&lt;3) | 0xf0;</code>判断这个数就能判断按键状态    </li>
+</ol>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#define key_state_0 0 //判断是否按下</span><br><span class="line">#define key_state_1 1 //判断是否为抖动</span><br><span class="line">#define key_state_2 2 //判断是否弹起</span><br><span class="line"></span><br><span class="line">unsigned char Key_Read(void)</span><br><span class="line">&#123;</span><br><span class="line">	static char key_state = 0;</span><br><span class="line">	unsigned char key_press, key_return = 0;</span><br><span class="line">	key_press = key_input;</span><br><span class="line">	switch (key_state)</span><br><span class="line">	&#123;</span><br><span class="line">	    case key_state_0:</span><br><span class="line">	        if(key_press!=0xff) key_state = key_state_1;</span><br><span class="line">	    break;</span><br><span class="line">	    case key_state_1:</span><br><span class="line">	        if(key_press!=0xff)</span><br><span class="line">	        &#123;</span><br><span class="line">	            switch (key_press)</span><br><span class="line">	            &#123;</span><br><span class="line">	                case 0xfe: key_return = 1; break;</span><br><span class="line">	                case 0xfd: key_return = 2; break;</span><br><span class="line">	                case 0xfb: key_return = 3; break;</span><br><span class="line">	                case 0xf7: key_return = 4; break;</span><br><span class="line">	            &#125;</span><br><span class="line">	            key_state = key_state_2;</span><br><span class="line">	        &#125;</span><br><span class="line">	        else </span><br><span class="line">	            key_state = key_state_0;</span><br><span class="line">	     break;</span><br><span class="line">	     case key_state_2:</span><br><span class="line">	         if(key_press==0xff) key_state = key_state_0;</span><br><span class="line">	     break;</span><br><span class="line">	&#125;</span><br><span class="line">	return key_return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<ol>
+<li>每5ms调用一次<code>Key_Read(void)</code>，如果key1按下，state_0变为state_1，5ms后再次进入此函数；  </li>
+</ol>
+<ul>
+<li>如果不是抖动，key_return返回对应数值，state_1变为state_2；5ms后，再次进入此函数，如果按键弹起state_2变为state_0，否则一直处于state_2。</li>
+<li>如果是抖动，state_1变为state_0。  </li>
+</ul>
+<ol start="2">
+<li><p>只有真正按下时，key_return不为0；</p>
+</li>
+<li><p>三个状态，根据检测按键不同状态进行状态转换<br><img src="/images/key_state.png" alt="key_state"></p>
+<p><img src="/F:/blog_picture/key_state.png" alt="key_state"></p>
+</li>
+<li><p>三行代码</p>
+</li>
+</ol>
+<hr>
+<pre><code>unsigned char Trg;
+unsigned char Cont;
+
+void Key_Read(void)
+{
+    unsigned char ReadData = (Key_Input) ^ 0xff;
+    Trg = ReadData &amp; (ReadData ^ Cont);
+    Cont = ReadData;
+}</code></pre><hr>
+<p>5ms调用一次<code>void Key_Read(void)</code><br>Cont:continue缩写<br><code>#define Key_Input KEY1 | (KEY2&lt;&lt;1) | (KEY3&lt;&lt;2) | (KEY4&lt;&lt;3) | 0xf0</code><br>无键按下，Key_Input=0xff;ReadData=0xff^0xff=0x00;Trg=0x00;Cont=0x00;<br>KEY1按下，  Key_Input=0xfe;ReadData=0xfe^0xff=0x01;Trg=0x01&amp;(0x01^0x00)=0x01;Cont=0x01(一次触发)<br>KEY1长按，  Key_Input=0xfe;ReadData=0xfe^0xff=0x01;Trg=0x01&amp;(0x01^0x01)=0x00;Cont=0x01<br>KEY1弹起，  KEYPORT=0xff; ReadData=0xff^0xff=0x00;Trg=0x00&amp;(0x00^0x01)=0x00;Cont=0x00  </p>
+<p>如果按键读取一次恰好是按键抖动的时候，如果抖动时读取状态为0，则相当于按键未按下，等待下一个5ms（此时过了抖动时期，按键状态已经稳定）再次读取即可；如果抖动时读取的状态为1，就相当于按键按下，而再过5ms检测时，已经过了按键抖动的时期，不会发生状态在0与1之间不定的事情，此时，也是按键按下的状态。如果检测到状态变化就去响应的话，按键在抖动的时候，读取的状态时而为1时而为0，执行按键动作时，单片机可能认为有多次该按键按下动作。我们在执行按键动作的时候，有松手检测，即按键按下一次，算一个动作，编写按键按下时运行的函数只执行一次，如果按键抖动时，执行动作，单片机检测到（按下-松手-按下-松手-按下）等多次按键动作，那么按键按下时运行的函数被执行多次，导致逻辑错误。</p>
+<ul>
+<li>因此，以上动作是为了消抖。<br><img src="https://img-blog.csdn.net/20170814192950355?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZWxpa2FuZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="key_shake"></li>
+</ul>
 
           
         
@@ -2198,7 +2520,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX1+2FC1KnE2bn1VhUcKV5LvgWN0+WYFLxL58pCqpIzkuV/k1cTcZtuBulqCcQQ3+3TigKT556wlZ6Rl6bkyBISf77GYfKV/pq4spX5I7eD40c65/77Oxg5h7oDrLqnbRWu9a91KmM09rMazf9E0u29+aIMFDJ8lZHfQA4Cti+WPWdKp9lDDjKqWzfp56pMTP5BhAl/aSdK8A6hDbyDUOsdPyd+tM6l0YiiSJs5mQ0K7yKEQAq5v+HoEOdC1fadf6U2LYupemZ79xRbFH/W47bSzUIiW1PnkT6qylszeXRN1Q2f6Qw6r4XfldC3/XD0C7YhK2wmpuJ4qg3Ku+a3fUd8VPTaS1yUrQziV5FMZjPMATslo+LVyz4X6OqkIuQqgOsLQ9NNsHm+VfVuS+S20MIFC7i3jjlRsCBG+oNSUnwRDlQkHchJM74rsgxH3Phen6RPWzJfFl4HbZJLVIq4dD3hNsysjOLu+YJ0OEWQZLQEiU9DODJKj4rNx4Rr2blsRNYLhe4HZX6T1PoacdQRoAB0nqhakffhiLP6nNCLhoZ06CZyQL/UQxHS4sOFACQkZH8tseSpNDEa6+U44Me6ra/spwSS3m2712COI5B74eqvxY6+7UzseINNgpLyCAEcZHB5j6XDHwAx5mShi4mQoWiF9esgnKzyRleGQul+gbKRh5XA4rVUTk84n+NhSF0XVINilNjnXzKmO+qGJ9ApHad0R8Y3M9cFv00/EOX7z7s3EHX+4lCVwIp3/+/QjgMu0tFfuj7mmLOWhnLaRIi7UhMN7Rdj8INW8mWsml3KNJJpJyF5Kf1Lo5ss/37KRp14Mr1V3d52Y+VMRoomJkF8Wofwju925Uvu0QYqCSi0GBaNqPq/Qcy5epJq5Lls6UgdMiD0VG4qwdwuazKLtjgI8Nvodt460yKRe0jOWAFCQ+v3dn3USIOlptHzGRJH2VV1AG3Ge4e4f0uqmbQCW8dSPbTFmo3wdqyhJUDcyesdPWXRTFpV5yA1JrNM7i4yerBbeSH2TxKvFXknidzaPjyEEehzQikY1Rwry+4OA/JAtFZPbHyAUs1u+AOMofgcQJBbMp2WRJqE0IkysXGPKzX23cqqx8E0YL78ypkCx7IczUWkADMHuh6BTeArirq5uhUPbEBxQ1bZjAi5svMnLYJQ4n/Z70SVZr3DMtHIeUjq9JH6hTXnHHKsbun8N7BLKAVqwPsSBpXMCuqN99dQ/kN9dJxmWxCb44nkWx8LpNa0Q+m5ULd8HeFmsNoJdKs+SQRPDxzTwrDW5yDGnJY55EMOEqJizi1bEj00knIOubj9yLmgIv0N0OHhO3eOeI9YgB2p0GhyoutGyTqSuUq5RAeE/NovkTxhr7hRuiI74LysEEk6q9c620Q3xL4auIk6K0xC6kDn+lDc1UiQPVpY4+EkvERLRf77PrgX7KFdgRZmPmqD4o6cerClqDmxXuG1sTOIDA4BpL9AJy0OdtoFJTkeEcumUnlSYeD740ZIVwSBbeh/+gXnMZNdnHAN5FHxXHTjl+XRrWYn3FB+q7rByl55mNaij3kTIwyUj1NWHFnJ9Ej8d6+u9hWITzkhWrTVurPEeII+lhDMcxvJezGhJG9liV1R4J8XIIndpPWEzxrpXnpviRhd8jH30O5Lb0l3L3AMnD8Rs0Vl0VRmef81zgnWbkFETJ8Q8s5PKkg6Wk0uf+ArXxmUOoPLRuNMUu+CGTCXgG9dRPVqPVkrAZSOZYQGf2tHH/vwlvLlF8b9mbP6fs1DCmutr3rQzMrGZhkOU86awO++Z4tc595riPkqHi7gvUBk/Hs/VSwptGCfwIL0kA63iVJxDV1+LQRgyP3nUMHjzKKeKpwE0ZnvWiqZYKykC0XftWS4bH+rDBARMRE1wRoJIi2+/ZWtepL2tKQfWQuVkbMgY4Sx2sJMYCc/rRk41CV/vIlFPXKHsgz/3hn1up57TJtVsve7jyVBHD4rB3AUiWZCXuPjoMyckWssrnO9f3rX/e1Uk1pXItTDUJ/ZnanMAdBHATVGZwHYFrHoG80nEB0Awi8CNA0Uj1P1NV2kUV6wA2C7X8w07jrI2h/zV2O+MlDo//LfiMulBlr4pyLxEzEof8GGRWQ/las5yc5T8jQetBIqWflQNnMY9/vTXP2/XLlSsrgJ347/1bXrXqaY1VNApsh5KZSdA44OYEXfiBi6HcpdxjJHo29gBhLMz65vLzP0VW83gteijKN1//gmQ7oB/YNFYf809kPWkpYfwonAyqkkRMa7Xc9qGkW5RCRXGfJsi5wHUOaTLTJNCrMaVVpvyypD8ycMBJdMJGyGpCW4hfAGbRiupNAzbSBlc0Vsyt0GajoCkzAQK/j0U9so0wsqsIjGs7nRLgmHbhAPCSGmzizfpb8/9ETZF/ZaziE28Pz7MyeCSkUTOysNGrEGt4J5gsWTNsofmOM8qeSMNnlTk7JzjLcBMeYbFUhwM27z9n1w+5FVjhhXPFTqb4nAits9f4BFg8A+obyBnVLGoGkCLMWNmgTTbAGU9HDGwVEs+f0f2l9pI3csiyX5exa4q/5WPSvjD29U+kGL6LB1Q9egdK41hOU/bJe0p6+UNpvW+tSi55DOU1r2JgpXchfyeFEMs9F5KeZw4lCpiwHmUxNDRezFOf0d5EiaPkWuG51CiJcQWuGHNhHh7Q85XXxslry6rTKFdB9LEayDh1gz4pYXxsVmTpVR4MNXzoHSwicXV2oOJyoXl4fcKITTs5fdPa3IlDW75cvZCUaS+Ciqm6SFzvUco8mekojNxfqT357AMpw+zANTRQn2bM9L7/HF+0eAVsotH8p73eoyXNtIygNuS0lj6dqTo/o3mXyxnSnEmI6KK3tGcyy88STbDHsGvGEQG6antAmylG/Zfcg+kxwYA9mBOhzggCZMV0wF6B6vI5APHVTsgc+NQ8kiE8HLGxUImvanV02+VN9g==</div>
+<div id="enc_content" style="display:none">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</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -2378,7 +2700,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">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</div>
+<div id="enc_content" style="display:none">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</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -2558,7 +2880,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">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</div>
+<div id="enc_content" style="display:none">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</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -2738,7 +3060,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX1+Qz7Oev1hXxSJqocpTzOobVj4dpklZD24RLRlNykn0DfGNXXuVYl3bae5cdIC26BTXpjAP9RkFrboihqqoxRfWZhtMVqMxtNJB9QTJ4ZscVZtcN7jyDJA9sedyklk/V2EgWGnO2DUPQ4zEiDhwnF1ZGOqUUptlycIb29yfz/qqdXJP5gAyqyo8SGXJo3b1GAtuTxQivfprfUOLz16x5SlH+d5voEDLOX2zcn/yzNCuoWmQgdk4zypQE4GJOSTFo8wUXSw220MXUp5nm+HhuKDAaTuTMbH/pO6YAyclEtztqzye9T/PxC/g2XbwPGKaQyYQ6JSQpaLXbhFJp/Bp2Q1CdnP5CFypmfdBPeIlAlTWscr1giwnpNIOtk/nMOSI8DGt8NxWkAxP1WZic14UnZ44TnGuYZZvMA0GmCQrzM/WL5qHrergKgtiMszY8C82gjs90uebb7QgPh87FEkEY3WV1GybYHH8JBP8A8xj0GiMulzXRCgGsBOqY2sflMSKerO5FbbNZhhP2Oosi/OhCrg5vBwPcfmXof3zxU2JMyxwruh2CR9rX85gTwO17U+svyrV9RffhUhp2PIfyk/ZLnsCe1x0CS0cdSDCtHUEQT3VcUhPBlJtn6EVF8jyBfuZbS4vlycvXvnQkSAvq7qvvWp1CV/qYRgLTuv4/PYvzwU/dJ74eBmQU4kJN4AtcFk+mXkxQ5inWNLnf9ubGfvEysnCPx1lmyUrYXAgR0oDQGqzJkuSXgFsPUR0JzT40lUArBAjT4B80oSTDvnCm0vA5AFf9+w9MDYFP5CiUT2c3hmiCKGIt0QgZh8Oo+Wzm5Xew1snUn/FAWzfFOkeXKaB3CoDfUCBUDV/cxQJ7CtTssKfWZtGQ6fUmhqcebsWGebvSqnLM2qo5d56gTzUB08bNJPcnJk0j1rofCvlXCkjAhVqwElcSrHqlcipbAUVoZlB3aw5j7yHpGiEri6IQv3kLd+KW8y+EV3CwK943MAm+ig8iGlfy8UylWFEjksH5WEiyaaF2axI3lIbR/YO44+i6ltY0khZC+9DWJpraMlFML4lfmzXzNzfx5+8n14pKYAZboWoYxOgDZptfmFUI5fI14LIMV5/CUQdtRe8Fs1JqhkYYSW4tP2AVNXc/NywoC93mVfV4fUtiy2tAy1MQSHmXufPgqkn4BQGQOS9FwIUii00RQfcFdwiPdnpFzaTaiCMZySF5VCH7EjtKscOJNE0vWRMPE/pER6ZjpJHAryA/PQIMBVRzeWNk6JDKZifSKQdM3F6sg3K3SLKrrou455uacjcUvZYlLJQvQSq2UIN4z9EBa5f221yTE2yrzKAUqLyMCOcc3FGmiLJvQ8CaHdtU+SlhNwSPX4QotwVflN3MbjFYz7q/W4/3FeE3XQu/ZrB5Pym1Uj58yFg7Q==</div>
+<div id="enc_content" style="display:none">U2FsdGVkX1+9nQp8adJ9qtQDOEkaw6eK1aJVdfV5V6OkAoGq+rv5QpmuUYHCOJLsVgtmYgrdvx9AjCOB4+6vEcXD9eikOT5EwEEWXRkn4Z1x3nsKHsYMoyUhj5bCFQpCGFAaJG0QuLZazag1QWnwghuWDgIemmKzU5Lr1UAs0ZBGwbIoXDEanOmRsycW0rDhILUUDqdyH3dGQ0XWkmWt16EposRjN1zg9PfmAovGtL56245+Pq86yfTZdckEU8JSjoQY54kqS0Xh4kxiO8OyJO5ghsvmXs9Ktf/w9/ykxh7YDSlZ70Er4gscL0QJyu5HkY1h2SHT0EXDsy4nqG+bJQ8PJ1Ebpm3gjsTYm5A/Z63NHYBL696DeWfO8fOlIpyErKYPy9wFH8kFfD4m7zgZTHImN1n0+HO5SP/TtHTC1OFEmk1vpYJFPiP2EVbVza1i57CwkCro1yZA/AFIAD9ZxeAyarwvmbNxE5jtyDt4s5Q9j4TfG7X2E+ppM4DmVrKveepycaPTNO6nwBjNJzCSHQgOGfZsXR5zYDZZKinsZfZ/oHBt6QlAATTC3msTXKixN6g0m987J9pbC3d3DlF1UiX3YNRgyN4uWkoN3/NiNRxQcy+TljvK9Zv4FoMP4k/pRQIYZ/fGkUj75zcxeUXVy9Zv4jTxrvaqjQRg7NDyPPAHxjbpI8+JnfoD4YS2ae0/SMi88CLxdxPvQiChKB/67ZWXyuMgpH2U3l1ohBHOxkgnp8xmCq0oKsBK3WYUppGLhB8o/gB27HizJCodY1+t+XmFfmuy+Fo5iJRYq1tm2LfEr1Ew5f/rE3tw9yee/j8EOPKpxGWn74rW4A8bOlrliDaQBFfVu4ZAz3GkHh/BniYPGpqU2mDsBFEcuDvNRCI7PToyWWheZNgweAIiimjCw6sdsNSpIfOif5Dsh6FnGfV5oItmsgBpeBtau0iAVxetfheCoIDHAOR5HLPhWfa8oYEsSqhcX0J+QYLwNoTrWxYD0mEkghrhDQOEDuPEIU/O+BQbLWECFq+sW4QtGmajTz2TmcIkISt76diKKVobUlwhN5/wLxcQrhnNRBQ0fXcDn5A+8Yo6XbR7WWRBsxPxTcqMYuIdvAniVJJgtH7lJGVota4olmmUMhdrYnvbPT98SMMUe0djTkfRSJf642YCi8nQ1SJ1Lw+hXUr7+Yy1bUMWD98Fue+NPLMvANm3EyoDc18HXZAvMyEaxl7wNXkwsFC0qwcv6UH0SPjLdNZweZ/p0jSo/L/gJaD4bUn6j2KKVptHW3ZHaAVQlHxFLAGgQ+Ca82gxi7zUfhj0bKxMpvPYf1KoSCiHk3C38EUIaEyAXgjRt3yS+7kr6Atvknz4zTgwSVNe9xfDrnyJhQdNR2PPOMeIpSben20TNo90U0XxVCWIRvlPkrd/LdR0sqASyA==</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
